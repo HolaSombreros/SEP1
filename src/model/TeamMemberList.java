@@ -119,5 +119,12 @@ public class TeamMemberList {
             team.remove(teamMember);
     }
 
+    public String toString(){
+        String s = team.get(0).toString();
+        for(int i = 1; i < team.size(); i++)
+            s += team.get(i).toString();
+        return s;
+    }
+
 
 }
