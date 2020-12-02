@@ -79,7 +79,7 @@ public class TaskList {
                 return task;
             }
         }
-        throw new IllegalArgumentException("There is no task with that id in the list of tasks");
+        throw new IllegalArgumentException("There is no task with that id in the list");
     }
 
     /**
@@ -93,6 +93,9 @@ public class TaskList {
             if (task.getStatus() == status) {
                 taskArr.add(task);
             }
+        }
+        if (taskArr.size() == 0) {
+            throw new IllegalArgumentException("No tasks found");
         }
         return taskArr;
     }

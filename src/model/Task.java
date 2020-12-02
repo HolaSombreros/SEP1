@@ -21,6 +21,7 @@ public class Task {
      * @param relatedRequirement The Requirement object which the task is related to.
      */
     public Task(String title, Date startingDate, Date deadline, double estimatedTime, Requirement relatedRequirement) {
+        Date.checkDate(startingDate, deadline);
         setStartingDate(startingDate);
         setDeadline(deadline);
         setEstimatedTime(estimatedTime);
@@ -87,27 +88,30 @@ public class Task {
         this.title = title;
     }
 
+    // dates cannot be before the requirement's dates
     public void setEstimatedTime(double estimatedTime) {
-        if (estimatedTime < 0) {
+        if (estimatedTime <= 0) {
             throw new IllegalArgumentException("The estimated time cannot be less than 0");
         }
         this.estimatedTime = estimatedTime;
     }
 
     public void setStartingDate(Date startingDate) {
-        // check
-        if (startingDate.isBefore(Date.today())) {
-            throw new IllegalArgumentException("The starting date cannot be before today's date");
+        if (startingDate.isBefore(relatedRequirement.getStartingDate())) {
+            throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date");
+        }
+        else if (!startingDate.isBefore(relatedRequirement.getDeadline())) {
+            throw new IllegalArgumentException("The starting date cannot be after the requirement's deadline");
         }
         this.startingDate = startingDate.copy();
     }
 
     public void setDeadline(Date deadline) {
-        if (deadline.isBefore(Date.today())) {
-            throw new IllegalArgumentException("The deadline cannot be before today's date");
+        if (startingDate.isBefore(relatedRequirement.getStartingDate())) {
+            throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date");
         }
-        else if (deadline.isBefore(getStartingDate())) {
-            throw new IllegalArgumentException("The deadline cannot be before the starting date");
+        else if (!deadline.isBefore(relatedRequirement.getDeadline())) {
+            throw new IllegalArgumentException("The deadline cannot be after the requirement's deadline");
         }
         this.deadline = deadline.copy();
     }
@@ -141,12 +145,15 @@ public class Task {
      * @param teamMember The TeamMember object which will be removed from the list.
      */
     public void unassignTeamMember(TeamMember teamMember) {
+        if (teamMember.equals(getResponsibleTeamMember())) {
+            throw new IllegalArgumentException("You cannot unassign a responsible team member from a task");
+        }
         teamMemberList.remove(teamMember);
     }
 
     /**
      * Method to modify the task's TimeRegistration with a specified amount of hours worked.
-     * This method also modify's the specified team member's amount of hours worked.
+     * This method also modifies the specified team member's amount of hours worked.
      * @param teamMember The team member who worked on the task.
      * @param hoursWorked The amount of hours the team member worked on the task.
      */
