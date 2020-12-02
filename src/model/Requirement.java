@@ -135,6 +135,14 @@ public class Requirement
 
   public RequirementStatus getStatus()
   {
+    if(status==RequirementStatus.STARTED)
+    {
+      boolean d = true;
+      for (Task task : taskList.getTasks())
+        if (task.getStatus() != Status.ENDED)
+          d = false;
+      if (d) setStatus(RequirementStatus.ENDED);
+    }
     return status;
   }
 
