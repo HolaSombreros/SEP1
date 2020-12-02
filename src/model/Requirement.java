@@ -101,7 +101,7 @@ public class Requirement
     switch (getPriority())
     {
       case CRITICAL: return "Critical";
-      case HIGH: : return "High";
+      case HIGH: return "High";
       case LOW: return "Low";
       default: throw new IllegalStateException("Not valid priority");
     }
@@ -154,7 +154,7 @@ public class Requirement
   public double getHoursWorked()
   {
     hoursWorked = 0;
-    for (Task task : taskList)
+    for (Task task : taskList.getTasks())
       hoursWorked += task.getTimeRegistration().getHoursWorked();
     return hoursWorked;
   }
@@ -171,7 +171,7 @@ public class Requirement
 
   public void removeTaskById(int id)
   {
-    for (Task task : taskList)
+    for (Task task : taskList.getTasks())
       if (task.getId() == id)
         removeTask(task);
   }
@@ -223,9 +223,9 @@ public class Requirement
         + "Hours Worked: " + hoursWorked + "\n"
         + "Starting date: " + startingDate.toString() + "\n"
         + "Deadline: " + deadline + "\n"
-        + "Status" + status.method() + "\n"
-        + "Priority: " + priority.method() + "\n"
-        + "Type: " + type.method() + "\n"
+        + "Status" + getStatusAsString() + "\n"
+        + "Priority: " + getPriorityAsString() + "\n"
+        + "Type: " + getTypeAsString() + "\n"
         + "Responsible Team Member: " + getResponsibleTeamMember() + "\n"
         + "Tasks: " + taskList.toString() + "\n"
         + "Team Members: " + teamMemberList.toString();
