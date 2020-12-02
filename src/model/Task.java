@@ -18,7 +18,7 @@ public class Task {
      * @param startingDate The task's starting date as a Date object.
      * @param deadline The task's deadline as a Date object.
      * @param estimatedTime The estimated time for the task to be finished.
-     * @param relatedRequirement The related Requirement object which the task is in.
+     * @param relatedRequirement The Requirement object which the task is related to.
      */
     public Task(String title, Date startingDate, Date deadline, double estimatedTime, Requirement relatedRequirement) {
         setStartingDate(startingDate);
