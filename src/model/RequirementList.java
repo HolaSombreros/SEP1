@@ -23,6 +23,12 @@ public class RequirementList
     return requirements.size();
   }
 
+  /**
+   * the idCounter will keep track of the number of the requirements id
+   * it will increase everytime a requirement is added and it will be set as a
+   requirement id
+   * @param requirement
+   */
   public void add(Requirement requirement)
   {
     requirement.setId(idCounter);
@@ -35,6 +41,11 @@ public class RequirementList
     requirements.remove(requirement);
   }
 
+  /**
+   * The system checks the index before searching in the array
+   * @param index
+   * @return the requirement in the selected position
+   */
   public Requirement getRequirement(int index)
   {
     if (index<0 || index>=size())
@@ -42,6 +53,11 @@ public class RequirementList
     return requirements.get(index);
   }
 
+  /**
+   * @param id
+   * @return The system throws an exception if there is not a requirement with
+   the mentioned id
+   */
   public Requirement getRequirementById(int id)
   {
     for (Requirement requirement : requirements)
@@ -50,6 +66,11 @@ public class RequirementList
     throw new IllegalArgumentException("No requirement found");
   }
 
+  /**
+   * @param priority
+   * @return The system throws an exception if there are no requirements with
+   the selected priority
+   */
   public ArrayList<Requirement> getRequirementByPriority(Priority priority)
   {
     ArrayList<Requirement> requirements1 = new ArrayList<>();
@@ -61,6 +82,11 @@ public class RequirementList
     return requirements1;
   }
 
+  /**
+   * @param status
+   * @return The system throws an exception if there are no requirements with
+  the selected priority
+   */
   public ArrayList<Requirement> getRequirementByStatus(RequirementStatus status)
   {
     ArrayList<Requirement> requirements1 = new ArrayList<>();

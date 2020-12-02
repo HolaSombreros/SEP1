@@ -56,6 +56,11 @@ public class Requirement
     return userStory;
   }
 
+  /**
+   * The system checks if the starting date is after the project's starting
+   * date and before the project's deadline
+   * @param startingDate
+   */
   public void setStartingDate(Date startingDate)
   {
     if(startingDate.isBefore(relatedProject.getStartingDate()))
@@ -70,6 +75,10 @@ public class Requirement
     return startingDate.copy();
   }
 
+  /**
+   * The system checks if the deadline is before the project's deadline
+   * @param deadline
+   */
   public void setDeadline(Date deadline)
   {
     if (!(deadline.isBefore(relatedProject.getDeadline())))
@@ -82,6 +91,10 @@ public class Requirement
     return deadline.copy();
   }
 
+  /**
+   * The estimated time is not allowed to be less or equal to 0
+   * @param estimatedTime
+   */
   public void setEstimatedTime(double estimatedTime)
   {
     if (estimatedTime<=0)
@@ -141,6 +154,11 @@ public class Requirement
     this.status = status;
   }
 
+  /**
+   * The system checks if all tasks are ended
+   * If yes, the status changes to ended
+   * @return status
+   */
   public RequirementStatus getStatus()
   {
     if(status==RequirementStatus.STARTED)
@@ -215,6 +233,11 @@ public class Requirement
     teamMemberList.add(teamMember);
   }
 
+  /**
+   * The system checks if the team member is a responsible one
+   * If yes, it can not be removed
+   * @param teamMember
+   */
   public void unassignTeamMember(TeamMember teamMember)
   {
     if (teamMember.equals(getResponsibleTeamMember()))
