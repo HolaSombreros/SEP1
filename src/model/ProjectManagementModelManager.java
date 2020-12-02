@@ -64,6 +64,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     @Override public void removeTeamMember(Project project) {
 
+
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement) {
@@ -86,16 +87,49 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         return null;
     }
 
-    @Override public TeamMemberList getTeamMemberList(Project Project) {
-        return null;
+    /**
+     * @param project - a project chosen from the ProjectList
+     * @return TeamMemberlist object containing the list of the team members working on the given project
+     * */
+    @Override public TeamMemberList getTeamMemberList(Project project) {
+
+        return project.getTeamMemberList();
     }
 
-    @Override public TeamMemberList getTeamMemberList(Project Project, Requirement requirement) {
-        return null;
+
+    /**
+     * checks if the given requirement exists within the given project
+     * if yes, returns a TeamMemberList object, else throws an exception
+     * @param project a project chosen from the ProjectList
+     * @param requirement a requirement chosen from the chosen project's RequirementList
+     * @return a TeamMember object containing the list of the team members working on the given requirement
+     * */
+    @Override public TeamMemberList getTeamMemberList(Project project, Requirement requirement) {
+        if(!project.getProjectRequirementList().contains(requirement))
+            throw new IllegalArgumentException("Requirement not found!");
+        else
+            return requirement.getTeamMemberList();
+
     }
 
-    @Override public TeamMemberList getTeamMemberList(Project Project, Requirement requirement, Task task) {
-        return null;
+    /**
+     * checks if the given project contains the given requirement
+     * if no, throws an exception,
+     * if yes checks if the requirement contains the given task
+     * if no, throws an exception
+     * if yes returns a TeamMemberList object
+     * @param project a project chosen from the ProjectList
+     * @param requirement a requirement chosen from the project's RequirementList
+     * @param task a task chosen from the requirement's TaskList
+     * @return a TeamMember object containing the list of the team members working on the given task
+     */
+    @Override public TeamMemberList getTeamMemberList(Project project, Requirement requirement, Task task) {
+        if(!project.getProjectRequirementList().contains(requirement))
+            throw new IllegalArgumentException("Requirement not found!");
+        else if (!requirement.getTaskList().contains(task))
+            throw new IllegalArgumentException("Task not found!");
+        else
+            return task.getTeamMemberList();
     }
 
     @Override public ArrayList<Project> getRelatedProjects(TeamMember teamMember) {
