@@ -45,7 +45,7 @@ public class Date
     public boolean isLegalDate(int day2, int month2, int year2)
     {
 
-        if(day2 < 0 || month2 < 1  || month2 > 12 || month2 <0 || year2 < 0)
+        if(day2 < 1 || month2 < 1  || month2 > 12 || month2 <0 || year2 < 0)
         {
             return false;
         }
