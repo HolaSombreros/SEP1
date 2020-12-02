@@ -17,8 +17,10 @@ public class Requirement
   private Priority priority;
 
   public Requirement(String userStory, Date startingDate, Date deadline,
-      double estimatedTime, Priority priority, Type type)
+      double estimatedTime, Priority priority, Type type,
+      Project relatedProject)
   {
+    this.relatedProject = relatedProject;
     Date.checkDates(startingDate, deadline);
     setStartingDate(startingDate);
     setDeadline(deadline);
@@ -176,6 +178,11 @@ public class Requirement
     return hoursWorked;
   }
 
+  public Project getRelatedProject()
+  {
+    return relatedProject;
+  }
+
   public void addTask(Task task)
   {
     taskList.add(task);
@@ -234,6 +241,7 @@ public class Requirement
   public String toString()
   {
     return "Id: " + id + "\n"
+        + "Related Project: "
         + "User Story: " + userStory + "\n"
         + "Estimated Time: " + estimatedTime + "\n"
         + "Hours Worked: " + hoursWorked + "\n"
@@ -254,6 +262,7 @@ public class Requirement
     Requirement other = (Requirement) obj;
 
     return id == other.id
+        && relatedProject.equals(other.relatedProject)
         && userStory.equals(other.userStory)
         && estimatedTime == other.estimatedTime
         && hoursWorked == other.hoursWorked
