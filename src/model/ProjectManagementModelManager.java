@@ -75,16 +75,36 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     }
 
+    /**
+     * @return projectList - the list of projects in the system
+     * */
     @Override public ProjectList getProjectList() {
-        return null;
+
+        return projectList;
     }
 
+    /**
+     * if project not in ProjectList throws an exception
+     * @param project - a project chosen from the ProjectList
+     * @return the requirementList of the project
+     * */
     @Override public RequirementList getRequirementList(Project project) {
-        return null;
+        if(!projectList.contains(project))
+            throw new IllegalArgumentException("Project not found!");
+        return project.getProjectRequirementList();
     }
 
+    /**
+     * if the requirement is not within the project throws an exception
+     * @param project - a project chosen from the ProjectList
+     * @param requirement - a requirement chosen from the chosen project's RequirementList
+     * @return the taskList of the requirement
+     * */
     @Override public TaskList getTaskList(Project project, Requirement requirement) {
-        return null;
+        if(!project.getProjectRequirementList().contains(requirement))
+            throw new IllegalArgumentException("Requirement not found!");
+        else
+            return requirement.getTaskList();
     }
 
     /**
