@@ -24,7 +24,10 @@ public class Project
         this.deadline = deadline;
         this.methodology = methodology;
         this.status = Status.NOT_STARTED;
-        this.teamMemberList = new TeamMemberList();
+        this.scrumMaster = null;
+        this.productOwner = null;
+        this.projectTeamMemberList = new TeamMemberList();
+        this.projectRequirementList = new RequirementList();
     }
     //GETTERS
 
@@ -36,13 +39,31 @@ public class Project
     {
         return ID;
     }
-    public Status getStatus()
+    public String getStatus()
     {
-        return status;
+        //TODO: WHEN ALL THE REQUIREMENT STATUS IS SET TO APPROVED RETURN STATUS OF THE
+        //PROJECT ENDED
+        switch(status)
+        {
+            case NOT_STARTED:
+                return "Not started";
+            case STARTED:
+                return "Started";
+            case ENDED:
+                return "Ended";
+            default: throw new IllegalArgumentException("Not valid status");
+
+        }
+
     }
-    public Methodology getMethodology()
+    public String getMethodology()
     {
-        return methodology;
+        switch(methodology)
+        {
+            case WATERFALL: return "Waterfall";
+            case SCRUM: return "Scrum";
+            default: throw new IllegalArgumentException("Not valid methodology");
+        }
     }
     public Date getStartingDate()
     {
@@ -62,7 +83,7 @@ public class Project
     }
     public TeamMemberList getTeamMemberList()
     {
-        return teamMemberList;
+        return projectTeamMemberList;
     }
 
     //SETTERS
@@ -94,11 +115,15 @@ public class Project
 
     public void setTeamMemberList(TeamMemberList teamMemberList)
     {
-        this.teamMemberList = teamMemberList;
+        this.projectTeamMemberList = teamMemberList;
     }
     public void assignTeamMember(TeamMember teamMember)
     {
+        if(!projectTeamMemberList.contains(teamMember))
         this.projectTeamMemberList.add(teamMember);
+        else
+            throw new IllegalArgumentException("Team member is already in the project list");
+
     }
     public void unassignTeamMember(TeamMember teamMember)
     {
@@ -136,21 +161,6 @@ public class Project
             return false;
         }
         Project other = (Project) obj;
-/*
-        if(projectTeamMemberList.size() !=other.projectTeamMemberList.size() )
-        {
-            return false;
-        }
-
-        for(TeamMember teamMember : projectTeamMemberList.getTeamMembers())
-        for(int index = 0; index < projectTeamMemberList.size(); index++)
-        {
-            if(!(projectTeamMemberList.getProject(index).equals(other.projectTeamMemberList.getProject(index)))
-            {
-                return false;
-            }
-        }
-        */
 
 
         return this.ID.equals(other.ID) &&
