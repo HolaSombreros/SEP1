@@ -29,10 +29,10 @@
                      <children>
                         <ScrollPane prefHeight="235.0" prefWidth="302.0">
                            <content>
-                              <TableView prefHeight="234.0" prefWidth="304.0">
+                              <TableView fx:id="teamMemberListTable" prefHeight="234.0" prefWidth="304.0">
                                 <columns>
                                   <TableColumn fx:id="idColumn" prefWidth="76.0" text="ID" />
-                                  <TableColumn fx:id="nameColumn" prefWidth="130.0" text="Name" />
+                                  <TableColumn fx:id="detailsColumn" prefWidth="130.0" text="Details" />
                                     <TableColumn fx:id="deadlineColumn" prefWidth="79.0" text="Deadline" />
                                 </columns>
                               </TableView>

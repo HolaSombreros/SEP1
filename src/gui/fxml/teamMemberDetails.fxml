@@ -30,7 +30,7 @@
                         <Insets left="20.0" right="20.0" top="30.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField minHeight="-Infinity" minWidth="-Infinity" onAction="#nameField" promptText="Name">
+                  <TextField fx:id="nameField" minHeight="-Infinity" minWidth="-Infinity" promptText="Name">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                      </VBox.margin>
@@ -56,9 +56,9 @@
                <children>
                   <ScrollPane prefHeight="235.0" prefWidth="307.0">
                      <content>
-                        <TableView prefHeight="235.0" prefWidth="295.0">
+                        <TableView fx:id="teamMemberViewTable" prefHeight="235.0" prefWidth="295.0">
                           <columns>
-                            <TableColumn fx:id="projectColumn" prefWidth="173.0" text="Project" />
+                            <TableColumn fx:id="projectNameColumn" prefWidth="173.0" text="Project" />
                             <TableColumn fx:id="roleColumn" prefWidth="121.0" text="Role" />
                           </columns>
                         </TableView>
