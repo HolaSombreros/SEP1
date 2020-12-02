@@ -37,8 +37,9 @@ public class RequirementList
 
   public Requirement getRequirement(int index)
   {
+    if (index<0 || index>=size())
+      throw new IllegalArgumentException("index out of bounds");
     return requirements.get(index);
-    //TODO index not valid exception
   }
 
   public Requirement getRequirementById(int id)
@@ -46,7 +47,7 @@ public class RequirementList
     for (Requirement requirement : requirements)
       if (requirement.getId() == id)
         return requirement;
-    return null; //TODO EXCEPTION
+    throw new IllegalArgumentException("No requirement found");
   }
 
   public ArrayList<Requirement> getRequirementByPriority(Priority priority)
@@ -55,7 +56,9 @@ public class RequirementList
     for (Requirement requirement : requirements)
       if (requirement.getPriority() == priority)
         requirements1.add(requirement);
-    return requirements1; //TODO exception for no priority found and invalid one
+    if (requirements1.size()==0)
+      throw new IllegalArgumentException("No requirements found");
+    return requirements1;
   }
 
   public ArrayList<Requirement> getRequirementByStatus(RequirementStatus status)
@@ -64,7 +67,9 @@ public class RequirementList
     for (Requirement requirement : requirements)
       if (requirement.getStatus() == status)
         requirements1.add(requirement);
-    return requirements1; //TODO exception for no status found and invalid one
+    if (requirements1.size()==0)
+      throw new IllegalArgumentException("No requirements found");
+    return requirements1;
   }
 
   public boolean contains(Requirement requirement)

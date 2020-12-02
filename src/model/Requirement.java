@@ -6,6 +6,7 @@ public class Requirement
   private String userStory;
   private double estimatedTime;
   private double hoursWorked;
+  private Project relatedProject;
   private TaskList taskList;
   private TeamMemberList teamMemberList;
   private TeamMember responsibleTeamMember;
@@ -18,12 +19,12 @@ public class Requirement
   public Requirement(String userStory, Date startingDate, Date deadline,
       double estimatedTime, Priority priority, Type type)
   {
-    //TODO exceptions startingdate.before(deadline, today), deadline.before(projectdeadline), not negative estimated time;
+    Date.checkDates(startingDate, deadline);
+    setStartingDate(startingDate);
+    setDeadline(deadline);
+    setEstimatedTime(estimatedTime);
     id = 0;
     this.userStory = userStory;
-    this.startingDate = startingDate.copy();
-    this.deadline = deadline.copy();
-    this.estimatedTime = estimatedTime;
     this.priority = priority;
     this.type = type;
     this.hoursWorked = 0;
@@ -55,7 +56,10 @@ public class Requirement
 
   public void setStartingDate(Date startingDate)
   {
-    //TODO before deadline and today
+    if(startingDate.isBefore(relatedProject.getStartingDate()))
+      throw new IllegalArgumentException("Starting date can not be before project's starting date");
+    if(!(startingDate.isBefore(relatedProject.getDeadline())))
+      throw new IllegalArgumentException("Starting date can not be after project's deadline");
     this.startingDate = startingDate.copy();
   }
 
@@ -66,7 +70,8 @@ public class Requirement
 
   public void setDeadline(Date deadline)
   {
-    //TODO deadline before project deadline
+    if (!(deadline.isBefore(relatedProject.getDeadline())))
+      throw new IllegalArgumentException("Deadline can not be after project's deadline");
     this.deadline = deadline.copy();
   }
 
@@ -77,7 +82,8 @@ public class Requirement
 
   public void setEstimatedTime(double estimatedTime)
   {
-    //TODO not neg number
+    if (estimatedTime<=0)
+      throw new IllegalArgumentException("Estimated time has to be higher than 0");
     this.estimatedTime = estimatedTime;
   }
 
@@ -140,7 +146,10 @@ public class Requirement
       boolean d = true;
       for (Task task : taskList.getTasks())
         if (task.getStatus() != Status.ENDED)
+        {
           d = false;
+          break;
+        }
       if (d) setStatus(RequirementStatus.ENDED);
     }
     return status;
@@ -201,9 +210,8 @@ public class Requirement
 
   public void unassignTeamMember(TeamMember teamMember)
   {
-    if (teamMember.equals(getResponsibleTeamMember()));
-      //TODO Not possible
-    else
+    if (teamMember.equals(getResponsibleTeamMember()))
+      throw new IllegalArgumentException("You can not unassign a responsible team member");
     teamMemberList.remove(teamMember);
   }
 
