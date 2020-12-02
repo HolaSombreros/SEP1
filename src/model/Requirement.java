@@ -2,7 +2,6 @@ package model;
 
 public class Requirement
 {
-  private static int idCounter;
   private int id;
   private String userStory;
   private double estimatedTime;
@@ -16,7 +15,7 @@ public class Requirement
   private Type type;
   private Priority priority;
 
-  public Requirement(String userStory, Date startingDate, Date deadline, double estimatedTime, Priority priority, Type type)
+  public Requirement(int id,String userStory, Date startingDate, Date deadline, double estimatedTime, Priority priority, Type type)
   {
     
   }
