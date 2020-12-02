@@ -18,6 +18,7 @@ public class Requirement
   public Requirement(String userStory, Date startingDate, Date deadline,
       double estimatedTime, Priority priority, Type type)
   {
+    //TODO exceptions startingdate.before(deadline, today), deadline.before(projectdeadline), not negative estimated time;
     id = 0;
     this.userStory = userStory;
     this.startingDate = startingDate.copy();
@@ -54,6 +55,7 @@ public class Requirement
 
   public void setStartingDate(Date startingDate)
   {
+    //TODO before deadline and today
     this.startingDate = startingDate.copy();
   }
 
@@ -64,6 +66,7 @@ public class Requirement
 
   public void setDeadline(Date deadline)
   {
+    //TODO deadline before project deadline
     this.deadline = deadline.copy();
   }
 
@@ -74,6 +77,7 @@ public class Requirement
 
   public void setEstimatedTime(double estimatedTime)
   {
+    //TODO not neg number
     this.estimatedTime = estimatedTime;
   }
 
@@ -92,6 +96,17 @@ public class Requirement
     return priority;
   }
 
+  public String getPriorityAsString()
+  {
+    switch (getPriority())
+    {
+      case CRITICAL: return "Critical";
+      case HIGH: : return "High";
+      case LOW: return "Low";
+      default: throw new IllegalStateException("Not valid priority");
+    }
+  }
+
   public void setType(Type type)
   {
     this.type = type;
@@ -102,6 +117,17 @@ public class Requirement
     return type;
   }
 
+  public String getTypeAsString()
+  {
+    switch (getType())
+    {
+      case FUNCTIONAL: return "Functional";
+      case NON_FUNCTIONAL: return "Non functional";
+      case PROJECT_RELATED: return "Project Related";
+      default: throw new IllegalStateException("Not valid type");
+    }
+  }
+
   public void setStatus(RequirementStatus status)
   {
     this.status = status;
@@ -110,6 +136,19 @@ public class Requirement
   public RequirementStatus getStatus()
   {
     return status;
+  }
+
+  public String getStatusAsString()
+  {
+    switch (getStatus())
+    {
+      case APPROVED: return "Approved";
+      case REJECTED: return "Rejected";
+      case STARTED: return "Started";
+      case NOT_STARTED: return "Not started";
+      case ENDED: return "Ended";
+      default: throw new IllegalStateException("Not valid status");
+    }
   }
 
   public double getHoursWorked()
@@ -154,6 +193,9 @@ public class Requirement
 
   public void unassignTeamMember(TeamMember teamMember)
   {
+    if (teamMember.equals(getResponsibleTeamMember()));
+      //TODO Not possible
+    else
     teamMemberList.remove(teamMember);
   }
 
