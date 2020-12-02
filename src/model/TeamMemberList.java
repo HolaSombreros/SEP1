@@ -105,5 +105,19 @@ public class TeamMemberList {
         return true;
     }
 
+    /**
+     *searches for a given team member in the list
+     * if found, removes him from the list, else throws an exception
+     * @param teamMember
+     * note: when the method is used, beforehand the teamMember needs to be checked whether he has a special role or not
+     * if not, then it proceeds to remove him, if yes throws an exception
+     * */
+    public void remove(TeamMember teamMember){
+        if(!contains(teamMember))
+            throw new IllegalArgumentException("Team Member not found");
+        else
+            team.remove(teamMember);
+    }
+
 
 }
