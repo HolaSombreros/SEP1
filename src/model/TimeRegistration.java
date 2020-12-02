@@ -26,4 +26,12 @@ public class TimeRegistration {
     public double getHoursWorked(){
         return hoursWorked;
     }
+
+    //equals
+    public boolean equals(Object obj){
+        if(!(obj instanceof TimeRegistration))
+            return false;
+        TimeRegistration other = (TimeRegistration)obj;
+        return getHoursWorked() == other.getHoursWorked();
+    }
 }
