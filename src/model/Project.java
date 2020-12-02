@@ -20,6 +20,7 @@ public class Project
     {
         this.name = name;
         this.ID = ID;
+        checkDates(startingDate, deadline);
         this.startingDate = startingDate;
         this.deadline = deadline;
         this.methodology = methodology;
@@ -29,6 +30,23 @@ public class Project
         this.projectTeamMemberList = new TeamMemberList();
         this.projectRequirementList = new RequirementList();
     }
+
+    public static void checkDates(Date startingDate, Date deadline)
+    {
+        if(deadline.isBefore(Date.today()))
+        {
+            throw new IllegalArgumentException("Deadline cannot be before today");
+        }
+        else if(deadline.isBefore(startingDate))
+        {
+            throw new IllegalArgumentException("Deadline cannot be before the starting date");
+        }
+        else if(startingDate.isBefore(Date.today()))
+        {
+            throw new IllegalArgumentException("Starting date cannot be before today's date");
+        }
+    }
+
     //GETTERS
 
     public String getName()
@@ -39,7 +57,15 @@ public class Project
     {
         return ID;
     }
-    public String getStatus()
+    public Status getStatus()
+    {
+        for(Requirement requirement : getProjectRequirementList().getRequirements())
+        {
+            if(requirement.getStatus().equals())
+        }
+        return status;
+    }
+    public String getStatusAsString()
     {
         //TODO: WHEN ALL THE REQUIREMENT STATUS IS SET TO APPROVED RETURN STATUS OF THE
         //PROJECT ENDED
@@ -56,7 +82,11 @@ public class Project
         }
 
     }
-    public String getMethodology()
+    public Methodology getMethodology()
+    {
+        return methodology;
+    }
+    public String getMethodologyAsString()
     {
         switch(methodology)
         {
@@ -142,11 +172,11 @@ public class Project
     {
         this.productOwner = productOwner;
     }
-    public void addRequirement(RequirementList requirement)
+    public void addRequirement(Requirement requirement)
     {
         this.projectRequirementList.add(requirement);
     }
-    public void removeRequirement(RequirementList requirement)
+    public void removeRequirement(Requirement requirement)
     {
         this.projectRequirementList.remove(requirement);
     }
@@ -162,8 +192,7 @@ public class Project
         }
         Project other = (Project) obj;
 
-
-        return this.ID.equals(other.ID) &&
+        return  this.ID.equals(other.ID) &&
                 this.name.equals(other.name) &&
                 this.startingDate.equals(other.startingDate) &&
                 this.deadline.equals(other.deadline) &&
@@ -181,8 +210,8 @@ public class Project
                 "Name: " + getName() + "\n" +
                 "Starting date: " + getStartingDate() + "\n" +
                 "Deadline: " + getDeadline() + "\n" +
-                "Status: " + getStatus() + "\n" +
-                "Methodology: " + getMethodology() + "\n" +
+                "Status: " + getStatusAsString() + "\n" +
+                "Methodology: " + getMethodologyAsString() + "\n" +
                 "Scrum Master: " + getScrumMaster() + "\n" +
                 "Product Owner: " + getProductOwner() + "\n"+
                 "Team Member List: " + getTeamMemberList() + "\n" +
