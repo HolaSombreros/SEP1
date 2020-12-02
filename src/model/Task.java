@@ -21,21 +21,19 @@ public class Task {
      * @param relatedRequirement The Requirement object which the task is related to.
      */
     public Task(String title, Date startingDate, Date deadline, double estimatedTime, Requirement relatedRequirement) {
-        Date.checkDate(startingDate, deadline);
+        this.relatedRequirement = relatedRequirement;
+        Date.checkDates(startingDate, deadline);
+
         setStartingDate(startingDate);
         setDeadline(deadline);
         setEstimatedTime(estimatedTime);
 
         this.id = 0;
         this.title = title;
-        //this.startingDate = startingDate.copy();
-        //this.deadline = deadline.copy();
-        //this.estimatedTime = estimatedTime;
         this.status = Status.NOT_STARTED;
         this.teamMemberList = new TeamMemberList();
         this.responsibleTeamMember = null;
         this.timeRegistration = new TimeRegistration();
-        this.relatedRequirement = relatedRequirement;
     }
 
     // Getters for instance variables:
