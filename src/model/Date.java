@@ -55,6 +55,21 @@ public class Date
         }
         return true;
     }
+    public static void checkDates(Date startingDate, Date deadline)
+    {
+        if(deadline.isBefore(Date.today()))
+        {
+            throw new IllegalArgumentException("Deadline cannot be before today");
+        }
+        else if(deadline.isBefore(startingDate))
+        {
+            throw new IllegalArgumentException("Deadline cannot be before the starting date");
+        }
+        else if(startingDate.isBefore(Date.today()))
+        {
+            throw new IllegalArgumentException("Starting date cannot be before today's date");
+        }
+    }
 
     //SET DATE
 

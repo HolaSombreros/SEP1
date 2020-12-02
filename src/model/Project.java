@@ -20,7 +20,7 @@ public class Project
     {
         this.name = name;
         this.ID = ID;
-        checkDates(startingDate, deadline);
+        Date.checkDates(startingDate, deadline);
         this.startingDate = startingDate;
         this.deadline = deadline;
         this.methodology = methodology;
@@ -31,21 +31,6 @@ public class Project
         this.projectRequirementList = new RequirementList();
     }
 
-    public static void checkDates(Date startingDate, Date deadline)
-    {
-        if(deadline.isBefore(Date.today()))
-        {
-            throw new IllegalArgumentException("Deadline cannot be before today");
-        }
-        else if(deadline.isBefore(startingDate))
-        {
-            throw new IllegalArgumentException("Deadline cannot be before the starting date");
-        }
-        else if(startingDate.isBefore(Date.today()))
-        {
-            throw new IllegalArgumentException("Starting date cannot be before today's date");
-        }
-    }
 
     //GETTERS
 
@@ -59,9 +44,19 @@ public class Project
     }
     public Status getStatus()
     {
+        boolean notEnded = true;
         for(Requirement requirement : getProjectRequirementList().getRequirements())
         {
-            if(requirement.getStatus().equals())
+            if(!requirement.getStatus().equals(RequirementStatus.APPROVED) )
+            {
+                notEnded = false;
+                break;
+            }
+
+        }
+        if(notEnded = true)
+        {
+            this.status = Status.ENDED;
         }
         return status;
     }
