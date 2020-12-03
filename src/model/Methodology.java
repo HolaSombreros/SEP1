@@ -1,6 +1,6 @@
 package model;
 
-enum Methodology
+public enum Methodology
 {
     WATERFALL, SCRUM
 }

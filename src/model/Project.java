@@ -62,8 +62,6 @@ public class Project
     }
     public String getStatusAsString()
     {
-        //TODO: WHEN ALL THE REQUIREMENT STATUS IS SET TO APPROVED RETURN STATUS OF THE
-        //PROJECT ENDED
         switch(status)
         {
             case NOT_STARTED:
@@ -75,7 +73,6 @@ public class Project
             default: throw new IllegalArgumentException("Not valid status");
 
         }
-
     }
     public Methodology getMethodology()
     {
@@ -152,8 +149,15 @@ public class Project
     }
     public void unassignTeamMember(TeamMember teamMember)
     {
-        //TODO: UNASSIGN TEAM MEMBER WITH SPECIAL ROLE
-        this.projectTeamMemberList.remove(teamMember);
+        if(teamMember.equals(getProductOwner()))
+        {
+            throw new IllegalArgumentException("You cannot unassign a Product Owner as an ordinary team member" + "\n Go to unassign Product Owner");
+        }
+        else if(teamMember.equals(getScrumMaster()))
+        {
+            throw new IllegalArgumentException("You cannot unassign a Scrum Master as an ordinary team member" + "\n Go to unassign Scrum Master");
+        }
+        else this.projectTeamMemberList.remove(teamMember);
     }
     public TeamMemberList getTeamMembers()
     {
@@ -161,11 +165,21 @@ public class Project
     }
     public void assignScrumMaster(TeamMember teamMember)
     {
+        unassignScrumMaster();
         this.scrumMaster = teamMember;
     }
     public void assignProductOwner(TeamMember teamMember)
     {
+        unassignProductOwner();
         this.productOwner = productOwner;
+    }
+    public void unassignScrumMaster()
+    {
+        this.scrumMaster = null;
+    }
+    public void unassignProductOwner()
+    {
+        this.productOwner = null;
     }
     public void addRequirement(Requirement requirement)
     {
