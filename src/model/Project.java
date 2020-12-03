@@ -44,22 +44,31 @@ public class Project
     }
     public Status getStatus()
     {
-        boolean notEnded = true;
-        for(Requirement requirement : getProjectRequirementList().getRequirements())
+        if(getStatus().equals(Status.STARTED))
         {
-            if(!requirement.getStatus().equals(RequirementStatus.APPROVED) )
+            boolean notEnded = true;
+            for (Requirement requirement : getProjectRequirementList().getRequirements())
             {
-                notEnded = false;
-                break;
+                if (!requirement.getStatus().equals(RequirementStatus.APPROVED))
+                {
+                    notEnded = false;
+                    break;
+                }
+
             }
 
-        }
-        if(notEnded = true)
-        {
-            this.status = Status.ENDED;
+            if (notEnded = true)
+            {
+                this.status = Status.ENDED;
+            }
         }
         return status;
     }
+
+    /** Gets the status value as a string
+     *
+     * @return String of status
+     */
     public String getStatusAsString()
     {
         switch(status)
@@ -78,6 +87,10 @@ public class Project
     {
         return methodology;
     }
+    /** Gets the methodology value as a string
+     *
+     * @return String of methodology
+     */
     public String getMethodologyAsString()
     {
         switch(methodology)
@@ -139,6 +152,9 @@ public class Project
     {
         this.projectTeamMemberList = teamMemberList;
     }
+
+    //ASSIGN AND UNASSIGN
+
     public void assignTeamMember(TeamMember teamMember)
     {
         if(!projectTeamMemberList.contains(teamMember))
@@ -147,6 +163,11 @@ public class Project
             throw new IllegalArgumentException("Team member is already in the project list");
 
     }
+
+    /** Unassigns an ordinary team member, !ScrumMaster !ProductOwner
+     *
+     * @param teamMember
+     */
     public void unassignTeamMember(TeamMember teamMember)
     {
         if(teamMember.equals(getProductOwner()))
@@ -159,19 +180,18 @@ public class Project
         }
         else this.projectTeamMemberList.remove(teamMember);
     }
-    public TeamMemberList getTeamMembers()
-    {
-        return projectTeamMemberList;
-    }
+
     public void assignScrumMaster(TeamMember teamMember)
     {
+        if(scrumMaster != null)
         unassignScrumMaster();
-        this.scrumMaster = teamMember;
+        else this.scrumMaster = teamMember;
     }
     public void assignProductOwner(TeamMember teamMember)
     {
+        if(productOwner != null)
         unassignProductOwner();
-        this.productOwner = productOwner;
+        else this.productOwner = productOwner;
     }
     public void unassignScrumMaster()
     {
@@ -181,6 +201,9 @@ public class Project
     {
         this.productOwner = null;
     }
+
+    //RELATED REQUIREMENTS AND LIST
+
     public void addRequirement(Requirement requirement)
     {
         this.projectRequirementList.add(requirement);
@@ -226,8 +249,5 @@ public class Project
                 "Team Member List: " + getTeamMemberList() + "\n" +
                 "Requirement List: " + getProjectRequirementList();
     }
-
-
-
 }
 

@@ -20,7 +20,12 @@ public class ProjectList
     }
     public void addProject(Project project)
     {
-        projects.add(project);
+        if(!containsID(project.getID()))
+        {
+            projects.add(project);
+        }
+        else
+            throw new IllegalArgumentException("The project already exists");
     }
     public void removeProject(Project project)
     {
@@ -40,6 +45,7 @@ public class ProjectList
                 count++;
             }
         }
+        if(count == 0) throw new IllegalArgumentException("No projects exists with this methodology");
         return count;
     }
     public ArrayList<Project> getProjectsByMethodology(Methodology methodology)
@@ -53,6 +59,8 @@ public class ProjectList
                 projectsSameMethodology.add(project);
             }
         }
+        if(projectsSameMethodology.size() == 0)
+            throw new IllegalArgumentException("No projects found with this methodology");
         return projectsSameMethodology;
     }
     public int getNumberOfProjectsByStatus(Status status)
@@ -65,6 +73,7 @@ public class ProjectList
                 count++;
             }
         }
+        if(count ==0) throw new IllegalArgumentException("No projects found with this status");
         return count;
     }
     public ArrayList<Project> getProjectsByStatus(Status status)
@@ -78,6 +87,8 @@ public class ProjectList
                 projectsSameStatus.add(project);
             }
         }
+        if(projectsSameStatus.size() == 0)
+            throw new IllegalArgumentException("No projects found with this status");
         return projectsSameStatus;
     }
     public boolean contains(Project project)
@@ -86,6 +97,13 @@ public class ProjectList
     }
     public boolean containsID(String ID)
     {
+        for(int index = 0; index < projects.size(); index++)
+        {
+            if(projects.get(index).getID().equals(ID))
+            {
+                return true;
+            }
+        }
         //TODO: GENERATED ID
         return false;
     }

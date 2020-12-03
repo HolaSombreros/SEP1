@@ -30,12 +30,12 @@
                <children>
                   <VBox prefHeight="361.0" prefWidth="187.0" spacing="30.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="192.0" promptText="ID" />
-                        <TextField promptText="Name" />
-                        <DatePicker promptText="Starting Date" />
-                        <DatePicker prefHeight="25.0" prefWidth="174.0" promptText="Deadline" />
-                        <TextField promptText="Methodology" />
-                        <TextField promptText="Status" />
+                        <TextField fx:id="IDInput" prefHeight="25.0" prefWidth="192.0" promptText="ID" />
+                        <TextField fx:id="nameInput" promptText="Name" />
+                        <DatePicker fx:id="startingDateInput" promptText="Starting Date" />
+                        <DatePicker fx:id="deadlineInput" prefHeight="25.0" prefWidth="174.0" promptText="Deadline" />
+                        <TextField fx:id="methodologyInput" promptText="Methodology" />
+                        <TextField fx:id="statusInput" promptText="Status" />
                      </children>
                      <HBox.margin>
                         <Insets left="40.0" />
@@ -47,9 +47,9 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="348.0">
                                  <children>
-                                    <TableView layoutX="-2.0" layoutY="5.0" prefHeight="190.0" prefWidth="346.0">
+                                    <TableView fx:id="teamMembersTable" layoutX="-2.0" layoutY="5.0" prefHeight="190.0" prefWidth="346.0">
                                       <columns>
-                                        <TableColumn prefWidth="385.0" text="Team Members" />
+                                        <TableColumn fx:id="teamMembersColumn" prefWidth="385.0" text="Team Members" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -64,8 +64,8 @@
                                        <children>
                                           <VBox prefHeight="185.0" prefWidth="162.0" spacing="30.0">
                                              <children>
-                                                <TextField promptText="Scrum Master" />
-                                                <TextField promptText="Product Owner" />
+                                                <TextField fx:id="scrumMasterInput" promptText="Scrum Master" />
+                                                <TextField fx:id="productOwnerInput" promptText="Product Owner" />
                                              </children>
                                              <HBox.margin>
                                                 <Insets left="100.0" top="25.0" />
@@ -89,7 +89,7 @@
             </HBox>
             <HBox prefHeight="26.0" prefWidth="600.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="612.0" text="ErrorLabel" textFill="#f80101">
+                  <Label fx:id="errorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="612.0" text="ErrorLabel" textFill="#f80101">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -100,7 +100,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="88.0" prefWidth="263.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Edit Details">
+                        <Button fx:id="editDetailsButton" mnemonicParsing="false" text="Edit Details">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -109,7 +109,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="88.0" prefWidth="249.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Remove Project">
+                        <Button fx:id="removeProjectButton" mnemonicParsing="false" text="Remove Project">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -118,7 +118,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="88.0" prefWidth="238.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Back">
+                        <Button fx:id="backButton" mnemonicParsing="false" text="Back">
                            <font>
                               <Font size="14.0" />
                            </font>

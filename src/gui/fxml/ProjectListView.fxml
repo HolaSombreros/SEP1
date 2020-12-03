@@ -26,7 +26,7 @@
             </HBox>
             <VBox prefHeight="51.0" prefWidth="600.0">
                <children>
-                  <TextField>
+                  <TextField fx:id="searchInput">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -37,12 +37,12 @@
                <children>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0">
                     <content>
-                        <TableView prefHeight="200.0" prefWidth="487.0">
+                        <TableView fx:id="projectListTable" prefHeight="200.0" prefWidth="487.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="125.0" text="Name" />
-                              <TableColumn prefWidth="138.0" text="Deadline" />
-                              <TableColumn minWidth="9.0" prefWidth="148.0" text="Status" />
+                            <TableColumn fx:id="projectIDColumn" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="projectNameColumn" prefWidth="125.0" text="Name" />
+                              <TableColumn fx:id="projectDeadlineColumn" prefWidth="138.0" text="Deadline" />
+                              <TableColumn fx:id="projectStatusColumn" minWidth="9.0" prefWidth="148.0" text="Status" />
                           </columns>
                         </TableView>
                     </content>
@@ -54,7 +54,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="68.0" prefWidth="600.0" text="ErrorLabel" textFill="#f20101">
+                  <Label fx:id="errorLabel" alignment="CENTER" prefHeight="68.0" prefWidth="600.0" text="ErrorLabel" textFill="#f20101">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -63,22 +63,22 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="63.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="Add New Project">
+                  <Button fx:id="addNewProjectButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="Add New Project">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="View Project">
+                  <Button fx:id="viewProjectButton" mnemonicParsing="false" text="View Project">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="178.0" text="Assign Team Members">
+                  <Button fx:id="assignTeamMembersButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="178.0" text="Assign Team Members">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="Remove Project">
+                  <Button fx:id="removeProjectButton" mnemonicParsing="false" text="Remove Project">
                      <font>
                         <Font size="14.0" />
                      </font>
