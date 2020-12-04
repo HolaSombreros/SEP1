@@ -2,7 +2,6 @@ package model;
 
 import connections.IFileConnection;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
