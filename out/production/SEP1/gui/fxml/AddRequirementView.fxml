@@ -105,7 +105,7 @@
                                 <Font size="17.0" />
                             </font>
                         </Label>
-                        <ChoiceBox fx:id="typrInput" prefHeight="25.0" prefWidth="180.0">
+                        <ChoiceBox fx:id="typeInput" prefHeight="25.0" prefWidth="180.0">
                             <HBox.margin>
                                 <Insets left="80.0" />
                             </HBox.margin>
@@ -124,7 +124,7 @@
         </Label>
         <HBox alignment="TOP_CENTER" prefHeight="39.0" prefWidth="684.0">
             <children>
-                <Button mnemonicParsing="false" text="Create Requirement">
+                <Button mnemonicParsing="false" onAction="#createRequirementButtonPressed" text="Create Requirement">
                     <font>
                         <Font size="21.0" />
                     </font>
@@ -132,7 +132,7 @@
                         <Insets right="20.0" />
                     </HBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" text="Cancel">
+                <Button mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel">
                     <font>
                         <Font size="21.0" />
                     </font>

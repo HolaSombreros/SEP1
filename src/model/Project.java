@@ -69,19 +69,8 @@ public class Project
     {
         return methodology;
     }
-    /** Gets the methodology value as a string
-     *
-     * @return String of methodology
-     */
-    public String getMethodologyAsString()
-    {
-        switch(methodology)
-        {
-            case WATERFALL: return "Waterfall";
-            case SCRUM: return "Scrum";
-            default: throw new IllegalArgumentException("Not valid methodology");
-        }
-    }
+
+
     public Date getStartingDate()
     {
         return startingDate.copy();
@@ -241,7 +230,7 @@ public class Project
                 "Starting date: " + getStartingDate() + "\n" +
                 "Deadline: " + getDeadline() + "\n" +
                 "Status: " + getStatus().getName() + "\n" +
-                "Methodology: " + getMethodologyAsString() + "\n" +
+                "Methodology: " + getMethodology().getMethodology() + "\n" +
                 "Scrum Master: " + getScrumMaster() + "\n" +
                 "Product Owner: " + getProductOwner() + "\n"+
                 "Team Member List: " + getTeamMemberList() + "\n" +
