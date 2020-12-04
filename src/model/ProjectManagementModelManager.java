@@ -2,7 +2,9 @@ package model;
 
 import connections.IFileConnection;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ProjectManagementModelManager implements IProjectManagementModel {
     private ProjectList projectList;
@@ -29,6 +31,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     @Override public void addRequirement(Project project) {
+
 
     }
 
@@ -162,11 +165,63 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             return task.getTeamMemberList();
     }
 
+    /**
+     * searches through all the projects in the projectList and if the teamMemberList related
+     * to the project contains the teamMember adds the project to the new list that is then returned
+     *
+     * @param teamMember - a given teamMember selected by the user
+     * @return an ArrayList of related projects that contain the teamMember
+     * */
     @Override public ArrayList<Project> getRelatedProjects(TeamMember teamMember) {
-        return null;
+        ArrayList<Project> relatedProjects = new ArrayList<>();
+        for(int i = 0; i < projectList.size(); i++)
+            if(projectList.getProject(i).getTeamMemberList().contains(teamMember))
+                relatedProjects.add(projectList.getProject(i));
+        return relatedProjects;
     }
 
+
+    /**
+     * @param teamMember a given teamMember selected by the user
+     * @return another teamMemeber with the most interactions with the given one
+     *          or null if the teamMember has not worked on a project yet
+     * loops through all the projects within the projectList,
+     *                all the requirements of every project,
+     *                all the tasks of every requirement
+     *                all the teamMembers of every task
+     *                that the given teamMember has worked on and creates a hashmap with all the other teamMembers in the list as key
+     *                and the number of lists they were in.
+     *                the teamMember with the maximum number value is returned
+     *
+     * */
     @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) {
+        HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<TeamMember, Integer>();
+        for(int i = 0; i < projectList.size(); i++)
+            if(projectList.getProject(i).getTeamMemberList().contains(teamMember)) {
+                Project project = projectList.getProject(i);
+                for (int j = 0; j < project.getProjectRequirementList().size(); j++)
+                    if (project.getProjectRequirementList().getRequirement(i).getTeamMemberList().contains(teamMember)) {
+                        Requirement requirement = project.getProjectRequirementList().getRequirement(i);
+                        for (int k = 0; k < requirement.getTaskList().size(); k++)
+                            if (requirement.getTaskList().getTask(i).getTeamMemberList().contains(teamMember)) {
+                                Task task = requirement.getTaskList().getTask(i);
+                                for (int m = 0; m < task.getTeamMemberList().size(); m++){
+                                    TeamMember member = task.getTeamMemberList().getByIndex(m);
+                                    if(!frequentTeamMembers.containsKey(member) && !member.equals(teamMember))
+                                        frequentTeamMembers.put(member,1);
+                                    else
+                                        frequentTeamMembers.put(member, frequentTeamMembers.get(member) + 1);
+                            }
+                        }
+                }
+            }
+        int max = 0;
+            for(int i : frequentTeamMembers.values())
+                if(max < i)
+                    max = i;
+            for(TeamMember i : frequentTeamMembers.keySet())
+                if(i.equals(frequentTeamMembers.containsValue(max)))
+                    return i;
         return null;
     }
 

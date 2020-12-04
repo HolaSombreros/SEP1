@@ -3,13 +3,10 @@ package gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
-import model.ProjectList;
 
-public class ProjectSelectController {
+public class AssignUnassignTeamMemberController {
 
     private Region root;
     private ViewHandler viewHandler;
@@ -17,12 +14,10 @@ public class ProjectSelectController {
     private TeamMemberListViewModel viewModel;
 
     @FXML private Label projectLabel;
-    @FXML private TableView<ProjectListViewModel> projectTable;
-    @FXML private TableColumn<ProjectList,String> idColumn;
-    @FXML private TableColumn<ProjectList,String> nameColumn;
-    @FXML private TableColumn<ProjectList,String> deadlineColumn;
+    @FXML private Label requirementLabel;
+    @FXML private Label taskLabel;
 
-    public ProjectSelectController(){
+    public AssignUnassignTeamMemberController(){
 
     }
 
@@ -36,16 +31,37 @@ public class ProjectSelectController {
 
     public void reset(){
         projectLabel.setText("");
+        requirementLabel.setText("");
+        taskLabel.setText("");
     }
 
     public Region getRoot(){
         return root;
     }
 
+
+    public void projectButtonPressed() {
+        viewHandler.openView("selectProject");
+    }
+
+    public void requirementButtonPressed() {
+        viewHandler.openView("selectRequirement");
+    }
+
+    public void taskButtonPressed() {
+        viewHandler.openView("selectTask");
+    }
+
     public void selectButtonPressed() {
     }
 
-    public void backButtonPressed() {
+    public void assignButtonPressed() {
+    }
+
+    public void unassignButtonPressed() {
+    }
+
+    public void cancelButtonPressed() {
         viewHandler.openView("detailsTeamMember");
     }
 }
