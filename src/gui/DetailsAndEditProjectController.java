@@ -51,6 +51,10 @@ public class DetailsAndEditProjectController
     {
 
     }
+    @FXML private void viewRelatedReqButtonPressed()
+    {
+        viewHandler.openView("requirement");
+    }
     @FXML private void backButtonPressed()
     {
         viewHandler.openView("projectList");
