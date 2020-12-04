@@ -50,14 +50,14 @@ public class ProjectListController
     {
         viewHandler.openView("detailsAndEditProject");
     }
-    /*
-    @FXML private void assignTMButtonPressed()
+
+    @FXML private void assignTeamMembersButtonPressed()
     {
-        viewHandler.openView("assignAndUnassignTeamMember");
+        viewHandler.openView("detailsTeamMember");
     }
     @FXML private void removeProjectButtonPressed()
     {
 
-    }*/
+    }
 
 }
