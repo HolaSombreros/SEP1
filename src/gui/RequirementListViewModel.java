@@ -12,7 +12,7 @@ public class RequirementListViewModel
   {
     this.model = model;
     this.list = FXCollections.observableArrayList();
-    update();
+    update(0);
   }
 
   public ObservableList<RequirementViewModel> getList()
@@ -20,11 +20,16 @@ public class RequirementListViewModel
     return list;
   }
 
- public void update()
+  public void update(int id)
   {
-    //list.clear();
-    //for (int i = 0; i < model.getRequirementList(); i++)
-    //  list.add();
+    list.clear();
+   /* if (id == 0)
+      for (int i = 0; i < model.getRequirementList(project).size(); i++)
+        list.add(new RequirementViewModel(
+           model.getRequirementList(project).getRequirement(i)));
+    else
+      list.add(new RequirementViewModel(model.getRequirementList(project)
+         .getRequirementById(id)));  */
   }
 
   public void add(Requirement requirement)
@@ -36,9 +41,10 @@ public class RequirementListViewModel
   {
     for (int i = 0; i < list.size(); i++)
       if (list.get(i).getIdProperty().get() == (requirement.getId()) && list
-          .get(i).getStatusProperty().get()
-          .equals(requirement.getStatus().getName()) && list.get(i)
-          .getDeadlineProperty().get()
+          .get(i).getPriorityProperty().get()
+          .equals(requirement.getPriority().getName()) && list.get(i)
+          .getStatusProperty().get().equals(requirement.getStatus().getName())
+          && list.get(i).getDeadlineProperty().get()
           .equals(requirement.getDeadline().toString()))
       {
         list.remove(i);
