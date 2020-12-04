@@ -1,10 +1,7 @@
 package gui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 
@@ -19,11 +16,12 @@ public class AddProjectController
     @FXML
     private DatePicker deadlineInput;
     @FXML
-    private ToggleGroup statusChoice;
+    private ToggleGroup status;
     @FXML
-    private ToggleGroup methodologyChoice;
+    private ToggleGroup methodology;
     @FXML
     private Label errorLabel;
+    @FXML private Button createProject;
 
     private Region root;
     private ViewHandler viewHandler;
@@ -39,8 +37,7 @@ public class AddProjectController
         this.viewHandler = viewHandler;
         this.root = root;
         this.model = model;
-
-
+        
     }
 
     public void reset()
@@ -62,6 +59,14 @@ public class AddProjectController
     @FXML private void cancelButtonPressed()
     {
         viewHandler.openView("projectList");
+    }
+    @FXML
+    public void handleKeyReleased() //*********
+    {
+        String name = nameInput.getText();
+        boolean disableButtons = name.isEmpty() || name.trim().isEmpty();
+        createProject.setDisable(disableButtons);
+
     }
 }
 
