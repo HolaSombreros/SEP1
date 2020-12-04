@@ -60,7 +60,7 @@
         </HBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#selectPressed" text="Select ">
+                <Button mnemonicParsing="false" onAction="#selectButtonPressed" text="Select ">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -68,7 +68,7 @@
                         <Insets right="25.0" />
                     </HBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#backPressed" text="Back">
+                <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                     <font>
                         <Font size="14.0" />
                     </font>

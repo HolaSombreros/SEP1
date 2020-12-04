@@ -25,7 +25,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="243.0" prefWidth="161.0">
                            <children>
-                              <Button fx:id="projectPressed" mnemonicParsing="false" text="Project">
+                              <Button mnemonicParsing="false" onAction="#projectButtonPressed" text="Project">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -33,7 +33,7 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="requirementPressed" mnemonicParsing="false" text="Requirement">
+                              <Button mnemonicParsing="false" onAction="#requirementButtonPressed" text="Requirement">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -41,7 +41,7 @@
                                     <Insets bottom="20.0" top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="taskPressed" mnemonicParsing="false" text="Task">
+                              <Button mnemonicParsing="false" onAction="#taskButtonPressed" text="Task">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -76,7 +76,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="97.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#selectPressed" text="Select">
+                  <Button mnemonicParsing="false" onAction="#selectButtonPressed" text="Select">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -84,7 +84,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#assignPressed" text="Assign">
+                  <Button mnemonicParsing="false" onAction="#assignButtonPressed" text="Assign">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -92,7 +92,7 @@
                         <Insets right="25.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#unassignPressed" text="Unassign">
+                  <Button mnemonicParsing="false" onAction="#unassignButtonPressed" text="Unassign">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -100,7 +100,7 @@
                         <Insets left="25.0" right="25.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#cancelPressed" text="Cancel">
+                  <Button mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
