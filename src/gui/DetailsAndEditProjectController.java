@@ -7,7 +7,7 @@ import model.IProjectManagementModel;
 import model.TeamMember;
 
 public class DetailsAndEditProjectController
-{
+{/*
     @FXML private TextField IDInput;
     @FXML private TextField nameInput;
     @FXML private DatePicker startingDateInput;
@@ -23,5 +23,5 @@ public class DetailsAndEditProjectController
     private Region root;
     private ViewHandler viewHandler;
     private IProjectManagementModel model;
-    private TeamMemberListViewModel teamMemberListViewModel;
+    private TeamMemberListViewModel teamMemberListViewModel;*/
 }

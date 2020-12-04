@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.DetailsAndEditRequirementController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="600.0">
+            <children>
+                <Label text="Requirement Details">
+                    <font>
+                        <Font name="System Bold" size="30.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="40.0"/>
+                    </VBox.margin>
+                </Label>
+                <HBox alignment="TOP_CENTER" prefHeight="308.0"
+                      prefWidth="600.0">
+                    <children>
+                        <VBox prefHeight="289.0" prefWidth="305.0">
+                            <children>
+                                <Label text="Id"/>
+                                <Label text="RelatedProject"/>
+                                <HBox prefHeight="159.0" prefWidth="305.0">
+                                    <children>
+                                        <TextField prefHeight="86.0"
+                                                   prefWidth="305.0"
+                                                   text="UserStory">
+                                            <HBox.margin>
+                                                <Insets top="5.0"/>
+                                            </HBox.margin>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                                <DatePicker>
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </DatePicker>
+                                <DatePicker>
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </DatePicker>
+                                <HBox prefHeight="21.0" prefWidth="305.0">
+                                    <children>
+                                        <TextField text="EstimatedTime"/>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </HBox>
+                                <ChoiceBox prefWidth="150.0">
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </ChoiceBox>
+                                <ChoiceBox prefWidth="150.0">
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </ChoiceBox>
+                                <ChoiceBox prefWidth="150.0">
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </ChoiceBox>
+                                <TextField text="NumberWorked">
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField text="RTM">
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                            </children>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets right="25.0"/>
+                            </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="270.0" prefWidth="215.0">
+                            <children>
+                                <TableView prefHeight="302.0" prefWidth="215.0">
+                                    <columns>
+                                        <TableColumn prefWidth="214.0"
+                                                     text="Team Members"/>
+                                    </columns>
+                                    <VBox.margin>
+                                        <Insets/>
+                                    </VBox.margin>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <Label text="Error" textFill="#ee0d0d">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="TOP_CENTER" prefHeight="100.0"
+                      prefWidth="200.0">
+                    <children>
+                        <Button mnemonicParsing="false" text="Edit Requirement">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Make Responsible">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false"
+                                text="Remove Requirement">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Back">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+        <Label layoutX="-45.0" layoutY="14.0" text="Label"/>
+    </children>
+</AnchorPane>

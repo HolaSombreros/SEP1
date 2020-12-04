@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class RequirementListController
 {
+  /*
   @FXML private TextField searchInput;
   @FXML private TableView<RequirementListViewModel> requirementListTable;
   @FXML private TableColumn<RequirementViewModel,Number> idColumn;
@@ -20,5 +21,5 @@ public class RequirementListController
   private ProjectManagementModelManager model;
   private ViewHandler viewHandler;
   private RequirementListViewModel viewModel;
-
+*/
 }

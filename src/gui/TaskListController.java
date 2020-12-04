@@ -35,4 +35,8 @@ public class TaskListController {
     @FXML private void viewTask() {
         viewHandler.openView("detailsAndEditTask");
     }
+
+    @FXML private void goBack() {
+        // go back one page...
+    }
 }

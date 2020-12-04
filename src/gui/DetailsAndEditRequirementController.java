@@ -14,7 +14,7 @@ import model.Type;
 import java.awt.*;
 
 public class DetailsAndEditRequirementController
-{
+{/*
   @FXML private Label idLabel;
   @FXML private Label relatedProjectLabel;
   @FXML private TextField userStory;
@@ -34,5 +34,5 @@ public class DetailsAndEditRequirementController
   private ProjectManagementModelManager model;
   private ViewHandler viewHandler;
   private TeamMemberListViewModel viewModel;
-
+*/
 }

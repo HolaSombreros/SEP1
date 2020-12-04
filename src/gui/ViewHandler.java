@@ -48,7 +48,7 @@ public class ViewHandler
       //  root = loadRequirementList("RequirementListView.fxml");
         break;
       case "taskList":
-        root = loadTaskList("TaskListView.fxml");
+        root = loadTaskList("fxml/TaskListView.fxml");
         break;
       case "teamMemberList":
        // root = loadTeamMemberList("TeamMemberListView.fxml");
@@ -60,7 +60,7 @@ public class ViewHandler
        // root = loadAddRequirement("AddRequirementView.fxml");
         break;
       case "addTask":
-        root = loadAddTask("AddTaskView.fxml");
+        root = loadAddTask("fxml/AddTaskView.fxml");
         break;
       case "detailsAndEditProject":
         //root = loadDetailsAndEditProject("DetailsAndEditProjectView.fxml");
@@ -69,7 +69,7 @@ public class ViewHandler
        //root = loadDetailsAndEditRequirement("DetailsAndEditRequirementView.fxml");
         break;
       case "detailsAndEditTask":
-        root = loadDetailsAndEditTask("DetailsAndEditTaskView.fxml");
+        root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml");
         break;
       case "detailsTeamMember":
         //root = loadDetailsTeamMember("DetailsTeamMemberView.fxml");

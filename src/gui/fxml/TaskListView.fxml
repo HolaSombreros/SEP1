@@ -55,7 +55,7 @@
                 <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
             </padding>
         </Button>
-        <Button mnemonicParsing="false" onAction="#quit" style="-fx-font-weight: bold;" text="Back">
+        <Button mnemonicParsing="false" onAction="#goBack" style="-fx-font-weight: bold;" text="Back">
             <padding>
                 <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
             </padding>

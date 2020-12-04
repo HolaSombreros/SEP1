@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 public class ProjectListController
 {
-    @FXML private TextField searchInput;
+   /* @FXML private TextField searchInput;
     @FXML private TableView<ProjectListViewModel> projectListTable;
     @FXML private TableColumn<ProjectViewModel, String> projectIDColumn;
     @FXML private TableColumn<ProjectViewModel, String> projectNameColumn;
@@ -24,5 +24,5 @@ public class ProjectListController
     private IProjectManagementModel model;
 
 
-
+*/
 }
