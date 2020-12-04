@@ -11,7 +11,7 @@ public class RequirementViewModel
   public RequirementViewModel(Requirement requirement)
   {
     idProperty = new SimpleIntegerProperty(requirement.getId());
-    //statusProperty = new SimpleStringProperty(requirement.getStatusAsString());
+    statusProperty = new SimpleStringProperty(requirement.getStatus().getName());
     deadlineProperty = new SimpleStringProperty(requirement.getDeadline().toString());
   }
 
