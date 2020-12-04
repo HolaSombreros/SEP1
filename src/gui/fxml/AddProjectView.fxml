@@ -30,12 +30,12 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="87.0" prefWidth="226.0" spacing="30.0">
                            <children>
-                              <TextField fx:id="nameInput" prefHeight="24.0" prefWidth="155.0" promptText="Name">
+                              <TextField fx:id="nameInput" onKeyReleased="#handleKeyReleased" prefHeight="24.0" prefWidth="155.0" promptText="Name">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="IDinput" prefHeight="24.0" prefWidth="155.0" promptText="Id" />
+                              <TextField fx:id="IDInput" prefHeight="24.0" prefWidth="155.0" promptText="Id" />
                            </children>
                            <HBox.margin>
                               <Insets left="5.0" />
