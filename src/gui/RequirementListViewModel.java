@@ -23,13 +23,13 @@ public class RequirementListViewModel
   public void update()
   {
     list.clear();
-    for (int i = 0; i < model.getRequirementList(); i++)
-      list.add();
+   // for (int i = 0; i < model.getRequirementList(); i++)
+     // list.add();
   }
 
-  public void add(Requirement requirement)
+  //public void add(Requirement requirement)
   {
-    list.add();
+   // list.add();
   }
 
   public void remove(Requirement requirement)
