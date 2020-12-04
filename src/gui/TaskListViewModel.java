@@ -35,7 +35,7 @@ public class TaskListViewModel {
             if (list.get(i).getIdProperty().get() == task.getId() &&
                 list.get(i).getTitleProperty().get().equals(task.getTitle()) &&
                 list.get(i).getDeadlineProperty().get().equals(task.getDeadline().toString()) &&
-                list.get(i).getStatusProperty().get().equals(task.getStatusAsString())) {
+                list.get(i).getStatusProperty().get().equals(task.getStatus().getName())) {
                     list.remove(i);
                     break;
             }
