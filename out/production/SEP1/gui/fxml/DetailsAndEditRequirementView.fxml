@@ -8,222 +8,239 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="430.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditRequirementController">
+<VBox alignment="TOP_CENTER" prefHeight="447.0" prefWidth="688.0"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.DetailsAndEditRequirementController">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="430.0" prefWidth="688.0">
+        <Label text="Requirement Details">
+            <font>
+                <Font name="System Bold" size="25.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+        </Label>
+        <HBox alignment="TOP_CENTER" prefHeight="308.0" prefWidth="600.0">
             <children>
-                <Label text="Requirement Details">
-                    <font>
-                        <Font name="System Bold" size="25.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
-                    </VBox.margin>
-                </Label>
-                <HBox alignment="TOP_CENTER" prefHeight="308.0" prefWidth="600.0">
+                <VBox prefHeight="304.0" prefWidth="399.0">
                     <children>
-                        <VBox prefHeight="304.0" prefWidth="399.0">
+                        <Label fx:id="idLabel" text="Id">
+                            <font>
+                                <Font size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="relatedProjectLabel"
+                               text="RelatedProject">
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                            <font>
+                                <Font size="17.0"/>
+                            </font>
+                        </Label>
+                        <HBox prefHeight="159.0" prefWidth="305.0">
                             <children>
-                                <Label fx:id="idLabel" text="Id">
-                           <font>
-                              <Font size="17.0" />
-                           </font></Label>
-                                <Label fx:id="relatedProjectLabel" text="RelatedProject">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <font>
-                              <Font size="17.0" />
-                           </font></Label>
-                                <HBox prefHeight="159.0" prefWidth="305.0">
-                                    <children>
-                              <Label text="User Story: ">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                                        <TextField fx:id="userStoryInput" prefHeight="25.0" prefWidth="307.0">
-                                            <HBox.margin>
-                                                <Insets />
-                                            </HBox.margin>
-                                        </TextField>
-                                    </children>
-                                </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Starting Date: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                                      <DatePicker fx:id="startingDateInput" />
-                           </children>
+                                <Label text="User Story: ">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="userStoryInput"
+                                           prefHeight="25.0" prefWidth="307.0">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </TextField>
+                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Deadline: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="deadlineInput">
-                                 <HBox.margin>
-                                    <Insets left="33.0" />
-                                 </HBox.margin>
-                              </DatePicker>
-                           </children>
-                        </HBox>
-                                <HBox prefHeight="21.0" prefWidth="305.0">
-                                    <children>
-                              <Label text="Estimated Time: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                                        <TextField fx:id="estimatedTimeInput" prefHeight="25.0" prefWidth="159.0" />
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets top="5.0" />
-                                    </VBox.margin>
-                                </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Priority: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                                      <ChoiceBox fx:id="priorityInput" prefWidth="150.0" />
-                           </children>
+                            <children>
+                                <Label text="Starting Date: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <DatePicker fx:id="startingDateInput"/>
+                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Type: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <ChoiceBox fx:id="typeInput" prefWidth="150.0">
-                                 <HBox.margin>
-                                    <Insets left="17.0" />
-                                 </HBox.margin>
-                              </ChoiceBox>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Status: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <ChoiceBox fx:id="statusInput" prefWidth="150.0">
-                                 <HBox.margin>
-                                    <Insets left="7.0" />
-                                 </HBox.margin>
-                              </ChoiceBox>
-                           </children>
+                            <children>
+                                <Label text="Deadline: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <DatePicker fx:id="deadlineInput">
+                                    <HBox.margin>
+                                        <Insets left="33.0"/>
+                                    </HBox.margin>
+                                </DatePicker>
+                            </children>
                         </HBox>
                         <HBox prefHeight="21.0" prefWidth="305.0">
-                           <children>
-                              <Label text="Number Of Hours Worked: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="hoursWorkedInput" prefHeight="25.0" prefWidth="154.0">
-                                 <HBox.margin>
-                                    <Insets left="6.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
+                            <children>
+                                <Label text="Estimated Time: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="estimatedTimeInput"
+                                           prefHeight="25.0" prefWidth="159.0"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="5.0"/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Priority: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="priorityInput"
+                                           prefWidth="150.0"/>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Type: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="typeInput" prefWidth="150.0">
+                                    <HBox.margin>
+                                        <Insets left="17.0"/>
+                                    </HBox.margin>
+                                </ChoiceBox>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Status: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="statusInput"
+                                           prefWidth="150.0">
+                                    <HBox.margin>
+                                        <Insets left="7.0"/>
+                                    </HBox.margin>
+                                </ChoiceBox>
+                            </children>
                         </HBox>
                         <HBox prefHeight="21.0" prefWidth="305.0">
-                           <children>
-                              <Label text="Responsible Team Member: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="responsibleTeamMemberInput" prefHeight="25.0" prefWidth="153.0" />
-                           </children>
-                        </HBox>
-                            </children>
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <HBox.margin>
-                                <Insets right="25.0" />
-                            </HBox.margin>
-                        </VBox>
-                        <VBox prefHeight="270.0" prefWidth="215.0">
                             <children>
-                                <TableView fx:id="teamMembersTable" prefHeight="365.0" prefWidth="215.0">
-                                    <columns>
-                                        <TableColumn fx:id="idColumn" prefWidth="69.0" text="ID" />
-                              <TableColumn fx:id="nameColumn" prefWidth="145.0" text="Name" />
-                                    </columns>
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                </TableView>
+                                <Label text="Number Of Hours Worked: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="hoursWorkedInput"
+                                           prefHeight="25.0" prefWidth="154.0">
+                                    <HBox.margin>
+                                        <Insets left="6.0"/>
+                                    </HBox.margin>
+                                </TextField>
                             </children>
-                        </VBox>
+                        </HBox>
+                        <HBox prefHeight="21.0" prefWidth="305.0">
+                            <children>
+                                <Label text="Responsible Team Member: ">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="responsibleTeamMemberInput"
+                                           prefHeight="25.0" prefWidth="153.0"/>
+                            </children>
+                        </HBox>
                     </children>
-                </HBox>
-                <Label fx:id="errorLabel" text="Error" textFill="#ee0d0d">
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets right="25.0"/>
+                    </HBox.margin>
+                </VBox>
+                <VBox prefHeight="270.0" prefWidth="215.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#editRequirementButtonPressed" text="Edit Requirement">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#makeResponsibleButtonPressed" text="Make Responsible">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#removeRequirementButtonPressed" text="Remove Requirement">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                        </Button>
+                        <TableView fx:id="teamMembersTable" prefHeight="365.0"
+                                   prefWidth="215.0">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="69.0"
+                                             text="ID"/>
+                                <TableColumn fx:id="nameColumn"
+                                             prefWidth="145.0" text="Name"/>
+                            </columns>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </TableView>
                     </children>
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin>
-                </HBox>
+                </VBox>
             </children>
-        </VBox>
+        </HBox>
+        <Label fx:id="errorLabel" text="Error label" textFill="#ee0d0d">
+            <VBox.margin>
+                <Insets top="5.0"/>
+            </VBox.margin>
+            <font>
+                <Font size="17.0"/>
+            </font>
+        </Label>
+        <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="688.0">
+            <children>
+                <Button mnemonicParsing="false"
+                        onAction="#editRequirementButtonPressed"
+                        text="Edit Requirement">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false"
+                        onAction="#makeResponsibleButtonPressed"
+                        text="Make Responsible">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false"
+                        onAction="#removeRequirementButtonPressed"
+                        text="Remove Requirement">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#backButtonPressed"
+                        text="Back">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+            </children>
+            <VBox.margin>
+                <Insets top="10.0"/>
+            </VBox.margin>
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>

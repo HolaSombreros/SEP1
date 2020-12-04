@@ -45,11 +45,11 @@ public class Date
     public boolean isLegalDate(int day2, int month2, int year2)
     {
 
-        if(day2 < 1 || month2 < 1  || month2 > 12 || month2 <0 || year2 < 0)
+        if(day2 < 1 || month2 < 1  || month2 > 12 || month2 <1 || year2 < 0)
         {
             return false;
         }
-        else if(day2 > numberOfDaysInMonth())
+        else if(day2 > numberOfDaysInMonth(month2))
         {
             return false;
         }
@@ -103,7 +103,7 @@ public class Date
 
     //NEEDED METHODS
 
-    public int numberOfDaysInMonth()
+    public int numberOfDaysInMonth(int month)
     {
         switch(month)
         {

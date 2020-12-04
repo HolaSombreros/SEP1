@@ -1,20 +1,22 @@
 package gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import model.Requirement;
+
+import java.util.Optional;
 
 public class RequirementListController
 {
 
   @FXML private TextField searchInput;
-  @FXML private TableView<RequirementListViewModel> requirementListTable;
+  @FXML private TableView<RequirementViewModel> requirementListTable;
   @FXML private TableColumn<RequirementViewModel, Number> idColumn;
+  @FXML private TableColumn<RequirementViewModel, String> priorityColumn;
   @FXML private TableColumn<RequirementViewModel, String> statusColumn;
   @FXML private TableColumn<RequirementViewModel, String> deadlineColumn;
   @FXML private TextArea userStoryShow;
@@ -28,23 +30,83 @@ public class RequirementListController
   {
   }
 
+  public Region getRoot()
+  {
+    return root;
+  }
+
   public void init(ViewHandler viewHandler, IProjectManagementModel model,
       Region root)
   {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
-    errorLabel.setText("");
-  }
-
-  public Region getRoot()
-  {
-    return root;
+    this.viewModel = new RequirementListViewModel(model);
+    reset();
+    idColumn
+        .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+    priorityColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getPriorityProperty());
+    deadlineColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getDeadlineProperty());
+    statusColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getStatusProperty());
+    requirementListTable.setItems(viewModel.getList());
   }
 
   public void reset()
   {
+    searchInput.setText("");
+    errorLabel.setText("");
+    userStoryShow.setText("");
+    viewModel.update(0);
+  }
 
+  @FXML public void searchButtonPressed()
+  {
+    try
+    {
+      errorLabel.setText("");
+      if (searchInput.getText().equals(""))
+        reset();
+
+      else
+      {
+        int id = 0;
+        try
+        {
+          id = Integer.parseInt(searchInput.getText());
+          viewModel.update(id);
+        }
+        catch (NumberFormatException e)
+        {
+          throw new IllegalArgumentException("ID has to be a number");
+        }
+      }
+    }
+
+    catch (Exception e)
+    {
+      errorLabel.setText(e.getMessage());
+    }
+  }
+
+  @FXML public void onMouseClicked()
+  {
+    errorLabel.setText("");
+    try
+    {
+      RequirementViewModel selectedItem = requirementListTable
+          .getSelectionModel().getSelectedItem();
+     /* Requirement requirement = model.getRequirementList(project)
+          .getRequirementById(selectedItem.getIdProperty().getValue());
+      userStoryShow.setText(requirement.getUserStory()); */
+    }
+
+    catch (Exception e)
+    {
+      errorLabel.setText("No requirements to select");
+    }
   }
 
   @FXML private void addNewRequirementButtonPressed()
@@ -64,7 +126,26 @@ public class RequirementListController
 
   @FXML private void removeRequirementButtonPressed()
   {
+    errorLabel.setText("");
 
+    try
+    {
+      RequirementViewModel selectedItem = requirementListTable
+          .getSelectionModel().getSelectedItem();
+      boolean remove = confirmation();
+      if (remove)
+      {
+        //Requirement requirement = model.getRequirementList(Project).getRequirementById(selectedItem.getIdProperty().getValue());
+        //model.removeRequirement(project, requirement);
+        //viewModel.remove(requirement);
+        requirementListTable.getSelectionModel().clearSelection();
+      }
+    }
+
+    catch (Exception e)
+    {
+      errorLabel.setText("Requirement not selected");
+    }
   }
 
   @FXML private void backButtonPressed()
@@ -72,4 +153,21 @@ public class RequirementListController
     viewHandler.openView("detailsAndEditProject");
   }
 
+  private boolean confirmation()
+  {
+    int index = requirementListTable.getSelectionModel().getSelectedIndex();
+    RequirementViewModel selectedItem = requirementListTable.getItems()
+        .get(index);
+    if (index < 0 || index >= requirementListTable.getItems().size())
+    {
+      return false;
+    }
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation");
+    alert.setHeaderText(
+        "Removing requirement - id: " + selectedItem.getIdProperty().get());
+    Optional<ButtonType> result = alert.showAndWait();
+    return (result.isPresent()) && (result.get() == ButtonType.OK);
+  }
 }
+
