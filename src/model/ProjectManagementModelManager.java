@@ -5,6 +5,7 @@ import connections.IFileConnection;
 import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class ProjectManagementModelManager implements IProjectManagementModel {
     private ProjectList projectList;
@@ -20,9 +21,19 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     private void createDummyData() {
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), new Date(6, 12, 2020), new Date(13, 12, 2020), Methodology.WATERFALL));
     }
-    
+
+    /**
+     * creates a new string of length 8 from letters of the alphabet picked randomly
+     * */
     private String generateProjectId() {
-        return "hoogabooga";
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        StringBuilder id = new StringBuilder();
+        Random random = new Random();
+        for(int i = 0; i < 9; i++)
+            id.append(chars.charAt(random.nextInt(chars.length())));
+        return id.toString();
+
+        //return "hoogabooga";
     }
 
     // Model methods from IProjectManagementModel:
