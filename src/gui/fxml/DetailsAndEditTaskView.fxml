@@ -22,7 +22,7 @@
          <Insets bottom="20.0"/>
       </VBox.margin>
    </Label>
-   <TextField maxWidth="460.0" promptText="Title">
+   <TextField maxWidth="460.0" promptText="Title" fx:id="titleInput">
       <VBox.margin>
          <Insets bottom="10.0"/>
       </VBox.margin>
@@ -37,22 +37,22 @@
                <Insets/>
             </VBox.margin>
             <Label text="Estimated time (hours)"/>
-            <TextField maxWidth="50.0"/>
+            <TextField maxWidth="50.0" fx:id="estimatedHoursInput"/>
          </HBox>
-         <DatePicker minWidth="180.0" promptText="Starting date"/>
-         <DatePicker minWidth="180.0" promptText="Deadline"/>
-         <ChoiceBox fx:id="choiceBoxInput" prefWidth="180.0"/>
-         <TextField fx:id="responsibleTeamMember" maxWidth="180.0" promptText="Responsible Team Member"/>
+         <DatePicker minWidth="180.0" promptText="Starting date" fx:id="startingDateInput"/>
+         <DatePicker minWidth="180.0" promptText="Deadline" fx:id="deadlineInput"/>
+         <ChoiceBox fx:id="statusInput" prefWidth="180.0"/>
+         <TextField fx:id="responsibleTeamMemberInput" maxWidth="180.0" promptText="Responsible Team Member"/>
          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="280.0" spacing="10.0">
             <Label text="Hours worked on"/>
-            <TextField maxWidth="50.0"/>
+            <TextField maxWidth="50.0" fx:id="hoursWorkedInput"/>
          </HBox>
       </VBox>
       <VBox alignment="CENTER_LEFT" maxWidth="200.0" spacing="10.0">
-         <TableView prefHeight="200.0" prefWidth="200.0">
+         <TableView prefHeight="200.0" prefWidth="200.0" fx:id="teamTable">
             <columns>
-               <TableColumn prefWidth="36.0" text="Id"/>
-               <TableColumn prefWidth="163.0" text="Name"/>
+               <TableColumn prefWidth="36.0" text="Id" fx:id="idColumn"/>
+               <TableColumn prefWidth="163.0" text="Name" fx:id="nameColumn"/>
             </columns>
          </TableView>
       </VBox>
@@ -63,17 +63,17 @@
       </VBox.margin>
    </Label>
    <HBox alignment="TOP_CENTER" maxWidth="460.0" spacing="20.0">
-      <Button mnemonicParsing="false" onAction="#editTaskDetails" style="-fx-font-weight: bold;" text="Edit Details">
+      <Button mnemonicParsing="false" onAction="#editDetails" style="-fx-font-weight: bold;" text="Edit Details">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0"/>
          </padding>
       </Button>
-      <Button mnemonicParsing="false" style="-fx-font-weight: bold;" text="Make Responsible">
+      <Button mnemonicParsing="false" style="-fx-font-weight: bold;" text="Make Responsible" onAction="#makeResponsible">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0"/>
          </padding>
       </Button>
-      <Button mnemonicParsing="false" style="-fx-font-weight: bold;" text="Remove Task">
+      <Button mnemonicParsing="false" style="-fx-font-weight: bold;" text="Remove Task" onAction="#removeTask">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0"/>
          </padding>

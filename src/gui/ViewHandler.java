@@ -12,14 +12,14 @@ public class ViewHandler
   private Stage primaryStage;
   private IProjectManagementModel model;
   private ProjectListController projectListController;
-  private RequirementListController requirementListController;
+ // private RequirementListController requirementListController;
   private TaskListController taskListController;
   //private TeamMemberListController teamMemberListController;
   private AddProjectController addProjectController;
-  private AddRequirementController addRequirementController;
+  //private AddRequirementController addRequirementController;
   private AddTaskController addTaskController;
   private DetailsAndEditProjectController detailsAndEditProjectController;
-  private DetailsAndEditRequirementController detailsAndEditRequirementController;
+ // private DetailsAndEditRequirementController detailsAndEditRequirementController;
   private DetailsAndEditTaskController detailsAndEditTaskController;
   //private DetailsTeamMemberController detailsTeamMemberController;
   //private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;

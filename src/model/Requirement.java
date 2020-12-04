@@ -175,19 +175,6 @@ public class Requirement
     return status;
   }
 
-  public String getStatusAsString()
-  {
-    switch (getStatus())
-    {
-      case APPROVED: return "Approved";
-      case REJECTED: return "Rejected";
-      case STARTED: return "Started";
-      case NOT_STARTED: return "Not started";
-      case ENDED: return "Ended";
-      default: throw new IllegalStateException("Not valid status");
-    }
-  }
-
   public double getHoursWorked()
   {
     hoursWorked = 0;
@@ -270,7 +257,7 @@ public class Requirement
         + "Hours Worked: " + hoursWorked + "\n"
         + "Starting date: " + startingDate.toString() + "\n"
         + "Deadline: " + deadline + "\n"
-        + "Status" + getStatusAsString() + "\n"
+        + "Status" + getStatus().getName() + "\n"
         + "Priority: " + getPriorityAsString() + "\n"
         + "Type: " + getTypeAsString() + "\n"
         + "Responsible Team Member: " + getResponsibleTeamMember() + "\n"

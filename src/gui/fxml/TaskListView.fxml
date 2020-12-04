@@ -19,23 +19,23 @@
           <Insets bottom="20.0" />
         </VBox.margin>
     </Label>
-    <TextField maxWidth="460.0" promptText="Search bar">
+    <TextField maxWidth="460.0" promptText="Search bar" fx:id="searchBar">
         <VBox.margin>
           <Insets bottom="10.0" />
         </VBox.margin>
     </TextField>
-    <TableView maxHeight="200.0" maxWidth="460.0">
+    <TableView maxHeight="200.0" maxWidth="460.0" fx:id="taskTable">
       <columns>
-          <TableColumn fx:id="idCol" prefWidth="35.999937415122986" text="Id" />
-          <TableColumn fx:id="titleCol" prefWidth="224.00006866455078" text="Title" />
-          <TableColumn fx:id="deadlineCol" minWidth="0.0" prefWidth="100.0" text="Deadline" />
-          <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="100.0" text="Status" />
+          <TableColumn fx:id="idColumn" prefWidth="35.999937415122986" text="Id" />
+          <TableColumn fx:id="titleColumn" prefWidth="224.00006866455078" text="Title" />
+          <TableColumn fx:id="deadlineColumn" minWidth="0.0" prefWidth="100.0" text="Deadline" />
+          <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="100.0" text="Status" />
       </columns>
       <VBox.margin>
          <Insets bottom="10.0" />
       </VBox.margin>
     </TableView>
-   <Label style="-fx-font-weight: bold;" text="ErrorLabel" textFill="RED">
+   <Label style="-fx-font-weight: bold;" text="ErrorLabel" textFill="RED" fx:id="errorLabel">
       <VBox.margin>
          <Insets bottom="20.0" />
       </VBox.margin></Label>
@@ -50,7 +50,7 @@
                 <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
             </padding>
         </Button>
-        <Button mnemonicParsing="false" style="-fx-font-weight: bold;" text="Remove Task">
+        <Button mnemonicParsing="false" style="-fx-font-weight: bold;" text="Remove Task" onAction="#removeTask">
             <padding>
                 <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
             </padding>
