@@ -64,25 +64,7 @@ public class Project
         }
         return status;
     }
-
-    /** Gets the status value as a string
-     *
-     * @return String of status
-     */
-    public String getStatusAsString()
-    {
-        switch(status)
-        {
-            case NOT_STARTED:
-                return "Not started";
-            case STARTED:
-                return "Started";
-            case ENDED:
-                return "Ended";
-            default: throw new IllegalArgumentException("Not valid status");
-
-        }
-    }
+    
     public Methodology getMethodology()
     {
         return methodology;
@@ -258,7 +240,7 @@ public class Project
                 "Name: " + getName() + "\n" +
                 "Starting date: " + getStartingDate() + "\n" +
                 "Deadline: " + getDeadline() + "\n" +
-                "Status: " + getStatusAsString() + "\n" +
+                "Status: " + getStatus().getName() + "\n" +
                 "Methodology: " + getMethodologyAsString() + "\n" +
                 "Scrum Master: " + getScrumMaster() + "\n" +
                 "Product Owner: " + getProductOwner() + "\n"+
