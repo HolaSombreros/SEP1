@@ -195,26 +195,9 @@ public class Task {
         str += String.format("%nDeadline: %s", deadline.toString());
         str += String.format("%nEstimated time: %.1f hours", getEstimatedTime());
         str += String.format("%nTotal hours worked: %.1f", getTimeRegistration().getHoursWorked());
-        str += String.format("%nStatus: %s", getStatusAsString());
+        str += String.format("%nStatus: %s", getStatus().getName());
         str += String.format("%nResponsible Team Member: %s", getResponsibleTeamMember().getFullName());
         str += String.format("%n%s", getTeamMemberList().toString());
         return str;
-    }
-
-    /**
-     * Method to get the string representation of the task's status.
-     * @return The string representation of a status.
-     */
-    public String getStatusAsString() {
-        switch (getStatus()) {
-            case NOT_STARTED:
-                return "Not Started";
-            case STARTED:
-                return "Started";
-            case ENDED:
-                return "Ended";
-            default:
-                throw new IllegalStateException("Encountered an illegal status value");
-        }
     }
 }
