@@ -42,40 +42,40 @@ public class ViewHandler
     switch (id)
     {
       case "projectList":
-        root = loadProjectList("ProjectListView.fxml");
+        root = loadProjectList("fxml/ProjectListView.fxml");
         break;
       case "requirement":
-      //  root = loadRequirementList("RequirementListView.fxml");
+      //  root = loadRequirementList("fxml/RequirementListView.fxml");
         break;
       case "taskList":
         root = loadTaskList("fxml/TaskListView.fxml");
         break;
       case "teamMemberList":
-       // root = loadTeamMemberList("TeamMemberListView.fxml");
+       // root = loadTeamMemberList("fxml/TeamMemberListView.fxml");
         break;
       case "addProject":
-        root = loadAddProject("AddProjectView.fxml");
+        root = loadAddProject("fxml./ddProjectView.fxml");
         break;
       case "addRequirement":
-       // root = loadAddRequirement("AddRequirementView.fxml");
+       // root = loadAddRequirement("fxml/AddRequirementView.fxml");
         break;
       case "addTask":
         root = loadAddTask("fxml/AddTaskView.fxml");
         break;
       case "detailsAndEditProject":
-        root = loadDetailsAndEditProject("DetailsAndEditProjectView.fxml");
+        root = loadDetailsAndEditProject("fxml/DetailsAndEditProjectView.fxml");
         break;
       case "detailsAndEditRequirement":
-       //root = loadDetailsAndEditRequirement("DetailsAndEditRequirementView.fxml");
+       //root = loadDetailsAndEditRequirement("fxml/DetailsAndEditRequirementView.fxml");
         break;
       case "detailsAndEditTask":
         root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml");
         break;
       case "detailsTeamMember":
-        //root = loadDetailsTeamMember("DetailsTeamMemberView.fxml");
+        //root = loadDetailsTeamMember("fxml/DetailsTeamMemberView.fxml");
         break;
       case "assignAndUnassignTeamMember":
-        //root = loadAssignAndUnassignTeamMember("AssignAndUnassignTeamMemberView.fxml");
+        //root = loadAssignAndUnassignTeamMember("fxml/AssignAndUnassignTeamMemberView.fxml");
         break;
     }
     currentScene.setRoot(root);
