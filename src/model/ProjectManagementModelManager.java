@@ -11,8 +11,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     public ProjectManagementModelManager() {
         this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
-        
-        createDummyData(); // TODO - eventually (maybe?!) remove this and the method below...
+        /*
+        createDummyData(); // TODO - eventually (maybe?!) remove this and the method below...*/
     }
     
     private void createDummyData() {
