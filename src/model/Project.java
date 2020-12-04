@@ -181,17 +181,33 @@ public class Project
         else this.projectTeamMemberList.remove(teamMember);
     }
 
+    /**
+     * If you are trying to assign a team member to a special role
+     * and that role is already occupied, the previous person is overwritten
+     * and the role is taken by the new team member
+     * @param teamMember
+     */
+
     public void assignScrumMaster(TeamMember teamMember)
     {
+        //TODO: IN GUI MAKE A CONFIRMATION BEFORE OVERWRITING THAT PERSON
         if(scrumMaster != null)
         unassignScrumMaster();
         else this.scrumMaster = teamMember;
     }
+    /**
+     * If you are trying to assign a team member to a special role
+     * and that role is already occupied, the previous person is overwritten
+     * and the role is taken by the new team member
+     * @param teamMember
+     */
     public void assignProductOwner(TeamMember teamMember)
     {
+
+        //TODO: IN GUI MAKE A CONFIRMATION BEFORE OVERWRITING THAT PERSON
         if(productOwner != null)
         unassignProductOwner();
-        else this.productOwner = productOwner;
+        else this.productOwner = teamMember;
     }
     public void unassignScrumMaster()
     {

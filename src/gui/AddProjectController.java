@@ -22,4 +22,19 @@ public class AddProjectController
     private ViewHandler viewHandler;
     private IProjectManagementModel model;
 
+    public AddProjectController()
+    {
+        //LOADED BY THE FXML LOADER
+    }
+    public void init(ViewHandler viewHandler, Region root, IProjectManagementModel model)
+    {
+        this.viewHandler = viewHandler;
+        this.root = root;
+        this.model = model;
+        errorLabel.setText("");
+        nameInput.setText("");
+        IDInput.setText("");
+
+    }
 }
+
