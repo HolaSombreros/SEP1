@@ -47,10 +47,11 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="348.0">
                                  <children>
-                                    <TableView fx:id="teamMembersTable" layoutX="-2.0" layoutY="5.0" prefHeight="190.0" prefWidth="346.0">
-                                      <columns>
-                                        <TableColumn fx:id="teamMembersColumn" prefWidth="385.0" text="Team Members" />
-                                      </columns>
+                                    <TableView fx:id="teamMembersTable" layoutX="-2.0" layoutY="5.0" prefHeight="190.0" prefWidth="342.0">
+                                       <columns>
+                                          <TableColumn fx:id="IDColumn" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="nameColumn" minWidth="50.0" prefWidth="250.0" text="Name" />
+                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
@@ -103,7 +104,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="viewRelatedRequirements" onAction="#viewRelatedReqButtonPressed" mnemonicParsing="false" text="View Requirements">
+                  <Button fx:id="viewRelatedRequirements" mnemonicParsing="false" onAction="#viewRelatedReqButtonPressed" text="View Requirements">
                      <font>
                         <Font size="15.0" />
                      </font>

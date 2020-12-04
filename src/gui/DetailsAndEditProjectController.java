@@ -15,8 +15,8 @@ public class DetailsAndEditProjectController
     @FXML private TextField methodologyInput;
     @FXML private TextField statusInput;
     @FXML private Label errorLabel;
-   /* @FXML private TableView<TeamMemberListViewModel> teamMembersTable;
-    @FXML private TableColumn<TeamMemberListViewModel, TeamMember> teamMembersColumn;*/
+    @FXML private TableView<TeamMemberListViewModel> teamMembersTable;
+    @FXML private TableColumn<TeamMemberListViewModel, TeamMember> teamMembersColumn;
     @FXML private TextField scrumMasterInput;
     @FXML private TextField productOwnerInput;
 
