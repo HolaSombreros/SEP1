@@ -22,10 +22,7 @@ public class ViewHandler
   private DetailsAndEditRequirementController detailsAndEditRequirementController;
   private DetailsAndEditTaskController detailsAndEditTaskController;
   private DetailsTeamMemberController detailsTeamMemberController;
-  private AssignUnassignTeamMemberController assignAndUnassignTeamMemberController;
-  private ProjectSelectController projectSelectController;
-  private RequirementSelectController requirementSelectController;
-  private TaskSelectController taskSelectController;
+  //private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;
 
   public ViewHandler(IProjectManagementModel model)
   {
@@ -78,16 +75,7 @@ public class ViewHandler
         root = loadDetailsTeamMember("fxml/TeamMemberDetailsView.fxml");
         break;
       case "assignAndUnassignTeamMember":
-        root = loadAssignAndUnassignTeamMember("fxml/AssignUnassignTeamMember.fxml");
-        break;
-      case "selectProject":
-        root = loadSelectProject("fxml/ProjectSelectView.fxml");
-        break;
-      case "selectRequirement":
-        root = loadSelectRequirement("fxml/RequirementSelectView.fxml");
-        break;
-      case "selectTask":
-        root = loadSelectTask("fxml/TaskSelectView.fxml");
+        //root = loadAssignAndUnassignTeamMember("fxml/AssignAndUnassignTeamMemberView.fxml");
         break;
     }
     currentScene.setRoot(root);
@@ -373,7 +361,7 @@ public class ViewHandler
     }
     return detailsTeamMemberController.getRoot();
   }
-
+/*
   private Region loadAssignAndUnassignTeamMember(String fxmlFile)
   {
     if (assignAndUnassignTeamMemberController == null)
@@ -397,83 +385,6 @@ public class ViewHandler
     }
     return assignAndUnassignTeamMemberController.getRoot();
   }
-
-
-  /**
-   * loads selectProjectView
-   * */
-  public Region loadSelectProject(String fxmlFile){
-    if (projectSelectController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        projectSelectController = loader.getController();
-        projectSelectController.init(this, model, root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-    }
-    else
-    {
-      projectSelectController.reset();
-    }
-    return projectSelectController.getRoot();
-  }
-
-  /**
-   * loads selectRequirementView
-   * */
-  public Region loadSelectRequirement(String fxmlFile){
-    if (requirementSelectController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        requirementSelectController = loader.getController();
-        requirementSelectController.init(this, model, root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-    }
-    else
-    {
-      requirementSelectController.reset();
-    }
-    return requirementSelectController.getRoot();
-  }
-  /**
-   * loads selectTaskView
-   * */
-  public Region loadSelectTask(String fxmlFile){
-    if (taskSelectController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        taskSelectController = loader.getController();
-        taskSelectController.init(this, model, root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-    }
-    else
-    {
-      taskSelectController.reset();
-    }
-    return taskSelectController.getRoot();
-  }
+*/
 
 }

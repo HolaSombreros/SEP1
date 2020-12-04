@@ -25,6 +25,7 @@ public class RequirementListController
   private IProjectManagementModel model;
   private ViewHandler viewHandler;
   private RequirementListViewModel viewModel;
+  private ViewState state;
 
   public RequirementListController()
   {
@@ -36,12 +37,14 @@ public class RequirementListController
   }
 
   public void init(ViewHandler viewHandler, IProjectManagementModel model,
-      Region root)
+      Region root, ViewState state)
   {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
-    this.viewModel = new RequirementListViewModel(model);
+    this.state = state;
+   // this.viewModel = new RequirementListViewModel(model,
+     //   state.getSelectedProject());
     reset();
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
@@ -116,11 +119,17 @@ public class RequirementListController
 
   @FXML private void viewRequirementButtonPressed()
   {
+    RequirementViewModel selectedItem = requirementListTable.getSelectionModel()
+        .getSelectedItem();
+    state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
     viewHandler.openView("detailsAndEditRequirement");
   }
 
   @FXML private void viewTasksButtonPressed()
   {
+    RequirementViewModel selectedItem = requirementListTable.getSelectionModel()
+        .getSelectedItem();
+    state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
     viewHandler.openView("taskList");
   }
 
@@ -150,6 +159,7 @@ public class RequirementListController
 
   @FXML private void backButtonPressed()
   {
+    state.setSelectedRequirement(-1);
     viewHandler.openView("detailsAndEditProject");
   }
 
