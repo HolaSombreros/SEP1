@@ -44,9 +44,9 @@ public class AddRequirementController
   {
     userStoryInput.setText("");
     errorLabel.setText("");
-    estimatedTimeInput.setText("");
-    deadlineInput.getEditor().clear();
     startingDateInput.getEditor().clear();
+    deadlineInput.getEditor().clear();
+    estimatedTimeInput.setText("");
     priorityInput.getSelectionModel().clearAndSelect(0);
     typeInput.getSelectionModel().clearAndSelect(0);
   }
@@ -96,13 +96,14 @@ public class AddRequirementController
       Type type = null;
       if (typeInput.getValue().equals("Functional"))
         type = Type.FUNCTIONAL;
-      if (typeInput.getValue().equals("Non functional"))
+      if (typeInput.getValue().equals("Non Functional"))
         type = Type.NON_FUNCTIONAL;
       if (typeInput.getValue().equals("Project Related"))
         type = Type.PROJECT_RELATED;
-      /*model.addRequirement(
-          new Requirement(related project, userStory, startingDate, deadline, estimatedTime,
-              priority, type));   */
+
+      //model.addRequirement(
+        //  new Requirement(userStory, startingDate, deadline, estimatedTime,
+          //    priority, type));
       errorLabel.setText("");
     }
     catch (Exception e)

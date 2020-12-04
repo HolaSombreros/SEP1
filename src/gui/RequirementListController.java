@@ -43,8 +43,8 @@ public class RequirementListController
     this.model = model;
     this.root = root;
     this.state = state;
-   // this.viewModel = new RequirementListViewModel(model,
-     //   state.getSelectedProject());
+    this.viewModel = new RequirementListViewModel(model);
+    //state.getSelectedProject());
     reset();
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
@@ -101,9 +101,9 @@ public class RequirementListController
     {
       RequirementViewModel selectedItem = requirementListTable
           .getSelectionModel().getSelectedItem();
-     /* Requirement requirement = model.getRequirementList(project)
-          .getRequirementById(selectedItem.getIdProperty().getValue());
-      userStoryShow.setText(requirement.getUserStory()); */
+     // Requirement requirement = model.getRequirementList()
+       //   .getRequirementById(selectedItem.getIdProperty().getValue());
+      //userStoryShow.setText(requirement.getUserStory());
     }
 
     catch (Exception e)
@@ -119,24 +119,35 @@ public class RequirementListController
 
   @FXML private void viewRequirementButtonPressed()
   {
-    RequirementViewModel selectedItem = requirementListTable.getSelectionModel()
-        .getSelectedItem();
-    state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
-    viewHandler.openView("detailsAndEditRequirement");
+    try
+    {
+      RequirementViewModel selectedItem = requirementListTable.getSelectionModel().getSelectedItem();
+      state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
+      viewHandler.openView("detailsAndEditRequirement");
+    }
+    catch (Exception e)
+    {
+      errorLabel.setText("Select a requirement");
+    }
   }
 
   @FXML private void viewTasksButtonPressed()
   {
-    RequirementViewModel selectedItem = requirementListTable.getSelectionModel()
-        .getSelectedItem();
-    state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
-    viewHandler.openView("taskList");
+    try
+    {
+      RequirementViewModel selectedItem = requirementListTable.getSelectionModel().getSelectedItem();
+      state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
+      viewHandler.openView("taskList");
+    }
+    catch (Exception e)
+    {
+      errorLabel.setText("Select a requirement");
+    }
   }
 
   @FXML private void removeRequirementButtonPressed()
   {
     errorLabel.setText("");
-
     try
     {
       RequirementViewModel selectedItem = requirementListTable
@@ -144,8 +155,9 @@ public class RequirementListController
       boolean remove = confirmation();
       if (remove)
       {
-        //Requirement requirement = model.getRequirementList(Project).getRequirementById(selectedItem.getIdProperty().getValue());
-        //model.removeRequirement(project, requirement);
+     //   Requirement requirement = model.getRequirementList()
+         //   .getRequirementById(selectedItem.getIdProperty().getValue());
+       // model.removeRequirement(requirement);
         //viewModel.remove(requirement);
         requirementListTable.getSelectionModel().clearSelection();
       }
@@ -180,4 +192,3 @@ public class RequirementListController
     return (result.isPresent()) && (result.get() == ButtonType.OK);
   }
 }
-

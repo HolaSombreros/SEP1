@@ -12,6 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.layout.AnchorPane?>
 <VBox alignment="TOP_CENTER" prefHeight="447.0" prefWidth="688.0"
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
@@ -106,8 +109,15 @@
                                         <Font size="17.0"/>
                                     </font>
                                 </Label>
-                                <ChoiceBox fx:id="priorityInput"
-                                           prefWidth="150.0"/>
+                                <ChoiceBox fx:id="priorityInput" prefWidth="150.0" value="Critical">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Critical" />
+                                            <String fx:value="High" />
+                                            <String fx:value="Low" />
+                                        </FXCollections>
+                                    </items>
+                                </ChoiceBox>
                             </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -117,10 +127,19 @@
                                         <Font size="17.0"/>
                                     </font>
                                 </Label>
-                                <ChoiceBox fx:id="typeInput" prefWidth="150.0">
+                                <ChoiceBox fx:id="typeInput" prefWidth="150.0"
+                                           value="Functional">
                                     <HBox.margin>
                                         <Insets left="17.0"/>
                                     </HBox.margin>
+                                    <items>
+                                        <FXCollections
+                                                fx:factory="observableArrayList">
+                                            <String fx:value="Functional"/>
+                                            <String fx:value="Non Functional"/>
+                                            <String fx:value="Project Related"/>
+                                        </FXCollections>
+                                    </items>
                                 </ChoiceBox>
                             </children>
                         </HBox>
@@ -132,10 +151,19 @@
                                     </font>
                                 </Label>
                                 <ChoiceBox fx:id="statusInput"
-                                           prefWidth="150.0">
+                                           prefWidth="150.0" value="Not Started">
                                     <HBox.margin>
                                         <Insets left="7.0"/>
                                     </HBox.margin>
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Not Started" />
+                                            <String fx:value="Started" />
+                                            <String fx:value="Ended" />
+                                            <String fx:value="Approved"/>
+                                            <String fx:value="Rejected"/>
+                                        </FXCollections>
+                                    </items>
                                 </ChoiceBox>
                             </children>
                         </HBox>
