@@ -17,6 +17,7 @@ public class DetailsTeamMemberController {
     private ViewHandler viewHandler;
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
+
     @FXML private TextField nameField;
     @FXML private Label productivityLabel;
     @FXML private Label frequentTeamMemberLabel;
@@ -46,10 +47,11 @@ public class DetailsTeamMemberController {
     }
 
     public void assignButtonPressed(){
-
+        viewHandler.openView("selectProject");
     }
 
 
     public void backButtonPressed() {
+        viewHandler.openView("projectList");
     }
 }
