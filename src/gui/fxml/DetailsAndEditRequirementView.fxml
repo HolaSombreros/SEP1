@@ -29,11 +29,11 @@
                     <children>
                         <VBox prefHeight="304.0" prefWidth="399.0">
                             <children>
-                                <Label text="Id">
+                                <Label fx:id="idLabel" text="Id">
                            <font>
                               <Font size="17.0" />
                            </font></Label>
-                                <Label text="RelatedProject">
+                                <Label fx:id="relatedProjectLabel" text="RelatedProject">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -50,7 +50,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                                        <TextField prefHeight="25.0" prefWidth="307.0">
+                                        <TextField fx:id="userStoryInput" prefHeight="25.0" prefWidth="307.0">
                                             <HBox.margin>
                                                 <Insets />
                                             </HBox.margin>
@@ -64,7 +64,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                                      <DatePicker />
+                                      <DatePicker fx:id="startingDateInput" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -74,7 +74,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <DatePicker>
+                              <DatePicker fx:id="deadlineInput">
                                  <HBox.margin>
                                     <Insets left="33.0" />
                                  </HBox.margin>
@@ -88,7 +88,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                                        <TextField prefHeight="25.0" prefWidth="159.0" />
+                                        <TextField fx:id="estimatedTimeInput" prefHeight="25.0" prefWidth="159.0" />
                                     </children>
                                     <VBox.margin>
                                         <Insets top="5.0" />
@@ -101,7 +101,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                                      <ChoiceBox prefWidth="150.0" />
+                                      <ChoiceBox fx:id="priorityInput" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -111,7 +111,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox prefWidth="150.0">
+                              <ChoiceBox fx:id="typeInput" prefWidth="150.0">
                                  <HBox.margin>
                                     <Insets left="17.0" />
                                  </HBox.margin>
@@ -125,7 +125,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox prefWidth="150.0">
+                              <ChoiceBox fx:id="statusInput" prefWidth="150.0">
                                  <HBox.margin>
                                     <Insets left="7.0" />
                                  </HBox.margin>
@@ -139,7 +139,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="154.0">
+                              <TextField fx:id="hoursWorkedInput" prefHeight="25.0" prefWidth="154.0">
                                  <HBox.margin>
                                     <Insets left="6.0" />
                                  </HBox.margin>
@@ -153,7 +153,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="153.0" />
+                              <TextField fx:id="responsibleTeamMemberInput" prefHeight="25.0" prefWidth="153.0" />
                            </children>
                         </HBox>
                             </children>
@@ -166,10 +166,10 @@
                         </VBox>
                         <VBox prefHeight="270.0" prefWidth="215.0">
                             <children>
-                                <TableView prefHeight="365.0" prefWidth="215.0">
+                                <TableView fx:id="teamMembersTable" prefHeight="365.0" prefWidth="215.0">
                                     <columns>
-                                        <TableColumn prefWidth="69.0" text="ID" />
-                              <TableColumn prefWidth="145.0" text="Name" />
+                                        <TableColumn fx:id="idColumn" prefWidth="69.0" text="ID" />
+                              <TableColumn fx:id="nameColumn" prefWidth="145.0" text="Name" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets />
@@ -179,7 +179,7 @@
                         </VBox>
                     </children>
                 </HBox>
-                <Label text="Error" textFill="#ee0d0d">
+                <Label fx:id="errorLabel" text="Error" textFill="#ee0d0d">
                     <VBox.margin>
                         <Insets top="5.0" />
                     </VBox.margin>
@@ -189,7 +189,7 @@
                 </Label>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button mnemonicParsing="false" text="Edit Requirement">
+                        <Button mnemonicParsing="false" onAction="#editRequirementButtonPressed" text="Edit Requirement">
                             <font>
                                 <Font size="15.0" />
                             </font>
@@ -197,7 +197,7 @@
                                 <Insets right="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Make Responsible">
+                        <Button mnemonicParsing="false" onAction="#makeResponsibleButtonPressed" text="Make Responsible">
                             <font>
                                 <Font size="15.0" />
                             </font>
@@ -205,7 +205,7 @@
                                 <Insets right="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Remove Requirement">
+                        <Button mnemonicParsing="false" onAction="#removeRequirementButtonPressed" text="Remove Requirement">
                             <font>
                                 <Font size="15.0" />
                             </font>
@@ -213,7 +213,7 @@
                                 <Insets right="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Back">
+                        <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                             <font>
                                 <Font size="15.0" />
                             </font>
