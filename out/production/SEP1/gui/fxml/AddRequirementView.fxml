@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,43 +15,106 @@
     <children>
         <Label text="Create A New Requirement">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="26.0" />
             </font>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
         </Label>
         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <TextField prefHeight="100.0" prefWidth="490.0">
+                <Label text="User Story: ">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
                     <HBox.margin>
                         <Insets top="10.0" />
                     </HBox.margin>
-                </TextField>
+                </Label>
+                <TextArea fx:id="userStoryInput" prefHeight="81.0" prefWidth="415.0">
+                    <HBox.margin>
+                        <Insets top="10.0" />
+                    </HBox.margin>
+                </TextArea>
             </children>
         </HBox>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Label" />
-                      <DatePicker />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Label" />
-                  <DatePicker />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Label" />
-                      <TextField prefHeight="25.0" prefWidth="97.0" text="Estimated Time" />
-               </children>
-            </HBox>
-            <ChoiceBox prefWidth="150.0" />
-            <ChoiceBox prefWidth="150.0" />
-         </children>
-      </VBox>
-        <Label text="Error" textFill="#ff0606">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="StartingDate: ">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <DatePicker fx:id="startingDateInput" prefHeight="25.0" prefWidth="180.0">
+                            <HBox.margin>
+                                <Insets left="22.0" />
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Deadline: ">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="deadlineInput" prefHeight="25.0" prefWidth="180.0">
+                            <HBox.margin>
+                                <Insets left="51.0" />
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Estimated Time: ">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="estimatedTimeInput" prefHeight="25.0" prefWidth="180.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Priority: ">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="priorityInput" prefHeight="25.0" prefWidth="180.0">
+                            <HBox.margin>
+                                <Insets left="65.0" />
+                            </HBox.margin>
+                        </ChoiceBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Type: ">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <ChoiceBox fx:id="typrInput" prefHeight="25.0" prefWidth="180.0">
+                            <HBox.margin>
+                                <Insets left="80.0" />
+                            </HBox.margin>
+                        </ChoiceBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Label fx:id="errorLabel" textFill="#ff0606">
             <font>
                 <Font size="17.0" />
             </font>
@@ -58,14 +122,14 @@
                 <Insets top="10.0" />
             </VBox.margin>
         </Label>
-        <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="600.0">
+        <HBox alignment="TOP_CENTER" prefHeight="39.0" prefWidth="684.0">
             <children>
                 <Button mnemonicParsing="false" text="Create Requirement">
                     <font>
                         <Font size="21.0" />
                     </font>
                     <HBox.margin>
-                        <Insets right="20.0" top="10.0" />
+                        <Insets right="20.0" />
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" text="Cancel">
@@ -73,10 +137,13 @@
                         <Font size="21.0" />
                     </font>
                     <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets />
                     </HBox.margin>
                 </Button>
             </children>
+            <VBox.margin>
+                <Insets bottom="10.0" />
+            </VBox.margin>
         </HBox>
     </children>
     <padding>
