@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" prefHeight="86.0" prefWidth="600.0" text="SELECT PROJECT">
@@ -61,7 +60,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#selectPressed" text="Select ">
+            <Button mnemonicParsing="false" onAction="#selectButtonPressed" text="Select ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -69,7 +68,7 @@
                   <Insets right="25.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#backPressed" text="Back">
+            <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                <font>
                   <Font size="14.0" />
                </font>

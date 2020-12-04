@@ -21,7 +21,7 @@ public class ViewHandler
   private DetailsAndEditProjectController detailsAndEditProjectController;
   private DetailsAndEditRequirementController detailsAndEditRequirementController;
   private DetailsAndEditTaskController detailsAndEditTaskController;
-  //private DetailsTeamMemberController detailsTeamMemberController;
+  private DetailsTeamMemberController detailsTeamMemberController;
   //private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;
 
   public ViewHandler(IProjectManagementModel model)
@@ -72,7 +72,7 @@ public class ViewHandler
         root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml");
         break;
       case "detailsTeamMember":
-        //root = loadDetailsTeamMember("fxml/DetailsTeamMemberView.fxml");
+        root = loadDetailsTeamMember("fxml/TeamMemberDetailsView.fxml");
         break;
       case "assignAndUnassignTeamMember":
         //root = loadAssignAndUnassignTeamMember("fxml/AssignAndUnassignTeamMemberView.fxml");
@@ -337,7 +337,7 @@ public class ViewHandler
     }
     return detailsAndEditTaskController.getRoot();
   }
-/*
+
   private Region loadDetailsTeamMember(String fxmlFile)
   {
     if (detailsTeamMemberController == null)
@@ -361,7 +361,7 @@ public class ViewHandler
     }
     return detailsTeamMemberController.getRoot();
   }
-
+/*
   private Region loadAssignAndUnassignTeamMember(String fxmlFile)
   {
     if (assignAndUnassignTeamMemberController == null)
