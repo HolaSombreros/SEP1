@@ -1,7 +1,6 @@
 package connections;
 
 import model.IProjectManagementModel;
-import model.Project;
 
 public interface IFileConnection {
     void setFileName(String fileName);

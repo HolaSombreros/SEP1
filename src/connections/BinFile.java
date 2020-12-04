@@ -12,11 +12,11 @@ public class BinFile implements IFileConnection {
     }
 
     @Override public void setFileName(String fileName) {
-
+        this.fileName = fileName;
     }
-
+    
     @Override public String getFileName() {
-        return null;
+        return fileName;
     }
 
     @Override public IProjectManagementModel loadModel() {

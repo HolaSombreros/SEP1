@@ -86,7 +86,6 @@ public class Task {
         this.title = title;
     }
 
-    // dates cannot be before the requirement's dates
     public void setEstimatedTime(double estimatedTime) {
         if (estimatedTime <= 0) {
             throw new IllegalArgumentException("The estimated time cannot be less than 0");
