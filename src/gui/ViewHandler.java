@@ -42,7 +42,7 @@ public class ViewHandler
     switch (id)
     {
       case "projectList":
-      //  root = loadProjectList("ProjectListView.fxml");
+        root = loadProjectList("ProjectListView.fxml");
         break;
       case "requirement":
       //  root = loadRequirementList("RequirementListView.fxml");
@@ -54,7 +54,7 @@ public class ViewHandler
        // root = loadTeamMemberList("TeamMemberListView.fxml");
         break;
       case "addProject":
-        //root = loadAddProject("AddProjectView.fxml");
+        root = loadAddProject("AddProjectView.fxml");
         break;
       case "addRequirement":
        // root = loadAddRequirement("AddRequirementView.fxml");
@@ -63,7 +63,7 @@ public class ViewHandler
         root = loadAddTask("fxml/AddTaskView.fxml");
         break;
       case "detailsAndEditProject":
-        //root = loadDetailsAndEditProject("DetailsAndEditProjectView.fxml");
+        root = loadDetailsAndEditProject("DetailsAndEditProjectView.fxml");
         break;
       case "detailsAndEditRequirement":
        //root = loadDetailsAndEditRequirement("DetailsAndEditRequirementView.fxml");
@@ -97,7 +97,7 @@ public class ViewHandler
   {
     primaryStage.close();
   }
-/*
+
   private Region loadProjectList(String fxmlFile)
   {
     if (projectListController == null)
@@ -122,7 +122,7 @@ public class ViewHandler
     return projectListController.getRoot();
   }
 
-  private Region loadRequirementList(String fxmlFile)
+  /*private Region loadRequirementList(String fxmlFile)
   {
     if (requirementListController == null)
     {
@@ -192,7 +192,7 @@ public class ViewHandler
       teamMemberListController.reset();
     }
     return teamMemberListController.getRoot();
-  }
+  } */
 
   private Region loadAddProject(String fxmlFile)
   {
@@ -218,7 +218,7 @@ public class ViewHandler
     return addProjectController.getRoot();
   }
 
-  private Region loadAddRequirement(String fxmlFile)
+  /*private Region loadAddRequirement(String fxmlFile)
   {
     if (addRequirementController == null)
     {
@@ -265,7 +265,7 @@ public class ViewHandler
     }
     return addTaskController.getRoot();
   }
-/*
+
   private Region loadDetailsAndEditProject(String fxmlFile)
   {
     if (detailsAndEditProjectController == null)
@@ -289,7 +289,7 @@ public class ViewHandler
     }
     return detailsAndEditProjectController.getRoot();
   }
-
+/*
   private Region loadDetailsAndEditRequirement(String fxmlFile)
   {
     if (detailsAndEditRequirementController == null)
