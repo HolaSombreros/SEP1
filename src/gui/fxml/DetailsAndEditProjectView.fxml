@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:controller="gui.DetailsAndEditProjectController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="460.0" prefWidth="600.0">
          <children>
@@ -100,7 +100,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="88.0" prefWidth="263.0">
                      <children>
-                        <Button fx:id="editDetailsButton" mnemonicParsing="false" text="Edit Details">
+                        <Button fx:id="editDetailsButton" onAction="#editDetailsButtonPressed" mnemonicParsing="false" text="Edit Details">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -109,7 +109,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="88.0" prefWidth="249.0">
                      <children>
-                        <Button fx:id="removeProjectButton" mnemonicParsing="false" text="Remove Project">
+                        <Button fx:id="removeProjectButton" onAction="#removeProjectButtonPressed" mnemonicParsing="false" text="Remove Project">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -118,7 +118,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="88.0" prefWidth="238.0">
                      <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" text="Back">
+                        <Button fx:id="backButton" onAction="#backButtonPressed" mnemonicParsing="false" text="Back">
                            <font>
                               <Font size="14.0" />
                            </font>

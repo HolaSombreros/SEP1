@@ -10,19 +10,54 @@ import javafx.scene.control.TextField;
 
 public class ProjectListController
 {
-   /* @FXML private TextField searchInput;
-    @FXML private TableView<ProjectListViewModel> projectListTable;
+    @FXML private TextField searchInput;
+   /* @FXML private TableView<ProjectListViewModel> projectListTable;
     @FXML private TableColumn<ProjectViewModel, String> projectIDColumn;
     @FXML private TableColumn<ProjectViewModel, String> projectNameColumn;
     @FXML private TableColumn<ProjectViewModel, Date> projectDateColumn;
-    @FXML private TableColumn<ProjectViewModel, Status> projectStatusColumn;
+    @FXML private TableColumn<ProjectViewModel, Status> projectStatusColumn;*/
     @FXML private Label errorLabel;
 
     private Region root;
     private ViewHandler viewHandler;
-    private ProjectListViewModel projectListViewModel;
+   /* private ProjectListViewModel projectListViewModel;*/
     private IProjectManagementModel model;
 
+    public ProjectListController()
+    {
+        //LOADED BY THE FXML LOADER
+    }
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root)
+    {
+        this.viewHandler = viewHandler;
+        this.model = model;
+        this.root = root;
+    }
+    public void reset()
+    {
+        searchInput.setText("");
+        errorLabel.setText("");
+    }
+    public Region getRoot()
+    {
+        return root;
+    }
+    @FXML private void addProjectButtonPressed()
+    {
+        viewHandler.openView("addProject");
+    }
+    @FXML private void viewProjectButtonPressed()
+    {
+        viewHandler.openView("detailsAndEditProject");
+    }
+    /*
+    @FXML private void assignTMButtonPressed()
+    {
+        viewHandler.openView("assignAndUnassignTeamMember");
+    }
+    @FXML private void removeProjectButtonPressed()
+    {
 
-*/
+    }*/
+
 }
