@@ -12,14 +12,14 @@ public class ViewHandler
   private Stage primaryStage;
   private IProjectManagementModel model;
   private ProjectListController projectListController;
-  private RequirementListController requirementListController;
+ // private RequirementListController requirementListController;
   private TaskListController taskListController;
   //private TeamMemberListController teamMemberListController;
   private AddProjectController addProjectController;
-  private AddRequirementController addRequirementController;
+  //private AddRequirementController addRequirementController;
   private AddTaskController addTaskController;
   private DetailsAndEditProjectController detailsAndEditProjectController;
-  private DetailsAndEditRequirementController detailsAndEditRequirementController;
+ // private DetailsAndEditRequirementController detailsAndEditRequirementController;
   private DetailsAndEditTaskController detailsAndEditTaskController;
   //private DetailsTeamMemberController detailsTeamMemberController;
   //private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;
@@ -33,7 +33,7 @@ public class ViewHandler
   public void start(Stage primaryStage)
   {
     this.primaryStage = primaryStage;
-    openView("taskList");
+    openView("projectList");
   }
 
   public void openView(String id)
@@ -42,40 +42,40 @@ public class ViewHandler
     switch (id)
     {
       case "projectList":
-      //  root = loadProjectList("ProjectListView.fxml");
+        root = loadProjectList("fxml/ProjectListView.fxml");
         break;
       case "requirement":
-      //  root = loadRequirementList("RequirementListView.fxml");
+      //  root = loadRequirementList("fxml/RequirementListView.fxml");
         break;
       case "taskList":
         root = loadTaskList("fxml/TaskListView.fxml");
         break;
       case "teamMemberList":
-       // root = loadTeamMemberList("TeamMemberListView.fxml");
+       // root = loadTeamMemberList("fxml/TeamMemberListView.fxml");
         break;
       case "addProject":
-        //root = loadAddProject("AddProjectView.fxml");
+        root = loadAddProject("fxml/AddProjectView.fxml");
         break;
       case "addRequirement":
-       // root = loadAddRequirement("AddRequirementView.fxml");
+       // root = loadAddRequirement("fxml/AddRequirementView.fxml");
         break;
       case "addTask":
         root = loadAddTask("fxml/AddTaskView.fxml");
         break;
       case "detailsAndEditProject":
-        //root = loadDetailsAndEditProject("DetailsAndEditProjectView.fxml");
+        root = loadDetailsAndEditProject("fxml/DetailsAndEditProjectView.fxml");
         break;
       case "detailsAndEditRequirement":
-       //root = loadDetailsAndEditRequirement("DetailsAndEditRequirementView.fxml");
+       //root = loadDetailsAndEditRequirement("fxml/DetailsAndEditRequirementView.fxml");
         break;
       case "detailsAndEditTask":
         root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml");
         break;
       case "detailsTeamMember":
-        //root = loadDetailsTeamMember("DetailsTeamMemberView.fxml");
+        //root = loadDetailsTeamMember("fxml/DetailsTeamMemberView.fxml");
         break;
       case "assignAndUnassignTeamMember":
-        //root = loadAssignAndUnassignTeamMember("AssignAndUnassignTeamMemberView.fxml");
+        //root = loadAssignAndUnassignTeamMember("fxml/AssignAndUnassignTeamMemberView.fxml");
         break;
     }
     currentScene.setRoot(root);
@@ -97,7 +97,7 @@ public class ViewHandler
   {
     primaryStage.close();
   }
-/*
+
   private Region loadProjectList(String fxmlFile)
   {
     if (projectListController == null)
@@ -122,7 +122,7 @@ public class ViewHandler
     return projectListController.getRoot();
   }
 
-  private Region loadRequirementList(String fxmlFile)
+  /*private Region loadRequirementList(String fxmlFile)
   {
     if (requirementListController == null)
     {
@@ -192,7 +192,7 @@ public class ViewHandler
       teamMemberListController.reset();
     }
     return teamMemberListController.getRoot();
-  }
+  } */
 
   private Region loadAddProject(String fxmlFile)
   {
@@ -218,7 +218,7 @@ public class ViewHandler
     return addProjectController.getRoot();
   }
 
-  private Region loadAddRequirement(String fxmlFile)
+  /*private Region loadAddRequirement(String fxmlFile)
   {
     if (addRequirementController == null)
     {
@@ -265,7 +265,7 @@ public class ViewHandler
     }
     return addTaskController.getRoot();
   }
-/*
+
   private Region loadDetailsAndEditProject(String fxmlFile)
   {
     if (detailsAndEditProjectController == null)
@@ -289,7 +289,7 @@ public class ViewHandler
     }
     return detailsAndEditProjectController.getRoot();
   }
-
+/*
   private Region loadDetailsAndEditRequirement(String fxmlFile)
   {
     if (detailsAndEditRequirementController == null)

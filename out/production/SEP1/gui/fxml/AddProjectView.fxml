@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddProjectController">
    <children>
       <VBox prefHeight="430.0" prefWidth="688.0">
          <children>
@@ -30,12 +30,12 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="87.0" prefWidth="226.0" spacing="30.0">
                            <children>
-                              <TextField fx:id="nameInput" prefHeight="24.0" prefWidth="155.0" promptText="Name">
+                              <TextField fx:id="nameInput" onKeyReleased="#handleKeyReleased" prefHeight="24.0" prefWidth="155.0" promptText="Name">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="IDinput" prefHeight="24.0" prefWidth="155.0" promptText="Id" />
+                              <TextField fx:id="IDInput" prefHeight="24.0" prefWidth="155.0" promptText="Id" />
                            </children>
                            <HBox.margin>
                               <Insets left="5.0" />
@@ -57,7 +57,7 @@
             </HBox>
             <HBox prefHeight="171.0" prefWidth="672.0">
                <children>
-                  <VBox fx:id="methodologyChoice" alignment="CENTER" prefHeight="161.0" prefWidth="358.0" spacing="30.0">
+                  <VBox  alignment="CENTER" prefHeight="161.0" prefWidth="358.0" spacing="30.0">
                      <children>
                         <RadioButton mnemonicParsing="false" prefHeight="27.0" prefWidth="450.0" text="Waterfall">
                            <font>
@@ -79,7 +79,7 @@
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="171.0" prefWidth="378.0">
                      <children>
-                        <VBox fx:id="statusChoice" alignment="CENTER" prefHeight="156.0" prefWidth="218.0" spacing="30.0">
+                        <VBox  alignment="CENTER" prefHeight="156.0" prefWidth="218.0" spacing="30.0">
                            <children>
                               <RadioButton mnemonicParsing="false" prefHeight="27.0" prefWidth="352.0" text="Not Started">
                                  <font>
@@ -110,7 +110,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="58.0" prefWidth="485.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0" text="Create Project">
+                        <Button fx:id="createProject" onAction="#createProjectButtonPressed" mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0" text="Create Project">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -119,7 +119,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="58.0" prefWidth="477.0">
                      <children>
-                        <Button fx:id="cancelButton" alignment="CENTER" mnemonicParsing="false" text="Cancel">
+                        <Button fx:id="cancelButton" onAction="#cancelButtonPressed" alignment="CENTER" mnemonicParsing="false" text="Cancel">
                            <font>
                               <Font size="18.0" />
                            </font>
