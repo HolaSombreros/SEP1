@@ -5,14 +5,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 
-public class EditAndViewTaskController {
+public class DetailsAndEditTaskController {
     private IProjectManagementModel model;
     private ViewHandler viewHandler;
     private Region root;
     
     // Inputs:
     
-    public EditAndViewTaskController() { }
+    public DetailsAndEditTaskController() { }
     
     public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root) {
         this.viewHandler = viewHandler;

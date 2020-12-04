@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" userData="Viewing Task Details" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="GUI.EditAndViewTaskController">
+      fx:controller="gui.DetailsAndEditTaskController">
    <Label style="-fx-font-weight: bold;" text="Task Details">
       <font>
          <Font size="24.0"/>

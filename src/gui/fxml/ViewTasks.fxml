@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="500" prefWidth="600.0" userData="Viewing All Tasks Within A Requirement" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ViewTasksController">
+<VBox alignment="CENTER" prefHeight="500" prefWidth="600.0" userData="Viewing All Tasks Within A Requirement" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TaskListController">
     <Label style="-fx-font-weight: bold;" text="Tasks">
         <font>
           <Font size="24.0" />

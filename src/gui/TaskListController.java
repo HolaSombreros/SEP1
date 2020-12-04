@@ -8,12 +8,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 
-public class ViewTasksController {
+public class TaskListController {
     private IProjectManagementModel model;
     private ViewHandler viewHandler;
     private Region root;
     
-    public ViewTasksController() { }
+    public TaskListController() { }
     
     public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root) {
         this.viewHandler = viewHandler;
