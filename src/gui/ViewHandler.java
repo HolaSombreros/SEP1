@@ -54,7 +54,7 @@ public class ViewHandler
        // root = loadTeamMemberList("fxml/TeamMemberListView.fxml");
         break;
       case "addProject":
-        root = loadAddProject("fxml./ddProjectView.fxml");
+        root = loadAddProject("fxml/ProjectView.fxml");
         break;
       case "addRequirement":
        // root = loadAddRequirement("fxml/AddRequirementView.fxml");
