@@ -1,7 +1,6 @@
 package gui;
 
 import model.IProjectManagementModel;
-import model.ProjectManagementModelManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -25,11 +24,10 @@ public class ViewHandler
   private DetailsTeamMemberController detailsTeamMemberController;
   private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;
 
-
-  public ViewHandler()
+  public ViewHandler(IProjectManagementModel model)
   {
     this.currentScene = new Scene(new Region());
-    this.model = new ProjectManagementModelManager();
+    this.model = model;
   }
 
   public void start(Stage primaryStage)
@@ -68,7 +66,8 @@ public class ViewHandler
         root = loadDetailsAndEditProject("DetailsAndEditProjectView.fxml");
         break;
       case "detailsAndEditRequirement":
-        root = loadDetailsAndEditRequirement("DetailsAndEditRequirementView.fxml");
+        root = loadDetailsAndEditRequirement(
+            "DetailsAndEditRequirementView.fxml");
         break;
       case "detailsAndEditTask":
         root = loadDetailsAndEditTask("DetailsAndEditTaskView.fxml");
@@ -77,7 +76,8 @@ public class ViewHandler
         root = loadDetailsTeamMember("DetailsTeamMemberView.fxml");
         break;
       case "assignAndUnassignTeamMember":
-        root = loadAssignAndUnassignTeamMember("AssignAndUnassignTeamMemberView.fxml");
+        root = loadAssignAndUnassignTeamMember(
+            "AssignAndUnassignTeamMemberView.fxml");
         break;
     }
     currentScene.setRoot(root);
@@ -383,6 +383,5 @@ public class ViewHandler
     }
     return assignAndUnassignTeamMemberController.getRoot();
   }
-
 
 }
