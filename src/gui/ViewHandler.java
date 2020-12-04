@@ -33,7 +33,7 @@ public class ViewHandler
   public void start(Stage primaryStage)
   {
     this.primaryStage = primaryStage;
-    openView("taskList");
+    openView("projectList");
   }
 
   public void openView(String id)

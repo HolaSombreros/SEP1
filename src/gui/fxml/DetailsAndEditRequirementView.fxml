@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="430.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditRequirementController">
+<AnchorPane prefHeight="430.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditRequirementController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="430.0" prefWidth="688.0">
             <children>
                 <Label text="Requirement Details">
                     <font>
-                        <Font name="System Bold" size="30.0" />
+                        <Font name="System Bold" size="25.0" />
                     </font>
                     <VBox.margin>
-                        <Insets bottom="10.0" top="40.0" />
+                        <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </Label>
                 <HBox alignment="TOP_CENTER" prefHeight="308.0" prefWidth="600.0">
