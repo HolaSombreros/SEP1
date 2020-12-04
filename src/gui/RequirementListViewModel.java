@@ -20,24 +20,30 @@ public class RequirementListViewModel
     return list;
   }
 
-  public void update()
+ public void update()
   {
-    list.clear();
-    for (int i = 0; i < model.getRequirementList(); i++)
-      list.add();
+    //list.clear();
+    //for (int i = 0; i < model.getRequirementList(); i++)
+    //  list.add();
   }
 
   public void add(Requirement requirement)
   {
-    list.add();
+    list.add(new RequirementViewModel(requirement));
   }
 
   public void remove(Requirement requirement)
   {
-    for (int i=0;i<list.size();i++)
-    {
-
-    }
+    for (int i = 0; i < list.size(); i++)
+      if (list.get(i).getIdProperty().get() == (requirement.getId()) && list
+          .get(i).getStatusProperty().get()
+          .equals(requirement.getStatus().getName()) && list.get(i)
+          .getDeadlineProperty().get()
+          .equals(requirement.getDeadline().toString()))
+      {
+        list.remove(i);
+        break;
+      }
   }
 
 }

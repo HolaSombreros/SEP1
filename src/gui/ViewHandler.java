@@ -12,14 +12,14 @@ public class ViewHandler
   private Stage primaryStage;
   private IProjectManagementModel model;
   private ProjectListController projectListController;
- // private RequirementListController requirementListController;
+  private RequirementListController requirementListController;
   private TaskListController taskListController;
   //private TeamMemberListController teamMemberListController;
   private AddProjectController addProjectController;
-  //private AddRequirementController addRequirementController;
+  private AddRequirementController addRequirementController;
   private AddTaskController addTaskController;
   private DetailsAndEditProjectController detailsAndEditProjectController;
- // private DetailsAndEditRequirementController detailsAndEditRequirementController;
+  private DetailsAndEditRequirementController detailsAndEditRequirementController;
   private DetailsAndEditTaskController detailsAndEditTaskController;
   //private DetailsTeamMemberController detailsTeamMemberController;
   //private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;
@@ -45,7 +45,7 @@ public class ViewHandler
         root = loadProjectList("fxml/ProjectListView.fxml");
         break;
       case "requirement":
-      //  root = loadRequirementList("fxml/RequirementListView.fxml");
+        root = loadRequirementList("fxml/RequirementListView.fxml");
         break;
       case "taskList":
         root = loadTaskList("fxml/TaskListView.fxml");
@@ -57,7 +57,7 @@ public class ViewHandler
         root = loadAddProject("fxml/AddProjectView.fxml");
         break;
       case "addRequirement":
-       // root = loadAddRequirement("fxml/AddRequirementView.fxml");
+        root = loadAddRequirement("fxml/AddRequirementView.fxml");
         break;
       case "addTask":
         root = loadAddTask("fxml/AddTaskView.fxml");
@@ -66,7 +66,7 @@ public class ViewHandler
         root = loadDetailsAndEditProject("fxml/DetailsAndEditProjectView.fxml");
         break;
       case "detailsAndEditRequirement":
-       //root = loadDetailsAndEditRequirement("fxml/DetailsAndEditRequirementView.fxml");
+        root = loadDetailsAndEditRequirement("fxml/DetailsAndEditRequirementView.fxml");
         break;
       case "detailsAndEditTask":
         root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml");
@@ -122,7 +122,7 @@ public class ViewHandler
     return projectListController.getRoot();
   }
 
-  /*private Region loadRequirementList(String fxmlFile)
+  private Region loadRequirementList(String fxmlFile)
   {
     if (requirementListController == null)
     {
@@ -145,7 +145,7 @@ public class ViewHandler
     }
     return requirementListController.getRoot();
   }
-*/
+
   private Region loadTaskList(String fxmlFile)
   {
     if (taskListController == null)
@@ -218,7 +218,7 @@ public class ViewHandler
     return addProjectController.getRoot();
   }
 
-  /*private Region loadAddRequirement(String fxmlFile)
+  private Region loadAddRequirement(String fxmlFile)
   {
     if (addRequirementController == null)
     {
@@ -241,7 +241,7 @@ public class ViewHandler
     }
     return addRequirementController.getRoot();
   }
-*/
+
   private Region loadAddTask(String fxmlFile)
   {
     if (addTaskController == null)
@@ -289,7 +289,7 @@ public class ViewHandler
     }
     return detailsAndEditProjectController.getRoot();
   }
-/*
+
   private Region loadDetailsAndEditRequirement(String fxmlFile)
   {
     if (detailsAndEditRequirementController == null)
@@ -313,7 +313,7 @@ public class ViewHandler
     }
     return detailsAndEditRequirementController.getRoot();
   }
-*/
+
   private Region loadDetailsAndEditTask(String fxmlFile)
   {
     if (detailsAndEditTaskController == null)

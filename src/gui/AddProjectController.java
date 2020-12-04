@@ -37,7 +37,7 @@ public class AddProjectController
         this.viewHandler = viewHandler;
         this.root = root;
         this.model = model;
-        
+
     }
     
     public void reset()
