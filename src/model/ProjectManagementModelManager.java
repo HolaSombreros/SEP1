@@ -11,6 +11,16 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     public ProjectManagementModelManager() {
         this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
+        
+        createDummyData(); // TODO - eventually (maybe?!) remove this and the method below...
+    }
+    
+    private void createDummyData() {
+        projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), new Date(6, 12, 2020), new Date(13, 12, 2020), Methodology.WATERFALL));
+    }
+    
+    private String generateProjectId() {
+        return "hoogabooga";
     }
 
     // Model methods from IProjectManagementModel:

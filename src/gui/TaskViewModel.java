@@ -16,7 +16,7 @@ public class TaskViewModel {
         idProperty = new SimpleIntegerProperty(task.getId());
         titleProperty = new SimpleStringProperty(task.getTitle());
         deadlineProperty = new SimpleStringProperty(task.getDeadline().toString());
-        statusProperty = new SimpleStringProperty(task.getStatusAsString());
+        statusProperty = new SimpleStringProperty(task.getStatus().getName());
     }
     
     public IntegerProperty getIdProperty() {

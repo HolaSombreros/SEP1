@@ -22,7 +22,7 @@ public class TeamMemberListViewModel {
         list.clear();
         // TODO - add Project and Requirement as parameter - also what the hell to do here, really. if variables are null, ignore them? as in if we're displaying list for a Project:
         // for (int i = 0; i < model.getTeamMemberList().size(); i++) {
-        // list.add(new TeamMemberViewModel(model.getTeamMemberList().getTeamMember(i)));
+            // list.add(new TeamMemberViewModel(model.getTeamMemberList().getTeamMember(i)));
         // }
     }
     
