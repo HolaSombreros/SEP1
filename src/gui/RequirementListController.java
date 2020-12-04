@@ -14,7 +14,7 @@ public class RequirementListController
 
   @FXML private TextField searchInput;
   @FXML private TableView<RequirementListViewModel> requirementListTable;
-  @FXML private TableColumn<RequirementViewModel,Number> idColumn;
+  @FXML private TableColumn<RequirementViewModel, Number> idColumn;
   @FXML private TableColumn<RequirementViewModel, String> statusColumn;
   @FXML private TableColumn<RequirementViewModel, String> deadlineColumn;
   @FXML private TextArea userStoryShow;
@@ -23,5 +23,53 @@ public class RequirementListController
   private IProjectManagementModel model;
   private ViewHandler viewHandler;
   private RequirementListViewModel viewModel;
+
+  public RequirementListController()
+  {
+  }
+
+  public void init(ViewHandler viewHandler, IProjectManagementModel model,
+      Region root)
+  {
+    this.viewHandler = viewHandler;
+    this.model = model;
+    this.root = root;
+    errorLabel.setText("");
+  }
+
+  public Region getRoot()
+  {
+    return root;
+  }
+
+  public void reset()
+  {
+
+  }
+
+  @FXML private void addNewRequirementButtonPressed()
+  {
+    viewHandler.openView("addRequirement");
+  }
+
+  @FXML private void viewRequirementButtonPressed()
+  {
+    viewHandler.openView("detailsAndEditRequirement");
+  }
+
+  @FXML private void viewTasksButtonPressed()
+  {
+    viewHandler.openView("taskList");
+  }
+
+  @FXML private void removeRequirementButtonPressed()
+  {
+
+  }
+
+  @FXML private void backButtonPressed()
+  {
+    viewHandler.openView("detailsAndEditProject");
+  }
 
 }

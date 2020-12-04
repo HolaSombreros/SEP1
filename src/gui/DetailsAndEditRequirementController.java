@@ -8,10 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
-import model.Priority;
-import model.ProjectManagementModelManager;
-import model.RequirementStatus;
-import model.Type;
+import model.*;
 
 public class DetailsAndEditRequirementController
 {
@@ -31,8 +28,50 @@ public class DetailsAndEditRequirementController
   @FXML private TableColumn<TeamMemberListViewModel, String> idColumn;
   @FXML private Label errorLabel;
   private Region root;
-  private ProjectManagementModelManager model;
+  private IProjectManagementModel model;
   private ViewHandler viewHandler;
   private TeamMemberListViewModel viewModel;
 
+  public DetailsAndEditRequirementController()
+  {
+  }
+
+  public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root)
+  {
+    this.viewHandler = viewHandler;
+    this.model = model;
+    this.root = root;
+    idLabel.setText("");
+    errorLabel.setText("");
+    relatedProjectLabel.setText("");
+  }
+
+  public Region getRoot() {
+    return root;
+  }
+
+  public void reset()
+  {
+
+  }
+
+  @FXML private void editRequirementButtonPressed()
+  {
+
+  }
+
+  @FXML private void makeResponsibleButtonPressed()
+  {
+
+  }
+
+  @FXML private void removeRequirementButtonPressed()
+  {
+
+  }
+
+  @FXML private void backButtonPressed()
+  {
+    viewHandler.openView("requirement");
+  }
 }
