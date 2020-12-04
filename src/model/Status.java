@@ -7,7 +7,7 @@ public enum Status
     ENDED;
     
     /**
-     * Method to get the string representation of the task's status.
+     * Method to get the string representation of the task's and project's status.
      * @return The string representation of a status in a proper format.
      */
     public String getName() {

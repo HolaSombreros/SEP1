@@ -5,6 +5,7 @@ import model.Project;
 
 public class BinFile implements IFileConnection {
     private String fileName;
+    private final String filePath = "./src/files/" + getFileName();
     private static final String FILE_EXTENSION = "bin";
 
     public BinFile(String fileName) {
@@ -17,6 +18,10 @@ public class BinFile implements IFileConnection {
     
     @Override public String getFileName() {
         return fileName;
+    }
+    
+    @Override public String getFilePath() {
+        return filePath;
     }
 
     @Override public IProjectManagementModel loadModel() {

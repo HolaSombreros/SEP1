@@ -22,24 +22,24 @@ public class AddProjectController
     @FXML
     private Label errorLabel;
     @FXML private Button createProject;
-
+    
     private Region root;
     private ViewHandler viewHandler;
     private IProjectManagementModel model;
-
+    
     public AddProjectController()
     {
         //LOADED BY THE FXML LOADER
     }
-
+    
     public void init(ViewHandler viewHandler, IProjectManagementModel model,Region root)
     {
         this.viewHandler = viewHandler;
         this.root = root;
         this.model = model;
-        
-    }
 
+    }
+    
     public void reset()
     {
         nameInput.setText("");
@@ -50,23 +50,22 @@ public class AddProjectController
     {
         return root;
     }
-
+    
     @FXML
     private void createProjectButtonPressed()
     {
-
+    
     }
     @FXML private void cancelButtonPressed()
     {
         viewHandler.openView("projectList");
     }
     @FXML
-    public void handleKeyReleased() //*********
+    public void handleKeyReleased() //**
     {
         String name = nameInput.getText();
         boolean disableButtons = name.isEmpty() || name.trim().isEmpty();
         createProject.setDisable(disableButtons);
-
+        
     }
 }
-
