@@ -6,7 +6,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.Date;
 import model.IProjectManagementModel;
+import model.Task;
 
 public class AddTaskController {
     private IProjectManagementModel model;
@@ -53,7 +55,20 @@ public class AddTaskController {
     }
     
     @FXML private void add() {
-        // add task to the list of tasks
+        errorLabel.setText("");
+        try {
+            String startingDateArr[] = startingDateInput.getValue().toString().split("-");
+            String deadlineArr[] = deadlineInput.getValue().toString().split("-");
+            Date startingDate = new Date(Integer.parseInt(startingDateArr[2]), Integer.parseInt(startingDateArr[1]), Integer.parseInt(startingDateArr[0]));
+            Date deadline = new Date(Integer.parseInt(deadlineArr[2]), Integer.parseInt(deadlineArr[1]), Integer.parseInt(deadlineArr[0]));
+            // TODO - fix line below.
+            model.addTask(model.getProjectList().getProject(0), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0), new Task(titleInput.getText(), startingDate, deadline, Double.parseDouble(estimatedHoursInput.getText()), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)));
+            model.saveModel();
+            cancel();
+        }
+        catch (Exception e) {
+            errorLabel.setText(e.getMessage());
+        }
     }
 
     @FXML private void cancel() {

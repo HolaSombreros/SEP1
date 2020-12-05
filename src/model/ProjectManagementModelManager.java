@@ -15,8 +15,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
         
-        createDummyData(); // TODO - eventually (maybe?!) remove this and the method below...
+        createDummyData(); // TODO - eventually (maybe?!) remove this and the two methods below...
         fileConnections.add(new XmlFile("projects"));
+        saveModel();
+    }
+    
+    public void saveModel() {
         for (IFileConnection file : fileConnections) {
             try {
                 file.saveModel(this);
@@ -73,8 +77,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     }
 
-    @Override public void addTask(Project project, Requirement requirement) {
-
+    @Override public void addTask(Project project, Requirement requirement, Task task) {
+        requirement.addTask(task);
     }
 
     @Override public void addTeamMember(Project project) {

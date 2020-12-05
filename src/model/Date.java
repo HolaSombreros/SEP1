@@ -42,16 +42,16 @@ public class Date
 
     //VALIDATION DATE
 
-    public boolean isLegalDate(int day2, int month2, int year2)
+    public boolean isLegalDate(int day, int month, int year)
     {
-
-        if(day2 < 1 || month2 < 1  || month2 > 12 || month2 <1 || year2 < 0)
-        {
-            return false;
+        if (month < 1 || month > 12) {
+            throw new IllegalArgumentException(month + " is an invalid month");
         }
-        else if(day2 > numberOfDaysInMonth(month2))
-        {
-            return false;
+        if (day < 0 || day > numberOfDaysInMonth(month)) {
+            throw new IllegalArgumentException(day + " is an invalid day");
+        }
+        if (year < 0) {
+            throw new IllegalArgumentException(year + " is an invalid year");
         }
         return true;
     }

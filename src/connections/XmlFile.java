@@ -89,9 +89,9 @@ public class XmlFile implements IFileConnection {
                 xml += "         <requirement>\n";
 //                xml += "            <id>" + requirement.getId() + "</id>\n ";
 //                xml += "            <userstory>" + requirement.getUserStory() + "</userstory>\n ";
-//                xml += "            <estimatedtime>" + requirement.getEstimatedTime() + "</estimatedtime>\n ";
-//                xml += "            <hoursworked>" + requirement.getHoursWorked() + "</hoursworked>\n ";
-//                xml += "            <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n "; // ah fuck me here we go again... can we just store the id??! and then get it of off that when loading
+//                xml += "            <estimatedtime>" + requirement.getEstimatedTime() + "</estimatedtime>\n";
+//                xml += "            <hoursworked>" + requirement.getHoursWorked() + "</hoursworked>\n";
+//                xml += "            <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n"; // ah fuck me here we go again... can we just store the id??! and then get it of off that when loading
 //                xml += "            <responsibleteammember>\n";
 //                xml += "               <firstname>" + requirement.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
 //                xml += "               <lastname>" + requirement.getResponsibleTeamMember().getLastName() + "</lastname>\n";
@@ -129,7 +129,7 @@ public class XmlFile implements IFileConnection {
                     xml += "                  <timeregistration>\n";
                     xml += "                     <hoursworked>" + task.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                     xml += "                  </timeregistration>\n";
-                    xml += "                  <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n "; // ah fuck me here we go again... can we just store the id??! and then get it of off that when loading
+                    xml += "                  <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n"; // ah fuck me here we go again... can we just store the id??! and then get it of off that when loading
                     xml += "                  <teammemberlist>\n";
                     for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers()) {
                         xml += "                     <teammember>\n";
