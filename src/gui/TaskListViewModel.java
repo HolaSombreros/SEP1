@@ -24,6 +24,8 @@ public class TaskListViewModel {
         // for (int i = 0; i < model.getTaskList().size(); i++) {
             // list.add(new TaskViewModel(model.getTaskList().getTask(i)));
         // }
+    
+        list.add(new TaskViewModel(model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0))); // THIS CODE IS TEMPORARY FOR DUMMY DATA! // TODO - remove!
     }
     
     public void add(Task task) {

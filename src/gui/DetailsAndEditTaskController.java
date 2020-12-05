@@ -37,15 +37,26 @@ public class DetailsAndEditTaskController {
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         teamTable.setItems(viewModel.getList());
         
+        // Adding possible statuses to the dropdown menu so they can be selected.
         for (Status status : Status.values()) {
             statusInput.getItems().add(status.getName());
         }
+        
         reset();
     }
 
     public void reset() {
-        statusInput.setValue(statusInput.getItems().get(0));    // Sets default selected value as 1st element of string array.
+        // TODO - dont actually reset it to nothing, but instead it should be set to the task's details...
+        titleInput.setText("");
+        estimatedHoursInput.setText("");
+        startingDateInput.setValue(null);
+        deadlineInput.setValue(null);
+        //statusInput.setValue(model.getTaskList(model.getProjectList().getProject(0), model.getRequirementList(model.getProjectList().getProject(0)).getRequirement(0)).toString());
+        statusInput.setValue(statusInput.getItems().get(0));
+        responsibleTeamMemberInput.setText("");
+        hoursWorkedInput.setText("");
         errorLabel.setText("");
+        viewModel.update();
     }
     
     public Region getRoot() {

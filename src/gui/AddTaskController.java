@@ -1,6 +1,7 @@
 package gui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -30,7 +31,21 @@ public class AddTaskController {
     }
 
     public void reset() {
+        titleInput.setText("");
+        startingDateInput.setValue(null);
+        deadlineInput.setValue(null);
+        estimatedHoursInput.setText("");
         errorLabel.setText("");
+        
+        /* THIS CODE IS FOR LIMITING TO FORWARD DATES ONLY! in case we want to use it... TODO - remove this
+        deadlineInput.setDayCellFactory(date -> new DateCell() {    // this shit makes it so dates before TODAY are disabled and can't be selected.
+            public void updateItem(java.time.LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                java.time.LocalDate today = java.time.LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 0);
+            }
+        });
+        */
     }
 
     public Region getRoot() {

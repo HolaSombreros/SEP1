@@ -1,6 +1,7 @@
 package model;
 
 import connections.IFileConnection;
+import connections.XmlFile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,26 +14,53 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     public ProjectManagementModelManager() {
         this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
-        /*
-        createDummyData(); // TODO - eventually (maybe?!) remove this and the method below...*/
+        
+        createDummyData(); // TODO - eventually (maybe?!) remove this and the method below...
+        fileConnections.add(new XmlFile("projects"));
+        for (IFileConnection file : fileConnections) {
+            try {
+                file.saveModel(this);
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
     
     private void createDummyData() {
-        projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), new Date(6, 12, 2020), new Date(13, 12, 2020), Methodology.WATERFALL));
+        projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
+        projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 05, 2021), Methodology.SCRUM));
+    
+        //System.out.println(projectList.getProject(0).getStatus().getName()); // TODO - fix Project.java getStatus() - it calls itself to make an infinite loop.
+        System.out.println("Project Start Date: " + projectList.getProject(0).getDeadline().toString());
+        projectList.getProject(0).addRequirement(new Requirement("As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start",
+            new Date(12, 3, 2021),
+            new Date(21, 5, 2021),
+            24,
+            Priority.CRITICAL,
+            Type.FUNCTIONAL,
+            projectList.getProject(0)));
+    
+        System.out.println("Requirement estimated time: " + projectList.getProject(0).getProjectRequirementList().getRequirement(0).getEstimatedTime());
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).addTask(new Task("Do some shit",
+            new Date(15, 3, 2021),
+            new Date(19, 4, 2021),
+            5,
+            projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
+    
+        System.out.println("Task status: " + projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getStatus().getName());
     }
 
     /**
      * creates a new string of length 8 from letters of the alphabet picked randomly
      * */
     private String generateProjectId() {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        StringBuilder id = new StringBuilder();
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        String id = "";
         Random random = new Random();
         for(int i = 0; i < 9; i++)
-            id.append(chars.charAt(random.nextInt(chars.length())));
-        return id.toString();
-
-        //return "hoogabooga";
+            id += chars.charAt(random.nextInt(chars.length()));
+        return id;
     }
 
     // Model methods from IProjectManagementModel:
@@ -193,7 +221,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     /**
      * @param teamMember a given teamMember selected by the user
-     * @return another teamMemeber with the most interactions with the given one
+     * @return another teamMember with the most interactions with the given one
      *          or null if the teamMember has not worked on a project yet
      * loops through all the projects within the projectList,
      *                all the requirements of every project,
@@ -226,12 +254,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                 }
             }
         int max = 0;
-            for(int i : frequentTeamMembers.values())
-                if(max < i)
-                    max = i;
-            for(TeamMember i : frequentTeamMembers.keySet())
-                if(i.equals(frequentTeamMembers.containsValue(max)))
-                    return i;
+        for(int i : frequentTeamMembers.values())
+            if(max < i)
+                max = i;
+        for(TeamMember i : frequentTeamMembers.keySet())
+            if(i.equals(frequentTeamMembers.containsValue(max)))
+                return i;
         return null;
     }
 

@@ -1,7 +1,6 @@
 package connections;
 
-import model.IProjectManagementModel;
-import model.Project;
+import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,11 +9,12 @@ import java.io.PrintWriter;
 
 public class XmlFile implements IFileConnection {
     private String fileName;
-    private final String filePath = "./src/files/" + getFileName();
+    private String filePath = "src/files/";
     private static final String FILE_EXTENSION = "xml";
 
     public XmlFile(String fileName) {
         this.fileName = fileName + "." + FILE_EXTENSION;
+        this.filePath += getFileName();
     }
 
     @Override public void setFileName(String fileName) {
@@ -38,6 +38,7 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
+                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -46,10 +47,107 @@ public class XmlFile implements IFileConnection {
         PrintWriter out = new PrintWriter(file);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n";
         xml += "<projectlist>\n";
-        for (int i = 0; i < model.getProjectList().size(); i++) {
+        // TODO - maybe change to enhanced for loop? would make this way better to read lol
+        for (Project project : model.getProjectList().getProjects()) {
             xml += "   <project>\n";
-            xml += "      <someshit>some data here, right...\n";
-            xml += "      <othershit>some other data here...\n";
+            xml += "      <id>" + project.getID() + "</id>\n";
+            xml += "      <title>" + project.getName() + "</title>\n";
+//            xml += "      <status>" + project.getStatus().getName() + "</status>\n"; // do we getName() here or can we store the actual enum? I wonder...
+//            xml += "      <methodology>" + project.getMethodology() + "</methodology>\n";
+            xml += "      <startingdate>" + project.getStartingDate().toString() + "</startingdate>\n";
+            xml += "      <deadline>" + project.getDeadline().toString() + "</deadline>\n";
+            xml += "      <scrummaster>\n";
+//            xml += "         <firstname>" + project.getScrumMaster().getFirstName() + "</firstname>\n";
+//            xml += "         <lastname>" + project.getScrumMaster().getLastName() + "</lastname>\n";
+//            xml += "         <id>" + project.getScrumMaster().getId() + "</id>\n";
+//            xml += "         <timeregistration>\n";
+//            xml += "            <hoursworked>" + project.getScrumMaster().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+//            xml += "         </timeregistration>\n";
+            xml += "      </scrummaster>\n";
+            xml += "      <productowner>\n";
+//            xml += "         <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
+//            xml += "         <lastname>" + project.getProductOwner().getLastName() + "</lastname>\n";
+//            xml += "         <id>" + project.getProductOwner().getId() + "</id>\n";
+//            xml += "         <timeregistration>\n";
+//            xml += "            <hoursworked>" + project.getProductOwner().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+//            xml += "         </timeregistration>\n";
+            xml += "      </productowner>\n";
+            xml += "      <teammemberlist>\n";
+//            for (TeamMember teamMember : project.getTeamMemberList().getTeamMembers()) {
+//                xml += "         <teammember>\n";
+//                xml += "            <firstname>" + teamMember.getFirstName() + "</firstname>\n";
+//                xml += "            <lastname>" + teamMember.getLastName() + "</lastname>\n";
+//                xml += "            <id>" + teamMember.getId() + "</id>\n";
+//                xml += "            <timeregistration>\n";
+//                xml += "               <hoursworked>" + teamMember.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+//                xml += "            </timeregistration>\n";
+//                xml += "         </teammember>\n";
+//            }
+            xml += "      </teammemberlist>\n";
+            xml += "      <requirementlist>\n";
+            for (Requirement requirement : project.getProjectRequirementList().getRequirements()) {
+                xml += "         <requirement>\n";
+//                xml += "            <id>" + requirement.getId() + "</id>\n ";
+//                xml += "            <userstory>" + requirement.getUserStory() + "</userstory>\n ";
+//                xml += "            <estimatedtime>" + requirement.getEstimatedTime() + "</estimatedtime>\n ";
+//                xml += "            <hoursworked>" + requirement.getHoursWorked() + "</hoursworked>\n ";
+//                xml += "            <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n "; // ah fuck me here we go again... can we just store the id??! and then get it of off that when loading
+//                xml += "            <responsibleteammember>\n";
+//                xml += "               <firstname>" + requirement.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
+//                xml += "               <lastname>" + requirement.getResponsibleTeamMember().getLastName() + "</lastname>\n";
+//                xml += "               <id>" + requirement.getResponsibleTeamMember().getId() + "</id>\n";
+//                xml += "               <timeregistration>\n";
+//                xml += "                  <hoursworked>" + requirement.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+//                xml += "               </timeregistration>\n";
+//                xml += "            </responsibleteammember>\n";
+//                xml += "            <teammemberlist>\n";
+//                for (TeamMember teamMember : requirement.getTeamMemberList().getTeamMembers()) {
+//                    xml += "               <teammember>\n";
+//                    xml += "                  <firstname>" + teamMember.getFirstName() + "</firstname>\n";
+//                    xml += "                  <lastname>" + teamMember.getLastName() + "</lastname>\n";
+//                    xml += "                  <id>" + teamMember.getId() + "</id>\n";
+//                    xml += "                  <timeregistration>\n";
+//                    xml += "                     <hoursworked>" + teamMember.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+//                    xml += "                  </timeregistration>\n";
+//                    xml += "            </teammember>\n";
+//                }
+//                xml += "            </teammemberlist>\n";
+//                xml += "            <startingdate>" + requirement.getStartingDate().toString() + "</startingdate>\n";
+//                xml += "            <deadline>" + requirement.getDeadline().toString() + "</deadline>\n";
+//                xml += "            <status>" + requirement.getStatus().getName() + "</status>\n";
+//                xml += "            <type>" + requirement.getType().getName() + "</type>\n";
+//                xml += "            <priority>" + requirement.getPriority().getName() + "</priority>\n";
+                xml += "            <tasklist>\n";
+                for (Task task : requirement.getTaskList().getTasks()) {
+                    xml += "               <task>\n";
+                    xml += "                  <id>" + task.getId() + "</id>\n";
+                    xml += "                  <title>" + task.getTitle() + "</title>\n";
+                    xml += "                  <startingdate>" + task.getStartingDate().toString() + "</startingdate>\n";
+                    xml += "                  <deadline>" + task.getDeadline().toString() + "</deadline>\n";
+                    xml += "                  <estimatedtime>" + task.getEstimatedTime() + "</estimatedtime>\n";
+                    xml += "                  <status>" + task.getStatus().getName() + "</status>\n";
+                    xml += "                  <timeregistration>\n";
+                    xml += "                     <hoursworked>" + task.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+                    xml += "                  </timeregistration>\n";
+                    xml += "                  <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n "; // ah fuck me here we go again... can we just store the id??! and then get it of off that when loading
+                    xml += "                  <teammemberlist>\n";
+                    for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers()) {
+                        xml += "                     <teammember>\n";
+                        xml += "                        <firstname>" + teamMember.getFirstName() + "</firstname>\n";
+                        xml += "                        <lastname>" + teamMember.getLastName() + "</lastname>\n";
+                        xml += "                        <id>" + teamMember.getId() + "</id>\n";
+                        xml += "                        <timeregistration>\n";
+                        xml += "                           <hoursworked>" + teamMember.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+                        xml += "                        </timeregistration>\n";
+                        xml += "                     </teammember>\n";
+                    }
+                    xml += "                  </teammemberlist>\n";
+                    xml += "               </task>\n";
+                }
+                xml += "            </tasklist>\n";
+                xml += "         </requirement>\n";
+            }
+            xml += "      </requirementlist>\n";
             xml += "   </project>\n";
         }
         xml += "</projectlist>";

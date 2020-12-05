@@ -41,6 +41,7 @@ public class TaskListController {
     }
     
     public void reset() {
+        searchBar.setText("");
         errorLabel.setText("");
         viewModel.update();
     }
