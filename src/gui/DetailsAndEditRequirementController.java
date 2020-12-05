@@ -38,12 +38,13 @@ public class DetailsAndEditRequirementController
   }
 
   public void init(ViewHandler viewHandler, IProjectManagementModel model,
-      Region root, ViewState state)
+      Region root)
   {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
-    this.state = state;
+    // TODO - commented the line right below this to fix run error for now...
+    //this.state = state;
     //reset();
     // this.viewModel = new TeamMemberListViewModel(model);
     // idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());

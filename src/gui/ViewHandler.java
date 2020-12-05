@@ -309,7 +309,8 @@ public class ViewHandler
     }
     else
     {
-      detailsAndEditRequirementController.reset();
+      // TODO - uncomment line below
+      //detailsAndEditRequirementController.reset();
     }
     return detailsAndEditRequirementController.getRoot();
   }
