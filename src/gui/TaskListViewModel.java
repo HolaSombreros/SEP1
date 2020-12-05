@@ -21,9 +21,12 @@ public class TaskListViewModel {
     public void update() {
         list.clear();
         // TODO - add Project and Requirement as parameter:
-        // for (int i = 0; i < model.getTaskList().size(); i++) {
-            // list.add(new TaskViewModel(model.getTaskList().getTask(i)));
+        // for (int i = 0; i < model.getTaskList(model.getProjectList().getProject(0), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)).size(); i++) {
+        //  list.add(new TaskViewModel(model.getTaskList(model.getProjectList().getProject(0), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)).getTask(i)));
         // }
+    
+        list.add(new TaskViewModel(model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0)));
+        //list.add(new TaskViewModel(model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(1))); // THIS CODE IS TEMPORARY FOR DUMMY DATA! // TODO - remove!
     }
     
     public void add(Task task) {

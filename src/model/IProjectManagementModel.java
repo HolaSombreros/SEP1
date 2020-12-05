@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface IProjectManagementModel {
     void addProject();
     void addRequirement(Project project);
-    void addTask(Project project, Requirement requirement);
+    void addTask(Project project, Requirement requirement, Task task);
     void addTeamMember(Project project);
     void addTeamMember(Project project, Requirement requirement);
     void addTeamMember(Project project, Requirement requirement, Task task);
@@ -27,4 +27,6 @@ public interface IProjectManagementModel {
     ArrayList<Project> getRelatedProjects(TeamMember teamMember);
     TeamMember getMostFrequentTeamMember(TeamMember teamMember);
     double getProductivity(TeamMember teamMember);
+    
+    void saveModel();
 }

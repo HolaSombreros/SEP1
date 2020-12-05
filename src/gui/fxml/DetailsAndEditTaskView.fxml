@@ -39,8 +39,8 @@
             <Label text="Estimated time (hours)"/>
             <TextField maxWidth="50.0" fx:id="estimatedHoursInput"/>
          </HBox>
-         <DatePicker minWidth="180.0" promptText="Starting date" fx:id="startingDateInput"/>
-         <DatePicker minWidth="180.0" promptText="Deadline" fx:id="deadlineInput"/>
+         <DatePicker minWidth="180.0" promptText="Starting date" editable="false" fx:id="startingDateInput"/>
+         <DatePicker minWidth="180.0" promptText="Deadline" editable="false" fx:id="deadlineInput"/>
          <ChoiceBox fx:id="statusInput" prefWidth="180.0"/>
          <TextField fx:id="responsibleTeamMemberInput" maxWidth="180.0" promptText="Responsible Team Member"/>
          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="280.0" spacing="10.0">

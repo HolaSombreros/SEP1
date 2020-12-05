@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RequirementSelectController">
     <children>
         <Label alignment="CENTER" prefHeight="86.0" prefWidth="600.0" text="SELECT REQUIREMENT">
             <font>
@@ -22,58 +22,55 @@
         </Label>
         <HBox prefHeight="291.0" prefWidth="600.0">
             <children>
-                <ScrollPane prefHeight="250.0" prefWidth="282.0">
+                <ScrollPane prefHeight="289.0" prefWidth="572.0">
                     <content>
-                        <TableView fx:id="projectTable" prefHeight="291.0" prefWidth="280.0">
+                        <TableView fx:id="projectTable" prefHeight="291.0" prefWidth="498.0">
                             <columns>
-                                <TableColumn fx:id="idColumn" prefWidth="90.0" text="ID" />
-                                <TableColumn fx:id="priorityColumn" prefWidth="85.0" text="Priority" />
-                                <TableColumn fx:id="deadlineColumn" prefWidth="93.0" text="Deadline" />
+                                <TableColumn fx:id="idColumn" prefWidth="133.0" text="ID" />
+                                <TableColumn fx:id="priorityColumn" prefWidth="179.0" text="Priority " />
+                                <TableColumn fx:id="deadlineColumn" prefWidth="185.0" text="Deadline" />
                             </columns>
                         </TableView>
                     </content>
                     <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="50.0" />
                     </HBox.margin>
                 </ScrollPane>
-                <VBox alignment="CENTER_LEFT" prefHeight="291.0" prefWidth="278.0">
-                    <children>
-                        <Label text="Selected Requirement:">
-                            <VBox.margin>
-                                <Insets left="30.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="requirementLabel" text="Requirement  Label ">
-                            <VBox.margin>
-                                <Insets left="30.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </VBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="289.0" prefWidth="125.0" />
             </children>
         </HBox>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#selectButtonPressed" text="Select ">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets right="25.0" />
-                    </HBox.margin>
-                </Button>
                 <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                     <font>
                         <Font size="14.0" />
                     </font>
                     <HBox.margin>
-                        <Insets left="25.0" />
+                        <Insets right="20.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#selectButtonPressed" text="Select ">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" right="25.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" text="Unassign">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" right="20.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#taskButtonPressed" text="Go to Task">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" right="50.0" />
                     </HBox.margin>
                 </Button>
             </children>

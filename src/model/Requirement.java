@@ -117,17 +117,6 @@ public class Requirement
     return priority;
   }
 
-  public String getPriorityAsString()
-  {
-    switch (getPriority())
-    {
-      case CRITICAL: return "Critical";
-      case HIGH: return "High";
-      case LOW: return "Low";
-      default: throw new IllegalStateException("Not valid priority");
-    }
-  }
-
   public void setType(Type type)
   {
     this.type = type;
@@ -138,16 +127,6 @@ public class Requirement
     return type;
   }
 
-  public String getTypeAsString()
-  {
-    switch (getType())
-    {
-      case FUNCTIONAL: return "Functional";
-      case NON_FUNCTIONAL: return "Non functional";
-      case PROJECT_RELATED: return "Project Related";
-      default: throw new IllegalStateException("Not valid type");
-    }
-  }
 
   public void setStatus(RequirementStatus status)
   {
@@ -258,8 +237,8 @@ public class Requirement
         + "Starting date: " + startingDate.toString() + "\n"
         + "Deadline: " + deadline + "\n"
         + "Status" + getStatus().getName() + "\n"
-        + "Priority: " + getPriorityAsString() + "\n"
-        + "Type: " + getTypeAsString() + "\n"
+        + "Priority: " + getPriority().getName() + "\n"
+        + "Type: " + getType().getName() + "\n"
         + "Responsible Team Member: " + getResponsibleTeamMember() + "\n"
         + "Tasks: " + taskList.toString() + "\n"
         + "Team Members: " + teamMemberList.toString();
