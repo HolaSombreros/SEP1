@@ -211,7 +211,7 @@ public class DetailsAndEditRequirementController
       viewHandler.openView("requirement");
     }
 
-  }
+  } */
 
   @FXML private void backButtonPressed()
   {
@@ -229,5 +229,5 @@ public class DetailsAndEditRequirementController
         "Removing requirement - id: " + requirement.getId());
     Optional<ButtonType> result = alert.showAndWait();
     return (result.isPresent()) && (result.get() == ButtonType.OK);
-  } */
+  }  */
 }
