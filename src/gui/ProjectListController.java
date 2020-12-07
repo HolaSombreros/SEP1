@@ -67,7 +67,20 @@ public class ProjectListController
     }
     @FXML private void removeProjectButtonPressed()
     {
+        errorLabel.setText("");
+        try
+        {
+
+        }
+        catch(Exception e)
+        {
+            errorLabel.setText("Project not selected");
+        }
 
     }
+     private boolean confirmation()
+     {
+         int index =
+     }
 
 }

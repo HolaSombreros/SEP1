@@ -208,12 +208,10 @@ public class Project
             return false;
         }
         Project other = (Project) obj;
-        if(scrumMaster ==null || productOwner ==null)
+        if(scrumMaster == null || productOwner ==null)
         {
             return false;
         }
-
-
         return  this.ID.equals(other.ID) &&
                 this.name.equals(other.name) &&
                 this.startingDate.equals(other.startingDate) &&
