@@ -1,12 +1,11 @@
 package gui;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+
+import java.util.Optional;
 
 public class ProjectListController
 {
@@ -65,12 +64,19 @@ public class ProjectListController
     {
         viewHandler.openView("detailsTeamMember");
     }
-    /*@FXML private void removeProjectButtonPressed()
+    @FXML private void removeProjectButtonPressed()
     {
         errorLabel.setText("");
         try
         {
-
+             ProjectViewModel selectedItem = projectListTable
+                    .getSelectionModel().getSelectedItem();
+            boolean remove = confirmation();
+            if (remove)
+            {
+               /* Project project = new Project(selectedItem.getNameProperty().get(),selectedItem.getIDProperty().get(), selectedItem.getDeadlineProperty().get());
+                projectListViewModel.remove();*/
+                projectListTable.getSelectionModel().clearSelection();}
         }
         catch(Exception e)
         {
@@ -80,7 +86,17 @@ public class ProjectListController
     }
      private boolean confirmation()
      {
-        // int index =
-     }*/
+         int index = projectListTable.getSelectionModel().getSelectedIndex();
+         ProjectViewModel selectedItem = projectListTable.getItems().get(index);
+         if(index < 0 || index >= projectListTable.getItems().size())
+         {
+             return false;
+         }
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+         alert.setTitle("Confirmation");
+         alert.setHeaderText("Are you sure you want to remove the project: id" + selectedItem.getIDProperty().get());
+         Optional<ButtonType> result = alert.showAndWait();
+         return (result.isPresent()) && (result.get() == ButtonType.YES);
+     }
 
 }
