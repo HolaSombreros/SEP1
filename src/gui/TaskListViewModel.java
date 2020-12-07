@@ -3,15 +3,19 @@ package gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.IProjectManagementModel;
+import model.Project;
+import model.Requirement;
 import model.Task;
 
 public class TaskListViewModel {
     private ObservableList<TaskViewModel> list;
     private IProjectManagementModel model;
+    private ViewState viewState;
     
-    public TaskListViewModel(IProjectManagementModel model, ViewState state) {
+    public TaskListViewModel(IProjectManagementModel model, ViewState viewState) {
         this.model = model;
         this.list = FXCollections.observableArrayList();
+        this.viewState = viewState;
     }
     
     public ObservableList<TaskViewModel> getList() {
@@ -21,12 +25,12 @@ public class TaskListViewModel {
     public void update() {
         list.clear();
         // TODO - add Project and Requirement as parameter:
-        for (Task task : model.getTaskList(model.getProjectList().getProject(0), model.getRequirementList(model.getProjectList().getProject(0)).getRequirement(0)).getTasks()) {
-        //for (int i = 0; i < model.getTaskList(model.getProjectList().getProject(0), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)).size(); i++) {
+        Project project = model.getProjectList().getProjectById(viewState.getSelectedProject());
+        Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+        
+        for (Task task : model.getTaskList(project, requirement).getTasks()) {
             list.add(new TaskViewModel(task));
         }
-    
-        list.add(new TaskViewModel(model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0)));
     }
     
     public void add(Task task) {
