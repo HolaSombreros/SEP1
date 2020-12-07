@@ -53,6 +53,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
     
         System.out.println("Task status: " + projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getStatus().getName());
+
+        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
+        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
+        projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
+
+
+
     }
 
     /**
