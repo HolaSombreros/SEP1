@@ -102,11 +102,12 @@ public class AddRequirementController
       if (typeInput.getValue().equals("Project Related"))
         type = Type.PROJECT_RELATED;
 
-     /* model.addRequirement(
+      model.addRequirement(
           model.getProjectList().getProjectByID(state.getSelectedProject()),
           new Requirement(userStory, startingDate, deadline, estimatedTime,
-              priority, type));
-      errorLabel.setText("");*/
+              priority, type, model.getProjectList()
+              .getProjectByID(state.getSelectedProject())));
+      errorLabel.setText("");
     }
     catch (Exception e)
     {

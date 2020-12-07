@@ -15,7 +15,7 @@ public class DetailsTeamMemberController {
 
     private Region root;
     private ViewHandler viewHandler;
-    private ViewState state;
+    private ViewState viewState;
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
 
@@ -24,18 +24,22 @@ public class DetailsTeamMemberController {
     @FXML private Label frequentTeamMemberLabel;
     @FXML private Label errorLabel;
     @FXML private TableView<TeamMemberViewModel> teamMemberViewTable;
-    @FXML private TableColumn<ProjectListViewModel,String> projectNameColumn;
-    @FXML private TableColumn<ProjectListViewModel,String> roleColumn;
+    @FXML private TableColumn<ProjectViewModel,String> projectNameColumn;
+    @FXML private TableColumn<ProjectViewModel,String> roleColumn;
 
     public DetailsTeamMemberController(){
 
     }
 
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState state){
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState viewState){
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TeamMemberListViewModel(model,state);
+        this.viewState = viewState;
+        this.viewModel = new TeamMemberListViewModel(model,viewState);
+
+        //projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+        //roleColumn.setCellValueFactory(cellData -> cellData.getValue().);
 
     }
 

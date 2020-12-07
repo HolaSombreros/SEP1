@@ -374,7 +374,7 @@ private Region loadProjectSelect(String fxmlFile, ViewState state){
   }
   return projectSelectController.getRoot();
 }
-  private Region loadRequirementSelect(String fxmlFile, ViewState state){
+private Region loadRequirementSelect(String fxmlFile, ViewState state){
     if (requirementSelectController == null)
     {
       try
@@ -396,7 +396,7 @@ private Region loadProjectSelect(String fxmlFile, ViewState state){
     }
     return requirementSelectController.getRoot();
   }
-  private Region loadTaskSelect(String fxmlFile, ViewState state){
+private Region loadTaskSelect(String fxmlFile, ViewState state){
     if (taskSelectController == null)
     {
       try

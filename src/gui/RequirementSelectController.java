@@ -16,13 +16,13 @@ public class RequirementSelectController {
     private ViewHandler viewHandler;
     private ViewState state;
     private IProjectManagementModel model;
-    private TeamMemberListViewModel viewModel;
+    private RequirementListViewModel viewModel;
 
 
-    @FXML private TableView<RequirementListViewModel> requirementTable;
-    @FXML private TableColumn<RequirementList,Integer> idColumn;
-    @FXML private TableColumn<RequirementList,String> priorityColumn;
-    @FXML private TableColumn<RequirementList,String> deadlineColumn;
+    @FXML private TableView<RequirementViewModel> requirementTable;
+    @FXML private TableColumn<RequirementViewModel,Number> idColumn;
+    @FXML private TableColumn<RequirementViewModel,String> priorityColumn;
+    @FXML private TableColumn<RequirementViewModel,String> deadlineColumn;
 
     public RequirementSelectController(){
 
@@ -32,7 +32,12 @@ public class RequirementSelectController {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TeamMemberListViewModel(model,state);
+        this.viewModel = new RequirementListViewModel(model,state);
+
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        priorityColumn.setCellValueFactory(cellData -> cellData.getValue().getPriorityProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        requirementTable.setItems(viewModel.getList());
 
     }
 
@@ -53,5 +58,8 @@ public class RequirementSelectController {
 
     public void taskButtonPressed() {
         viewHandler.openView("taskSelect");
+    }
+
+    public void unassignButtonPressed() {
     }
 }
