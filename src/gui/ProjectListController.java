@@ -11,16 +11,16 @@ import javafx.scene.control.TextField;
 public class ProjectListController
 {
     @FXML private TextField searchInput;
-   /* @FXML private TableView<ProjectListViewModel> projectListTable;
+    @FXML private TableView<ProjectViewModel> projectListTable;
     @FXML private TableColumn<ProjectViewModel, String> projectIDColumn;
     @FXML private TableColumn<ProjectViewModel, String> projectNameColumn;
-    @FXML private TableColumn<ProjectViewModel, Date> projectDateColumn;
-    @FXML private TableColumn<ProjectViewModel, Status> projectStatusColumn;*/
+    @FXML private TableColumn<ProjectViewModel, String> projectDeadlineColumn;
+    @FXML private TableColumn<ProjectViewModel, String> projectStatusColumn;
     @FXML private Label errorLabel;
 
     private Region root;
     private ViewHandler viewHandler;
-   /* private ProjectListViewModel projectListViewModel;*/
+    private ProjectListViewModel projectListViewModel;
     private IProjectManagementModel model;
 
     public ProjectListController()
@@ -32,11 +32,21 @@ public class ProjectListController
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
+        this.projectListViewModel = new ProjectListViewModel(model);
+
+        projectIDColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
+        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+        projectDeadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        projectStatusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
+        projectListTable.setItems(projectListViewModel.getList());
+        reset();
     }
     public void reset()
     {
         searchInput.setText("");
         errorLabel.setText("");
+        projectListViewModel.update();
+
     }
     public Region getRoot()
     {

@@ -89,6 +89,7 @@ public class AddProjectController
 
 
            model.addProject(new Project(name, ID, startingDate, deadlineDate, chosenMet));
+           cancelButtonPressed();
 
         }
         catch(Exception e)
