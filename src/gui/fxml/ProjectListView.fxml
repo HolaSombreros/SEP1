@@ -78,7 +78,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="removeProjectButton" mnemonicParsing="false" text="Remove Project">
+                  <Button fx:id="removeProjectButton" onAction="#removeProjectButtonPressed" mnemonicParsing="false" text="Remove Project">
                      <font>
                         <Font size="14.0" />
                      </font>

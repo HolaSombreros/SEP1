@@ -21,17 +21,19 @@ public class ProjectListController
     private ViewHandler viewHandler;
     private ProjectListViewModel projectListViewModel;
     private IProjectManagementModel model;
+    private ViewState viewState;
 
     public ProjectListController()
     {
         //LOADED BY THE FXML LOADER
     }
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root)
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState viewState)
     {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.projectListViewModel = new ProjectListViewModel(model);
+        this.viewState = viewState;
+        this.projectListViewModel = new ProjectListViewModel(model,viewState);
 
         projectIDColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
         projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
@@ -57,6 +59,9 @@ public class ProjectListController
     }
     @FXML private void viewProjectButtonPressed()
     {
+        ProjectViewModel selectedItem = projectListTable
+                .getSelectionModel().getSelectedItem();
+        viewState.setSelectedProject(selectedItem.getIDProperty().get());
         viewHandler.openView("detailsAndEditProject");
     }
 
@@ -74,8 +79,9 @@ public class ProjectListController
             boolean remove = confirmation();
             if (remove)
             {
-               /* Project project = new Project(selectedItem.getNameProperty().get(),selectedItem.getIDProperty().get(), selectedItem.getDeadlineProperty().get());
-                projectListViewModel.remove();*/
+                Project project = model.getProjectList().getProjectByID(selectedItem.getIDProperty().get());
+                projectListViewModel.remove(project);
+                model.removeProject(project);
                 projectListTable.getSelectionModel().clearSelection();}
         }
         catch(Exception e)
@@ -96,7 +102,7 @@ public class ProjectListController
          alert.setTitle("Confirmation");
          alert.setHeaderText("Are you sure you want to remove the project: id" + selectedItem.getIDProperty().get());
          Optional<ButtonType> result = alert.showAndWait();
-         return (result.isPresent()) && (result.get() == ButtonType.YES);
+         return (result.isPresent()) && (result.get() == ButtonType.OK);
      }
 
 }

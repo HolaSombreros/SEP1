@@ -59,6 +59,7 @@ public class DetailsAndEditProjectController
     }
     @FXML private void backButtonPressed()
     {
+        viewState.setSelectedProject("-1");
         viewHandler.openView("projectList");
     }
 
