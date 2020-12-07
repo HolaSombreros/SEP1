@@ -65,7 +65,7 @@ public class ProjectListController
     {
         viewHandler.openView("detailsTeamMember");
     }
-    @FXML private void removeProjectButtonPressed()
+    /*@FXML private void removeProjectButtonPressed()
     {
         errorLabel.setText("");
         try
@@ -80,7 +80,7 @@ public class ProjectListController
     }
      private boolean confirmation()
      {
-         int index =
-     }
+        // int index =
+     }*/
 
 }
