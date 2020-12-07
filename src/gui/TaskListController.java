@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
+import model.Project;
+import model.Requirement;
 import model.Task;
 
 import java.util.Optional;
@@ -71,12 +73,11 @@ public class TaskListController {
             }
             else {
                 if (confirmation()) {
-                    // TODO - how the fuck?
-                    /*
-                    Task task = new Task(selectedItem.getIdProperty().get(), selectedItem.getTitleProperty().get());
-                    model.removeTask(project, requirement, task);
+                    Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+                    Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+                    Task task = model.getTaskList(project, requirement).getTaskById(selectedItem.getIdProperty().get());
                     viewModel.remove(task);
-                    */
+                    model.removeTask(requirement, task);
                     taskTable.getSelectionModel().clearSelection();
                 }
             }
@@ -87,7 +88,6 @@ public class TaskListController {
     }
 
     @FXML private void goBack() {
-        viewState.setSelectedRequirement(-1); // TODO - right? not selectedTask
         viewHandler.openView("detailsAndEditRequirement");
     }
     

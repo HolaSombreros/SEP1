@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
+import model.Project;
 import model.Status;
 import model.Task;
 
@@ -62,7 +63,9 @@ public class DetailsAndEditTaskController {
         responsibleTeamMemberInput.setText("");
         hoursWorkedInput.setText("");
         errorLabel.setText("");
-        viewModel.update();
+        
+        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        viewModel.update(project, model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement()));
         
         /* basically something like this:
         Task task = model.getTaskList(viewState.getSelectedProject(), viewState.getSelectedRequirement()).getTask(viewState.getSelectedTask()); // TODO - this one is wrong though...
