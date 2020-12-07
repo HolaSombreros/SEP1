@@ -42,7 +42,10 @@ public class ProjectListViewModel {
     public void update()
     {
         list.clear();
-        list.add(new ProjectViewModel(model.getProjectList().getProject(0)));
+        for(Project project: model.getProjectList().getProjects())
+        {
+            list.add(new ProjectViewModel(project));
+        }
 
     }
 
