@@ -196,6 +196,7 @@ public class Requirement
 
   public void assignTeamMember(TeamMember teamMember)
   {
+    if (!(teamMemberList.contains(teamMember)))
     teamMemberList.add(teamMember);
   }
 

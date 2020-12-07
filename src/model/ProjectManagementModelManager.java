@@ -74,23 +74,26 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     @Override public void addRequirement(Project project,Requirement requirement) {
-
+        project.addRequirement(requirement);
     }
 
-    @Override public void addTask(Project project, Requirement requirement, Task task) {
+    @Override public void addTask(Requirement requirement, Task task) {
         requirement.addTask(task);
     }
 
     @Override public void addTeamMember(Project project,TeamMember teamMember) {
-
+        project.assignTeamMember(teamMember);
     }
 
     @Override public void addTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
-
+        project.assignTeamMember(teamMember);
+        requirement.assignTeamMember(teamMember);
     }
 
     @Override public void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
-
+        project.assignTeamMember(teamMember);
+        requirement.assignTeamMember(teamMember);
+        task.assignTeamMember(teamMember);
     }
 
     @Override public void editProject(Project project) {
@@ -106,28 +109,31 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     @Override public void removeProject(Project project) {
-
+        projectList.removeProject(project);
     }
 
     @Override public void removeRequirement(Project project, Requirement requirement) {
-
+        project.removeRequirement(requirement);
     }
 
-    @Override public void removeTask(Project project, Requirement requirement, Task task) {
-
+    @Override public void removeTask(Requirement requirement, Task task) {
+        requirement.removeTask(task);
     }
 
     @Override public void removeTeamMember(Project project, TeamMember teamMember) {
-
+        project.unassignTeamMember(teamMember);
 
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
-
+        requirement.unassignTeamMember(teamMember);
+        requirement.getRelatedProject().unassignTeamMember(teamMember);
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
-
+        task.unassignTeamMember(teamMember);
+        task.getRelatedRequirement().unassignTeamMember(teamMember);
+        task.getRelatedRequirement().getRelatedProject().unassignTeamMember(teamMember);
     }
 
     /**
