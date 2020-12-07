@@ -24,10 +24,8 @@ public class TaskListViewModel {
     
     public void update() {
         list.clear();
-        // TODO - add Project and Requirement as parameter:
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
-        
         for (Task task : model.getTaskList(project, requirement).getTasks()) {
             list.add(new TaskViewModel(task));
         }

@@ -62,13 +62,21 @@ public class AddTaskController {
     @FXML private void add() {
         errorLabel.setText("");
         try {
-            String startingDateArr[] = startingDateInput.getValue().toString().split("-");
-            String deadlineArr[] = deadlineInput.getValue().toString().split("-");
-            Date startingDate = new Date(Integer.parseInt(startingDateArr[2]), Integer.parseInt(startingDateArr[1]), Integer.parseInt(startingDateArr[0]));
-            Date deadline = new Date(Integer.parseInt(deadlineArr[2]), Integer.parseInt(deadlineArr[1]), Integer.parseInt(deadlineArr[0]));
-            Requirement requirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
-            Task task = new Task(titleInput.getText(), startingDate, deadline, Double.parseDouble(estimatedHoursInput.getText()), requirement);
-            model.addTask(requirement, task);
+            Date startingDate = new Date(startingDateInput.getValue().getDayOfMonth(), startingDateInput.getValue().getMonthValue(), startingDateInput.getValue().getYear());
+            Date deadline = new Date(deadlineInput.getValue().getDayOfMonth(), deadlineInput.getValue().getMonthValue(), deadlineInput.getValue().getYear());
+            double estimatedTime = 0;
+            if (estimatedHoursInput.getText().equals("")) {
+                throw new IllegalArgumentException("Estimated time cannot be empty");
+            }
+            try {
+                estimatedTime = Double.parseDouble(estimatedHoursInput.getText());
+            }
+            catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Estimated Time has to be a number");
+            }
+            Requirement relatedRequirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
+            Task task = new Task(titleInput.getText(), startingDate, deadline, estimatedTime, relatedRequirement);
+            model.addTask(relatedRequirement, task);
             model.saveModel();
             cancel();
         }

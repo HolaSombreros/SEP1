@@ -20,6 +20,7 @@ public class DetailsTeamMemberController {
     private TeamMemberListViewModel viewModel;
 
     @FXML private TextField nameField;
+    @FXML private TextField idField;
     @FXML private Label productivityLabel;
     @FXML private Label frequentTeamMemberLabel;
     @FXML private Label errorLabel;
@@ -44,19 +45,66 @@ public class DetailsTeamMemberController {
     }
 
     public void reset(){
+
         errorLabel.setText("");
+        productivityLabel.setText("");
+        frequentTeamMemberLabel.setText("");
+
     }
 
     public Region getRoot(){
         return root;
     }
 
+    /**
+     * Opens the SelectProject window
+     * */
     public void assignButtonPressed(){
         viewHandler.openView("projectSelect");
     }
 
-
+    /**
+     * opens the ProjectList window
+     * */
     public void backButtonPressed() {
         viewHandler.openView("projectList");
     }
+
+    public void searchByNameButtonPressed() {
+
+    }
+
+    /**
+     * searches a TeamMember by the given Id and updates the
+     *          nameField,
+     *          frequent teamMember,
+     *          productivity
+     *          table data
+     *          with the related information
+     * */
+    public void searchByIDButtonPressed() {
+        try{
+            errorLabel.setText("");
+            if (idField.getText().equals(""))
+                reset();
+            else{
+                int id = 0;
+                try
+                {
+                    id = Integer.parseInt(idField.getText());
+                    viewModel.update(id);
+                }
+                catch (NumberFormatException e)
+                {
+                    throw new IllegalArgumentException("ID has to be a number");
+                }
+                }
+            }
+        catch (Exception e)
+        {
+            errorLabel.setText(e.getMessage());
+        }
+        }
+
 }
+

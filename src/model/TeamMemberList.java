@@ -99,7 +99,7 @@ public class TeamMemberList {
         TeamMemberList other = (TeamMemberList)obj;
         if(other.size() != team.size())
             return false;
-        for(int i = 0; i <= team.size(); i++)
+        for(int i = 0; i < team.size(); i++)
             if(!team.get(i).equals(other.getByIndex(i)))
                 return false;
         return true;
@@ -120,8 +120,8 @@ public class TeamMemberList {
     }
 
     public String toString(){
-        String s = team.get(0).toString();
-        for(int i = 1; i < team.size(); i++)
+        String s = "";
+        for(int i = 0; i < team.size(); i++)
             s += team.get(i).toString();
         return s;
     }

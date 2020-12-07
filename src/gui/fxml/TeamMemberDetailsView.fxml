@@ -52,6 +52,20 @@
                      </font>
                   </Label>
                </children></VBox>
+            <VBox prefHeight="323.0" prefWidth="74.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#searchByIDButtonPressed" text="Search">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#searchByNameButtonPressed" text="Search">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
             <VBox alignment="CENTER_RIGHT" prefHeight="338.0" prefWidth="307.0">
                <children>
                   <ScrollPane prefHeight="235.0" prefWidth="307.0">

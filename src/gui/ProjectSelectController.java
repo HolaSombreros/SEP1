@@ -31,15 +31,16 @@ public class ProjectSelectController {
         this.model = model;
         this.root = root;
         this.viewModel = new ProjectListViewModel(model,state);
-
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
-        projectTable.setItems(viewModel.getList());
+        reset();
 
     }
 
     public void reset(){
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        projectTable.setItems(viewModel.getList());
+        viewModel.update();
 
     }
 

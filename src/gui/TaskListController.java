@@ -3,10 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.IProjectManagementModel;
-import model.Project;
-import model.Requirement;
-import model.Task;
+import model.*;
 
 import java.util.Optional;
 
@@ -77,24 +74,19 @@ public class TaskListController {
     
     @FXML private void removeTask() {
         errorLabel.setText("");
-        try {
-            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
-            if (selectedItem == null) {
-                errorLabel.setText("Please select a task first");
-            }
-            else {
-                if (confirmation()) {
-                    Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
-                    Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
-                    Task task = model.getTaskList(project, requirement).getTaskById(selectedItem.getIdProperty().get());
-                    viewModel.remove(task);
-                    model.removeTask(requirement, task);
-                    taskTable.getSelectionModel().clearSelection();
-                }
-            }
+        TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            errorLabel.setText("Please select a task first");
         }
-        catch (Exception e) {
-            errorLabel.setText("Task not found: " + e.getMessage());
+        else {
+            if (confirmation()) {
+                Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+                Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+                Task task = model.getTaskList(project, requirement).getTaskById(selectedItem.getIdProperty().get());
+                model.removeTask(requirement, task);
+                viewModel.remove(task);
+                taskTable.getSelectionModel().clearSelection();
+            }
         }
     }
 

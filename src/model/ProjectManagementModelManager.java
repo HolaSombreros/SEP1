@@ -124,6 +124,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     @Override public void removeTask(Requirement requirement, Task task) {
+
         requirement.removeTask(task);
     }
 
