@@ -88,7 +88,7 @@ public class ViewHandler
         root = loadRequirementSelect("fxml/RequirementSelectView.fxml",viewState);
         break;
       case "taskSelect":
-        root = loadAddTask("fxml/TaskSelectView.fxml",viewState);
+        root = loadTaskSelect("fxml/TaskSelectView.fxml",viewState);
         break;
     }
     currentScene.setRoot(root);

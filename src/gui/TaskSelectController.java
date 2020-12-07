@@ -38,6 +38,7 @@ public class TaskSelectController {
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
         deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
         taskTable.setItems(viewModel.getList());
+        reset();
 
     }
 
