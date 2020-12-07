@@ -51,7 +51,7 @@ public class ViewHandler
       case "projectList":
         root = loadProjectList("fxml/ProjectListView.fxml", viewState);
         break;
-      case "requirement":
+      case "requirementList":
         root = loadRequirementList("fxml/RequirementListView.fxml", viewState);
         break;
       case "taskList":
