@@ -265,7 +265,8 @@ public class Requirement
         && hoursWorked == other.hoursWorked
         && startingDate.equals(other.startingDate)
         && deadline.equals(other.deadline)
-        && status == other.status && type == other.type
+        && status == other.status
+        && type == other.type
         && priority == other.priority
         && taskList.equals(other.taskList)
         && teamMemberList.equals(other.teamMemberList);
