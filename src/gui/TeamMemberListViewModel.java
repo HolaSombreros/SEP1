@@ -20,6 +20,9 @@ public class TeamMemberListViewModel
     return list;
   }
 
+  /**
+   *
+   * */
   public void update(Project project, Requirement requirement) {
     list.clear();
     for (int i = 0; i < model.getTaskList(project, requirement)
@@ -30,6 +33,9 @@ public class TeamMemberListViewModel
           .getByIndex(i)));
   }
 
+  /**
+   *
+   * */
   public void update(Project project) {
     list.clear();
     for (int i = 0; i < model.getRequirementList(project)
@@ -40,6 +46,9 @@ public class TeamMemberListViewModel
           .getTeamMemberList().getByIndex(i)));
   }
 
+  /**
+   *
+   * */
   public void update() {
     list.clear();
     for (int i = 0; i < model.getProjectList()
