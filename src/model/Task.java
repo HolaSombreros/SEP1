@@ -172,6 +172,15 @@ public class Task {
             return false;
         }
         Task task = (Task)obj;
+        // TODO - make sure this is actually correct...
+        if (task.getResponsibleTeamMember() == null && getResponsibleTeamMember() != null) {
+                return false;
+        }
+        else {
+            if (!task.getResponsibleTeamMember().equals(getResponsibleTeamMember())) {
+                return false;
+            }
+        }
         return task.getId() == getId() &&
                 task.getTitle().equals(getTitle()) &&
                 task.getEstimatedTime() == getEstimatedTime() &&
@@ -179,7 +188,6 @@ public class Task {
                 task.getDeadline().equals(getDeadline()) &&
                 task.getStatus() == getStatus() &&
                 task.getTeamMemberList().equals(getTeamMemberList()) &&
-                task.getResponsibleTeamMember().equals(getResponsibleTeamMember()) &&
                 task.getTimeRegistration().equals(getTimeRegistration()) &&
                 task.getRelatedRequirement().equals(getRelatedRequirement());
     }
@@ -196,8 +204,10 @@ public class Task {
         str += String.format("%nEstimated time: %.1f hours", getEstimatedTime());
         str += String.format("%nTotal hours worked: %.1f", getTimeRegistration().getHoursWorked());
         str += String.format("%nStatus: %s", getStatus().getName());
-        str += String.format("%nResponsible Team Member: %s", getResponsibleTeamMember().getFullName());
-        str += String.format("%n%s", getTeamMemberList().toString());
+        if (getResponsibleTeamMember() != null) {
+            str += String.format("%nResponsible Team Member: %s", getResponsibleTeamMember().getFullName());
+        }
+        str += String.format("%nTeam Members:%n%s", getTeamMemberList().toString());
         return str;
     }
 }

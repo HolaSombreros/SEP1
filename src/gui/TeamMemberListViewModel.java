@@ -8,9 +8,11 @@ import model.TeamMember;
 public class TeamMemberListViewModel {
     private ObservableList<TeamMemberViewModel> list;
     private IProjectManagementModel model;
+    private ViewState viewState;
     
-    public TeamMemberListViewModel(IProjectManagementModel model) {
+    public TeamMemberListViewModel(IProjectManagementModel model, ViewState viewState) {
         this.model = model;
+        this.viewState = viewState;
         this.list = FXCollections.observableArrayList();
     }
     

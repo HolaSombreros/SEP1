@@ -10,10 +10,13 @@ import model.Date;
 import model.IProjectManagementModel;
 import model.Task;
 
+import java.time.LocalDate;
+
 public class AddTaskController {
     private IProjectManagementModel model;
     private ViewHandler viewHandler;
     private Region root;
+    private ViewState viewState;
     
     // Window data variables:
     @FXML private TextField titleInput;
@@ -24,10 +27,11 @@ public class AddTaskController {
 
     public AddTaskController() { }
 
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root) {
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState state) {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
+        this.viewState = state;
         
         reset();
     }
