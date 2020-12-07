@@ -15,6 +15,7 @@ public class DetailsTeamMemberController {
 
     private Region root;
     private ViewHandler viewHandler;
+    private ViewState state;
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
 
@@ -30,11 +31,11 @@ public class DetailsTeamMemberController {
 
     }
 
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root){
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState state){
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TeamMemberListViewModel(model);
+        this.viewModel = new TeamMemberListViewModel(model,state);
 
     }
 
