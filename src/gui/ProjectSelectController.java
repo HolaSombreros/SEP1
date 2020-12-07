@@ -53,6 +53,7 @@ public class ProjectSelectController {
     }
 
     public void requirementButtonPressed() {
+        viewHandler.openView("requirementSelect");
     }
 
 

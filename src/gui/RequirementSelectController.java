@@ -50,4 +50,8 @@ public class RequirementSelectController {
     public void backButtonPressed() {
         viewHandler.openView("detailsTeamMember");
     }
+
+    public void taskButtonPressed() {
+        viewHandler.openView("taskSelect");
+    }
 }

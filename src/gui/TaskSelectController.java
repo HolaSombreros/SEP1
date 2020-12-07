@@ -50,4 +50,7 @@ public class TaskSelectController {
     public void backButtonPressed() {
         viewHandler.openView("detailsTeamMember");
     }
+
+    public void assignButtonPressed() {
+    }
 }
