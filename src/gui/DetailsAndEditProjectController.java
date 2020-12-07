@@ -23,17 +23,19 @@ public class DetailsAndEditProjectController
     private Region root;
     private ViewHandler viewHandler;
     private IProjectManagementModel model;
+    private ViewState viewState;
    // private TeamMemberListViewModel teamMemberListViewModel;
 
     public DetailsAndEditProjectController()
     {
         //LOADED BY THE FXML LOADER
     }
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root)
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState viewState)
     {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
+        this.viewState = viewState;
     }
     public void reset()
     {
