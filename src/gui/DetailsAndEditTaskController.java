@@ -55,13 +55,16 @@ public class DetailsAndEditTaskController {
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
         Task task = model.getTaskList(model.getProjectList().getProjectByID(viewState.getSelectedProject()), requirement).getTaskById(viewState.getSelectedTask());
 
+        idField.setText(String.valueOf(task.getId()));
         titleInput.setText(task.getTitle());
         estimatedHoursInput.setText(String.valueOf(task.getEstimatedTime()));
+        // TODO - fix 2 lines under here
         startingDateInput.setValue(null);
         deadlineInput.setValue(null);
-        //statusInput.setValue(model.getTaskList(model.getProjectList().getProject(0), model.getRequirementList(model.getProjectList().getProject(0)).getRequirement(0)).toString());
         statusInput.setValue(task.getStatus().getName());
-        responsibleTeamMemberInput.setText(task.getResponsibleTeamMember().getFullName());
+        if (task.getResponsibleTeamMember() != null) {
+            responsibleTeamMemberInput.setText(task.getResponsibleTeamMember().getFullName());
+        }
         hoursWorkedInput.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
         errorLabel.setText("");
         viewModel.update(project, model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement()));

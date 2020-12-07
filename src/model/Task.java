@@ -173,11 +173,8 @@ public class Task {
         }
         Task task = (Task)obj;
         // TODO - make sure this is actually correct...
-        if (task.getResponsibleTeamMember() == null && getResponsibleTeamMember() != null) {
-                return false;
-        }
-        else {
-            if (!task.getResponsibleTeamMember().equals(getResponsibleTeamMember())) {
+        if (task.getResponsibleTeamMember() != null) {
+            if (getResponsibleTeamMember() != null && !task.getResponsibleTeamMember().equals(getResponsibleTeamMember())) {
                 return false;
             }
         }
@@ -187,9 +184,9 @@ public class Task {
                 task.getStartingDate().equals(getStartingDate()) &&
                 task.getDeadline().equals(getDeadline()) &&
                 task.getStatus() == getStatus() &&
-                task.getTeamMemberList().equals(getTeamMemberList()) &&
-                task.getTimeRegistration().equals(getTimeRegistration()) &&
-                task.getRelatedRequirement().equals(getRelatedRequirement());
+//                task.getTeamMemberList().equals(getTeamMemberList()) &&
+                task.getTimeRegistration().equals(getTimeRegistration());
+//                task.getRelatedRequirement().equals(getRelatedRequirement());
     }
 
     /**
