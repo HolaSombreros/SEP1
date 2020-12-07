@@ -49,12 +49,12 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#selectButtonPressed" text="Select ">
+            <Button mnemonicParsing="false" text="Unassign">
                <font>
                   <Font size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="30.0" right="25.0" />
+                  <Insets left="30.0" right="20.0" />
                </HBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#unassignButtonPressed" text="Unassign">

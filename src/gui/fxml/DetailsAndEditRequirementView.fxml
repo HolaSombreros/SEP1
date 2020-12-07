@@ -223,7 +223,7 @@
         </Label>
         <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="688.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#editRequirementButtonPressed" text="Edit Requirement">
+                <Button mnemonicParsing="false" onAction="#confirmEditingButtonPressed" text="Edit Requirement">
                     <font>
                         <Font size="15.0" />
                     </font>

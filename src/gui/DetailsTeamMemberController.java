@@ -52,7 +52,7 @@ public class DetailsTeamMemberController {
     }
 
     public void assignButtonPressed(){
-        viewHandler.openView("selectProject");
+        viewHandler.openView("projectSelect");
     }
 
 

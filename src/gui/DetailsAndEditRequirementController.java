@@ -80,6 +80,8 @@ public class DetailsAndEditRequirementController
       responsibleTeamMemberInput.setText(
           requirement.getResponsibleTeamMember().getId() + " " + requirement
               .getResponsibleTeamMember().getFullName());
+    else
+      responsibleTeamMemberInput.setText("");
 
     switch (requirement.getPriority())
     {
@@ -129,7 +131,7 @@ public class DetailsAndEditRequirementController
     errorLabel.setText("");
   }
 
-  @FXML private void editRequirementButtonPressed()
+  @FXML private void confirmEditingButtonPressed()
   {
     Requirement requirement = model.getRequirementList(
         model.getProjectList().getProjectByID(state.getSelectedProject()))
@@ -173,6 +175,14 @@ public class DetailsAndEditRequirementController
         throw new IllegalArgumentException("Estimated Time has to be a number");
       }
 
+      if (!(responsibleTeamMemberInput.getText().equals("")))
+      {
+        String member = responsibleTeamMemberInput.getText();
+        String[] member1 = member.split(" ");
+        int index = Integer.parseInt(member1[0]);
+        requirement.assignTeamMember(model.getTeamMemberList(requirement.getRelatedProject(),requirement).getByID(index));
+      }
+
       Priority priority = null;
       if (priorityInput.getValue().equals("Critical"))
         requirement.setPriority(Priority.CRITICAL);
@@ -211,8 +221,17 @@ public class DetailsAndEditRequirementController
 
   @FXML private void makeResponsibleButtonPressed()
   {
-    //TODO
-
+    try
+    {
+      TeamMemberViewModel selectedItem = teamMembersTable.getSelectionModel()
+          .getSelectedItem();
+      responsibleTeamMemberInput.setText(
+          selectedItem.getIdProperty() + " " + selectedItem.getNameProperty());
+    }
+    catch (Exception e)
+    {
+      errorLabel.setText("Select a team member");
+    }
   }
 
   @FXML private void removeRequirementButtonPressed()
