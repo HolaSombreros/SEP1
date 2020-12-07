@@ -52,13 +52,12 @@ public class TeamMemberListViewModel
    * */
   public void update() {
     list.clear();
-    for (int i = 0; i < model.getProjectList()
-        .getProjectByID(viewState.getSelectedProject()).getTeamMemberList()
-        .size(); i++)
+    for (int i = 0; i < model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().size(); i++)
       list.add(new TeamMemberViewModel(
           model.getProjectList().getProjectByID(viewState.getSelectedProject())
               .getTeamMemberList().getByIndex(i)));
   }
+
 
 
 

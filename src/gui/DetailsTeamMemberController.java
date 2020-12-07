@@ -104,6 +104,22 @@ public class DetailsTeamMemberController {
         {
             errorLabel.setText(e.getMessage());
         }*/
+
+        try{
+            errorLabel.setText("");
+            for(int i = 0; i < model.getProjectList().size(); i++)
+                if(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText()))!=null){
+                    nameField.setText(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText())).getFullName());
+                    productivityLabel.setText("Productivity: " + model.getProductivity(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText()))));
+                    frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText())));
+
+                }
+
+
+        }
+        catch (Exception e){
+
+        }
         }
 
 }
