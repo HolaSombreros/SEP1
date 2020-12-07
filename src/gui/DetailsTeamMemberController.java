@@ -91,8 +91,8 @@ public class DetailsTeamMemberController {
                 int id = 0;
                 try
                 {
-                    id = Integer.parseInt(idField.getText());
-                    viewModel.update(id);
+                    //id = Integer.parseInt(idField.getText());
+                    viewModel.update();
                 }
                 catch (NumberFormatException e)
                 {
