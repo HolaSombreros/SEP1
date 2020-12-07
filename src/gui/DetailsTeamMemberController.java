@@ -92,7 +92,7 @@ public class DetailsTeamMemberController {
                 try
                 {
                     id = Integer.parseInt(idField.getText());
-                    viewModel.update(id);
+                 //   viewModel.update(id);
                 }
                 catch (NumberFormatException e)
                 {
