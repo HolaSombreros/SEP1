@@ -252,13 +252,12 @@ public class Requirement
       return false;
     Requirement other = (Requirement) obj;
 
-    if (responsibleTeamMember!=null) rtm = false;
-    if (other.responsibleTeamMember!=null) rtm = false;
-    if (responsibleTeamMember==null && other.responsibleTeamMember==null)
-      rtm = true;
-
-    if (rtm)
-      return id == other.id
+    if (other.getResponsibleTeamMember() != null) {
+      if (getResponsibleTeamMember() != null && !other.getResponsibleTeamMember().equals(getResponsibleTeamMember())) {
+        return false;
+      }
+    }
+    return id == other.id
         && relatedProject.equals(other.relatedProject)
         && userStory.equals(other.userStory)
         && estimatedTime == other.estimatedTime
@@ -270,7 +269,6 @@ public class Requirement
         && priority == other.priority
         && taskList.equals(other.taskList)
         && teamMemberList.equals(other.teamMemberList);
-    return false;
   }
 
 }
