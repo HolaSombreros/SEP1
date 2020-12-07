@@ -23,9 +23,9 @@ public class DetailsAndEditRequirementController
   @FXML private ChoiceBox<String> statusInput;
   @FXML private Label hoursWorkedShow;
   @FXML private Label responsibleTeamMemberInput;
-  @FXML private TableView teamMembersTable;
-  @FXML private TableColumn idColumn;
-  @FXML private TableColumn nameColumn;
+  @FXML private TableView<TeamMemberViewModel> teamMembersTable;
+  @FXML private TableColumn<TeamMemberViewModel, Number> idColumn;
+  @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
   @FXML private Label errorLabel;
   private Region root;
   private IProjectManagementModel model;
@@ -51,10 +51,7 @@ public class DetailsAndEditRequirementController
     this.state = state;
     reset();
     this.viewModel = new TeamMemberListViewModel(model, state);
-    //idColumn
-       // .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-    //nameColumn
-       // .setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+
   }
 
   public void reset()
@@ -62,8 +59,16 @@ public class DetailsAndEditRequirementController
     Requirement requirement = model.getRequirementList(
         model.getProjectList().getProjectByID(state.getSelectedProject()))
         .getRequirementById(state.getSelectedRequirement());
+
+    viewModel.update(requirement.getRelatedProject());
+    idColumn
+        .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+    nameColumn
+        .setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
+    teamMembersTable.setItems(viewModel.getList());
+
     idLabel.setText(state.getSelectedRequirement() + "");
-    relatedProjectLabel.setText("Not SEP1");
+    relatedProjectLabel.setText(requirement.getRelatedProject().getName());
     userStoryInput.setText(requirement.getUserStory());
     startingDateShow
         .setText("Now: " + requirement.getStartingDate().toString());
@@ -207,6 +212,7 @@ public class DetailsAndEditRequirementController
   @FXML private void makeResponsibleButtonPressed()
   {
     //TODO
+
   }
 
   @FXML private void removeRequirementButtonPressed()
@@ -217,9 +223,7 @@ public class DetailsAndEditRequirementController
     boolean remove = confirmation();
     if (remove)
     {
-      model.removeRequirement(
-          model.getProjectList().getProjectByID(state.getSelectedProject()),
-          requirement);
+      model.removeRequirement(requirement.getRelatedProject(), requirement);
       state.setSelectedRequirement(-1);
       viewHandler.openView("requirement");
     }
