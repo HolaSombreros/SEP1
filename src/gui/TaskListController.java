@@ -88,7 +88,8 @@ public class TaskListController {
     }
 
     @FXML private void goBack() {
-        viewHandler.openView("detailsAndEditRequirement");
+        viewState.setSelectedRequirement(-1);
+        viewHandler.openView("requirements");
     }
     
     private boolean confirmation() {

@@ -54,7 +54,9 @@ public class DetailsAndEditTaskController {
 
     public void reset() {
         // TODO - dont actually reset it to nothing, but instead it should be set to the task's details...
-        titleInput.setText("");
+//        Task task = model.getTaskList().getTaskById(viewState.getSelectedTask());
+//
+//        titleInput.setText();
         estimatedHoursInput.setText("");
         startingDateInput.setValue(null);
         deadlineInput.setValue(null);

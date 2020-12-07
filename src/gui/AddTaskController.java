@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.Date;
 import model.IProjectManagementModel;
+import model.Requirement;
 import model.Task;
 
 import java.time.LocalDate;
@@ -65,8 +66,9 @@ public class AddTaskController {
             String deadlineArr[] = deadlineInput.getValue().toString().split("-");
             Date startingDate = new Date(Integer.parseInt(startingDateArr[2]), Integer.parseInt(startingDateArr[1]), Integer.parseInt(startingDateArr[0]));
             Date deadline = new Date(Integer.parseInt(deadlineArr[2]), Integer.parseInt(deadlineArr[1]), Integer.parseInt(deadlineArr[0]));
-            // TODO - fix line below.
-            //model.addTask(model.getRequirementList(), new Task(titleInput.getText(), startingDate, deadline, Double.parseDouble(estimatedHoursInput.getText()), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)));
+            Requirement requirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
+            Task task = new Task(titleInput.getText(), startingDate, deadline, Double.parseDouble(estimatedHoursInput.getText()), requirement);
+            model.addTask(requirement, task);
             model.saveModel();
             cancel();
         }
