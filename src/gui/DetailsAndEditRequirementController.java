@@ -244,7 +244,7 @@ public class DetailsAndEditRequirementController
     {
       model.removeRequirement(requirement.getRelatedProject(), requirement);
       state.setSelectedRequirement(-1);
-      viewHandler.openView("requirement");
+      viewHandler.openView("requirementList");
     }
 
   }
@@ -252,7 +252,7 @@ public class DetailsAndEditRequirementController
   @FXML private void backButtonPressed()
   {
     state.setSelectedRequirement(-1);
-    viewHandler.openView("requirement");
+    viewHandler.openView("requirementList");
   }
 
   private boolean confirmation()

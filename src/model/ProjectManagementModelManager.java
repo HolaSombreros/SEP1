@@ -150,8 +150,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      * @return the requirementList of the project
      * */
     @Override public RequirementList getRequirementList(Project project) {
-        if(!projectList.contains(project))
-            throw new IllegalArgumentException("Project not found!");
+        /*if(!projectList.contains(project))
+            throw new IllegalArgumentException("Project not found!");*/
         return project.getProjectRequirementList();
     }
 
@@ -162,15 +162,15 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      * @return the taskList of the requirement
      * */
     @Override public TaskList getTaskList(Project project, Requirement requirement) {
-        if(!project.getProjectRequirementList().contains(requirement))
+        /*if(!project.getProjectRequirementList().contains(requirement))
             throw new IllegalArgumentException("Requirement not found!");
-        else
+        else*/
             return requirement.getTaskList();
     }
 
     /**
      * @param project - a project chosen from the ProjectList
-     * @return TeamMemberlist object containing the list of the team members working on the given project
+     * @return TeamMemberList object containing the list of the team members working on the given project
      * */
     @Override public TeamMemberList getTeamMemberList(Project project) {
 
