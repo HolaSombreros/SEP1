@@ -215,6 +215,7 @@ public class Date
 
     public String toString()
     {
-        return String.format("%d/%d/%d", day, month, year);
+       // return String.format("%d/%d/%d", day, month, year);
+        return day + "/" + month + "/" + year;
     }
 }
