@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
+<<<<<<< HEAD
       <id>RrcHwEKrO</id>
+=======
+      <id>sVbacnaMy</id>
+>>>>>>> f24cf06a8c0e8ab49bab111650e0ffce92fd981b
       <title>Project Management System for Colour IT</title>
       <startingdate>07/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
@@ -47,7 +51,11 @@
       </requirementlist>
    </project>
    <project>
+<<<<<<< HEAD
       <id>6pPKd4fPH</id>
+=======
+      <id>nQtg5DQQI</id>
+>>>>>>> f24cf06a8c0e8ab49bab111650e0ffce92fd981b
       <title>Some other thing for whoever</title>
       <startingdate>07/12/2020</startingdate>
       <deadline>18/05/2021</deadline>

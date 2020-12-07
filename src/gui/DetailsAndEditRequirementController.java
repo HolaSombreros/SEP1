@@ -67,11 +67,13 @@ public class DetailsAndEditRequirementController
         .setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
     teamMembersTable.setItems(viewModel.getList());   */
 
-    idLabel.setText(state.getSelectedRequirement() + "");
-    relatedProjectLabel.setText(requirement.getRelatedProject().getName());
+    idLabel.setText("Requirement Id: " +state.getSelectedRequirement());
+    relatedProjectLabel.setText("Related project: " + requirement.getRelatedProject().getName());
     userStoryInput.setText(requirement.getUserStory());
+    startingDateInput.getEditor().clear();
     startingDateShow
         .setText("Now: " + requirement.getStartingDate().toString());
+    deadlineInput.getEditor().clear();
     deadlineShow.setText("Now:" + requirement.getDeadline().toString());
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
     hoursWorkedShow
@@ -143,20 +145,18 @@ public class DetailsAndEditRequirementController
         throw new IllegalArgumentException("User Story can not be empty");
       requirement.setUserStory(userStoryInput.getText());
 
-      if (startingDateInput.getValue() == null)
-        throw new IllegalArgumentException("Starting date can not be empty");
       int day1 = startingDateInput.getValue().getDayOfMonth();
       int month1 = startingDateInput.getValue().getMonthValue();
       int year1 = startingDateInput.getValue().getYear();
+      if (startingDateInput.getValue()!=null)
       requirement.setStartingDate(new Date(day1, month1, year1));
       startingDateShow
           .setText("Now: " + requirement.getStartingDate().toString());
 
-      if (deadlineInput.getValue() == null)
-        throw new IllegalArgumentException("Deadline can not be empty");
       int day2 = deadlineInput.getValue().getDayOfMonth();
       int month2 = deadlineInput.getValue().getMonthValue();
       int year2 = deadlineInput.getValue().getYear();
+      if (deadlineInput.getValue()!=null)
       requirement.setDeadline(new Date(day2, month2, year2));
       deadlineShow.setText("Now: " + requirement.getDeadline().toString());
 

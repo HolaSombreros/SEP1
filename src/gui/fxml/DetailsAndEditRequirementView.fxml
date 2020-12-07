@@ -41,7 +41,7 @@
                                 <Font size="17.0" />
                             </font>
                         </Label>
-                        <HBox prefHeight="159.0" prefWidth="305.0">
+                        <HBox prefHeight="32.0" prefWidth="399.0">
                             <children>
                                 <Label text="User Story: ">
                                     <HBox.margin>
@@ -85,7 +85,7 @@
                                         <Insets left="33.0" />
                                     </HBox.margin>
                                 </DatePicker>
-                                <Label fx:id="deadlineShow" text="Now:">
+                                <Label fx:id="deadlineShow" text="Now: ">
                                     <font>
                                         <Font size="17.0" />
                                     </font>

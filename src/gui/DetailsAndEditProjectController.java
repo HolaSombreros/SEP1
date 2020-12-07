@@ -3,6 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
+import model.Date;
 import model.IProjectManagementModel;
 import model.Project;
 import model.TeamMember;
@@ -30,12 +31,10 @@ public class DetailsAndEditProjectController
     private IProjectManagementModel model;
     private ViewState viewState;
     private TeamMemberListViewModel teamMemberListViewModel;
-    /*public static final LocalDate LOCAL_DATE (String dateString){
-       // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(String.format("%d/%d/%d", dateString));
-        LocalDate localDate = LocalDate.parse(dateString,formatter);
+    public static final LocalDate LOCAL_DATE (Date dateString){
+       LocalDate localDate = LocalDate.of(dateString.getYear(), dateString.getMonth(), dateString.getDay());
         return localDate;
-    }*/
+    }
 
     public DetailsAndEditProjectController()
     {
@@ -55,7 +54,20 @@ public class DetailsAndEditProjectController
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         IDInput.setText(project.getID());
         nameInput.setText(project.getName());
-       // startingDateInput.setValue(LOCAL_DATE(project.getStartingDate().toString()));
+        startingDateInput.setValue(LOCAL_DATE(project.getStartingDate()));
+        deadlineInput.setValue(LOCAL_DATE(project.getDeadline()));
+        methodologyInput.setText(project.getMethodology().toString());
+        statusInput.setText(project.getStatus().toString());
+        if(project.getProductOwner() != null)
+        productOwnerInput.setText(project.getProductOwner().toString());
+        else
+            productOwnerInput.setText("");
+        if(project.getScrumMaster() != null)
+            scrumMasterInput.setText(project.getScrumMaster().toString());
+        else
+            scrumMasterInput.setText("");
+        errorLabel.setText("");
+
     }
     public Region getRoot()
     {
