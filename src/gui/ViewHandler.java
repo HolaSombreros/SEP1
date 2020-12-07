@@ -49,7 +49,7 @@ public class ViewHandler
     switch (id)
     {
       case "projectList":
-        root = loadProjectList("fxml/ProjectListView.fxml");
+        root = loadProjectList("fxml/ProjectListView.fxml", viewState);
         break;
       case "requirement":
         root = loadRequirementList("fxml/RequirementListView.fxml", viewState);
@@ -58,7 +58,7 @@ public class ViewHandler
         root = loadTaskList("fxml/TaskListView.fxml", viewState);
         break;
       case "teamMemberList":
-       // root = loadTeamMemberList("fxml/TeamMemberListView.fxml");
+       // root = loadTeamMemberList("fxml/TeamMemberListView.fxml", viewState);
         break;
       case "addProject":
         root = loadAddProject("fxml/AddProjectView.fxml");
@@ -111,7 +111,7 @@ public class ViewHandler
     primaryStage.close();
   }
 
-  private Region loadProjectList(String fxmlFile)
+  private Region loadProjectList(String fxmlFile, ViewState viewState)
   {
     if (projectListController == null)
     {
@@ -121,7 +121,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         projectListController = loader.getController();
-        projectListController.init(this, model, root);
+        projectListController.init(this, model, root, viewState);
       }
       catch (Exception e)
       {
