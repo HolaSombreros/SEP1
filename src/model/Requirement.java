@@ -247,7 +247,6 @@ public class Requirement
 
   public boolean equals(Object obj)
   {
-    boolean rtm = true;
     if (!(obj instanceof Requirement))
       return false;
     Requirement other = (Requirement) obj;
