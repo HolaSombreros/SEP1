@@ -10,21 +10,17 @@ public class TeamMemberListViewModel
   private IProjectManagementModel model;
   private ViewState viewState;
 
-  public TeamMemberListViewModel(IProjectManagementModel model,
-      ViewState viewState)
-  {
+  public TeamMemberListViewModel(IProjectManagementModel model, ViewState viewState) {
     this.model = model;
     this.viewState = viewState;
     this.list = FXCollections.observableArrayList();
   }
 
-  public ObservableList<TeamMemberViewModel> getList()
-  {
+  public ObservableList<TeamMemberViewModel> getList() {
     return list;
   }
 
-  public void update(Project project, Requirement requirement)
-  {
+  public void update(Project project, Requirement requirement) {
     list.clear();
     for (int i = 0; i < model.getTaskList(project, requirement)
         .getTaskById(viewState.getSelectedTask()).getTeamMemberList()
@@ -34,8 +30,7 @@ public class TeamMemberListViewModel
           .getByIndex(i)));
   }
 
-  public void update(Project project)
-  {
+  public void update(Project project) {
     list.clear();
     for (int i = 0; i < model.getRequirementList(project)
         .getRequirementById(viewState.getSelectedRequirement())
@@ -45,8 +40,7 @@ public class TeamMemberListViewModel
           .getTeamMemberList().getByIndex(i)));
   }
 
-  public void update()
-  {
+  public void update() {
     list.clear();
     for (int i = 0; i < model.getProjectList()
         .getProjectByID(viewState.getSelectedProject()).getTeamMemberList()
@@ -56,13 +50,13 @@ public class TeamMemberListViewModel
               .getTeamMemberList().getByIndex(i)));
   }
 
-  public void add(TeamMember teamMember)
-  {
+
+
+  public void add(TeamMember teamMember) {
     list.add(new TeamMemberViewModel(teamMember));
   }
 
-  public void remove(TeamMember teamMember)
-  {
+  public void remove(TeamMember teamMember) {
     for (int i = 0; i < list.size(); i++)
     {
       if (list.get(i).getIdProperty().get() == teamMember.getId() && list.get(i)

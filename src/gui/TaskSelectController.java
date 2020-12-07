@@ -33,17 +33,16 @@ public class TaskSelectController {
         this.model = model;
         this.root = root;
         this.viewModel = new TaskListViewModel(model,viewState);
-
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-        titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
-        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
-        taskTable.setItems(viewModel.getList());
         reset();
 
     }
 
     public void reset(){
-
+        viewModel.update();
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        taskTable.setItems(viewModel.getList());
     }
 
     public Region getRoot(){
