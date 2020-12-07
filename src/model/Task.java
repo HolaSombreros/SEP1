@@ -185,8 +185,7 @@ public class Task {
                 task.getDeadline().equals(getDeadline()) &&
                 task.getStatus() == getStatus() &&
                 task.getTeamMemberList().equals(getTeamMemberList()) &&
-                task.getTimeRegistration().equals(getTimeRegistration()) &&
-                task.getRelatedRequirement().equals(getRelatedRequirement());
+                task.getTimeRegistration().equals(getTimeRegistration());
     }
 
     /**

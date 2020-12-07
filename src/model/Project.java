@@ -236,10 +236,6 @@ public class Project
                 return false;
             }
         }
-        if(other.productOwner == null || other.scrumMaster ==null)
-        {
-            return false;
-        }
         return  this.ID.equals(other.ID) &&
                 this.name.equals(other.name) &&
                 this.startingDate.equals(other.startingDate) &&
