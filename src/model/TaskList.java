@@ -51,7 +51,7 @@ public class TaskList {
             throw new IllegalArgumentException("The task is not in the list of tasks");
         }
         else {
-            System.out.println(tasks.remove(task));
+            tasks.remove(task);
         }
     }
 
@@ -108,12 +108,7 @@ public class TaskList {
      * @return A boolean value representing whether or not the specified task is in the list of tasks.
      */
     public boolean contains(Task task) {
-        for (int i = 0; i < size(); i++) {
-            if (tasks.get(i).equals(task)) {
-                return true;
-            }
-        }
-        return false;
+        return tasks.contains(task);
     }
 
     /**
