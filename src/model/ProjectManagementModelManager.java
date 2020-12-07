@@ -243,7 +243,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      *
      * */
     @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) {
-        HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<TeamMember, Integer>();
+        HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<>();
         for(int i = 0; i < projectList.size(); i++)
             if(projectList.getProject(i).getTeamMemberList().contains(teamMember)) {
                 Project project = projectList.getProject(i);

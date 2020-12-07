@@ -14,25 +14,30 @@ public class TaskSelectController {
 
     private Region root;
     private ViewHandler viewHandler;
-    private ViewState state;
+    private ViewState viewState;
     private IProjectManagementModel model;
-    private TeamMemberListViewModel viewModel;
+    private TaskListViewModel viewModel;
 
 
-    @FXML private TableView<TaskListViewModel> taskTable;
-    @FXML private TableColumn<TaskList,Integer> idColumn;
-    @FXML private TableColumn<TaskList,String> titleColumn;
-    @FXML private TableColumn<TaskList,String> deadlineColumn;
+    @FXML private TableView<TaskViewModel> taskTable;
+    @FXML private TableColumn<TaskViewModel,Number> idColumn;
+    @FXML private TableColumn<TaskViewModel,String> titleColumn;
+    @FXML private TableColumn<TaskViewModel,String> deadlineColumn;
 
     public TaskSelectController(){
 
     }
 
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState state){
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState viewState){
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TeamMemberListViewModel(model,state);
+        this.viewModel = new TaskListViewModel(model,viewState);
+
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        taskTable.setItems(viewModel.getList());
 
     }
 
@@ -52,5 +57,8 @@ public class TaskSelectController {
     }
 
     public void assignButtonPressed() {
+    }
+
+    public void unassignButtonPressed() {
     }
 }
