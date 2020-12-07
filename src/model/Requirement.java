@@ -257,7 +257,7 @@ public class Requirement
       }
     }
     return id == other.id
-        //&& relatedProject.equals(other.relatedProject)
+        && relatedProject.getID() == other.relatedProject.getID()
         && userStory.equals(other.userStory)
         && estimatedTime == other.estimatedTime
         && hoursWorked == other.hoursWorked

@@ -75,7 +75,7 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <TextArea fx:id="userStoryShow" prefHeight="63.0" prefWidth="435.0" />
+                <TextArea fx:id="userStoryShow" editable="false" prefHeight="10.0" prefWidth="435.0" />
             </children>
             <VBox.margin>
                 <Insets top="10.0" />

@@ -14,6 +14,7 @@ public class TeamMemberListViewModel
     this.model = model;
     this.viewState = viewState;
     this.list = FXCollections.observableArrayList();
+    update();
   }
 
   public ObservableList<TeamMemberViewModel> getList() {
