@@ -44,7 +44,7 @@ public class Project
     }
     public Status getStatus()
     {
-        if(getStatus().equals(Status.STARTED))
+        if(status.equals(Status.STARTED))
         {
             boolean notEnded = true;
             for (Requirement requirement : getProjectRequirementList().getRequirements())
@@ -54,9 +54,7 @@ public class Project
                     notEnded = false;
                     break;
                 }
-
             }
-
             if (notEnded = true)
             {
                 this.status = Status.ENDED;
