@@ -3,10 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.Date;
-import model.IProjectManagementModel;
-import model.Project;
-import model.TeamMember;
+import model.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,11 +17,11 @@ public class DetailsAndEditProjectController
     @FXML private TextField methodologyInput;
     @FXML private TextField statusInput;
     @FXML private Label errorLabel;
-    @FXML private TableView<TeamMemberListViewModel> teamMembersTable;
+    @FXML private TableView<TeamMemberViewModel> teamMembersTable;
     @FXML private TableColumn<TeamMemberListViewModel, String> IDColumn;
     @FXML private TableColumn<TeamMemberListViewModel, String> nameColumn;
-    @FXML private TextField scrumMasterInput;
-    @FXML private TextField productOwnerInput;
+    @FXML private TextField scrumMaster;
+    @FXML private TextField productOwner;
 
     private Region root;
     private ViewHandler viewHandler;
@@ -59,15 +56,20 @@ public class DetailsAndEditProjectController
         methodologyInput.setText(project.getMethodology().toString());
         statusInput.setText(project.getStatus().toString());
         if(project.getProductOwner() != null)
-        productOwnerInput.setText(project.getProductOwner().toString());
+        productOwner.setText(project.getProductOwner().toString());
         else
-            productOwnerInput.setText("");
+            productOwner.setText("");
         if(project.getScrumMaster() != null)
-            scrumMasterInput.setText(project.getScrumMaster().toString());
+            scrumMaster.setText(project.getScrumMaster().toString());
         else
-            scrumMasterInput.setText("");
+            scrumMaster.setText("");
         errorLabel.setText("");
 
+    }
+    @FXML private void assignScrumMaster()
+    {
+        TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
+        //model.getProjectList().getProjectByID(selectedTeamMember.getIdProperty().toString()).assignScrumMaster(selectedTeamMember);
     }
     public Region getRoot()
     {
