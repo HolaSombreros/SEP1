@@ -117,7 +117,7 @@ public class AddRequirementController
 
   @FXML private void cancelButtonPressed()
   {
-    viewHandler.openView("requirement");
+    viewHandler.openView("requirementList");
   }
 
 }
