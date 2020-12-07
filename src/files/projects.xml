@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-<<<<<<< HEAD
-      <id>RrcHwEKrO</id>
-=======
-      <id>sVbacnaMy</id>
->>>>>>> f24cf06a8c0e8ab49bab111650e0ffce92fd981b
+      <id>ucRCQ1PRb</id>
       <title>Project Management System for Colour IT</title>
       <startingdate>07/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
@@ -19,26 +15,12 @@
          <requirement>
             <tasklist>
                <task>
-                  <id>2</id>
-                  <title>Do more stuff</title>
-                  <startingdate>18/03/2021</startingdate>
-                  <deadline>24/04/2021</deadline>
-                  <estimatedtime>666.0</estimatedtime>
-                  <status>Not Started</status>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>1</relatedrequirement>
-                  <teammemberlist>
-                  </teammemberlist>
-               </task>
-               <task>
-                  <id>3</id>
-                  <title>asdasdad</title>
-                  <startingdate>19/03/2021</startingdate>
-                  <deadline>28/04/2021</deadline>
-                  <estimatedtime>13.0</estimatedtime>
-                  <status>Not Started</status>
+                  <id>1</id>
+                  <title>Do some stuff</title>
+                  <startingdate>16/03/2021</startingdate>
+                  <deadline>23/04/2021</deadline>
+                  <estimatedtime>5.0</estimatedtime>
+                  <status>Started</status>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
@@ -51,11 +33,7 @@
       </requirementlist>
    </project>
    <project>
-<<<<<<< HEAD
-      <id>6pPKd4fPH</id>
-=======
-      <id>nQtg5DQQI</id>
->>>>>>> f24cf06a8c0e8ab49bab111650e0ffce92fd981b
+      <id>cncWHK2kX</id>
       <title>Some other thing for whoever</title>
       <startingdate>07/12/2020</startingdate>
       <deadline>18/05/2021</deadline>

@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
+
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class DetailsAndEditTaskController {
@@ -56,9 +58,8 @@ public class DetailsAndEditTaskController {
         idField.setText(String.valueOf(task.getId()));
         titleInput.setText(task.getTitle());
         estimatedHoursInput.setText(String.valueOf(task.getEstimatedTime()));
-        // TODO - fix 2 lines under here
-        startingDateInput.setValue(null);
-        deadlineInput.setValue(null);
+        startingDateInput.setValue(LocalDate.of(task.getStartingDate().getYear(), task.getStartingDate().getMonth(), task.getStartingDate().getDay()));
+        deadlineInput.setValue(LocalDate.of(task.getDeadline().getYear(), task.getDeadline().getMonth(), task.getDeadline().getDay()));
         statusInput.setValue(task.getStatus().getName());
         if (task.getResponsibleTeamMember() != null) {
             responsibleTeamMemberInput.setText(task.getResponsibleTeamMember().getFullName());
