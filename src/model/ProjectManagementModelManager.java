@@ -69,11 +69,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     // Model methods from IProjectManagementModel:
     @Override public void addProject(Project project) {
+        projectList.addProject(project);
 
     }
 
     @Override public void addRequirement(Project project,Requirement requirement) {
-
 
     }
 

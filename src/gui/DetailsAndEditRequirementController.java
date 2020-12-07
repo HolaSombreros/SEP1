@@ -43,7 +43,7 @@ public class DetailsAndEditRequirementController
   }
 
   public void init(ViewHandler viewHandler, IProjectManagementModel model,
-      Region root)
+      Region root, ViewState state)
   {
     this.viewHandler = viewHandler;
     this.model = model;

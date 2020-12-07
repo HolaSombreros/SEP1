@@ -21,6 +21,7 @@ public class AddRequirementController
   private Region root;
   private IProjectManagementModel model;
   private ViewHandler viewHandler;
+  private ViewState state;
 
   public AddRequirementController()
   {
@@ -32,7 +33,7 @@ public class AddRequirementController
   }
 
   public void init(ViewHandler viewHandler, IProjectManagementModel model,
-      Region root)
+      Region root, ViewState state)
   {
     this.viewHandler = viewHandler;
     this.model = model;
@@ -101,10 +102,11 @@ public class AddRequirementController
       if (typeInput.getValue().equals("Project Related"))
         type = Type.PROJECT_RELATED;
 
-      //model.addRequirement(
-        //  new Requirement(userStory, startingDate, deadline, estimatedTime,
-          //    priority, type));
-      errorLabel.setText("");
+     /* model.addRequirement(
+          model.getProjectList().getProjectByID(state.getSelectedProject()),
+          new Requirement(userStory, startingDate, deadline, estimatedTime,
+              priority, type));
+      errorLabel.setText("");*/
     }
     catch (Exception e)
     {
