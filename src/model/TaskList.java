@@ -47,16 +47,11 @@ public class TaskList {
      * @param task The Task object that will be removed from the list.
      */
     public void remove(Task task) {
-//        if (!contains(task)) {
-//            throw new IllegalArgumentException("The task is not in the list of tasks");
-//        }
-        //System.out.println(tasks.remove(task));
-        for (int i = 0; i < size(); i++) {
-            if (getTask(i).equals(task)) {
-                tasks.remove(i);
-                System.out.println("task found");
-                break;
-            }
+        if (!contains(task)) {
+            throw new IllegalArgumentException("The task is not in the list of tasks");
+        }
+        else {
+            System.out.println(tasks.remove(task));
         }
     }
 
@@ -113,7 +108,11 @@ public class TaskList {
      * @return A boolean value representing whether or not the specified task is in the list of tasks.
      */
     public boolean contains(Task task) {
-        // TODO - MAKE A CUSTOM CONTAINS METHOD.
+        for (int i = 0; i < size(); i++) {
+            if (tasks.get(i).equals(task)) {
+                return true;
+            }
+        }
         return false;
     }
 

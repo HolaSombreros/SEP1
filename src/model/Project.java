@@ -208,7 +208,22 @@ public class Project
             return false;
         }
         Project other = (Project) obj;
-        if(scrumMaster == null || productOwner ==null)
+        if(scrumMaster == null)
+        {
+            if(other.scrumMaster != null)
+            {
+                return false;
+            }
+
+        }
+        if(productOwner == null)
+        {
+            if(other.productOwner != null)
+            {
+                return false;
+            }
+        }
+        if(other.productOwner == null || other.scrumMaster ==null)
         {
             return false;
         }
@@ -218,8 +233,6 @@ public class Project
                 this.deadline.equals(other.deadline) &&
                 this.status.equals(other.status) &&
                 this.methodology.equals(other.methodology) &&
-                this.scrumMaster.equals(other.scrumMaster) &&
-                this.productOwner.equals(other.productOwner) &&
                 this.projectTeamMemberList.equals(other.projectTeamMemberList) &&
                 this.projectRequirementList.equals(other.projectRequirementList);
 

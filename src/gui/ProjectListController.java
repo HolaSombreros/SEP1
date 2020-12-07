@@ -34,7 +34,6 @@ public class ProjectListController
         this.root = root;
         this.viewState = viewState;
         this.projectListViewModel = new ProjectListViewModel(model,viewState);
-
         projectIDColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
         projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         projectDeadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
@@ -44,10 +43,9 @@ public class ProjectListController
     }
     public void reset()
     {
+        projectListViewModel.update();
         searchInput.setText("");
         errorLabel.setText("");
-        projectListViewModel.update();
-
     }
     public Region getRoot()
     {
@@ -80,9 +78,11 @@ public class ProjectListController
             if (remove)
             {
                 Project project = model.getProjectList().getProjectByID(selectedItem.getIDProperty().get());
-                projectListViewModel.remove(project);
                 model.removeProject(project);
-                projectListTable.getSelectionModel().clearSelection();}
+                projectListViewModel.remove(project);
+                projectListTable.getSelectionModel().clearSelection();
+            }
+
         }
         catch(Exception e)
         {
