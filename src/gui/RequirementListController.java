@@ -166,7 +166,7 @@ public class RequirementListController
 
     catch (Exception e)
     {
-      errorLabel.setText("Requirement not selected");
+      errorLabel.setText("Select a requirement");
     }
   }
 

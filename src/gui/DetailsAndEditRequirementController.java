@@ -5,13 +5,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 public class DetailsAndEditRequirementController
 {
   @FXML private Label idLabel;
-  @FXML private Label relatedProjectLabel;
+  @FXML private TextArea relatedProjectInput;
   @FXML private TextField userStoryInput;
   @FXML private DatePicker deadlineInput;
   @FXML private Label deadlineShow;
@@ -50,8 +49,6 @@ public class DetailsAndEditRequirementController
     this.root = root;
     this.state = state;
     reset();
-    this.viewModel = new TeamMemberListViewModel(model, state);
-
   }
 
   public void reset()
@@ -60,31 +57,33 @@ public class DetailsAndEditRequirementController
         model.getProjectList().getProjectByID(state.getSelectedProject()))
         .getRequirementById(state.getSelectedRequirement());
 
-    /*viewModel.update(requirement.getRelatedProject());
+    this.viewModel = new TeamMemberListViewModel(model,state);
+    viewModel.update(requirement.getRelatedProject());
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
     nameColumn
         .setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
-    teamMembersTable.setItems(viewModel.getList());   */
+    teamMembersTable.setItems(viewModel.getList());
 
     idLabel.setText("Requirement Id: " +state.getSelectedRequirement());
-    relatedProjectLabel.setText("Related project: " + requirement.getRelatedProject().getName());
+    relatedProjectInput
+        .setText("Related project: " + requirement.getRelatedProject().getName());
     userStoryInput.setText(requirement.getUserStory());
     startingDateInput.getEditor().clear();
     startingDateShow
         .setText("Now: " + requirement.getStartingDate().toString());
     deadlineInput.getEditor().clear();
-    deadlineShow.setText("Now:" + requirement.getDeadline().toString());
+    deadlineShow.setText("Now: " + requirement.getDeadline().toString());
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
     hoursWorkedShow
         .setText("Number of Hours Worked: " + requirement.getHoursWorked());
     responsibleTeamMemberInput.setText("");
-    /*if (requirement.getResponsibleTeamMember() != null)
+    if (requirement.getResponsibleTeamMember() != null)
       responsibleTeamMemberInput.setText(
           requirement.getResponsibleTeamMember().getId() + " " + requirement
               .getResponsibleTeamMember().getFullName());
     else
-      responsibleTeamMemberInput.setText("");  */
+      responsibleTeamMemberInput.setText("");
 
     switch (requirement.getPriority())
     {
@@ -145,25 +144,28 @@ public class DetailsAndEditRequirementController
         throw new IllegalArgumentException("User Story can not be empty");
       requirement.setUserStory(userStoryInput.getText());
 
-      int day1 = startingDateInput.getValue().getDayOfMonth();
-      int month1 = startingDateInput.getValue().getMonthValue();
-      int year1 = startingDateInput.getValue().getYear();
-      if (startingDateInput.getValue()!=null)
-      requirement.setStartingDate(new Date(day1, month1, year1));
-      startingDateShow
-          .setText("Now: " + requirement.getStartingDate().toString());
+      if (startingDateInput.getValue() != null)
+      {
+        int day1 = startingDateInput.getValue().getDayOfMonth();
+        int month1 = startingDateInput.getValue().getMonthValue();
+        int year1 = startingDateInput.getValue().getYear();
+        if (startingDateInput.getValue() != null)
+          requirement.setStartingDate(new Date(day1, month1, year1));
+        startingDateShow.setText("Now: " + requirement.getStartingDate().toString());
+      }
 
-      int day2 = deadlineInput.getValue().getDayOfMonth();
-      int month2 = deadlineInput.getValue().getMonthValue();
-      int year2 = deadlineInput.getValue().getYear();
-      if (deadlineInput.getValue()!=null)
-      requirement.setDeadline(new Date(day2, month2, year2));
-      deadlineShow.setText("Now: " + requirement.getDeadline().toString());
+      if(deadlineInput.getValue() != null)
+      {
+        int day2 = deadlineInput.getValue().getDayOfMonth();
+        int month2 = deadlineInput.getValue().getMonthValue();
+        int year2 = deadlineInput.getValue().getYear();
+        if (deadlineInput.getValue() != null)
+          requirement.setDeadline(new Date(day2, month2, year2));
+        deadlineShow.setText("Now: " + requirement.getDeadline().toString());
+      }
 
-      Date.checkDates(new Date(day1, month1, year1),
-          new Date(day2, month2, year2));
+      Date.checkDates(requirement.getStartingDate(), requirement.getDeadline());
 
-      double estimatedTime = 0;
       if (estimatedTimeInput.getText().equals(""))
         throw new IllegalArgumentException("Estimated Time can not be empty");
       try
@@ -176,13 +178,13 @@ public class DetailsAndEditRequirementController
         throw new IllegalArgumentException("Estimated Time has to be a number");
       }
 
-      /*if (!(responsibleTeamMemberInput.getText().equals("")))
+      if (!(responsibleTeamMemberInput.getText().equals("")))
       {
         String member = responsibleTeamMemberInput.getText();
         String[] member1 = member.split(" ");
         int index = Integer.parseInt(member1[0]);
         requirement.assignTeamMember(model.getTeamMemberList(requirement.getRelatedProject(),requirement).getByID(index));
-      } */
+      }
 
       Priority priority = null;
       if (priorityInput.getValue().equals("Critical"))
@@ -213,6 +215,8 @@ public class DetailsAndEditRequirementController
         requirement.setStatus(RequirementStatus.REJECTED);
 
       errorLabel.setText("");
+
+      state.setSelectedRequirement(-1);
       viewHandler.openView("requirementList");
     }
 

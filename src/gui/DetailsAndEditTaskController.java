@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class DetailsAndEditTaskController {
@@ -50,7 +51,6 @@ public class DetailsAndEditTaskController {
     }
 
     public void reset() {
-        // TODO - dont actually reset it to nothing, but instead it should be set to the task's details...
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
         Task task = model.getTaskList(model.getProjectList().getProjectByID(viewState.getSelectedProject()), requirement).getTaskById(viewState.getSelectedTask());
@@ -58,9 +58,8 @@ public class DetailsAndEditTaskController {
         idField.setText(String.valueOf(task.getId()));
         titleInput.setText(task.getTitle());
         estimatedHoursInput.setText(String.valueOf(task.getEstimatedTime()));
-        // TODO - fix 2 lines under here
-        startingDateInput.setValue(null);
-        deadlineInput.setValue(null);
+        startingDateInput.setValue(LocalDate.of(task.getStartingDate().getYear(), task.getStartingDate().getMonth(), task.getStartingDate().getDay()));
+        deadlineInput.setValue(LocalDate.of(task.getDeadline().getYear(), task.getDeadline().getMonth(), task.getDeadline().getDay()));
         statusInput.setValue(task.getStatus().getName());
         if (task.getResponsibleTeamMember() != null) {
             responsibleTeamMemberInput.setText(task.getResponsibleTeamMember().getFullName());
@@ -75,7 +74,114 @@ public class DetailsAndEditTaskController {
     }
     
     @FXML private void editDetails() {
-        // change tons of stuff
+        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+        Task task = model.getTaskList(model.getProjectList().getProjectByID(viewState.getSelectedProject()), requirement).getTaskById(viewState.getSelectedTask());
+        boolean editedTask = false;
+        try {
+            // Title:
+            if (titleInput.getText().equals("")) {
+                throw new IllegalStateException("The title cannot be empty");
+            }
+            if (!titleInput.getText().equals(task.getTitle())) {
+                editedTask = true;
+            }
+            
+            // Estimated time:
+            if (estimatedHoursInput.getText().equals("")) {
+                throw new IllegalStateException("The estimated time cannot be empty");
+            }
+            try {
+                if (Double.parseDouble(estimatedHoursInput.getText()) <= 0) {
+                    throw new NumberFormatException();
+                }
+                if (Double.parseDouble(estimatedHoursInput.getText()) != task.getEstimatedTime()) {
+                    editedTask = true;
+                }
+            }
+            catch (NumberFormatException e) {
+                errorLabel.setText("Estimated time has to be a positive number higher than 0");
+            }
+            
+            // Starting date:
+            if (startingDateInput.getValue() == null) {
+                throw new IllegalStateException("Starting date cannot be empty");
+            }
+            Date startingDate = new Date(startingDateInput.getValue().getDayOfMonth(), startingDateInput.getValue().getMonthValue(), startingDateInput.getValue().getYear());
+            if (!startingDate.equals(task.getStartingDate())) {
+                editedTask = true;
+            }
+            
+            // Deadline:
+            if (deadlineInput.getValue() == null) {
+                throw new IllegalStateException("Deadline cannot be empty");
+            }
+            Date deadline = new Date(deadlineInput.getValue().getDayOfMonth(), deadlineInput.getValue().getMonthValue(), deadlineInput.getValue().getYear());
+            if (!deadline.equals(task.getDeadline())) {
+                editedTask = true;
+            }
+            Date.checkDates(startingDate, deadline);
+            
+            // Status:
+            if (!statusInput.getValue().equals(task.getStatus().getName())) {
+                editedTask = true;
+            }
+            /*
+            // Responsible Team Member:
+            if (!responsibleTeamMemberInput.getText().equals(task.getResponsibleTeamMember().getFullName())) {
+                editedTask = true;
+            }
+            
+            // TODO - is this even editable?!??
+            // Hours Worked:
+            if (hoursWorkedInput.getText().equals("")) {
+                throw new IllegalStateException("The hours worked cannot be empty");
+            }
+            try {
+                if (Double.parseDouble(estimatedHoursInput.getText()) < 0) {
+                    throw new NumberFormatException();
+                }
+                if (Double.parseDouble(estimatedHoursInput.getText()) != task.getEstimatedTime()) {
+                    editedTask = true;
+                }
+            }
+            catch (NumberFormatException e) {
+                errorLabel.setText("Estimated time has to be a positive number higher than 0");
+            }
+            
+            */
+            
+            
+            
+            if (editedTask && confirmation("edit")) {
+                task.setTitle(titleInput.getText());
+                task.setEstimatedTime(Double.parseDouble(estimatedHoursInput.getText()));
+                task.setStartingDate(startingDate);
+                task.setDeadline(deadline);
+                switch (statusInput.getValue()) {
+                    case "Not Started":
+                        task.setStatus(Status.NOT_STARTED);
+                        break;
+                    case "Started":
+                        task.setStatus(Status.STARTED);
+                        break;
+                    case "Ended":
+                        task.setStatus(Status.ENDED);
+                        break;
+                }
+                if (responsibleTeamMemberInput.getText().equals("")) {
+                    task.unassignResponsibleTeamMember();
+                }
+                else {
+                    task.assignResponsibleTeamMember(task.getTeamMemberList().getByID(0));   // TODO - fix this... somehow
+                }
+                model.saveModel();
+                goBack();
+            }
+        }
+        catch (Exception e) {
+            errorLabel.setText(e.getMessage());
+        }
     }
     
     @FXML private void makeResponsible() {
@@ -84,12 +190,10 @@ public class DetailsAndEditTaskController {
         try {
             TeamMemberViewModel selectedItem = teamTable.getSelectionModel().getSelectedItem();
             if (selectedItem == null) {
-                errorLabel.setText("Please select a team member first");
+                responsibleTeamMemberInput.setText("");
             }
             else {
-                if (confirmation()) {
-                    responsibleTeamMemberInput.setText(selectedItem.getNameProperty().toString());
-                }
+                responsibleTeamMemberInput.setText(selectedItem.getNameProperty().toString());
             }
         }
         catch (Exception e) {
@@ -98,7 +202,15 @@ public class DetailsAndEditTaskController {
     }
     
     @FXML private void removeTask() {
-        // remove stuff
+        errorLabel.setText("");
+        if (confirmation("remove")) {
+            Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+            Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+            Task task = model.getTaskList(project, requirement).getTaskById(viewState.getSelectedTask());
+            model.removeTask(requirement, task);
+            //model.saveModel();
+            goBack();
+        }
     }
 
     @FXML private void goBack() {
@@ -106,15 +218,18 @@ public class DetailsAndEditTaskController {
         viewHandler.openView("taskList");
     }
     
-    private boolean confirmation() {
-        int index = teamTable.getSelectionModel().getSelectedIndex();
-        TeamMemberViewModel selectedItem = teamTable.getItems().get(index);
-        if (index < 0 || index > teamTable.getItems().size()) {
-            return false;
-        }
+    private boolean confirmation(String id) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm changing responsible team member");
-        alert.setHeaderText("Changing responsible team member for task #" + idField.getText() + " to: " + selectedItem.getNameProperty());
+        switch (id) {
+            case "remove":
+                alert.setTitle("Confirm removing task");
+                alert.setHeaderText("Removing task #" + idField.getText() + " - " + titleInput.getText());
+                break;
+            case "edit":
+                alert.setTitle("Confirm editing task");
+                alert.setHeaderText("Editing task #" + idField.getText() + " - " + titleInput.getText());
+                break;
+        }
         Optional<ButtonType> result = alert.showAndWait();
         return (result.isPresent()) && (result.get() == ButtonType.OK);
     }

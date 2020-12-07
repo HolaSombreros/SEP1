@@ -57,9 +57,6 @@ public class ViewHandler
       case "taskList":
         root = loadTaskList("fxml/TaskListView.fxml", viewState);
         break;
-      case "teamMemberList":
-       // root = loadTeamMemberList("fxml/TeamMemberListView.fxml", viewState);
-        break;
       case "addProject":
         root = loadAddProject("fxml/AddProjectView.fxml");
         break;
@@ -298,8 +295,7 @@ public class ViewHandler
     }
     else
     {
-      // TODO - uncomment line below
-      //detailsAndEditRequirementController.reset();
+      detailsAndEditRequirementController.reset();
     }
     return detailsAndEditRequirementController.getRoot();
   }

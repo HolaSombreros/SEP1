@@ -88,27 +88,27 @@ public class Task {
 
     public void setEstimatedTime(double estimatedTime) {
         if (estimatedTime <= 0) {
-            throw new IllegalArgumentException("The estimated time cannot be less than 0");
+            throw new IllegalArgumentException("The estimated time cannot be less than or equal to 0");
         }
         this.estimatedTime = estimatedTime;
     }
 
     public void setStartingDate(Date startingDate) {
         if (startingDate.isBefore(relatedRequirement.getStartingDate())) {
-            throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date");
+            throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date (" + relatedRequirement.getStartingDate().toString() + ")");
         }
         else if (!startingDate.isBefore(relatedRequirement.getDeadline())) {
-            throw new IllegalArgumentException("The starting date cannot be after the requirement's deadline");
+            throw new IllegalArgumentException("The starting date cannot be after the requirement's deadline (" + relatedRequirement.getDeadline().toString() + ")");
         }
         this.startingDate = startingDate.copy();
     }
 
     public void setDeadline(Date deadline) {
         if (startingDate.isBefore(relatedRequirement.getStartingDate())) {
-            throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date");
+            throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date (" + relatedRequirement.getStartingDate().toString() + ")");
         }
         else if (!deadline.isBefore(relatedRequirement.getDeadline())) {
-            throw new IllegalArgumentException("The deadline cannot be after the requirement's deadline");
+            throw new IllegalArgumentException("The deadline cannot be after the requirement's deadline (" + relatedRequirement.getDeadline().toString() + ")");
         }
         this.deadline = deadline.copy();
     }
@@ -185,7 +185,8 @@ public class Task {
                 task.getDeadline().equals(getDeadline()) &&
                 task.getStatus() == getStatus() &&
                 task.getTeamMemberList().equals(getTeamMemberList()) &&
-                task.getTimeRegistration().equals(getTimeRegistration());
+                task.getTimeRegistration().equals(getTimeRegistration()) &&
+                task.getRelatedRequirement().getId() == getRelatedRequirement().getId();
     }
 
     /**
