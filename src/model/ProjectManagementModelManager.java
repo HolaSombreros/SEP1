@@ -2,7 +2,6 @@ package model;
 
 import connections.IFileConnection;
 import connections.XmlFile;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -35,8 +34,6 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
         projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 05, 2021), Methodology.SCRUM));
     
-        //System.out.println(projectList.getProject(0).getStatus().getName()); // TODO - fix Project.java getStatus() - it calls itself to make an infinite loop.
-        System.out.println("Project Start Date: " + projectList.getProject(0).getDeadline().toString());
         projectList.getProject(0).addRequirement(new Requirement("As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start",
             new Date(12, 3, 2021),
             new Date(21, 5, 2021),
@@ -45,15 +42,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             Type.FUNCTIONAL,
             projectList.getProject(0)));
     
-        System.out.println("Requirement estimated time: " + projectList.getProject(0).getProjectRequirementList().getRequirement(0).getEstimatedTime());
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).addTask(new Task("Do some shit",
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).addTask(new Task("Do some stuff",
             new Date(15, 3, 2021),
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
     
-        System.out.println("Task status: " + projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getStatus().getName());
-
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
         projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));

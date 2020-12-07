@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>y1S9gimJ5</id>
+      <id>RrcHwEKrO</id>
       <title>Project Management System for Colour IT</title>
-      <startingdate>7/12/2020</startingdate>
+      <startingdate>07/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
       <scrummaster>
       </scrummaster>
@@ -15,11 +15,25 @@
          <requirement>
             <tasklist>
                <task>
-                  <id>1</id>
-                  <title>Do some shit</title>
-                  <startingdate>15/3/2021</startingdate>
-                  <deadline>19/4/2021</deadline>
-                  <estimatedtime>5.0</estimatedtime>
+                  <id>2</id>
+                  <title>Do more stuff</title>
+                  <startingdate>18/03/2021</startingdate>
+                  <deadline>24/04/2021</deadline>
+                  <estimatedtime>666.0</estimatedtime>
+                  <status>Not Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>1</relatedrequirement>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+               <task>
+                  <id>3</id>
+                  <title>asdasdad</title>
+                  <startingdate>19/03/2021</startingdate>
+                  <deadline>28/04/2021</deadline>
+                  <estimatedtime>13.0</estimatedtime>
                   <status>Not Started</status>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
@@ -33,10 +47,10 @@
       </requirementlist>
    </project>
    <project>
-      <id>HI1McV80g</id>
+      <id>6pPKd4fPH</id>
       <title>Some other thing for whoever</title>
-      <startingdate>7/12/2020</startingdate>
-      <deadline>18/5/2021</deadline>
+      <startingdate>07/12/2020</startingdate>
+      <deadline>18/05/2021</deadline>
       <scrummaster>
       </scrummaster>
       <productowner>

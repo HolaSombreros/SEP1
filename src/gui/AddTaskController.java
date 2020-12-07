@@ -72,7 +72,7 @@ public class AddTaskController {
                 estimatedTime = Double.parseDouble(estimatedHoursInput.getText());
             }
             catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Estimated Time has to be a number");
+                throw new IllegalArgumentException("Estimated time has to be a number");
             }
             Requirement relatedRequirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
             Task task = new Task(titleInput.getText(), startingDate, deadline, estimatedTime, relatedRequirement);
