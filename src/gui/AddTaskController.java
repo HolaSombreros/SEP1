@@ -66,7 +66,7 @@ public class AddTaskController {
             Date startingDate = new Date(Integer.parseInt(startingDateArr[2]), Integer.parseInt(startingDateArr[1]), Integer.parseInt(startingDateArr[0]));
             Date deadline = new Date(Integer.parseInt(deadlineArr[2]), Integer.parseInt(deadlineArr[1]), Integer.parseInt(deadlineArr[0]));
             // TODO - fix line below.
-            model.addTask(model.getProjectList().getProject(0), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0), new Task(titleInput.getText(), startingDate, deadline, Double.parseDouble(estimatedHoursInput.getText()), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)));
+            //model.addTask(model.getRequirementList(), new Task(titleInput.getText(), startingDate, deadline, Double.parseDouble(estimatedHoursInput.getText()), model.getProjectList().getProject(0).getProjectRequirementList().getRequirement(0)));
             model.saveModel();
             cancel();
         }
