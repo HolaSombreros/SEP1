@@ -38,6 +38,7 @@ public class AddRequirementController
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
+    this.state = state;
     reset();
   }
 
@@ -108,6 +109,7 @@ public class AddRequirementController
               priority, type, model.getProjectList()
               .getProjectByID(state.getSelectedProject())));
       errorLabel.setText("");
+      viewHandler.openView("requirementList");
     }
     catch (Exception e)
     {

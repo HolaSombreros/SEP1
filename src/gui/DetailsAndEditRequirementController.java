@@ -60,12 +60,12 @@ public class DetailsAndEditRequirementController
         model.getProjectList().getProjectByID(state.getSelectedProject()))
         .getRequirementById(state.getSelectedRequirement());
 
-    viewModel.update(requirement.getRelatedProject());
+    /*viewModel.update(requirement.getRelatedProject());
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
     nameColumn
         .setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
-    teamMembersTable.setItems(viewModel.getList());
+    teamMembersTable.setItems(viewModel.getList());   */
 
     idLabel.setText(state.getSelectedRequirement() + "");
     relatedProjectLabel.setText(requirement.getRelatedProject().getName());
@@ -76,12 +76,13 @@ public class DetailsAndEditRequirementController
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
     hoursWorkedShow
         .setText("Number of Hours Worked: " + requirement.getHoursWorked());
-    if (requirement.getResponsibleTeamMember() != null)
+    responsibleTeamMemberInput.setText("");
+    /*if (requirement.getResponsibleTeamMember() != null)
       responsibleTeamMemberInput.setText(
           requirement.getResponsibleTeamMember().getId() + " " + requirement
               .getResponsibleTeamMember().getFullName());
     else
-      responsibleTeamMemberInput.setText("");
+      responsibleTeamMemberInput.setText("");  */
 
     switch (requirement.getPriority())
     {
@@ -175,13 +176,13 @@ public class DetailsAndEditRequirementController
         throw new IllegalArgumentException("Estimated Time has to be a number");
       }
 
-      if (!(responsibleTeamMemberInput.getText().equals("")))
+      /*if (!(responsibleTeamMemberInput.getText().equals("")))
       {
         String member = responsibleTeamMemberInput.getText();
         String[] member1 = member.split(" ");
         int index = Integer.parseInt(member1[0]);
         requirement.assignTeamMember(model.getTeamMemberList(requirement.getRelatedProject(),requirement).getByID(index));
-      }
+      } */
 
       Priority priority = null;
       if (priorityInput.getValue().equals("Critical"))
@@ -210,6 +211,9 @@ public class DetailsAndEditRequirementController
         requirement.setStatus(RequirementStatus.APPROVED);
       if (statusInput.getValue().equals("Rejected"))
         requirement.setStatus(RequirementStatus.REJECTED);
+
+      errorLabel.setText("");
+      viewHandler.openView("requirementList");
     }
 
     catch (Exception e)

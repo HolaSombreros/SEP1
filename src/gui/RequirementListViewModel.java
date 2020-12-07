@@ -47,12 +47,10 @@ public class RequirementListViewModel
   public void remove(Requirement requirement)
   {
     for (int i = 0; i < list.size(); i++)
-      if (list.get(i).getIdProperty().get() == (requirement.getId()) && list
-          .get(i).getPriorityProperty().get()
-          .equals(requirement.getPriority().getName()) && list.get(i)
-          .getStatusProperty().get().equals(requirement.getStatus().getName())
-          && list.get(i).getDeadlineProperty().get()
-          .equals(requirement.getDeadline().toString()))
+      if (list.get(i).getIdProperty().getValue() == (requirement.getId())
+          && list.get(i).getPriorityProperty().getValue().equals(requirement.getPriority().getName())
+          && list.get(i).getStatusProperty().getValue().equals(requirement.getStatus().getName())
+          && list.get(i).getDeadlineProperty().getValue().equals(requirement.getDeadline().toString()))
       {
         list.remove(i);
         break;

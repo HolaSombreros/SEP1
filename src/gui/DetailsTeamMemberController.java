@@ -83,8 +83,8 @@ public class DetailsTeamMemberController {
      *          with the related information
      * */
     public void searchByIDButtonPressed() {
-        try{
-            errorLabel.setText("");
+       // try{
+            /*errorLabel.setText("");
             if (idField.getText().equals(""))
                 reset();
             else{
@@ -103,7 +103,7 @@ public class DetailsTeamMemberController {
         catch (Exception e)
         {
             errorLabel.setText(e.getMessage());
-        }
+        }*/
         }
 
 }

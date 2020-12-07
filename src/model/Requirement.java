@@ -247,11 +247,18 @@ public class Requirement
 
   public boolean equals(Object obj)
   {
+    boolean rtm = true;
     if (!(obj instanceof Requirement))
       return false;
     Requirement other = (Requirement) obj;
 
-    return id == other.id
+    if (responsibleTeamMember!=null) rtm = false;
+    if (other.responsibleTeamMember!=null) rtm = false;
+    if (responsibleTeamMember==null && other.responsibleTeamMember==null)
+      rtm = true;
+
+    if (rtm)
+      return id == other.id
         && relatedProject.equals(other.relatedProject)
         && userStory.equals(other.userStory)
         && estimatedTime == other.estimatedTime
@@ -260,9 +267,9 @@ public class Requirement
         && deadline.equals(other.deadline)
         && status == other.status && type == other.type
         && priority == other.priority
-        && responsibleTeamMember.equals(other.responsibleTeamMember)
         && taskList.equals(other.taskList)
         && teamMemberList.equals(other.teamMemberList);
+    return false;
   }
 
 }

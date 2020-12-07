@@ -43,7 +43,6 @@ public class RequirementListController
     this.model = model;
     this.root = root;
     this.state = state;
-    this.viewModel = new RequirementListViewModel(model,state);
     reset();
   }
 
@@ -52,6 +51,7 @@ public class RequirementListController
     searchInput.setText("");
     errorLabel.setText("");
     userStoryShow.setText("");
+    this.viewModel = new RequirementListViewModel(model,state);
     viewModel.update(0);
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
@@ -157,12 +157,8 @@ public class RequirementListController
       boolean remove = confirmation();
       if (remove)
       {
-        Requirement requirement = model.getRequirementList(
-            model.getProjectList().getProjectByID(state.getSelectedProject()))
-            .getRequirementById(selectedItem.getIdProperty().getValue());
-        model.removeRequirement(
-            model.getProjectList().getProjectByID(state.getSelectedProject()),
-            requirement);
+        Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(selectedItem.getIdProperty().getValue());
+        model.removeRequirement(requirement.getRelatedProject() , requirement);
         viewModel.remove(requirement);
         requirementListTable.getSelectionModel().clearSelection();
       }
