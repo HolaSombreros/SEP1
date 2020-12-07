@@ -59,9 +59,20 @@ public class TaskListController {
     }
 
     @FXML private void viewTask() {
-        TaskViewModel selectedTask = taskTable.getSelectionModel().getSelectedItem();
-        viewState.setSelectedTask(selectedTask.getIdProperty().get()); // TODO - is this correct?
-        viewHandler.openView("detailsAndEditTask");
+        errorLabel.setText("");
+        try {
+            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+            if (selectedItem == null) {
+                errorLabel.setText("Please select a task first");
+            }
+            else {
+                viewState.setSelectedTask(selectedItem.getIdProperty().get());
+                viewHandler.openView("detailsAndEditTask");
+            }
+        }
+        catch (Exception e) {
+            errorLabel.setText("Task not found: " + e.getMessage());
+        }
     }
     
     @FXML private void removeTask() {
@@ -83,13 +94,13 @@ public class TaskListController {
             }
         }
         catch (Exception e) {
-            errorLabel.setText("Item not found: " + e.getMessage());
+            errorLabel.setText("Task not found: " + e.getMessage());
         }
     }
 
     @FXML private void goBack() {
         viewState.setSelectedRequirement(-1);
-        viewHandler.openView("requirements");
+        viewHandler.openView("requirementList");
     }
     
     private boolean confirmation() {
@@ -100,7 +111,7 @@ public class TaskListController {
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm removing task");
-        alert.setHeaderText("Removing task #" + selectedItem.getIdProperty() + ": " + selectedItem.getTitleProperty());
+        alert.setHeaderText("Removing task #" + selectedItem.getIdProperty().get() + ": " + selectedItem.getTitleProperty().get());
         Optional<ButtonType> result = alert.showAndWait();
         return (result.isPresent()) && (result.get() == ButtonType.OK);
     }

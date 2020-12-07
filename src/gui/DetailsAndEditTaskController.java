@@ -3,10 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.IProjectManagementModel;
-import model.Project;
-import model.Status;
-import model.Task;
+import model.*;
 
 import java.util.Optional;
 
@@ -54,26 +51,20 @@ public class DetailsAndEditTaskController {
 
     public void reset() {
         // TODO - dont actually reset it to nothing, but instead it should be set to the task's details...
-//        Task task = model.getTaskList().getTaskById(viewState.getSelectedTask());
-//
-//        titleInput.setText();
-        estimatedHoursInput.setText("");
+        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+        Task task = model.getTaskList(model.getProjectList().getProjectByID(viewState.getSelectedProject()), requirement).getTaskById(viewState.getSelectedTask());
+
+        titleInput.setText(task.getTitle());
+        estimatedHoursInput.setText(String.valueOf(task.getEstimatedTime()));
         startingDateInput.setValue(null);
         deadlineInput.setValue(null);
         //statusInput.setValue(model.getTaskList(model.getProjectList().getProject(0), model.getRequirementList(model.getProjectList().getProject(0)).getRequirement(0)).toString());
-        statusInput.setValue(statusInput.getItems().get(0));
-        responsibleTeamMemberInput.setText("");
-        hoursWorkedInput.setText("");
+        statusInput.setValue(task.getStatus().getName());
+        responsibleTeamMemberInput.setText(task.getResponsibleTeamMember().getFullName());
+        hoursWorkedInput.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
         errorLabel.setText("");
-        
-        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         viewModel.update(project, model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement()));
-        
-        /* basically something like this:
-        Task task = model.getTaskList(viewState.getSelectedProject(), viewState.getSelectedRequirement()).getTask(viewState.getSelectedTask()); // TODO - this one is wrong though...
-        titleInput.setText(task.getTitle());
-        estimatedHoursInput.setText(String.valueOf(task.getEstimatedTime()));
-         */
     }
     
     public Region getRoot() {
