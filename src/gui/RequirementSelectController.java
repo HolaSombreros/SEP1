@@ -17,8 +17,7 @@ public class RequirementSelectController {
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
 
-    @FXML
-    private Label requirementLabel;
+
     @FXML private TableView<RequirementListViewModel> requirementTable;
     @FXML private TableColumn<RequirementList,Integer> idColumn;
     @FXML private TableColumn<RequirementList,String> priorityColumn;
@@ -37,7 +36,7 @@ public class RequirementSelectController {
     }
 
     public void reset(){
-        requirementLabel.setText("");
+
     }
 
     public Region getRoot(){

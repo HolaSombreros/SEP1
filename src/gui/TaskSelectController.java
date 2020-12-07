@@ -17,8 +17,7 @@ public class TaskSelectController {
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
 
-    @FXML
-    private Label taskLabel;
+
     @FXML private TableView<TaskListViewModel> taskTable;
     @FXML private TableColumn<TaskList,Integer> idColumn;
     @FXML private TableColumn<TaskList,String> titleColumn;
@@ -37,7 +36,7 @@ public class TaskSelectController {
     }
 
     public void reset(){
-        taskLabel.setText("");
+
     }
 
     public Region getRoot(){

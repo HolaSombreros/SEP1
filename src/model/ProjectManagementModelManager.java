@@ -68,11 +68,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     // Model methods from IProjectManagementModel:
-    @Override public void addProject() {
+    @Override public void addProject(Project project) {
 
     }
 
-    @Override public void addRequirement(Project project) {
+    @Override public void addRequirement(Project project,Requirement requirement) {
 
 
     }
@@ -81,15 +81,15 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         requirement.addTask(task);
     }
 
-    @Override public void addTeamMember(Project project) {
+    @Override public void addTeamMember(Project project,TeamMember teamMember) {
 
     }
 
-    @Override public void addTeamMember(Project project, Requirement requirement) {
+    @Override public void addTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
 
     }
 
-    @Override public void addTeamMember(Project project, Requirement requirement, Task task) {
+    @Override public void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
 
     }
 
@@ -117,16 +117,16 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     }
 
-    @Override public void removeTeamMember(Project project) {
+    @Override public void removeTeamMember(Project project, TeamMember teamMember) {
 
 
     }
 
-    @Override public void removeTeamMember(Project project, Requirement requirement) {
+    @Override public void removeTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
 
     }
 
-    @Override public void removeTeamMember(Project project, Requirement requirement, Task task) {
+    @Override public void removeTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
 
     }
 

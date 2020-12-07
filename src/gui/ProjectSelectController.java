@@ -16,7 +16,6 @@ public class ProjectSelectController {
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
 
-    @FXML private Label projectLabel;
     @FXML private TableView<ProjectListViewModel> projectTable;
     @FXML private TableColumn<ProjectList,String> idColumn;
     @FXML private TableColumn<ProjectList,String> nameColumn;
@@ -35,7 +34,7 @@ public class ProjectSelectController {
     }
 
     public void reset(){
-        projectLabel.setText("");
+
     }
 
     public Region getRoot(){
@@ -48,4 +47,12 @@ public class ProjectSelectController {
     public void backButtonPressed() {
         viewHandler.openView("detailsTeamMember");
     }
+
+    public void unassignButtonPressed() {
+    }
+
+    public void requirementButtonPressed() {
+    }
+
+
 }
