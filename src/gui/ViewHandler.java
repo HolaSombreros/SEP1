@@ -11,6 +11,9 @@ public class ViewHandler
   private Scene currentScene;
   private Stage primaryStage;
   private IProjectManagementModel model;
+  private ViewState viewState;
+  
+  // View Controllers:
   private ProjectListController projectListController;
   private RequirementListController requirementListController;
   private TaskListController taskListController;
@@ -23,17 +26,19 @@ public class ViewHandler
   private DetailsAndEditTaskController detailsAndEditTaskController;
   private DetailsTeamMemberController detailsTeamMemberController;
   //private AssignAndUnassignTeamMemberController assignAndUnassignTeamMemberController;
+  
 
   public ViewHandler(IProjectManagementModel model)
   {
     this.currentScene = new Scene(new Region());
     this.model = model;
+    this.viewState = new ViewState();
   }
 
   public void start(Stage primaryStage)
   {
     this.primaryStage = primaryStage;
-    openView("projectList");
+    openView("taskList");
   }
 
   public void openView(String id)
@@ -45,10 +50,10 @@ public class ViewHandler
         root = loadProjectList("fxml/ProjectListView.fxml");
         break;
       case "requirement":
-        root = loadRequirementList("fxml/RequirementListView.fxml");
+        root = loadRequirementList("fxml/RequirementListView.fxml", viewState);
         break;
       case "taskList":
-        root = loadTaskList("fxml/TaskListView.fxml");
+        root = loadTaskList("fxml/TaskListView.fxml", viewState);
         break;
       case "teamMemberList":
        // root = loadTeamMemberList("fxml/TeamMemberListView.fxml");
@@ -57,22 +62,22 @@ public class ViewHandler
         root = loadAddProject("fxml/AddProjectView.fxml");
         break;
       case "addRequirement":
-        root = loadAddRequirement("fxml/AddRequirementView.fxml");
+        root = loadAddRequirement("fxml/AddRequirementView.fxml", viewState);
         break;
       case "addTask":
-        root = loadAddTask("fxml/AddTaskView.fxml");
+        root = loadAddTask("fxml/AddTaskView.fxml", viewState);
         break;
       case "detailsAndEditProject":
-        root = loadDetailsAndEditProject("fxml/DetailsAndEditProjectView.fxml");
+        root = loadDetailsAndEditProject("fxml/DetailsAndEditProjectView.fxml", viewState);
         break;
       case "detailsAndEditRequirement":
-        root = loadDetailsAndEditRequirement("fxml/DetailsAndEditRequirementView.fxml");
+        root = loadDetailsAndEditRequirement("fxml/DetailsAndEditRequirementView.fxml", viewState);
         break;
       case "detailsAndEditTask":
-        root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml");
+        root = loadDetailsAndEditTask("fxml/DetailsAndEditTaskView.fxml", viewState);
         break;
       case "detailsTeamMember":
-        root = loadDetailsTeamMember("fxml/TeamMemberDetailsView.fxml");
+        root = loadDetailsTeamMember("fxml/TeamMemberDetailsView.fxml", viewState);
         break;
       case "assignAndUnassignTeamMember":
         //root = loadAssignAndUnassignTeamMember("fxml/AssignAndUnassignTeamMemberView.fxml");
@@ -122,7 +127,7 @@ public class ViewHandler
     return projectListController.getRoot();
   }
 
-  private Region loadRequirementList(String fxmlFile)
+  private Region loadRequirementList(String fxmlFile, ViewState state)
   {
     if (requirementListController == null)
     {
@@ -132,7 +137,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         requirementListController = loader.getController();
-        requirementListController.init(this, model, root);
+        requirementListController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -146,7 +151,7 @@ public class ViewHandler
     return requirementListController.getRoot();
   }
 
-  private Region loadTaskList(String fxmlFile)
+  private Region loadTaskList(String fxmlFile, ViewState state)
   {
     if (taskListController == null)
     {
@@ -156,7 +161,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         taskListController = loader.getController();
-        taskListController.init(this, model, root);
+        taskListController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -170,7 +175,7 @@ public class ViewHandler
     return taskListController.getRoot();
   }
 /*
-  private Region loadTeamMemberList(String fxmlFile)
+  private Region loadTeamMemberList(String fxmlFile, ViewState state)
   {
     if (teamMemberListController == null)
     {
@@ -180,7 +185,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         teamMemberListController = loader.getController();
-        teamMemberListController.init(this, model, root);
+        teamMemberListController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -218,7 +223,7 @@ public class ViewHandler
     return addProjectController.getRoot();
   }
 
-  private Region loadAddRequirement(String fxmlFile)
+  private Region loadAddRequirement(String fxmlFile, ViewState state)
   {
     if (addRequirementController == null)
     {
@@ -228,7 +233,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         addRequirementController = loader.getController();
-        addRequirementController.init(this, model, root);
+        addRequirementController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -242,7 +247,7 @@ public class ViewHandler
     return addRequirementController.getRoot();
   }
 
-  private Region loadAddTask(String fxmlFile)
+  private Region loadAddTask(String fxmlFile, ViewState state)
   {
     if (addTaskController == null)
     {
@@ -252,7 +257,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         addTaskController = loader.getController();
-        addTaskController.init(this, model, root);
+        addTaskController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -266,7 +271,7 @@ public class ViewHandler
     return addTaskController.getRoot();
   }
 
-  private Region loadDetailsAndEditProject(String fxmlFile)
+  private Region loadDetailsAndEditProject(String fxmlFile, ViewState state)
   {
     if (detailsAndEditProjectController == null)
     {
@@ -276,7 +281,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         detailsAndEditProjectController = loader.getController();
-        detailsAndEditProjectController.init(this, model, root);
+        detailsAndEditProjectController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -290,7 +295,7 @@ public class ViewHandler
     return detailsAndEditProjectController.getRoot();
   }
 
-  private Region loadDetailsAndEditRequirement(String fxmlFile)
+  private Region loadDetailsAndEditRequirement(String fxmlFile, ViewState state)
   {
     if (detailsAndEditRequirementController == null)
     {
@@ -300,7 +305,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         detailsAndEditRequirementController = loader.getController();
-        detailsAndEditRequirementController.init(this, model, root);
+        detailsAndEditRequirementController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -315,7 +320,7 @@ public class ViewHandler
     return detailsAndEditRequirementController.getRoot();
   }
 
-  private Region loadDetailsAndEditTask(String fxmlFile)
+  private Region loadDetailsAndEditTask(String fxmlFile, ViewState state)
   {
     if (detailsAndEditTaskController == null)
     {
@@ -325,7 +330,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         detailsAndEditTaskController = loader.getController();
-        detailsAndEditTaskController.init(this, model, root);
+        detailsAndEditTaskController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -339,7 +344,7 @@ public class ViewHandler
     return detailsAndEditTaskController.getRoot();
   }
 
-  private Region loadDetailsTeamMember(String fxmlFile)
+  private Region loadDetailsTeamMember(String fxmlFile, ViewState state)
   {
     if (detailsTeamMemberController == null)
     {
@@ -349,7 +354,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         detailsTeamMemberController = loader.getController();
-        detailsTeamMemberController.init(this, model, root);
+        detailsTeamMemberController.init(this, model, root, state);
       }
       catch (Exception e)
       {
@@ -362,8 +367,9 @@ public class ViewHandler
     }
     return detailsTeamMemberController.getRoot();
   }
+  
 /*
-  private Region loadAssignAndUnassignTeamMember(String fxmlFile)
+  private Region loadAssignAndUnassignTeamMember(String fxmlFile, ViewState viewState)
   {
     if (assignAndUnassignTeamMemberController == null)
     {
@@ -373,7 +379,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         assignAndUnassignTeamMemberController = loader.getController();
-        assignAndUnassignTeamMemberController.init(this, model, root);
+        assignAndUnassignTeamMemberController.init(this, model, root, state);
       }
       catch (Exception e)
       {

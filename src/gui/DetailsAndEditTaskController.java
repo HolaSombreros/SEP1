@@ -5,15 +5,20 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.Status;
+import model.Task;
+
+import java.util.Optional;
 
 public class DetailsAndEditTaskController {
     private IProjectManagementModel model;
     private ViewHandler viewHandler;
     private Region root;
+    private ViewState viewState;
     private TeamMemberListViewModel viewModel;
     
     // Window data variables:
     @FXML private TextField titleInput;
+    @FXML private TextField idField;
     @FXML private TextField estimatedHoursInput;
     @FXML private DatePicker startingDateInput;
     @FXML private DatePicker deadlineInput;
@@ -27,11 +32,12 @@ public class DetailsAndEditTaskController {
     
     public DetailsAndEditTaskController() { }
     
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root) {
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TeamMemberListViewModel(model);
+        this.viewState = viewState;
+        this.viewModel = new TeamMemberListViewModel(model, viewState);
     
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
@@ -57,6 +63,12 @@ public class DetailsAndEditTaskController {
         hoursWorkedInput.setText("");
         errorLabel.setText("");
         viewModel.update();
+        
+        /* basically something like this:
+        Task task = model.getTaskList(viewState.getSelectedProject(), viewState.getSelectedRequirement()).getTask(viewState.getSelectedTask()); // TODO - this one is wrong though...
+        titleInput.setText(task.getTitle());
+        estimatedHoursInput.setText(String.valueOf(task.getEstimatedTime()));
+         */
     }
     
     public Region getRoot() {
@@ -69,6 +81,21 @@ public class DetailsAndEditTaskController {
     
     @FXML private void makeResponsible() {
         // change very little stuff
+        errorLabel.setText("");
+        try {
+            TeamMemberViewModel selectedItem = teamTable.getSelectionModel().getSelectedItem();
+            if (selectedItem == null) {
+                errorLabel.setText("Please select a team member first");
+            }
+            else {
+                if (confirmation()) {
+                    responsibleTeamMemberInput.setText(selectedItem.getNameProperty().toString());
+                }
+            }
+        }
+        catch (Exception e) {
+            errorLabel.setText("Team member not found: " + e.getMessage());
+        }
     }
     
     @FXML private void removeTask() {
@@ -76,6 +103,20 @@ public class DetailsAndEditTaskController {
     }
 
     @FXML private void goBack() {
+        viewState.setSelectedTask(-1);
         viewHandler.openView("taskList");
+    }
+    
+    private boolean confirmation() {
+        int index = teamTable.getSelectionModel().getSelectedIndex();
+        TeamMemberViewModel selectedItem = teamTable.getItems().get(index);
+        if (index < 0 || index > teamTable.getItems().size()) {
+            return false;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm changing responsible team member");
+        alert.setHeaderText("Changing responsible team member for task #" + idField.getText() + " to: " + selectedItem.getNameProperty());
+        Optional<ButtonType> result = alert.showAndWait();
+        return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
 }

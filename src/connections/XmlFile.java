@@ -47,7 +47,6 @@ public class XmlFile implements IFileConnection {
         PrintWriter out = new PrintWriter(file);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n";
         xml += "<projectlist>\n";
-        // TODO - maybe change to enhanced for loop? would make this way better to read lol
         for (Project project : model.getProjectList().getProjects()) {
             xml += "   <project>\n";
             xml += "      <id>" + project.getID() + "</id>\n";

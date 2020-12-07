@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>55MHmSIeC</id>
+      <id>Qjg6Qj9hQ</id>
       <title>Project Management System for Colour IT</title>
-      <startingdate>5/12/2020</startingdate>
+      <startingdate>7/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
       <scrummaster>
       </scrummaster>
@@ -28,28 +28,14 @@
                   <teammemberlist>
                   </teammemberlist>
                </task>
-               <task>
-                  <id>2</id>
-                  <title>Hoogabooga</title>
-                  <startingdate>17/3/2021</startingdate>
-                  <deadline>30/3/2021</deadline>
-                  <estimatedtime>55.0</estimatedtime>
-                  <status>Not Started</status>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>1</relatedrequirement>
-                  <teammemberlist>
-                  </teammemberlist>
-               </task>
             </tasklist>
          </requirement>
       </requirementlist>
    </project>
    <project>
-      <id>VpvXO7rga</id>
+      <id>ovhL5fPIv</id>
       <title>Some other thing for whoever</title>
-      <startingdate>5/12/2020</startingdate>
+      <startingdate>7/12/2020</startingdate>
       <deadline>18/5/2021</deadline>
       <scrummaster>
       </scrummaster>

@@ -12,6 +12,7 @@ public class TaskListController {
     private ViewHandler viewHandler;
     private Region root;
     private IProjectManagementModel model;
+    private ViewState viewState;
     private TaskListViewModel viewModel;
     
     // Window data variables:
@@ -25,11 +26,12 @@ public class TaskListController {
     
     public TaskListController() { }
     
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root) {
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TaskListViewModel(model);
+        this.viewState = viewState;
+        this.viewModel = new TaskListViewModel(model, viewState);
         
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
@@ -55,6 +57,8 @@ public class TaskListController {
     }
 
     @FXML private void viewTask() {
+        TaskViewModel selectedTask = taskTable.getSelectionModel().getSelectedItem();
+        viewState.setSelectedTask(selectedTask.getIdProperty().get()); // TODO - is this correct?
         viewHandler.openView("detailsAndEditTask");
     }
     
@@ -68,9 +72,11 @@ public class TaskListController {
             else {
                 if (confirmation()) {
                     // TODO - how the fuck?
-                    /*Task task = new Task(selectedItem.getIdProperty().get(), selectedItem.getTitleProperty().get());
+                    /*
+                    Task task = new Task(selectedItem.getIdProperty().get(), selectedItem.getTitleProperty().get());
                     model.removeTask(project, requirement, task);
-                    viewModel.remove(task);*/
+                    viewModel.remove(task);
+                    */
                     taskTable.getSelectionModel().clearSelection();
                 }
             }
@@ -81,6 +87,7 @@ public class TaskListController {
     }
 
     @FXML private void goBack() {
+        viewState.setSelectedRequirement(-1); // TODO - right? not selectedTask
         viewHandler.openView("detailsAndEditRequirement");
     }
     
