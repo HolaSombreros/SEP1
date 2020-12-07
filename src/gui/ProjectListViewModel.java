@@ -52,6 +52,7 @@ public class ProjectListViewModel {
             list.add(new ProjectViewModel(project));
         }
 
+
     }
 
 }

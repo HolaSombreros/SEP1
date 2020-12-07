@@ -4,7 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
+import model.Project;
 import model.TeamMember;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DetailsAndEditProjectController
 {
@@ -16,7 +20,8 @@ public class DetailsAndEditProjectController
     @FXML private TextField statusInput;
     @FXML private Label errorLabel;
     @FXML private TableView<TeamMemberListViewModel> teamMembersTable;
-    @FXML private TableColumn<TeamMemberListViewModel, TeamMember> teamMembersColumn;
+    @FXML private TableColumn<TeamMemberListViewModel, String> IDColumn;
+    @FXML private TableColumn<TeamMemberListViewModel, String> nameColumn;
     @FXML private TextField scrumMasterInput;
     @FXML private TextField productOwnerInput;
 
@@ -24,7 +29,13 @@ public class DetailsAndEditProjectController
     private ViewHandler viewHandler;
     private IProjectManagementModel model;
     private ViewState viewState;
-   // private TeamMemberListViewModel teamMemberListViewModel;
+    private TeamMemberListViewModel teamMemberListViewModel;
+    /*public static final LocalDate LOCAL_DATE (String dateString){
+       // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(String.format("%d/%d/%d", dateString));
+        LocalDate localDate = LocalDate.parse(dateString,formatter);
+        return localDate;
+    }*/
 
     public DetailsAndEditProjectController()
     {
@@ -36,10 +47,15 @@ public class DetailsAndEditProjectController
         this.model = model;
         this.root = root;
         this.viewState = viewState;
+        this.teamMemberListViewModel = new TeamMemberListViewModel(model, viewState);
+        reset();
     }
     public void reset()
     {
-
+        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        IDInput.setText(project.getID());
+        nameInput.setText(project.getName());
+       // startingDateInput.setValue(LOCAL_DATE(project.getStartingDate().toString()));
     }
     public Region getRoot()
     {
