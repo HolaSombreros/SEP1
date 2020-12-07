@@ -13,6 +13,7 @@ public class ProjectSelectController {
 
     private Region root;
     private ViewHandler viewHandler;
+    private ViewState state;
     private IProjectManagementModel model;
     private TeamMemberListViewModel viewModel;
 
@@ -25,11 +26,11 @@ public class ProjectSelectController {
 
     }
 
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root){
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState state){
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TeamMemberListViewModel(model);
+        this.viewModel = new TeamMemberListViewModel(model,state);
 
     }
 
