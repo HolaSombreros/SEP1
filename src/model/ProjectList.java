@@ -91,6 +91,17 @@ public class ProjectList
             throw new IllegalArgumentException("No projects found with this status");
         return projectsSameStatus;
     }
+    public Project getProjectByID(String ID)
+    {
+        for(Project project : projects)
+        {
+            if(project.getID().equals(ID))
+            {
+                return project;
+            }
+        }
+        return null;
+    }
     public boolean contains(Project project)
     {
         return projects.contains(project);
