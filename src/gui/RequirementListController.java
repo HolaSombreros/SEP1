@@ -37,16 +37,22 @@ public class RequirementListController
   }
 
   public void init(ViewHandler viewHandler, IProjectManagementModel model,
-      Region root)
+      Region root, ViewState state)
   {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
-    // TODO - commented the line right below this to fix run error for now...
-    //this.state = state;
-    this.viewModel = new RequirementListViewModel(model);
-    //state.getSelectedProject());
+    this.state = state;
+    this.viewModel = new RequirementListViewModel(model,state);
     reset();
+  }
+
+  public void reset()
+  {
+    searchInput.setText("");
+    errorLabel.setText("");
+    userStoryShow.setText("");
+    viewModel.update(0);
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
     priorityColumn.setCellValueFactory(
@@ -56,14 +62,6 @@ public class RequirementListController
     statusColumn.setCellValueFactory(
         cellData -> cellData.getValue().getStatusProperty());
     requirementListTable.setItems(viewModel.getList());
-  }
-
-  public void reset()
-  {
-    searchInput.setText("");
-    errorLabel.setText("");
-    userStoryShow.setText("");
-    viewModel.update(0);
   }
 
   @FXML public void searchButtonPressed()
@@ -102,14 +100,15 @@ public class RequirementListController
     {
       RequirementViewModel selectedItem = requirementListTable
           .getSelectionModel().getSelectedItem();
-     // Requirement requirement = model.getRequirementList()
-       //   .getRequirementById(selectedItem.getIdProperty().getValue());
-      //userStoryShow.setText(requirement.getUserStory());
+      Requirement requirement = model.getRequirementList(
+          model.getProjectList().getProjectByID(state.getSelectedProject()))
+          .getRequirementById(selectedItem.getIdProperty().getValue());
+      userStoryShow.setText(requirement.getUserStory());
     }
 
     catch (Exception e)
     {
-      errorLabel.setText("No requirements to select");
+      errorLabel.setText("");
     }
   }
 
@@ -122,7 +121,8 @@ public class RequirementListController
   {
     try
     {
-      RequirementViewModel selectedItem = requirementListTable.getSelectionModel().getSelectedItem();
+      RequirementViewModel selectedItem = requirementListTable
+          .getSelectionModel().getSelectedItem();
       state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
       viewHandler.openView("detailsAndEditRequirement");
     }
@@ -136,7 +136,8 @@ public class RequirementListController
   {
     try
     {
-      RequirementViewModel selectedItem = requirementListTable.getSelectionModel().getSelectedItem();
+      RequirementViewModel selectedItem = requirementListTable
+          .getSelectionModel().getSelectedItem();
       state.setSelectedRequirement(selectedItem.getIdProperty().getValue());
       viewHandler.openView("taskList");
     }
@@ -156,10 +157,13 @@ public class RequirementListController
       boolean remove = confirmation();
       if (remove)
       {
-     //   Requirement requirement = model.getRequirementList()
-         //   .getRequirementById(selectedItem.getIdProperty().getValue());
-       // model.removeRequirement(requirement);
-        //viewModel.remove(requirement);
+        Requirement requirement = model.getRequirementList(
+            model.getProjectList().getProjectByID(state.getSelectedProject()))
+            .getRequirementById(selectedItem.getIdProperty().getValue());
+        model.removeRequirement(
+            model.getProjectList().getProjectByID(state.getSelectedProject()),
+            requirement);
+        viewModel.remove(requirement);
         requirementListTable.getSelectionModel().clearSelection();
       }
     }
@@ -172,7 +176,6 @@ public class RequirementListController
 
   @FXML private void backButtonPressed()
   {
-    state.setSelectedRequirement(-1);
     viewHandler.openView("detailsAndEditProject");
   }
 
