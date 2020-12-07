@@ -214,11 +214,24 @@ public class Project
             {
                 return false;
             }
-
+        }
+        else
+        {
+            if(!scrumMaster.equals(other.scrumMaster))
+            {
+                return false;
+            }
         }
         if(productOwner == null)
         {
             if(other.productOwner != null)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if(!productOwner.equals(other.productOwner))
             {
                 return false;
             }
@@ -235,7 +248,6 @@ public class Project
                 this.methodology.equals(other.methodology) &&
                 this.projectTeamMemberList.equals(other.projectTeamMemberList) &&
                 this.projectRequirementList.equals(other.projectRequirementList);
-
     }
     public String toString()
     {
