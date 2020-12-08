@@ -2,6 +2,9 @@ package model;
 
 import connections.IFileConnection;
 import connections.XmlFile;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -340,9 +343,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      *
      *
      * */
-    @Override public TeamMemberList addTeamMembersToTheSystem(){
+    @Override public TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException {
         TeamMemberList team = new TeamMemberList();
-        Scanner input = new Scanner("src/files/teamMembers.txt");
+        File file = new File("src/files/teamMembers.txt");
+        Scanner input = new Scanner(file);
+
         int id = 1;
         while (input.hasNext()){
             String line = input.nextLine();
