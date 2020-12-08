@@ -22,12 +22,17 @@ public class TaskListViewModel {
         return list;
     }
     
-    public void update() {
+    public void update(int id) {
         list.clear();
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
-        for (Task task : model.getTaskList(project, requirement).getTasks()) {
-            list.add(new TaskViewModel(task));
+        if (id == 0) {
+            for (Task task : model.getTaskList(project, requirement).getTasks()) {
+                list.add(new TaskViewModel(task));
+            }
+        }
+        else {
+            list.add(new TaskViewModel(model.getTaskList(project, requirement).getTaskById(id)));
         }
     }
     
