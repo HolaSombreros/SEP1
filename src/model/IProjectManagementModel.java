@@ -7,8 +7,6 @@ public interface IProjectManagementModel {
     void addProject(Project project);
     void addRequirement(Project project,Requirement requirement);
     void addTask(Requirement requirement, Task task);
-    void addTeamMember(Project project,TeamMember teamMember);
-    void addTeamMember(Project project, Requirement requirement,TeamMember teamMember);
     void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember);
     void editProject(Project project);
     void editRequirement(Project project, Requirement requirement);
