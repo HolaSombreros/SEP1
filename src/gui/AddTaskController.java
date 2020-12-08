@@ -44,6 +44,7 @@ public class AddTaskController {
         estimatedHoursInput.setText("");
         errorLabel.setText("");
         
+        
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
         requirementStart.setText(requirement.getStartingDate().toString());
@@ -91,7 +92,6 @@ public class AddTaskController {
             Requirement relatedRequirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
             Task task = new Task(titleInput.getText(), startingDate, deadline, estimatedTime, relatedRequirement);
             model.addTask(relatedRequirement, task);
-            model.saveModel();
             cancel();
         }
         catch (Exception e) {

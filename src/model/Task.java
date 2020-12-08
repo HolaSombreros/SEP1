@@ -7,9 +7,9 @@ public class Task {
     private Date deadline;
     private double estimatedTime;
     private Status status;
-    private TeamMemberList teamMemberList;
+    private final TeamMemberList teamMemberList;
     private TeamMember responsibleTeamMember;
-    private TimeRegistration timeRegistration;
+    private final TimeRegistration timeRegistration;
     private Requirement relatedRequirement;
 
     /**
@@ -160,6 +160,30 @@ public class Task {
         }
         timeRegistration.addHoursWorked(hoursWorked);
         teamMember.getTimeRegistration().addHoursWorked(hoursWorked);
+    }
+    
+    /**
+     * Method to modify a task's details with the given values.
+     * @param title The title of the task.
+     * @param estimatedTime The estimate time in hours.
+     * @param startingDate The task's start date.
+     * @param deadline The task's deadline.
+     */
+    public void edit(String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember) {
+        setTitle(title);
+        setEstimatedTime(estimatedTime);
+        setStartingDate(startingDate);
+        setDeadline(deadline);
+        setStatus(status);
+        if (responsibleTeamMember == null) {
+            unassignResponsibleTeamMember();
+        }
+        else {
+            assignResponsibleTeamMember(responsibleTeamMember);
+        }
+        
+        // TODO - :
+        // Save model somehow...
     }
 
     /**

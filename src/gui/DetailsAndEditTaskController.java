@@ -29,6 +29,9 @@ public class DetailsAndEditTaskController {
     @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
     @FXML private Label errorLabel;
     
+    @FXML private TextField requirementStart;
+    @FXML private TextField requirementEnd;
+    
     public DetailsAndEditTaskController() { }
     
     public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState viewState) {
@@ -66,6 +69,9 @@ public class DetailsAndEditTaskController {
         }
         hoursWorkedInput.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
         errorLabel.setText("");
+        requirementStart.setText(requirement.getStartingDate().toString());
+        requirementEnd.setText(requirement.getDeadline().toString());
+        
         viewModel.update(project, model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement()));
     }
     
@@ -154,28 +160,23 @@ public class DetailsAndEditTaskController {
             
             
             if (editedTask && confirmation("edit")) {
-                task.setTitle(titleInput.getText());
-                task.setEstimatedTime(Double.parseDouble(estimatedHoursInput.getText()));
-                task.setStartingDate(startingDate);
-                task.setDeadline(deadline);
+                Status status = null;
                 switch (statusInput.getValue()) {
                     case "Not Started":
-                        task.setStatus(Status.NOT_STARTED);
+                        status = Status.NOT_STARTED;
                         break;
                     case "Started":
-                        task.setStatus(Status.STARTED);
+                        status = Status.STARTED;
                         break;
                     case "Ended":
-                        task.setStatus(Status.ENDED);
+                        status = Status.ENDED;
                         break;
                 }
-                if (responsibleTeamMemberInput.getText().equals("")) {
-                    task.unassignResponsibleTeamMember();
+                TeamMember responsibleTeamMember = null;
+                if (!responsibleTeamMemberInput.getText().equals("")) {
+                    responsibleTeamMember = task.getTeamMemberList().getByID(0);   // TODO - fix this... somehow
                 }
-                else {
-                    task.assignResponsibleTeamMember(task.getTeamMemberList().getByID(0));   // TODO - fix this... somehow
-                }
-                model.saveModel();
+                task.edit(titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember);
                 goBack();
             }
         }
@@ -185,7 +186,6 @@ public class DetailsAndEditTaskController {
     }
     
     @FXML private void makeResponsible() {
-        // change very little stuff
         errorLabel.setText("");
         try {
             TeamMemberViewModel selectedItem = teamTable.getSelectionModel().getSelectedItem();
@@ -208,7 +208,6 @@ public class DetailsAndEditTaskController {
             Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
             Task task = model.getTaskList(project, requirement).getTaskById(viewState.getSelectedTask());
             model.removeTask(requirement, task);
-            //model.saveModel();
             goBack();
         }
     }

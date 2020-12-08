@@ -21,23 +21,39 @@
          <Insets bottom="20.0" />
       </VBox.margin>
    </Label>
-   <HBox alignment="CENTER" prefWidth="460.0">
-      <children>
-         <TextField fx:id="titleInput" maxWidth="400.0" prefHeight="25.0" prefWidth="396.0" promptText="Title">
-            <HBox.margin>
-               <Insets right="15.0" />
-            </HBox.margin>
-         </TextField>
-         <Label text="#">
-            <HBox.margin>
-               <Insets right="5.0" />
-            </HBox.margin>
-         </Label>
-         <TextField fx:id="idField" editable="false" maxWidth="35.0" prefHeight="25.0" prefWidth="35.0" promptText="Id" />
-      </children>
+   <HBox alignment="CENTER" prefWidth="460.0" spacing="45.0">
       <VBox.margin>
-         <Insets bottom="10.0" />
+         <Insets bottom="5.0"/>
       </VBox.margin>
+      <Label style="-fx-font-weight: bold;" text="Requirement Startdate"/>
+      <Label style="-fx-font-weight: bold;" text="Requirement Deadline">
+         <HBox.margin>
+            <Insets/>
+         </HBox.margin>
+      </Label>
+   </HBox>
+   <HBox alignment="CENTER" prefWidth="460.0" spacing="25.0">
+      <VBox.margin>
+         <Insets bottom="30.0"/>
+      </VBox.margin>
+      <TextField fx:id="requirementStart" editable="false" minWidth="100.0"/>
+      <TextField fx:id="requirementEnd" editable="false" minWidth="100.0"/>
+   </HBox>
+   <HBox alignment="CENTER" prefWidth="460.0">
+      <VBox.margin>
+         <Insets bottom="10.0"/>
+      </VBox.margin>
+      <TextField fx:id="titleInput" maxWidth="400.0" prefHeight="25.0" prefWidth="396.0" promptText="Title">
+         <HBox.margin>
+            <Insets right="15.0"/>
+         </HBox.margin>
+      </TextField>
+      <Label text="#">
+         <HBox.margin>
+            <Insets right="5.0"/>
+         </HBox.margin>
+      </Label>
+      <TextField fx:id="idField" editable="false" maxWidth="35.0" prefHeight="25.0" prefWidth="35.0" promptText="Id"/>
    </HBox>
    <HBox alignment="CENTER" maxWidth="460.0" prefHeight="200.0" spacing="80.0">
       <VBox.margin>
@@ -71,7 +87,7 @@
    </HBox>
    <Label fx:id="errorLabel" style="-fx-font-weight: bold;" text="ErrorLabel" textFill="RED">
       <VBox.margin>
-         <Insets bottom="20.0" />
+         <Insets bottom="10.0" />
       </VBox.margin>
    </Label>
    <HBox alignment="TOP_CENTER" maxWidth="460.0" spacing="20.0">

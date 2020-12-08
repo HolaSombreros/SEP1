@@ -20,7 +20,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         saveModel();
     }
     
-    public void saveModel() {
+    private void saveModel() {
         for (IFileConnection file : fileConnections) {
             try {
                 file.saveModel(this);
@@ -34,7 +34,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     private void createDummyData() {
         Project project = new Project("Movies", "12", new Date(12,12, 2020), new Date(25, 10, 2022), Methodology.SCRUM);
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
-        projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 05, 2021), Methodology.SCRUM));
+        projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 5, 2021), Methodology.SCRUM));
     
         projectList.getProject(0).addRequirement(new Requirement("As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start",
             new Date(12, 3, 2021),
@@ -51,6 +51,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
     
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
         projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
         TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
@@ -75,52 +77,60 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     // Model methods from IProjectManagementModel:
     @Override public void addProject(Project project) {
         projectList.addProject(project);
-
+        saveModel();
     }
 
     @Override public void addRequirement(Project project,Requirement requirement) {
         project.addRequirement(requirement);
+        saveModel();
     }
 
     @Override public void addTask(Requirement requirement, Task task) {
         requirement.addTask(task);
+        saveModel();
     }
 
     @Override public void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
         project.assignTeamMember(teamMember);
         requirement.assignTeamMember(teamMember);
         task.assignTeamMember(teamMember);
+        saveModel();
     }
 
-    //TODO do we even need these 3 :-?
+    //TODO do we even need these 3 :-? WE DO
     @Override public void editProject(Project project) {
-
+    
+        saveModel();
     }
 
     @Override public void editRequirement(Project project, Requirement requirement) {
-
+    
+        saveModel();
     }
 
     @Override public void editTask(Project project, Requirement requirement, Task task) {
-
+    
+        saveModel();
     }
 
     @Override public void removeProject(Project project) {
         projectList.removeProject(project);
+        saveModel();
     }
 
     @Override public void removeRequirement(Project project, Requirement requirement) {
         project.removeRequirement(requirement);
+        saveModel();
     }
 
     @Override public void removeTask(Requirement requirement, Task task) {
-
         requirement.removeTask(task);
+        saveModel();
     }
 
     @Override public void removeTeamMember(Project project, TeamMember teamMember) {
         project.unassignTeamMember(teamMember);
-
+        saveModel();
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
@@ -134,6 +144,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             }
         if(unassign)
             requirement.getRelatedProject().unassignTeamMember(teamMember);
+        saveModel();
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
@@ -147,13 +158,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             }
         if (unassign)
             removeTeamMember(project,requirement,teamMember);
+        saveModel();
     }
 
     /**
      * @return projectList - the list of projects in the system
      * */
     @Override public ProjectList getProjectList() {
-
         return projectList;
     }
 
@@ -255,6 +266,17 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      *                the teamMember with the maximum number value is returned
      *
      * */
+    
+    /*
+    loop through every task the person is in (project -> requirement -> task -> teamMemberList)
+    loop through every person in the task
+    add the team members to a HashMap (if needed) where ™ is key and HW is value.
+    compare teamMember’s hoursWorked with X’s hoursWorked.
+    if X’s hoursWorked is higher than ™’s, add ™’s hoursWorked to HashMap.
+    if X’s hoursWorked is lower than ™’s, add X’s hoursWorked to HashMap.
+    
+    loop through HashMap and sort values, return ™ object with largest value.
+     */
     @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) {
         HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<>();
         for(int i = 0; i < projectList.size(); i++)
