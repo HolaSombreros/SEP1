@@ -14,12 +14,20 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RequirementListController">
     <children>
+      <Label fx:id="relatedProjectLabel" text="RelatedProject">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
         <Label text="Requirements">
             <font>
                 <Font name="System Bold" size="26.0" />
             </font>
             <VBox.margin>
-                <Insets bottom="5.0" top="20.0" />
+                <Insets bottom="5.0" />
             </VBox.margin>
         </Label>
         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="688.0">
@@ -41,6 +49,14 @@
                     <font>
                         <Font size="16.0" />
                     </font></Button>
+            <Button mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
             </children>
             <VBox.margin>
                 <Insets />

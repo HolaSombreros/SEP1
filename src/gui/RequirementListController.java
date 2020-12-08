@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class RequirementListController
 {
-
+  @FXML private Label relatedProjectLabel;
   @FXML private TextField searchInput;
   @FXML private TableView<RequirementViewModel> requirementListTable;
   @FXML private TableColumn<RequirementViewModel, Number> idColumn;
@@ -48,10 +48,13 @@ public class RequirementListController
 
   public void reset()
   {
+    relatedProjectLabel.setText(
+        model.getProjectList().getProjectByID(state.getSelectedProject())
+            .getName());
     searchInput.setText("");
     errorLabel.setText("");
     userStoryShow.setText("");
-    this.viewModel = new RequirementListViewModel(model,state);
+    this.viewModel = new RequirementListViewModel(model, state);
     viewModel.update(0);
     idColumn
         .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
@@ -91,6 +94,13 @@ public class RequirementListController
     {
       errorLabel.setText(e.getMessage());
     }
+  }
+
+  @FXML public void clearButtonPressed()
+  {
+    errorLabel.setText("");
+    searchInput.setText("");
+    viewModel.update(0);
   }
 
   @FXML public void onMouseClicked()
@@ -157,8 +167,10 @@ public class RequirementListController
       boolean remove = confirmation();
       if (remove)
       {
-        Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(selectedItem.getIdProperty().getValue());
-        model.removeRequirement(requirement.getRelatedProject() , requirement);
+        Requirement requirement = model.getRequirementList(
+            model.getProjectList().getProjectByID(state.getSelectedProject()))
+            .getRequirementById(selectedItem.getIdProperty().getValue());
+        model.removeRequirement(requirement.getRelatedProject(), requirement);
         viewModel.remove(requirement);
         requirementListTable.getSelectionModel().clearSelection();
       }
