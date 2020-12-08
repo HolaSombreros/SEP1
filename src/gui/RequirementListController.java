@@ -133,6 +133,8 @@ public class RequirementListController
           index = Integer.parseInt(indexInput.getText());
           if (index >= model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().size())
             throw new IllegalArgumentException("Not an available position");
+          if (index < 0)
+            throw new IllegalArgumentException("The index can not be negative");
           Requirement req1 = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject()))
               .getRequirementById(selectedItem.getIdProperty().getValue());
           Requirement req2 = model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirement(index);
