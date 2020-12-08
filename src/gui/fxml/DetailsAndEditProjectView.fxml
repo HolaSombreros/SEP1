@@ -74,8 +74,8 @@
                                           </VBox>
                                           <VBox prefHeight="80.0" prefWidth="295.0" spacing="30.0">
                                              <children>
-                                                <Button mnemonicParsing="false" text="Assign as Scrum Master" />
-                                                <Button mnemonicParsing="false" text="Assign as Product Owner" />
+                                                <Button onAction="#assignScrumMasterButtonPressed" mnemonicParsing="false" text="Assign as Scrum Master" />
+                                                <Button onAction="#assignProductOwnerButtonPressed" mnemonicParsing="false" text="Assign as Product Owner" />
                                              </children>
                                              <HBox.margin>
                                                 <Insets left="30.0" top="30.0" />
