@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>O4O9UDY3o</id>
+      <id>Vpp6SWom7</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
@@ -33,13 +33,13 @@
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
-            <relatedproject>O4O9UDY3o</relatedproject>
+            <relatedproject>Vpp6SWom7</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
                <teammember>
-                  <firstname>Joseph</firstname>
-                  <lastname>Joestar</lastname>
+                  <firstname>Maria</firstname>
+                  <lastname>Magdalena</lastname>
                   <id>0</id>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
@@ -81,7 +81,7 @@
       </requirementlist>
    </project>
    <project>
-      <id>JAG9ztQwx</id>
+      <id>NcjVNKoxr</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>
@@ -98,6 +98,27 @@
                <hoursworked>0.0</hoursworked>
             </timeregistration>
          </teammember>
+      </teammemberlist>
+      <requirementlist>
+      </requirementlist>
+   </project>
+   <project>
+      <id>12</id>
+      <title>Movies</title>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>12/12/2020</startingdate>
+      <deadline>25/10/2022</deadline>
+      <scrummaster>
+         <firstname>Jojo</firstname>
+         <lastname>Rabbit</lastname>
+         <id>0</id>
+         <timeregistration>
+            <hoursworked>0.0</hoursworked>
+         </timeregistration>
+      </scrummaster>
+      <productowner></productowner>
+      <teammemberlist>
       </teammemberlist>
       <requirementlist>
       </requirementlist>
