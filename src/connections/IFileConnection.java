@@ -11,5 +11,5 @@ public interface IFileConnection {
     String getFilePath();
     IProjectManagementModel loadModel();
     void saveModel(IProjectManagementModel model) throws FileNotFoundException;
-    void saveProject(Project project);
+    void saveProject(Project project) throws FileNotFoundException;
 }
