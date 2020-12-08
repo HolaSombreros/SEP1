@@ -189,7 +189,19 @@ public class Project
 
     //EDIT PROJECT
 
-   // public void edit(String name, String ID, Date startingDate, Date deadline,Status status, Methodology methodology)
+    public void edit(String name, String ID, Date startingDate, Date deadline, Status status, Methodology methodology, TeamMember scrumMaster, TeamMember productOwner)
+    {
+        setName(name);
+        setID(ID);
+        setStartingDate(startingDate);
+        setDeadline(deadline);
+        setStatus(status);
+        setMethodology(methodology);
+        if(this.scrumMaster == null) unassignScrumMaster();
+        assignScrumMaster(scrumMaster);
+        if(this.productOwner == null) unassignProductOwner();
+            assignProductOwner(productOwner);
+    }
 
     //RELATED REQUIREMENTS AND LIST
 

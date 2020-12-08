@@ -17,6 +17,7 @@ public class ProjectViewModel
         nameProperty = new SimpleStringProperty(project.getName());
         deadlineProperty = new SimpleStringProperty(project.getDeadline().toString());
         statusProperty = new SimpleStringProperty(project.getStatus().getName());
+
     }
     public StringProperty getIDProperty()
     {

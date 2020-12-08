@@ -15,8 +15,8 @@ public class DetailsAndEditProjectController
     @FXML private TextField nameInput;
     @FXML private DatePicker startingDateInput;
     @FXML private DatePicker deadlineInput;
-    @FXML private TextField methodologyInput;
-    @FXML private TextField statusInput;
+    @FXML private ChoiceBox<String> methodologyChoice;
+    @FXML private ChoiceBox<String> statusChoice;
     @FXML private Label errorLabel;
     @FXML private TableView<TeamMemberViewModel> teamMembersTable;
     @FXML private TableColumn<TeamMemberViewModel, Number> IDColumn;
@@ -46,6 +46,7 @@ public class DetailsAndEditProjectController
         this.root = root;
         this.viewState = viewState;
         this.teamMemberListViewModel = new TeamMemberListViewModel(model, viewState);
+
         IDColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         teamMembersTable.setItems(teamMemberListViewModel.getList());
@@ -58,8 +59,8 @@ public class DetailsAndEditProjectController
         nameInput.setText(project.getName());
         startingDateInput.setValue(LOCAL_DATE(project.getStartingDate()));
         deadlineInput.setValue(LOCAL_DATE(project.getDeadline()));
-        methodologyInput.setText(project.getMethodology().toString());
-        statusInput.setText(project.getStatus().toString());
+        methodologyChoice.setValue(project.getMethodology().getMethodology());
+        statusChoice.setValue(project.getStatus().name());
         if(project.getProductOwner() != null)
         productOwner.setText(project.getProductOwner().toString());
         else
@@ -91,6 +92,59 @@ public class DetailsAndEditProjectController
              {
                  editedProject = true;
              }
+             //EDIT NAME
+             if(nameInput.getText().isEmpty() || nameInput.getText().trim().isEmpty())
+             {
+                 editDetailsButton.setDisable(true);
+             }
+             if(!nameInput.getText().equals(selectedProject.getName()))
+             {
+                 editedProject = true;
+             }
+             //EDIT STATUS
+            if(statusChoice.getValue().equals(""))
+             {
+                 editDetailsButton.setDisable(true);
+             }
+             if(!statusChoice.getValue().equals(selectedProject.getStatus()))
+             {
+                 editedProject = true;
+             }
+             //EDIT METHODOLOGY
+             if(methodologyChoice.getValue().equals(""))
+             {
+                 editDetailsButton.setDisable(true);
+             }
+             if(!methodologyChoice.getValue().equals(selectedProject.getMethodology()))
+             {
+                 editedProject = true;
+             }
+             //STARTING DATE
+             Date startingDate = new Date(startingDateInput.getValue().getDayOfMonth(), startingDateInput.getValue().getMonthValue(), startingDateInput.getValue().getYear());
+
+             if(startingDateInput.getValue().equals(""))
+             {
+                 editDetailsButton.setDisable(true);
+             }
+             if(!startingDateInput.getValue().equals(selectedProject.getStartingDate()))
+             {
+                 editedProject = true;
+             }
+             //DEADLINE
+             Date deadline = new Date(deadlineInput.getValue().getDayOfMonth(), deadlineInput.getValue().getMonthValue(), deadlineInput.getValue().getYear());
+             if(deadlineInput.getValue().equals(""))
+             {
+                 editDetailsButton.setDisable(true);
+             }
+             if(!deadlineInput.getValue().equals(selectedProject.getDeadline()))
+             {
+                 editedProject = true;
+             }
+             Date.checkDates(startingDate,deadline);
+             //TODO: SCRUM MASTER AND PRODUCT OWNER
+
+            //if(editedProject)
+
 
          }
          catch(Exception e)
@@ -144,6 +198,15 @@ public class DetailsAndEditProjectController
     }
     @FXML private void assignProductOwnerButtonPressed()
     {
+
+    }
+    @FXML
+    public void handleKeyReleased() //**
+    {
+        String name = nameInput.getText();
+        String ID = IDInput.getText();
+        boolean disableButtons = name.isEmpty() || name.trim().isEmpty() || ID.isEmpty() || ID.trim().isEmpty();
+        editDetailsButton.setDisable(disableButtons);
 
     }
 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -34,8 +37,15 @@
                         <TextField fx:id="nameInput" promptText="Name" />
                         <DatePicker fx:id="startingDateInput" promptText="Starting Date" />
                         <DatePicker fx:id="deadlineInput" prefHeight="25.0" prefWidth="174.0" promptText="Deadline" />
-                        <TextField fx:id="methodologyInput" promptText="Methodology" />
-                        <TextField fx:id="statusInput" promptText="Status" />
+                        <ChoiceBox fx:id="methodologyChoice" prefHeight="25.0" prefWidth="176.0">
+                                <items>
+                                   <FXCollections fx:factory="observableArrayList">
+                                      <String fx:value="SCRUM" />
+                                      <String fx:value="Waterfall" />
+                                   </FXCollections>
+                                </items>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="statusChoice" prefHeight="25.0" prefWidth="181.0" />
                      </children>
                      <HBox.margin>
                         <Insets left="40.0" />
@@ -50,7 +60,8 @@
                                     <TableView fx:id="teamMembersTable" layoutX="-2.0" layoutY="5.0" prefHeight="214.0" prefWidth="341.0">
                                        <columns>
                                           <TableColumn fx:id="IDColumn" prefWidth="75.0" text="ID" />
-                                          <TableColumn fx:id="nameColumn" minWidth="50.0" prefWidth="250.0" text="Name" />
+                                          <TableColumn fx:id="nameColumn" minWidth="50.0" prefWidth="149.0" text="Name" />
+                                          <TableColumn prefWidth="110.0" text="Role" />
                                        </columns>
                                     </TableView>
                                  </children>
@@ -65,8 +76,8 @@
                                        <children>
                                           <VBox prefHeight="105.0" prefWidth="306.0" spacing="30.0">
                                              <children>
-                                                <TextField fx:id="scrumMaster" promptText="Scrum Master" />
-                                                <TextField fx:id="productOwner" promptText="Product Owner" />
+                                                <TextField fx:id="scrumMaster" editable="false" promptText="Scrum Master" />
+                                                <TextField fx:id="productOwner" editable="false" promptText="Product Owner" />
                                              </children>
                                              <HBox.margin>
                                                 <Insets top="30.0" />
@@ -74,8 +85,8 @@
                                           </VBox>
                                           <VBox prefHeight="80.0" prefWidth="295.0" spacing="30.0">
                                              <children>
-                                                <Button onAction="#assignScrumMasterButtonPressed" mnemonicParsing="false" text="Assign as Scrum Master" />
-                                                <Button onAction="#assignProductOwnerButtonPressed" mnemonicParsing="false" text="Assign as Product Owner" />
+                                                <Button mnemonicParsing="false" onAction="#assignScrumMasterButtonPressed" text="Assign as Scrum Master" />
+                                                <Button mnemonicParsing="false" onAction="#assignProductOwnerButtonPressed" text="Assign as Product Owner" />
                                              </children>
                                              <HBox.margin>
                                                 <Insets left="30.0" top="30.0" />
