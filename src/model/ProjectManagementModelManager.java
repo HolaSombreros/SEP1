@@ -99,7 +99,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     //TODO do we even need these 3 :-? WE DO
     @Override public void editProject(Project project) {
-    
+
+
         saveModel();
     }
 
