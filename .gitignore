@@ -1,7 +1,7 @@
 out/
-src/files/
 .idea/
 *.class
 SEP1.iml
 SEP21.iml
-projects.xml
+src/files/projects.xml
+*.xml

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.IProjectManagementModel;
 import model.Project;
+import model.TeamMember;
 
 import javax.swing.text.View;
 

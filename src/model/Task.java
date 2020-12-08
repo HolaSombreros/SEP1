@@ -181,9 +181,6 @@ public class Task {
         else {
             assignResponsibleTeamMember(responsibleTeamMember);
         }
-        
-        // TODO - :
-        // Save model somehow...
     }
 
     /**
@@ -196,7 +193,6 @@ public class Task {
             return false;
         }
         Task task = (Task)obj;
-        // TODO - make sure this is actually correct...
         if (task.getResponsibleTeamMember() != null) {
             if (getResponsibleTeamMember() != null && !task.getResponsibleTeamMember().equals(getResponsibleTeamMember())) {
                 return false;

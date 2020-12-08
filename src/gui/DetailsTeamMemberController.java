@@ -72,8 +72,31 @@ public class DetailsTeamMemberController {
     }
 
     public void searchByNameButtonPressed() {
+        try{
+            errorLabel.setText("");
+            if(nameField.getText().equals(""))
+                reset();
+            else
+                try {
+                    for(TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                        if(teamMember.getFullName().equals(idField.getText())) {
+                            viewState.setSelectedTeamMember(teamMember.getId());
+                            idField.setText(teamMember.getId() + "");
+                            frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
+                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
+                        }
+                }
+                catch (Exception e){
+                    errorLabel.setText("Invalid name!");
+                }
 
+        }
+        catch (Exception e){
+            errorLabel.setText("No team member with this id in the system");
+        }
     }
+
+
 
     /**
      * searches a TeamMember by the given Id and updates the
@@ -83,19 +106,32 @@ public class DetailsTeamMemberController {
      *          table data with the related information
      * */
     public void searchByIDButtonPressed() {
-        try{
+        try {
             errorLabel.setText("");
-            for(TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
-                if(teamMember.getId() == Integer.parseInt(idField.getText())) {
-                    nameField.setText(teamMember.getFullName());
-                    frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
-                    productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
+            if (idField.getText().equals(""))
+                reset();
+            else {
+                int id = 0;
+                try {
+                    for (TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                        if (teamMember.getId() == Integer.parseInt(idField.getText())) {
+                            id = Integer.parseInt(idField.getText());
+                            viewState.setSelectedTeamMember(teamMember.getId());
+                            nameField.setText(teamMember.getFullName());
+                            frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
+                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
+                        }
                 }
+                catch (NumberFormatException e){
+                    errorLabel.setText("Id has to be a number!");
+                }
+
+            }
         }
         catch (Exception e){
             errorLabel.setText("No team member with this id in the system");
         }
-        }
+    }
 
 }
 

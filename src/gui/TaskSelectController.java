@@ -47,7 +47,7 @@ public class TaskSelectController {
     public void reset() {
         errorLabel.setText("");
         this.viewModel = new TaskListViewModel(model, viewState);
-        viewModel.update();
+        viewModel.update(0);
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
         deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
@@ -66,13 +66,18 @@ public class TaskSelectController {
 
     //TODO create a big teamMemberList with all the teamMembers
     public void assignButtonPressed() {
-       // TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
-      //  model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
-       //         model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
-      //          model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
-      //          );
+        try {
+            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+            viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
+            model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
+                    model.addTeamMembersToTheSystem().getByID(viewState.getSelectedTeamMember()));
+        }
+        catch (Exception e){
+            errorLabel.setText("Task has to be selected first!");
+        }
     }
-
 
     /**
      * removes the selected teamMember from the selected task, requirement, project
@@ -82,6 +87,7 @@ public class TaskSelectController {
         errorLabel.setText("");
         try {
             TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+            viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
             model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),

@@ -22,6 +22,8 @@ public class TaskListController {
     @FXML private TableColumn<TaskViewModel, String> deadlineColumn;
     @FXML private TableColumn<TaskViewModel, String> statusColumn;
     @FXML private Label errorLabel;
+    @FXML private TextField projectTitle;
+    @FXML private TextField requirementTitle;
     
     public TaskListController() { }
     
@@ -42,13 +44,46 @@ public class TaskListController {
     }
     
     public void reset() {
+        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+        
         searchBar.setText("");
         errorLabel.setText("");
-        viewModel.update();
+        projectTitle.setText(project.getName());
+        requirementTitle.setText(requirement.getUserStory());
+        viewModel.update(0);
     }
     
     public Region getRoot() {
         return root;
+    }
+    
+    @FXML private void search() {
+        errorLabel.setText("");
+        try {
+            if (searchBar.getText().equals("")) {
+                reset();
+            }
+            else {
+                int id = 0;
+                try {
+                    id = Integer.parseInt(searchBar.getText());
+                    viewModel.update(id);
+                }
+                catch (NumberFormatException e) {
+                    errorLabel.setText("The id to search for has to be numeric");
+                }
+            }
+        }
+        catch (Exception e) {
+            errorLabel.setText(e.getMessage());
+        }
+    }
+    
+    @FXML private void clear() {
+        searchBar.setText("");
+        errorLabel.setText("");
+        viewModel.update(0);
     }
 
     @FXML private void addNewTask() {
