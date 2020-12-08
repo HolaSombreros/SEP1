@@ -15,9 +15,19 @@
          <Font size="24.0" />
       </font>
       <VBox.margin>
-         <Insets bottom="30.0" />
+         <Insets bottom="20.0" />
       </VBox.margin>
    </Label>
+   <HBox alignment="CENTER" prefWidth="460.0" spacing="25.0">
+      <children>
+         <TextField editable="false" minWidth="100.0" fx:id="requirementStart"/>
+         <Label style="-fx-font-weight: bold;" text="to" />
+         <TextField editable="false" minWidth="100.0" fx:id="requirementEnd"/>
+      </children>
+      <VBox.margin>
+         <Insets bottom="30.0" />
+      </VBox.margin>
+   </HBox>
    <TextField fx:id="titleInput" maxWidth="460.0" promptText="Title">
       <VBox.margin>
          <Insets bottom="10.0" />

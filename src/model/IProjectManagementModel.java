@@ -3,11 +3,10 @@ package model;
 import java.util.ArrayList;
 
 public interface IProjectManagementModel {
+    void saveModel();
     void addProject(Project project);
     void addRequirement(Project project,Requirement requirement);
     void addTask(Requirement requirement, Task task);
-    void addTeamMember(Project project,TeamMember teamMember);
-    void addTeamMember(Project project, Requirement requirement,TeamMember teamMember);
     void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember);
     void editProject(Project project);
     void editRequirement(Project project, Requirement requirement);
@@ -27,6 +26,4 @@ public interface IProjectManagementModel {
     ArrayList<Project> getRelatedProjects(TeamMember teamMember);
     TeamMember getMostFrequentTeamMember(TeamMember teamMember);
     double getProductivity(TeamMember teamMember);
-    
-    void saveModel();
 }

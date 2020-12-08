@@ -1,29 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
+<<<<<<< HEAD
    <project>
-      <id>L9ZtbuaEk</id>
+      <id>I3QqymeXG</id>
       <title>Project Management System for Colour IT</title>
-      <startingdate>7/12/2020</startingdate>
+      <status>Not Started</status>
+      <methodology>WATERFALL</methodology>
+      <startingdate>08/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
-      <scrummaster>
-      </scrummaster>
-      <productowner>
-      </productowner>
+      <scrummaster></scrummaster>
+      <productowner></productowner>
       <teammemberlist>
+         <teammember>
+            <firstname>Joseph</firstname>
+            <lastname>Joestar</lastname>
+            <id>0</id>
+            <timeregistration>
+               <hoursworked>0.0</hoursworked>
+            </timeregistration>
+         </teammember>
+         <teammember>
+            <firstname>Giorno</firstname>
+            <lastname>Giovanna</lastname>
+            <id>1</id>
+            <timeregistration>
+               <hoursworked>0.0</hoursworked>
+            </timeregistration>
+         </teammember>
       </teammemberlist>
       <requirementlist>
          <requirement>
+            <id>1</id>
+            <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
+            <estimatedtime>24.0</estimatedtime>
+            <hoursworked>0.0</hoursworked>
+            <relatedproject>I3QqymeXG</relatedproject>
+            <responsibleteammember>
+            </responsibleteammember>
+            <teammemberlist>
+            </teammemberlist>
+            <startingdate>12/03/2021</startingdate>
+            <deadline>21/05/2021</deadline>
+            <status>Not Started</status>
+            <type>Functional</type>
+            <priority>Critical</priority>
             <tasklist>
                <task>
                   <id>1</id>
-                  <title>Do some shit</title>
-                  <startingdate>15/3/2021</startingdate>
-                  <deadline>19/4/2021</deadline>
+                  <title>Do some stuff</title>
+                  <startingdate>15/03/2021</startingdate>
+                  <deadline>19/04/2021</deadline>
                   <estimatedtime>5.0</estimatedtime>
                   <status>Not Started</status>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
+                  <responsibleteammember>
+                  </responsibleteammember>
                   <relatedrequirement>1</relatedrequirement>
                   <teammemberlist>
                   </teammemberlist>
@@ -33,17 +66,29 @@
       </requirementlist>
    </project>
    <project>
-      <id>pqqKyhP3X</id>
+      <id>bAuSbA9g3</id>
       <title>Some other thing for whoever</title>
-      <startingdate>7/12/2020</startingdate>
-      <deadline>18/5/2021</deadline>
-      <scrummaster>
-      </scrummaster>
-      <productowner>
-      </productowner>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>08/12/2020</startingdate>
+      <deadline>18/05/2021</deadline>
+      <scrummaster></scrummaster>
+      <productowner></productowner>
       <teammemberlist>
+         <teammember>
+            <firstname>Pizza</firstname>
+            <lastname>Pasta</lastname>
+            <id>0</id>
+            <timeregistration>
+               <hoursworked>0.0</hoursworked>
+            </timeregistration>
+         </teammember>
       </teammemberlist>
       <requirementlist>
       </requirementlist>
    </project>
 </projectlist>
+=======
+nullnull</projectlist>
+>>>>>>> 3d0cacf95e54fc0bae1a63c7dbeae881e6aa93f6
+

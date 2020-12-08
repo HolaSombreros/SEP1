@@ -31,6 +31,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
     
     private void createDummyData() {
+        Project project = new Project("Movies", "12", new Date(12,12, 2020), new Date(25, 10, 2022), Methodology.SCRUM);
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
         projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 05, 2021), Methodology.SCRUM));
     
@@ -51,6 +52,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
         projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
+        TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
+        project.assignScrumMaster(m1);
 
 
 
@@ -82,21 +85,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         requirement.addTask(task);
     }
 
-    @Override public void addTeamMember(Project project,TeamMember teamMember) {
-        project.assignTeamMember(teamMember);
-    }
-
-    @Override public void addTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
-        project.assignTeamMember(teamMember);
-        requirement.assignTeamMember(teamMember);
-    }
-
     @Override public void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
         project.assignTeamMember(teamMember);
         requirement.assignTeamMember(teamMember);
         task.assignTeamMember(teamMember);
     }
 
+    //TODO do we even need these 3 :-?
     @Override public void editProject(Project project) {
 
     }
@@ -129,13 +124,28 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     @Override public void removeTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
         requirement.unassignTeamMember(teamMember);
-        requirement.getRelatedProject().unassignTeamMember(teamMember);
+        boolean unassign=true;
+        for (Requirement requirement1: requirement.getRelatedProject().getProjectRequirementList().getRequirements())
+            if (requirement1.getTeamMemberList().contains(teamMember))
+            {
+                unassign = false;
+                break;
+            }
+        if(unassign)
+            requirement.getRelatedProject().unassignTeamMember(teamMember);
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
         task.unassignTeamMember(teamMember);
-        task.getRelatedRequirement().unassignTeamMember(teamMember);
-        task.getRelatedRequirement().getRelatedProject().unassignTeamMember(teamMember);
+        boolean unassign = true;
+        for (Task task1 : task.getRelatedRequirement().getTaskList().getTasks())
+            if (task1.getTeamMemberList().contains(teamMember))
+            {
+                unassign = false;
+                break;
+            }
+        if (unassign)
+            removeTeamMember(project,requirement,teamMember);
     }
 
     /**
@@ -275,7 +285,16 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         return null;
     }
 
-    @Override public double getProductivity(TeamMember teamMember) {
-        return 0;
+    @Override public double getProductivity(TeamMember teamMember)
+    {
+        double total = 0;
+        for (Project project : projectList.getProjects())
+            if (project.getTeamMemberList().contains(teamMember))
+                for (Requirement requirement : project.getProjectRequirementList().getRequirements())
+                    if (requirement.getTeamMemberList().contains(teamMember))
+                        for (Task task : requirement.getTaskList().getTasks())
+                            if (task.getTeamMemberList().contains(teamMember))
+                                total += task.getEstimatedTime();
+        return teamMember.getTimeRegistration().getHoursWorked()*100/total;
     }
 }
