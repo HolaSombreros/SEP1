@@ -109,6 +109,8 @@ public class TeamMember extends Person{
     public boolean equals(Object obj){
         if(!(obj instanceof TeamMember))
             return false;
+        if(obj == null || this == null)
+            return false;
         TeamMember other = (TeamMember)obj;
         return  getId()==other.getId() &&
                 getLastName().equals(other.getLastName()) &&
