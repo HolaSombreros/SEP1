@@ -84,27 +84,47 @@
                 <Insets top="10.0" />
             </VBox.margin>
         </HBox>
-        <HBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="688.0">
+        <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="700.0">
             <children>
                 <Label text="User Story: ">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <TextArea fx:id="userStoryShow" editable="false" prefHeight="10.0" prefWidth="435.0" />
+                <TextArea fx:id="userStoryShow" editable="false" prefHeight="16.0" prefWidth="435.0" />
             </children>
             <VBox.margin>
                 <Insets top="10.0" />
             </VBox.margin>
         </HBox>
-        <Label fx:id="errorLabel" text="Error label" textFill="#d30c0c">
-            <font>
-                <Font size="17.0" />
-            </font>
-            <VBox.margin>
-                <Insets top="5.0" />
-            </VBox.margin>
-        </Label>
+      <HBox prefHeight="4.0" prefWidth="700.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#moveButtonPressed" text="Move to Index:">
+               <HBox.margin>
+                  <Insets left="43.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="indexInput" prefHeight="30.0" prefWidth="48.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+              <Label fx:id="errorLabel" text="Error label" textFill="#d30c0c">
+                  <font>
+                      <Font size="17.0" />
+                  </font>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+              </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="688.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#addNewRequirementButtonPressed" text="Add New Requirement">

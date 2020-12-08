@@ -20,6 +20,7 @@ public class RequirementListController
   @FXML private TableColumn<RequirementViewModel, String> statusColumn;
   @FXML private TableColumn<RequirementViewModel, String> deadlineColumn;
   @FXML private TextArea userStoryShow;
+  @FXML private TextField indexInput;
   @FXML private Label errorLabel;
   private Region root;
   private IProjectManagementModel model;
@@ -96,14 +97,14 @@ public class RequirementListController
     }
   }
 
-  @FXML public void clearButtonPressed()
+  @FXML private void clearButtonPressed()
   {
     errorLabel.setText("");
     searchInput.setText("");
     viewModel.update(0);
   }
 
-  @FXML public void onMouseClicked()
+  @FXML private void onMouseClicked()
   {
     errorLabel.setText("");
     try
@@ -119,6 +120,59 @@ public class RequirementListController
     catch (Exception e)
     {
       errorLabel.setText("");
+    }
+  }
+
+  @FXML private void moveButtonPressed()
+  {
+    try
+    {
+      errorLabel.setText("");
+      RequirementViewModel selectedItem = requirementListTable
+          .getSelectionModel().getSelectedItem();
+      if (selectedItem == null)
+        throw new IllegalArgumentException("Select a requirement");
+
+      if (indexInput.getText().equals(""))
+        errorLabel.setText("");
+      else
+      {
+        int index = 0;
+        try
+        {
+          index = Integer.parseInt(indexInput.getText());
+          if (index >= model.getProjectList()
+              .getProjectByID(state.getSelectedProject())
+              .getProjectRequirementList().size())
+            throw new IllegalArgumentException("Not an available position");
+          Requirement req1 = model.getRequirementList(
+              model.getProjectList().getProjectByID(state.getSelectedProject()))
+              .getRequirementById(selectedItem.getIdProperty().getValue());
+          Requirement req2 = model.getProjectList()
+              .getProjectByID(state.getSelectedProject())
+              .getProjectRequirementList().getRequirement(index);
+          if (req1.getPriority() != req2.getPriority())
+            throw new IllegalArgumentException("Movement not allowed");
+          Requirement other = req1;
+          model.getProjectList().getProjectByID(state.getSelectedProject())
+              .getProjectRequirementList().getRequirements().remove(req1);
+          model.getProjectList().getProjectByID(state.getSelectedProject())
+              .getProjectRequirementList().getRequirements().add(index, other);
+          model.editProject(model.getProjectList()
+              .getProjectByID(state.getSelectedProject()));
+          reset();
+          indexInput.setText("");
+        }
+        catch (NumberFormatException e)
+        {
+          throw new IllegalArgumentException("ID has to be a number");
+        }
+      }
+
+    }
+    catch (Exception e)
+    {
+      errorLabel.setText(e.getMessage());
     }
   }
 
