@@ -27,15 +27,32 @@ public class RequirementList
    * the idCounter will keep track of the number of the requirements id
    * it will increase everytime a requirement is added and it will be set as a
    requirement id
+   *
    * @param requirement
    */
   public void add(Requirement requirement)
   {
+    Requirement other;
     requirement.setId(idCounter);
     requirements.add(requirement);
     idCounter++;
-
-      }
+    for (int i=0; i<requirements.size()-1;i++)
+      for (int j=i+1;j<requirements.size();j++)
+        if (requirements.get(i).getPriority()!=Priority.CRITICAL && requirements.get(j).getPriority()==Priority.CRITICAL)
+        {
+          other = requirements.get(i);
+          requirements.set(i,requirements.get(j));
+          requirements.set(j,other);
+        }
+    for (int i=0; i<requirements.size()-1;i++)
+      for (int j=i+1;j<requirements.size();j++)
+        if (requirements.get(i).getPriority()==Priority.LOW && requirements.get(j).getPriority()==Priority.HIGH)
+        {
+          other = requirements.get(i);
+          requirements.set(i,requirements.get(j));
+          requirements.set(j,other);
+        }
+  }
 
   public void remove(Requirement requirement)
   {
