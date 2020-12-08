@@ -208,8 +208,7 @@ public class DetailsAndEditRequirementController
       boolean remove = confirmation("edit");
       if (remove)
       {
-        requirement.edit(userStory, estimatedTime, rtm, d1, d2, status, type, priority);
-        model.editRequirement(requirement.getRelatedProject(), requirement);
+        model.editRequirement(requirement.getRelatedProject(), requirement,userStory, estimatedTime, rtm, d1, d2, status, type, priority);
         state.setSelectedRequirement(-1);
         viewHandler.openView("requirementList");
       }
