@@ -339,9 +339,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      *
      *
      * */
-    public TeamMemberList addTeamMembersToTheSystem(){
+    @Override public TeamMemberList addTeamMembersToTheSystem(){
         TeamMemberList team = new TeamMemberList();
-        Scanner input = new Scanner("../files/teamMembers.txt");
+        Scanner input = new Scanner("src/files/teamMembers.txt");
         int id = 1;
         while (input.hasNext()){
             String line = input.nextLine();
