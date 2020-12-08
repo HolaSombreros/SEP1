@@ -35,6 +35,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         Project project = new Project("Movies", "12", new Date(12,12, 2020), new Date(25, 10, 2022), Methodology.SCRUM);
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
         projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 5, 2021), Methodology.SCRUM));
+        projectList.addProject(project);
     
         projectList.getProject(0).addRequirement(new Requirement("As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start",
             new Date(12, 3, 2021),
@@ -49,9 +50,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-    
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",0));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
         projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
