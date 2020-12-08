@@ -176,7 +176,9 @@ public class DetailsAndEditTaskController {
                 if (!responsibleTeamMemberInput.getText().equals("")) {
                     responsibleTeamMember = task.getTeamMemberList().getByID(0);   // TODO - fix this... somehow
                 }
-                task.edit(titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember);
+                
+                //model.editTask(task); // TODO - Fix
+                //task.edit(titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember);
                 goBack();
             }
         }
