@@ -34,7 +34,8 @@ public class RequirementList
     requirement.setId(idCounter);
     requirements.add(requirement);
     idCounter++;
-  }
+
+      }
 
   public void remove(Requirement requirement)
   {

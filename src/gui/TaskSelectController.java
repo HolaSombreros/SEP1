@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.ProjectList;
+import model.Task;
 import model.TaskList;
 
 public class TaskSelectController {
@@ -19,25 +20,33 @@ public class TaskSelectController {
     private TaskListViewModel viewModel;
 
 
-    @FXML private TableView<TaskViewModel> taskTable;
-    @FXML private TableColumn<TaskViewModel,Number> idColumn;
-    @FXML private TableColumn<TaskViewModel,String> titleColumn;
-    @FXML private TableColumn<TaskViewModel,String> deadlineColumn;
+    @FXML private Label errorLabel;
+    @FXML
+    private TableView<TaskViewModel> taskTable;
+    @FXML
+    private TableColumn<TaskViewModel, Number> idColumn;
+    @FXML
+    private TableColumn<TaskViewModel, String> titleColumn;
+    @FXML
+    private TableColumn<TaskViewModel, String> deadlineColumn;
 
-    public TaskSelectController(){
+    public TaskSelectController() {
 
     }
 
-    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root,ViewState viewState){
+    public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState viewState) {
         this.viewHandler = viewHandler;
         this.model = model;
         this.root = root;
-        this.viewModel = new TaskListViewModel(model,viewState);
+        this.viewState = viewState;
+
         reset();
 
     }
 
-    public void reset(){
+    public void reset() {
+        errorLabel.setText("");
+        this.viewModel = new TaskListViewModel(model, viewState);
         viewModel.update();
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
@@ -45,20 +54,41 @@ public class TaskSelectController {
         taskTable.setItems(viewModel.getList());
     }
 
-    public Region getRoot(){
+    public Region getRoot() {
         return root;
     }
 
-    public void selectButtonPressed() {
-    }
 
     public void backButtonPressed() {
         viewHandler.openView("detailsTeamMember");
     }
 
+
+    //TODO create a big teamMemberList with all the teamMembers
     public void assignButtonPressed() {
+       // TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+      //  model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+       //         model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+      //          model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
+      //          );
     }
 
+
+    /**
+     * removes the selected teamMember from the selected task, requirement, project
+     * if not task is selected, displays an error message
+     * */
     public void unassignButtonPressed() {
+        errorLabel.setText("");
+        try {
+            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+            model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
+                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+        } catch (Exception e) {
+            errorLabel.setText("Select a task first!");
+
+        }
     }
 }

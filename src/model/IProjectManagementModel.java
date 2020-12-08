@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 
 public interface IProjectManagementModel {
-    void saveModel();
     void addProject(Project project);
     void addRequirement(Project project,Requirement requirement);
     void addTask(Requirement requirement, Task task);

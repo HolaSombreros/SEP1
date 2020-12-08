@@ -88,6 +88,22 @@ public class TeamMember extends Person{
             task.unassignTeamMember(this);
     }
 
+    /**
+     * returns the role the teamMember within a given project
+     * */
+    public String getRole(Project project){
+            if (project.getTeamMemberList().contains(this)) {
+                if (project.getProductOwner().equals(this))
+                    return "Product Owner";
+                if (project.getScrumMaster().equals(this))
+                    return "Scrum Master";
+                return "Team Member";
+            }
+            else
+                return "Not in project";
+
+    }
+
     //EQUALS
 
     public boolean equals(Object obj){

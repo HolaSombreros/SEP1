@@ -1,11 +1,14 @@
 package gui;
 
+import model.TeamMember;
+
 public class ViewState
 {
   private String selectedProject;
   private int selectedRequirement;
   private int selectedTask;
   private int selectedTeamMember;
+
 
   public ViewState()
   {
@@ -54,4 +57,6 @@ public class ViewState
   {
     selectedTeamMember = id;
   }
+
+
 }
