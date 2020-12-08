@@ -45,7 +45,15 @@
                                    </FXCollections>
                                 </items>
                         </ChoiceBox>
-                        <ChoiceBox fx:id="statusChoice" prefHeight="25.0" prefWidth="181.0" />
+                        <ChoiceBox fx:id="statusChoice" prefHeight="25.0" prefWidth="181.0">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="NOT_STARTED" />
+                                 <String fx:value="STARTED" />
+                                 <String fx:value="ENDED" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
                      </children>
                      <HBox.margin>
                         <Insets left="40.0" />
