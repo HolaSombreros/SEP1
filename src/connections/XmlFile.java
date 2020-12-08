@@ -48,8 +48,6 @@ public class XmlFile implements IFileConnection {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n";
         xml += "<projectlist>\n";
         for (Project project : model.getProjectList().getProjects()) {
-//            xml += loadModel();
-            
             xml += "   <project>\n";
             xml += "      <id>" + project.getID() + "</id>\n";
             xml += "      <title>" + project.getName() + "</title>\n";
@@ -65,11 +63,8 @@ public class XmlFile implements IFileConnection {
                 xml += "         <timeregistration>\n";
                 xml += "            <hoursworked>" + project.getScrumMaster().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "         </timeregistration>\n";
-                xml += "      </scrummaster>\n";
             }
-            else {
-                xml += "</scrummaster>\n";
-            }
+            xml += "</scrummaster>\n";
             xml += "      <productowner>";
             if (project.getProductOwner() != null) {
                 xml += "\n         <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
@@ -78,11 +73,8 @@ public class XmlFile implements IFileConnection {
                 xml += "         <timeregistration>\n";
                 xml += "            <hoursworked>" + project.getProductOwner().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "         </timeregistration>\n";
-                xml += "      </productowner>\n";
             }
-            else {
-                xml += "</productowner>\n";
-            }
+            xml += "</productowner>\n";
             xml += "      <teammemberlist>\n";
             for (TeamMember teamMember : project.getTeamMemberList().getTeamMembers()) {
                 xml += "         <teammember>\n";
@@ -112,9 +104,7 @@ public class XmlFile implements IFileConnection {
                     xml += "                  <hoursworked>" + requirement.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                     xml += "               </timeregistration>\n";
                 }
-                else {
-                    xml += "            </responsibleteammember>\n";
-                }
+                xml += "            </responsibleteammember>\n";
                 xml += "            <teammemberlist>\n";
                 for (TeamMember teamMember : requirement.getTeamMemberList().getTeamMembers()) {
                     xml += "               <teammember>\n";
@@ -153,9 +143,7 @@ public class XmlFile implements IFileConnection {
                         xml += "                     <hoursworked>" + task.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                         xml += "                  </timeregistration>\n";
                     }
-                    else {
-                        xml += "                  </responsibleteammember>\n";
-                    }
+                    xml += "                  </responsibleteammember>\n";
                     xml += "                  <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n"; // storing the id should be good enough...?
                     xml += "                  <teammemberlist>\n";
                     for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers()) {
@@ -218,7 +206,7 @@ public class XmlFile implements IFileConnection {
         else {
             xml += "</scrummaster>\n";
         }
-        xml += "   <productowner>";
+        xml += "   <productowner>\n";
         if (project.getProductOwner() != null) {
             xml += "\n      <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
             xml += "      <lastname>" + project.getProductOwner().getLastName() + "</lastname>\n";
@@ -226,11 +214,8 @@ public class XmlFile implements IFileConnection {
             xml += "      <timeregistration>\n";
             xml += "         <hoursworked>" + project.getProductOwner().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
             xml += "      </timeregistration>\n";
-            xml += "   </productowner>\n";
         }
-        else {
-            xml += "</productowner>\n";
-        }
+        xml += "</productowner>\n";
         xml += "   <teammemberlist>\n";
         for (TeamMember teamMember : project.getTeamMemberList().getTeamMembers()) {
             xml += "      <teammember>\n";
@@ -260,9 +245,7 @@ public class XmlFile implements IFileConnection {
                 xml += "               <hoursworked>" + requirement.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "            </timeregistration>\n";
             }
-            else {
-                xml += "         </responsibleteammember>\n";
-            }
+            xml += "         </responsibleteammember>\n";
             xml += "         <teammemberlist>\n";
             for (TeamMember teamMember : requirement.getTeamMemberList().getTeamMembers()) {
                 xml += "            <teammember>\n";
@@ -301,9 +284,7 @@ public class XmlFile implements IFileConnection {
                     xml += "                     <hoursworked>" + task.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                     xml += "                  </timeregistration>\n";
                 }
-                else {
-                    xml += "               </responsibleteammember>\n";
-                }
+                xml += "               </responsibleteammember>\n";
                 xml += "               <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n"; // storing the id should be good enough...?
                 xml += "               <teammemberlist>\n";
                 for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers()) {

@@ -179,8 +179,7 @@ public class DetailsAndEditTaskController {
                     responsibleTeamMember = task.getTeamMemberList().getByID(Integer.parseInt(responsibleTeamMemberInput.getText().split(" ")[0].substring(1)));
                 }
                 
-                //model.editTask(task); // TODO - Fix
-                task.edit(titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember);
+                model.editTask(task, titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember); // TODO - Fix
                 goBack();
             }
         }

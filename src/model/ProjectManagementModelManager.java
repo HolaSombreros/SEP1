@@ -112,9 +112,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     
         saveModel();
     }
-
-    @Override public void editTask(Project project, Requirement requirement, Task task) {
     
+    @Override public void editTask(Task task, String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember) {
+        task.edit(title, estimatedTime, startingDate, deadline, status, responsibleTeamMember);
         saveModel();
     }
 
