@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
+<<<<<<< HEAD
    <project>
       <id>I3QqymeXG</id>
       <title>Project Management System for Colour IT</title>
@@ -87,4 +88,7 @@
       </requirementlist>
    </project>
 </projectlist>
+=======
+nullnull</projectlist>
+>>>>>>> 3d0cacf95e54fc0bae1a63c7dbeae881e6aa93f6
 

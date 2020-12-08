@@ -18,8 +18,8 @@ public class DetailsAndEditProjectController
     @FXML private TextField statusInput;
     @FXML private Label errorLabel;
     @FXML private TableView<TeamMemberViewModel> teamMembersTable;
-    @FXML private TableColumn<TeamMemberListViewModel, String> IDColumn;
-    @FXML private TableColumn<TeamMemberListViewModel, String> nameColumn;
+    @FXML private TableColumn<TeamMemberViewModel, Number> IDColumn;
+    @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
     @FXML private TextField scrumMaster;
     @FXML private TextField productOwner;
 
@@ -44,6 +44,9 @@ public class DetailsAndEditProjectController
         this.root = root;
         this.viewState = viewState;
         this.teamMemberListViewModel = new TeamMemberListViewModel(model, viewState);
+        IDColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+        teamMembersTable.setItems(teamMemberListViewModel.getList());
         reset();
     }
     public void reset()

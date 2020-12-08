@@ -6,10 +6,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import model.Date;
-import model.IProjectManagementModel;
-import model.Requirement;
-import model.Task;
+import model.*;
 
 import java.time.LocalDate;
 
@@ -25,6 +22,9 @@ public class AddTaskController {
     @FXML private DatePicker deadlineInput;
     @FXML private TextField estimatedHoursInput;
     @FXML private Label errorLabel;
+    
+    @FXML private TextField requirementStart;
+    @FXML private TextField requirementEnd;
 
     public AddTaskController() { }
 
@@ -44,6 +44,11 @@ public class AddTaskController {
         estimatedHoursInput.setText("");
         errorLabel.setText("");
         
+        Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+        requirementStart.setText(requirement.getStartingDate().toString());
+        requirementEnd.setText(requirement.getDeadline().toString());
+        
         /* THIS CODE IS FOR LIMITING TO FORWARD DATES ONLY! in case we want to use it... TODO - remove this
         deadlineInput.setDayCellFactory(date -> new DateCell() {    // this shit makes it so dates before TODAY are disabled and can't be selected.
             public void updateItem(java.time.LocalDate date, boolean empty) {
@@ -62,17 +67,26 @@ public class AddTaskController {
     @FXML private void add() {
         errorLabel.setText("");
         try {
+            if (titleInput.getText().equals("")) {
+                throw new IllegalStateException("The title cannot be empty");
+            }
+            if (startingDateInput.getValue() == null) {
+                throw new IllegalStateException("Starting date cannot be empty");
+            }
+            if (deadlineInput.getValue() == null) {
+                throw new IllegalStateException("Starting date cannot be empty");
+            }
             Date startingDate = new Date(startingDateInput.getValue().getDayOfMonth(), startingDateInput.getValue().getMonthValue(), startingDateInput.getValue().getYear());
             Date deadline = new Date(deadlineInput.getValue().getDayOfMonth(), deadlineInput.getValue().getMonthValue(), deadlineInput.getValue().getYear());
             double estimatedTime = 0;
             if (estimatedHoursInput.getText().equals("")) {
-                throw new IllegalArgumentException("Estimated time cannot be empty");
+                throw new IllegalStateException("Estimated time cannot be empty");
             }
             try {
                 estimatedTime = Double.parseDouble(estimatedHoursInput.getText());
             }
             catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Estimated time has to be a number");
+                throw new IllegalStateException("Estimated time has to be a number");
             }
             Requirement relatedRequirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
             Task task = new Task(titleInput.getText(), startingDate, deadline, estimatedTime, relatedRequirement);
