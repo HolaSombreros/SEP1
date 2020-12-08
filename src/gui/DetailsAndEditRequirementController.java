@@ -216,6 +216,7 @@ public class DetailsAndEditRequirementController
 
       errorLabel.setText("");
 
+      model.editRequirement(requirement.getRelatedProject(),requirement);
       state.setSelectedRequirement(-1);
       viewHandler.openView("requirementList");
     }
