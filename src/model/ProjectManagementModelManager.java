@@ -112,16 +112,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         saveModel();
     }
 
-    //TODO do we even need these 3 :-? WE DO
     @Override public void editProject(Project project) {
-
-
         saveModel();
     }
 
     @Override public void editRequirement(Project project, Requirement requirement) {
         saveModel();
-        if (project.getStatus().getName().equals("Ended"))
+        if (project.getStatus()==Status.ENDED)
             saveProject(project);
     }
     
