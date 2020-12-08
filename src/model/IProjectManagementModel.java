@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public interface IProjectManagementModel {
+    void saveModel();
     void addProject(Project project);
     void addRequirement(Project project,Requirement requirement);
     void addTask(Requirement requirement, Task task);
@@ -27,6 +28,4 @@ public interface IProjectManagementModel {
     ArrayList<Project> getRelatedProjects(TeamMember teamMember);
     TeamMember getMostFrequentTeamMember(TeamMember teamMember);
     double getProductivity(TeamMember teamMember);
-    
-    void saveModel();
 }

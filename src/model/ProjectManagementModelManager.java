@@ -97,6 +97,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         task.assignTeamMember(teamMember);
     }
 
+    //TODO do we even need these 3 :-?
     @Override public void editProject(Project project) {
 
     }
@@ -129,13 +130,28 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     @Override public void removeTeamMember(Project project, Requirement requirement,TeamMember teamMember) {
         requirement.unassignTeamMember(teamMember);
-        requirement.getRelatedProject().unassignTeamMember(teamMember);
+        boolean unassign=true;
+        for (Requirement requirement1: requirement.getRelatedProject().getProjectRequirementList().getRequirements())
+            if (requirement1.getTeamMemberList().contains(teamMember))
+            {
+                unassign = false;
+                break;
+            }
+        if(unassign)
+            requirement.getRelatedProject().unassignTeamMember(teamMember);
     }
 
     @Override public void removeTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
         task.unassignTeamMember(teamMember);
-        task.getRelatedRequirement().unassignTeamMember(teamMember);
-        task.getRelatedRequirement().getRelatedProject().unassignTeamMember(teamMember);
+        boolean unassign = true;
+        for (Task task1 : task.getRelatedRequirement().getTaskList().getTasks())
+            if (task1.getTeamMemberList().contains(teamMember))
+            {
+                unassign = false;
+                break;
+            }
+        if (unassign)
+            removeTeamMember(project,requirement,teamMember);
     }
 
     /**
@@ -275,7 +291,16 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         return null;
     }
 
-    @Override public double getProductivity(TeamMember teamMember) {
-        return 0;
+    @Override public double getProductivity(TeamMember teamMember)
+    {
+        double total = 0;
+        for (Project project : projectList.getProjects())
+            if (project.getTeamMemberList().contains(teamMember))
+                for (Requirement requirement : project.getProjectRequirementList().getRequirements())
+                    if (requirement.getTeamMemberList().contains(teamMember))
+                        for (Task task : requirement.getTaskList().getTasks())
+                            if (task.getTeamMemberList().contains(teamMember))
+                                total += task.getEstimatedTime();
+        return teamMember.getTimeRegistration().getHoursWorked()*100/total;
     }
 }
