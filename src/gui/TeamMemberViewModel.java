@@ -17,7 +17,8 @@ public class TeamMemberViewModel {
         nameProperty = new SimpleStringProperty(teamMember.getFullName());
         roleProperty = new SimpleStringProperty(teamMember.getRole(project));
     }
-    
+
+
     public IntegerProperty getIdProperty() {
         return idProperty;
     }

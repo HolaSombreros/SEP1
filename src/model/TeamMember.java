@@ -117,6 +117,6 @@ public class TeamMember extends Person{
     //TOSTRING
 
     public String toString(){
-        return getId() + " : " + getFullName() + " has worked " + getTimeRegistration() + "\n";
+        return getId() + " : " + getFullName() + " has worked " + getTimeRegistration().getHoursWorked() + "\n";
     }
 }
