@@ -7,6 +7,7 @@ import model.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class DetailsAndEditProjectController
 {
@@ -22,6 +23,7 @@ public class DetailsAndEditProjectController
     @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
     @FXML private TextField scrumMaster;
     @FXML private TextField productOwner;
+    @FXML private Button editDetailsButton;
 
     private Region root;
     private ViewHandler viewHandler;
@@ -69,22 +71,62 @@ public class DetailsAndEditProjectController
         errorLabel.setText("");
 
     }
-    @FXML private void assignScrumMaster()
-    {
-        TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
-        //model.getProjectList().getProjectByID(selectedTeamMember.getIdProperty().toString()).assignScrumMaster(selectedTeamMember);
-    }
+
     public Region getRoot()
     {
         return root;
     }
+
     @FXML private void editDetailsButtonPressed()
     {
+        Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+         boolean editedProject = false;
+         try{
+             // EDIT ID
+             if(IDInput.getText().isEmpty() || IDInput.getText().trim().isEmpty())
+             {
+                 editDetailsButton.setDisable(true);
+             }
+             if(!IDInput.getText().equals(selectedProject.getID()))
+             {
+                 editedProject = true;
+             }
+
+         }
+         catch(Exception e)
+         {
+             errorLabel.setText(e.getMessage());
+         }
 
     }
     @FXML private void removeProjectButtonPressed()
     {
+        errorLabel.setText("");
+        try
+        {
+            Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+            boolean remove = confirmation();
+            if (remove)
+            {
 
+                model.removeProject(selectedProject);
+                backButtonPressed();
+            }
+        }
+        catch(Exception e)
+        {
+            errorLabel.setText("Project not selected");
+        }
+    }
+    private boolean confirmation()
+    {
+        Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Are you sure you want to remove the selected project " + selectedProject.getID() + "?");
+        Optional<ButtonType> result = alert.showAndWait();
+        return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
     @FXML private void viewRelatedReqButtonPressed()
     {
@@ -94,6 +136,15 @@ public class DetailsAndEditProjectController
     {
         viewState.setSelectedProject("-1");
         viewHandler.openView("projectList");
+    }
+    @FXML private void assignScrumMasterButtonPressed()
+    {
+        TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
+        //model.getProjectList().getProjectByID(selectedTeamMember.getIdProperty().toString()).assignScrumMaster(selectedTeamMember);
+    }
+    @FXML private void assignProductOwnerButtonPressed()
+    {
+
     }
 
 }
