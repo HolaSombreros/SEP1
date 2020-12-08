@@ -18,7 +18,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
         
-        createDummyData(); // TODO - eventually (maybe?!) remove this and the two methods below...
+        createDummyData();
         fileConnections.add(new XmlFile("projects"));
         saveModel();
     }
@@ -112,17 +112,14 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         saveModel();
     }
 
-    //TODO do we even need these 3 :-? WE DO
     @Override public void editProject(Project project) {
-
-
         saveModel();
     }
 
     @Override public void editRequirement(Project project, Requirement requirement,String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline, RequirementStatus status, Type type,
         Priority priority) {
         saveModel();
-        if (project.getStatus().getName().equals("Ended"))
+        if (project.getStatus()==Status.ENDED)
             saveProject(project);
     }
 
