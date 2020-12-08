@@ -72,6 +72,7 @@ public class DetailsAndEditProjectController
         else
             scrumMaster.setText("");
         errorLabel.setText("");
+        teamMemberListViewModel.update();
 
     }
 
@@ -196,7 +197,9 @@ public class DetailsAndEditProjectController
     @FXML private void assignScrumMasterButtonPressed()
     {
         TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
-        //model.getProjectList().getProjectByID(selectedTeamMember.getIdProperty().toString()).assignScrumMaster(selectedTeamMember);
+      /*  if(selectedTeamMember.getRoleProperty().equals("Scrum Master"))
+        {
+        scrumMaster.setText(selectedTeamMember.getRoleProperty().toString());}*/
     }
     @FXML private void assignProductOwnerButtonPressed()
     {
