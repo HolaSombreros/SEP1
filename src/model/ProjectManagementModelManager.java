@@ -346,9 +346,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         while (input.hasNext()){
             String line = input.nextLine();
             String element[] = line.split(" ");
-            team.add(new TeamMember(element[0].trim(),element[1].trim(),id++));
+            team.add(new TeamMember(element[0],element[1],id++));
         }
         input.close();
+        //System.out.println(team.getByIndex(0).getFullName());
+       // System.out.println(team.size());
         return team;
     }
 }
