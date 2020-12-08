@@ -62,13 +62,13 @@ public class DetailsAndEditProjectController
         startingDateInput.setValue(LOCAL_DATE(project.getStartingDate()));
         deadlineInput.setValue(LOCAL_DATE(project.getDeadline()));
         methodologyChoice.setValue(project.getMethodology().getMethodology());
-        statusChoice.setValue(project.getStatus().name());
+        statusChoice.setValue(project.getStatus().toString());
         if(project.getProductOwner() != null)
-        productOwner.setText(project.getProductOwner().toString());
+        productOwner.setText(project.getProductOwner().getFullName());
         else
             productOwner.setText("");
         if(project.getScrumMaster() != null)
-            scrumMaster.setText(project.getScrumMaster().toString());
+            scrumMaster.setText(project.getScrumMaster().getFullName());
         else
             scrumMaster.setText("");
         errorLabel.setText("");
@@ -148,6 +148,24 @@ public class DetailsAndEditProjectController
 
             //if(editedProject)
 
+             //SCRUM MASTER
+
+             if((!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null) || (scrumMaster.getText().equals("") && selectedProject.getScrumMaster() !=null))
+             {
+                 editedProject = true;
+             }
+             if((!productOwner.getText().equals("") && selectedProject.getProductOwner() == null) || (productOwner.getText().equals("") && selectedProject.getProductOwner() !=null))
+             {
+                 editedProject = true;
+             }
+             /*
+            if(editedProject)
+             {
+                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline, statusChoice.getValue(), methodologyChoice.getValue(),scrumMaster.getText(),productOwner.getText());
+             }
+             */
+
+
 
          }
          catch(Exception e)
@@ -196,13 +214,41 @@ public class DetailsAndEditProjectController
     }
     @FXML private void assignScrumMasterButtonPressed()
     {
-        TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
-      /*  if(selectedTeamMember.getRoleProperty().equals("Scrum Master"))
+        try
         {
-        scrumMaster.setText(selectedTeamMember.getRoleProperty().toString());}*/
+            TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
+            if(selectedTeamMember == null)
+            {
+                scrumMaster.setText("");
+            }
+            else
+            {
+                scrumMaster.setText(selectedTeamMember.getNameProperty().get());
+            }
+        }
+        catch (Exception e)
+        {
+            errorLabel.setText(e.getMessage());
+        }
     }
     @FXML private void assignProductOwnerButtonPressed()
     {
+        try
+        {
+            TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
+            if(selectedTeamMember == null)
+            {
+                productOwner.setText("");
+            }
+            else
+            {
+                productOwner.setText(selectedTeamMember.getNameProperty().get());
+            }
+        }
+        catch (Exception e)
+        {
+            errorLabel.setText(e.getMessage());
+        }
 
     }
     @FXML
