@@ -56,6 +56,13 @@ public class ProjectListViewModel {
 
     }
 
+    public void update(int id){
+        list.clear();
+        for (Project project: model.getProjectList().getProjects())
+            if(project.getTeamMemberList().getByID(id) != null)
+                list.add(new ProjectViewModel(project));
+    }
+
     //TODO update by id and name for TeamMember and get project role for teamMember (Adriana)
 
 }

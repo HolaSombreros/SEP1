@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>Whik6y6ao</id>
+      <id>Vpp6SWom7</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
       <startingdate>08/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
-      <scrummaster>
-         <firstname>Joseph</firstname>
-         <lastname>Joestar</lastname>
-         <id>1</id>
-         <timeregistration>
-            <hoursworked>0.0</hoursworked>
-         </timeregistration>
-</scrummaster>
+      <scrummaster></scrummaster>
       <productowner></productowner>
       <teammemberlist>
          <teammember>
             <firstname>Joseph</firstname>
             <lastname>Joestar</lastname>
-            <id>1</id>
+            <id>0</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
@@ -28,7 +21,7 @@
          <teammember>
             <firstname>Giorno</firstname>
             <lastname>Giovanna</lastname>
-            <id>3</id>
+            <id>1</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
@@ -40,14 +33,14 @@
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
-            <relatedproject>Whik6y6ao</relatedproject>
+            <relatedproject>Vpp6SWom7</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
                <teammember>
                   <firstname>Maria</firstname>
                   <lastname>Magdalena</lastname>
-                  <id>2</id>
+                  <id>0</id>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
@@ -76,7 +69,7 @@
                      <teammember>
                         <firstname>Joseph</firstname>
                         <lastname>Joestar</lastname>
-                        <id>1</id>
+                        <id>0</id>
                         <timeregistration>
                            <hoursworked>0.0</hoursworked>
                         </timeregistration>
@@ -88,7 +81,7 @@
       </requirementlist>
    </project>
    <project>
-      <id>4qcSf0701</id>
+      <id>NcjVNKoxr</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>
@@ -100,7 +93,7 @@
          <teammember>
             <firstname>Pizza</firstname>
             <lastname>Pasta</lastname>
-            <id>4</id>
+            <id>0</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
@@ -123,7 +116,7 @@
          <timeregistration>
             <hoursworked>0.0</hoursworked>
          </timeregistration>
-</scrummaster>
+      </scrummaster>
       <productowner></productowner>
       <teammemberlist>
       </teammemberlist>
