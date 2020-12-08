@@ -65,7 +65,7 @@ public class DetailsAndEditTaskController {
         deadlineInput.setValue(LocalDate.of(task.getDeadline().getYear(), task.getDeadline().getMonth(), task.getDeadline().getDay()));
         statusInput.setValue(task.getStatus().getName());
         if (task.getResponsibleTeamMember() != null) {
-            responsibleTeamMemberInput.setText(task.getResponsibleTeamMember().getFullName());
+            responsibleTeamMemberInput.setText("#" + task.getResponsibleTeamMember().getId() + " " + task.getResponsibleTeamMember().getFullName());
         }
         hoursWorkedInput.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
         errorLabel.setText("");
@@ -132,12 +132,14 @@ public class DetailsAndEditTaskController {
             if (!statusInput.getValue().equals(task.getStatus().getName())) {
                 editedTask = true;
             }
-            /*
+            
             // Responsible Team Member:
-            if (!responsibleTeamMemberInput.getText().equals(task.getResponsibleTeamMember().getFullName())) {
+            if (!responsibleTeamMemberInput.getText().equals("") && task.getResponsibleTeamMember() == null ||
+                responsibleTeamMemberInput.getText().equals("") && task.getResponsibleTeamMember() != null) {
                 editedTask = true;
             }
             
+            /*
             // TODO - is this even editable?!??
             // Hours Worked:
             if (hoursWorkedInput.getText().equals("")) {
@@ -174,11 +176,11 @@ public class DetailsAndEditTaskController {
                 }
                 TeamMember responsibleTeamMember = null;
                 if (!responsibleTeamMemberInput.getText().equals("")) {
-                    responsibleTeamMember = task.getTeamMemberList().getByID(0);   // TODO - fix this... somehow
+                    responsibleTeamMember = task.getTeamMemberList().getByID(Integer.parseInt(responsibleTeamMemberInput.getText().split(" ")[0].substring(1)));
                 }
                 
                 //model.editTask(task); // TODO - Fix
-                //task.edit(titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember);
+                task.edit(titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember);
                 goBack();
             }
         }
@@ -195,8 +197,9 @@ public class DetailsAndEditTaskController {
                 responsibleTeamMemberInput.setText("");
             }
             else {
-                responsibleTeamMemberInput.setText(selectedItem.getNameProperty().toString());
+                responsibleTeamMemberInput.setText("#" + selectedItem.getIdProperty().get() + " " + selectedItem.getNameProperty().get());
             }
+            teamTable.getSelectionModel().clearSelection();
         }
         catch (Exception e) {
             errorLabel.setText("Team member not found: " + e.getMessage());
