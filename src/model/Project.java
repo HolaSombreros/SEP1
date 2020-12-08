@@ -187,6 +187,10 @@ public class Project
         this.productOwner = null;
     }
 
+    //EDIT PROJECT
+
+   // public void edit(String name, String ID, Date startingDate, Date deadline,Status status, Methodology methodology)
+
     //RELATED REQUIREMENTS AND LIST
 
     public void addRequirement(Requirement requirement)
