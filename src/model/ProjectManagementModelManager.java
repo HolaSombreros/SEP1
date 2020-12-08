@@ -31,6 +31,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
     
     private void createDummyData() {
+        Project project = new Project("Movies", "12", new Date(12,12, 2001), new Date(25, 10, 1999), Methodology.SCRUM);
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
         projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 05, 2021), Methodology.SCRUM));
     
@@ -51,6 +52,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
         projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
+        TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
+        project.assignScrumMaster(m1);
 
 
 
