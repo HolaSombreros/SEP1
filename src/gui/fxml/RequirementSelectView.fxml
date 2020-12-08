@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RequirementSelectController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RequirementSelectController">
     <children>
         <Label alignment="CENTER" prefHeight="86.0" prefWidth="600.0" text="SELECT REQUIREMENT">
             <font>
@@ -24,7 +24,7 @@
             <children>
                 <ScrollPane prefHeight="289.0" prefWidth="572.0">
                     <content>
-                        <TableView fx:id="requirementTable" prefHeight="289.0" prefWidth="551.0">
+                        <TableView fx:id="projectTable" prefHeight="291.0" prefWidth="498.0">
                             <columns>
                                 <TableColumn fx:id="idColumn" prefWidth="133.0" text="ID" />
                                 <TableColumn fx:id="priorityColumn" prefWidth="179.0" text="Priority " />
@@ -33,16 +33,12 @@
                         </TableView>
                     </content>
                     <HBox.margin>
-                        <Insets left="50.0" right="50.0" />
+                        <Insets left="50.0" />
                     </HBox.margin>
                 </ScrollPane>
+                <VBox alignment="CENTER_LEFT" prefHeight="289.0" prefWidth="125.0" />
             </children>
         </HBox>
-      <Label fx:id="errorLabel" alignment="CENTER" prefHeight="58.0" prefWidth="498.0" text="ErrorLabel" textFill="#f80101">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">

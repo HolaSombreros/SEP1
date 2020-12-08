@@ -73,7 +73,7 @@
                         <TableView fx:id="teamMemberViewTable" prefHeight="235.0" prefWidth="295.0">
                           <columns>
                             <TableColumn fx:id="projectNameColumn" prefWidth="173.0" text="Project" />
-                            <TableColumn fx:id="deadlineColumn" prefWidth="121.0" text="Deadline" />
+                            <TableColumn fx:id="roleColumn" prefWidth="121.0" text="Role" />
                           </columns>
                         </TableView>
                      </content>
@@ -81,7 +81,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" onAction="#viewButtonPressed" text="View ">
+                  <Button mnemonicParsing="false" text="View ">
                      <font>
                         <Font size="14.0" />
                      </font>
