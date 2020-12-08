@@ -67,7 +67,7 @@ public class DetailsAndEditRequirementController
 
     idLabel.setText("Requirement Id: " +state.getSelectedRequirement());
     relatedProjectInput
-        .setText("Related project: " + requirement.getRelatedProject().getName());
+        .setText(requirement.getRelatedProject().getName());
     userStoryInput.setText(requirement.getUserStory());
     startingDateInput.getEditor().clear();
     startingDateShow
@@ -77,7 +77,6 @@ public class DetailsAndEditRequirementController
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
     hoursWorkedShow
         .setText("Number of Hours Worked: " + requirement.getHoursWorked());
-    responsibleTeamMemberInput.setText("");
     if (requirement.getResponsibleTeamMember() != null)
       responsibleTeamMemberInput.setText(
           requirement.getResponsibleTeamMember().getId() + " " + requirement
@@ -183,7 +182,7 @@ public class DetailsAndEditRequirementController
         String member = responsibleTeamMemberInput.getText();
         String[] member1 = member.split(" ");
         int index = Integer.parseInt(member1[0]);
-        requirement.assignTeamMember(model.getTeamMemberList(requirement.getRelatedProject(),requirement).getByID(index));
+        requirement.assignResponsibleTeamMember(model.getTeamMemberList(requirement.getRelatedProject(),requirement).getByID(index));
       }
 
       Priority priority = null;
@@ -234,8 +233,7 @@ public class DetailsAndEditRequirementController
     {
       TeamMemberViewModel selectedItem = teamMembersTable.getSelectionModel()
           .getSelectedItem();
-      responsibleTeamMemberInput.setText(
-          selectedItem.getIdProperty() + " " + selectedItem.getNameProperty());
+      responsibleTeamMemberInput.setText(selectedItem.getIdProperty().getValue() + " " + selectedItem.getNameProperty().getValue());
     }
     catch (Exception e)
     {

@@ -2,6 +2,9 @@ package model;
 
 import connections.IFileConnection;
 import connections.XmlFile;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -50,13 +53,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",0));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
-        projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
+        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",2));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",3));
+        projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",4));
         TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
-        projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",0));
+        projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",1));
         project.assignScrumMaster(m1);
 
 
@@ -340,9 +343,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      *
      *
      * */
-    @Override public TeamMemberList addTeamMembersToTheSystem(){
+    @Override public TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException {
         TeamMemberList team = new TeamMemberList();
-        Scanner input = new Scanner("src/files/teamMembers.txt");
+        File file = new File("src/files/teamMembers.txt");
+        Scanner input = new Scanner(file);
+
         int id = 1;
         while (input.hasNext()){
             String line = input.nextLine();

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public interface IProjectManagementModel {
@@ -25,5 +26,5 @@ public interface IProjectManagementModel {
     ArrayList<Project> getRelatedProjects(TeamMember teamMember);
     TeamMember getMostFrequentTeamMember(TeamMember teamMember);
     double getProductivity(TeamMember teamMember);
-    TeamMemberList addTeamMembersToTheSystem();
+    TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException;
 }

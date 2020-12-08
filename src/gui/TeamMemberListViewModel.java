@@ -43,7 +43,7 @@ public class TeamMemberListViewModel
         .getRequirementById(viewState.getSelectedRequirement())
         .getTeamMemberList().size(); i++)
       list.add(new TeamMemberViewModel(project, model.getRequirementList(project)
-          .getRequirement(viewState.getSelectedRequirement())
+          .getRequirementById(viewState.getSelectedRequirement())
           .getTeamMemberList().getByIndex(i)));
   }
 
