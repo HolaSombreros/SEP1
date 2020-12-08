@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class XmlFile implements IFileConnection {
     private String fileName;
@@ -30,6 +31,27 @@ public class XmlFile implements IFileConnection {
     }
     
     @Override public IProjectManagementModel loadModel() {
+//        File file = new File(getFilePath());
+//        Scanner sc = new Scanner(file);
+//        IProjectManagementModel model = new ProjectManagementModelManager();
+//
+//        int state = 0;
+//
+//        while (sc.hasNext()) {
+//            String line = sc.nextLine();
+//            if (line.contains("<project>")) {
+//                state = 1;
+//            }
+//
+//            if (line.contains("<requirement>")) {
+//                state = 2;
+//            }
+//
+//            if (line.contains("<task>")) {
+//                state = 3;
+//            }
+//        }
+//
         return null;
     }
     
