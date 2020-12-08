@@ -31,7 +31,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
     
     private void createDummyData() {
-        Project project = new Project("Movies", "12", new Date(12,12, 2001), new Date(25, 10, 2002), Methodology.SCRUM);
+        Project project = new Project("Movies", "12", new Date(12,12, 2001), new Date(25, 10, 2021), Methodology.SCRUM);
         projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
         projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 05, 2021), Methodology.SCRUM));
     
