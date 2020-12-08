@@ -5,6 +5,7 @@ import connections.XmlFile;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
 
 public class ProjectManagementModelManager implements IProjectManagementModel {
     private ProjectList projectList;
@@ -285,6 +286,14 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         return null;
     }
 
+    /**
+     * returns a double number that represents the productivity of the selected teamMember
+     * @param teamMember - the selected teamMember
+     *
+     *   loops through all the tasks within all the requirements within all the projects that the teamMember is working on
+     *                   and calculates the sum of the total hours worked and the total number of tasks the teamMember has worked on
+     * @return sum of total hours worked divided by the total number of tasks, multiplied by 100 to show the percentange
+     * */
     @Override public double getProductivity(TeamMember teamMember)
     {
         double total = 0;
@@ -296,5 +305,27 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                             if (task.getTeamMemberList().contains(teamMember))
                                 total += task.getEstimatedTime();
         return teamMember.getTimeRegistration().getHoursWorked()*100/total;
+    }
+
+    /**
+     * reads a series of names from the given file and adds each teamMember to the system
+     * creates and id that is incremented with each teamMember
+     * creates a TeamMember object every time a full name is read
+     * doesn't assign to projects
+     * returns a TeamMemberList object containing all the TeamMembers that are now in the system
+     *
+     * @param textFile the path of the textFile
+     * */
+    public TeamMemberList addTeamMembersToTheSystem(String textFile){
+        TeamMemberList team = new TeamMemberList();
+        Scanner input = new Scanner(textFile);
+        int id = 1;
+        while (input.hasNext()){
+            String line = input.nextLine();
+            String element[] = line.split(" ");
+            team.add(new TeamMember(element[0].trim(),element[1].trim(),id++));
+        }
+        input.close();
+        return team;
     }
 }

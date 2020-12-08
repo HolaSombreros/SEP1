@@ -83,28 +83,6 @@ public class DetailsTeamMemberController {
      *          with the related information
      * */
     public void searchByIDButtonPressed() {
-       // try{
-            /*errorLabel.setText("");
-            if (idField.getText().equals(""))
-                reset();
-            else{
-                int id = 0;
-                try
-                {
-                    id = Integer.parseInt(idField.getText());
-                 //   viewModel.update(id);
-                }
-                catch (NumberFormatException e)
-                {
-                    throw new IllegalArgumentException("ID has to be a number");
-                }
-                }
-            }
-        catch (Exception e)
-        {
-            errorLabel.setText(e.getMessage());
-        }*/
-
         try{
             errorLabel.setText("");
             for(int i = 0; i < model.getProjectList().size(); i++)
@@ -112,7 +90,7 @@ public class DetailsTeamMemberController {
                     nameField.setText(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText())).getFullName());
                     productivityLabel.setText("Productivity: " + model.getProductivity(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText()))));
                     frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText())));
-
+                    
                 }
 
 
