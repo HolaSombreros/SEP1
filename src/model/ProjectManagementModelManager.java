@@ -50,13 +50,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",0));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",0));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
-        projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
+        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",2));
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",3));
+        projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",4));
         TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
-        projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",0));
+        projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",1));
         project.assignScrumMaster(m1);
 
 

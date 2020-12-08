@@ -79,7 +79,7 @@ public class DetailsTeamMemberController {
             else
                 try {
                     for(TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
-                        if(teamMember.getFullName().equals(idField.getText())) {
+                        if(teamMember.getFullName().equals(nameField.getText())) {
                             viewState.setSelectedTeamMember(teamMember.getId());
                             idField.setText(teamMember.getId() + "");
                             frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
