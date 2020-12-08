@@ -61,7 +61,7 @@
                                        <columns>
                                           <TableColumn fx:id="IDColumn" prefWidth="75.0" text="ID" />
                                           <TableColumn fx:id="nameColumn" minWidth="50.0" prefWidth="149.0" text="Name" />
-                                          <TableColumn prefWidth="110.0" text="Role" />
+                                          <TableColumn fx:id = "roleColumn" prefWidth="110.0" text="Role" />
                                        </columns>
                                     </TableView>
                                  </children>

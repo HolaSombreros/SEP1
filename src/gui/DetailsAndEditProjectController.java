@@ -21,6 +21,7 @@ public class DetailsAndEditProjectController
     @FXML private TableView<TeamMemberViewModel> teamMembersTable;
     @FXML private TableColumn<TeamMemberViewModel, Number> IDColumn;
     @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
+    @FXML private TableColumn<TeamMemberViewModel, String> roleColumn;
     @FXML private TextField scrumMaster;
     @FXML private TextField productOwner;
     @FXML private Button editDetailsButton;
@@ -49,6 +50,7 @@ public class DetailsAndEditProjectController
 
         IDColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+        roleColumn.setCellValueFactory(cellData -> cellData.getValue().getRoleProperty());
         teamMembersTable.setItems(teamMemberListViewModel.getList());
         reset();
     }

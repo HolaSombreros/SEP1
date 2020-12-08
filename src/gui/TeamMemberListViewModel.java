@@ -29,7 +29,7 @@ public class TeamMemberListViewModel
     for (int i = 0; i < model.getTaskList(project, requirement)
         .getTaskById(viewState.getSelectedTask()).getTeamMemberList()
         .size(); i++)
-      list.add(new TeamMemberViewModel(model.getTaskList(project, requirement)
+      list.add(new TeamMemberViewModel(project,model.getTaskList(project, requirement)
           .getTaskById(viewState.getSelectedTask()).getTeamMemberList()
           .getByIndex(i)));
   }
@@ -42,7 +42,7 @@ public class TeamMemberListViewModel
     for (int i = 0; i < model.getRequirementList(project)
         .getRequirementById(viewState.getSelectedRequirement())
         .getTeamMemberList().size(); i++)
-      list.add(new TeamMemberViewModel(model.getRequirementList(project)
+      list.add(new TeamMemberViewModel(project, model.getRequirementList(project)
           .getRequirement(viewState.getSelectedRequirement())
           .getTeamMemberList().getByIndex(i)));
   }
@@ -53,7 +53,7 @@ public class TeamMemberListViewModel
   public void update() {
     list.clear();
     for (int i = 0; i < model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().size(); i++)
-      list.add(new TeamMemberViewModel(
+      list.add(new TeamMemberViewModel(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
           model.getProjectList().getProjectByID(viewState.getSelectedProject())
               .getTeamMemberList().getByIndex(i)));
   }
@@ -61,8 +61,8 @@ public class TeamMemberListViewModel
 
 
 
-  public void add(TeamMember teamMember) {
-    list.add(new TeamMemberViewModel(teamMember));
+  public void add( TeamMember teamMember) {
+    list.add(new TeamMemberViewModel(model.getProjectList().getProjectByID(viewState.getSelectedProject()), teamMember));
   }
 
   public void remove(TeamMember teamMember) {
