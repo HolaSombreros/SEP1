@@ -33,6 +33,17 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             }
         }
     }
+
+    private void saveProject(Project project) {
+        for (IFileConnection file : fileConnections) {
+            try {
+                file.saveProject(project);
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
     
     private void createDummyData() {
         Project project = new Project("Movies", "12", new Date(12,12, 2020), new Date(25, 10, 2022), Methodology.SCRUM);
@@ -109,8 +120,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     @Override public void editRequirement(Project project, Requirement requirement) {
-    
         saveModel();
+        if (project.getStatus().getName().equals("Ended"))
+            saveProject(project);
     }
     
     @Override public void editTask(Task task, String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember) {
