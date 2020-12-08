@@ -25,4 +25,5 @@ public interface IProjectManagementModel {
     ArrayList<Project> getRelatedProjects(TeamMember teamMember);
     TeamMember getMostFrequentTeamMember(TeamMember teamMember);
     double getProductivity(TeamMember teamMember);
+    TeamMemberList addTeamMembersToTheSystem();
 }

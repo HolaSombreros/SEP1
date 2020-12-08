@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.ProjectManagementModelManager;
+import model.TeamMember;
 
 
 public class DetailsTeamMemberController {
@@ -79,24 +80,20 @@ public class DetailsTeamMemberController {
      *          nameField,
      *          frequent teamMember,
      *          productivity
-     *          table data
-     *          with the related information
+     *          table data with the related information
      * */
     public void searchByIDButtonPressed() {
         try{
             errorLabel.setText("");
-            for(int i = 0; i < model.getProjectList().size(); i++)
-                if(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText()))!=null){
-                    nameField.setText(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText())).getFullName());
-                    productivityLabel.setText("Productivity: " + model.getProductivity(model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText()))));
-                    frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getProjectList().getProject(i).getTeamMemberList().getByID(Integer.parseInt(idField.getText())));
-                    
+            for(TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                if(teamMember.getId() == Integer.parseInt(idField.getText())) {
+                    nameField.setText(teamMember.getFullName());
+                    frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
+                    productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
                 }
-
-
         }
         catch (Exception e){
-
+            errorLabel.setText("No team member with this id in the system");
         }
         }
 

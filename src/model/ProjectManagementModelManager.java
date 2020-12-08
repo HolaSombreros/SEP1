@@ -336,11 +336,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      * doesn't assign to projects
      * returns a TeamMemberList object containing all the TeamMembers that are now in the system
      *
-     * @param textFile the path of the textFile
+     *
      * */
-    public TeamMemberList addTeamMembersToTheSystem(String textFile){
+    public TeamMemberList addTeamMembersToTheSystem(){
         TeamMemberList team = new TeamMemberList();
-        Scanner input = new Scanner(textFile);
+        Scanner input = new Scanner("../files/teamMembers.txt");
         int id = 1;
         while (input.hasNext()){
             String line = input.nextLine();
