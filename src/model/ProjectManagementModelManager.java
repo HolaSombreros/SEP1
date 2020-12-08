@@ -56,6 +56,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",1));
         projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",0));
         TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
+        projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",0));
         project.assignScrumMaster(m1);
 
 

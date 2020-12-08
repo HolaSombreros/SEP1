@@ -93,19 +93,15 @@ public class TeamMember extends Person{
      * */
     public String getRole(Project project){
             if (project.getTeamMemberList().contains(this)) {
-                if(project.getProductOwner() != null)
-                {
-                    if (project.getProductOwner().equals(this))
-                    {
+                if(project.getProductOwner() != null) {
+                    if (project.getProductOwner().equals(this)) {
                         return "Product Owner";
                     }
                 }
-                if(project.getScrumMaster() != null)
-                {
-                        if (project.getScrumMaster().equals(this))
-                        {
-                             return "Scrum Master";
-                        }
+                if(project.getScrumMaster() != null) {
+                    if (project.getScrumMaster().equals(this)) {
+                        return "Scrum Master";
+                    }
                 }
                 return "Team Member";
             }
