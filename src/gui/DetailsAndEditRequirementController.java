@@ -41,8 +41,7 @@ public class DetailsAndEditRequirementController
     return root;
   }
 
-  public void init(ViewHandler viewHandler, IProjectManagementModel model,
-      Region root, ViewState state)
+  public void init(ViewHandler viewHandler, IProjectManagementModel model, Region root, ViewState state)
   {
     this.viewHandler = viewHandler;
     this.model = model;
@@ -53,34 +52,25 @@ public class DetailsAndEditRequirementController
 
   public void reset()
   {
-    Requirement requirement = model.getRequirementList(
-        model.getProjectList().getProjectByID(state.getSelectedProject()))
-        .getRequirementById(state.getSelectedRequirement());
+    Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
 
-    this.viewModel = new TeamMemberListViewModel(model,state);
+    this.viewModel = new TeamMemberListViewModel(model, state);
     viewModel.update(requirement.getRelatedProject());
-    idColumn
-        .setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-    nameColumn
-        .setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
+    idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+    nameColumn.setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
     teamMembersTable.setItems(viewModel.getList());
 
-    idLabel.setText("Requirement Id: " +state.getSelectedRequirement());
-    relatedProjectInput
-        .setText(requirement.getRelatedProject().getName());
+    idLabel.setText("Requirement Id: " + state.getSelectedRequirement());
+    relatedProjectInput.setText(requirement.getRelatedProject().getName());
     userStoryInput.setText(requirement.getUserStory());
     startingDateInput.getEditor().clear();
-    startingDateShow
-        .setText("Now: " + requirement.getStartingDate().toString());
+    startingDateShow.setText("Now: " + requirement.getStartingDate().toString());
     deadlineInput.getEditor().clear();
     deadlineShow.setText("Now: " + requirement.getDeadline().toString());
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
-    hoursWorkedShow
-        .setText("Number of Hours Worked: " + requirement.getHoursWorked());
+    hoursWorkedShow.setText("Number of Hours Worked: " + requirement.getHoursWorked());
     if (requirement.getResponsibleTeamMember() != null)
-      responsibleTeamMemberInput.setText(
-          requirement.getResponsibleTeamMember().getId() + " " + requirement
-              .getResponsibleTeamMember().getFullName());
+      responsibleTeamMemberInput.setText(requirement.getResponsibleTeamMember().getId() + " " + requirement.getResponsibleTeamMember().getFullName());
     else
       responsibleTeamMemberInput.setText("");
 
@@ -134,90 +124,95 @@ public class DetailsAndEditRequirementController
 
   @FXML private void confirmEditingButtonPressed()
   {
-    Requirement requirement = model.getRequirementList(
-        model.getProjectList().getProjectByID(state.getSelectedProject()))
-        .getRequirementById(state.getSelectedRequirement());
+    Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
+
     try
     {
       if (userStoryInput.getText().equals(""))
         throw new IllegalArgumentException("User Story can not be empty");
-      requirement.setUserStory(userStoryInput.getText());
+      String userStory = userStoryInput.getText();
 
+      Date d1 = requirement.getStartingDate();
       if (startingDateInput.getValue() != null)
       {
         int day1 = startingDateInput.getValue().getDayOfMonth();
         int month1 = startingDateInput.getValue().getMonthValue();
         int year1 = startingDateInput.getValue().getYear();
         if (startingDateInput.getValue() != null)
-          requirement.setStartingDate(new Date(day1, month1, year1));
-        startingDateShow.setText("Now: " + requirement.getStartingDate().toString());
+          d1 = new Date(day1, month1, year1);
       }
 
-      if(deadlineInput.getValue() != null)
+      Date d2 = requirement.getDeadline();
+      if (deadlineInput.getValue() != null)
       {
         int day2 = deadlineInput.getValue().getDayOfMonth();
         int month2 = deadlineInput.getValue().getMonthValue();
         int year2 = deadlineInput.getValue().getYear();
         if (deadlineInput.getValue() != null)
-          requirement.setDeadline(new Date(day2, month2, year2));
-        deadlineShow.setText("Now: " + requirement.getDeadline().toString());
+          d2 = new Date(day2, month2, year2);
       }
 
-      Date.checkDates(requirement.getStartingDate(), requirement.getDeadline());
+      Date.checkDates(d1, d2);
 
+      double estimatedTime = requirement.getEstimatedTime();
       if (estimatedTimeInput.getText().equals(""))
         throw new IllegalArgumentException("Estimated Time can not be empty");
       try
       {
-        requirement
-            .setEstimatedTime(Double.parseDouble(estimatedTimeInput.getText()));
+        estimatedTime = Double.parseDouble(estimatedTimeInput.getText());
       }
       catch (NumberFormatException e)
       {
         throw new IllegalArgumentException("Estimated Time has to be a number");
       }
 
+      TeamMember rtm = requirement.getResponsibleTeamMember();
       if (!(responsibleTeamMemberInput.getText().equals("")))
       {
         String member = responsibleTeamMemberInput.getText();
         String[] member1 = member.split(" ");
         int index = Integer.parseInt(member1[0]);
-        requirement.assignResponsibleTeamMember(model.getTeamMemberList(requirement.getRelatedProject(),requirement).getByID(index));
+        rtm = model.getTeamMemberList(requirement.getRelatedProject(), requirement).getByID(index);
       }
 
-      Priority priority = null;
+      Priority priority = requirement.getPriority();
       if (priorityInput.getValue().equals("Critical"))
-        requirement.setPriority(Priority.CRITICAL);
+        priority = Priority.CRITICAL;
       if (priorityInput.getValue().equals("High"))
-        requirement.setPriority(Priority.HIGH);
+        priority = Priority.HIGH;
       if (priorityInput.getValue().equals("Low"))
-        requirement.setPriority(Priority.LOW);
+        priority = Priority.LOW;
 
-      Type type = null;
+      Type type = requirement.getType();
       if (typeInput.getValue().equals("Functional"))
-        requirement.setType(Type.FUNCTIONAL);
+        type = Type.FUNCTIONAL;
       if (typeInput.getValue().equals("Non Functional"))
-        requirement.setType(Type.NON_FUNCTIONAL);
+        type = Type.NON_FUNCTIONAL;
       if (typeInput.getValue().equals("Project Related"))
-        requirement.setType(Type.PROJECT_RELATED);
+        type = Type.PROJECT_RELATED;
 
-      RequirementStatus status = null;
+      RequirementStatus status = requirement.getStatus();
       if (statusInput.getValue().equals("Not Started"))
-        requirement.setStatus(RequirementStatus.NOT_STARTED);
+        status = RequirementStatus.NOT_STARTED;
       if (statusInput.getValue().equals("Started"))
-        requirement.setStatus(RequirementStatus.STARTED);
+        status = RequirementStatus.STARTED;
       if (statusInput.getValue().equals("Ended"))
-        requirement.setStatus(RequirementStatus.ENDED);
+        status = RequirementStatus.ENDED;
       if (statusInput.getValue().equals("Approved"))
-        requirement.setStatus(RequirementStatus.APPROVED);
+        status = RequirementStatus.APPROVED;
       if (statusInput.getValue().equals("Rejected"))
-        requirement.setStatus(RequirementStatus.REJECTED);
+        status = RequirementStatus.REJECTED;
 
       errorLabel.setText("");
 
-      model.editRequirement(requirement.getRelatedProject(),requirement);
-      state.setSelectedRequirement(-1);
-      viewHandler.openView("requirementList");
+      boolean remove = confirmation("edit");
+      if (remove)
+      {
+        requirement.edit(userStory, estimatedTime, rtm, d1, d2, status, type, priority);
+        model.editRequirement(requirement.getRelatedProject(), requirement);
+        state.setSelectedRequirement(-1);
+        viewHandler.openView("requirementList");
+      }
     }
 
     catch (Exception e)
@@ -231,8 +226,7 @@ public class DetailsAndEditRequirementController
   {
     try
     {
-      TeamMemberViewModel selectedItem = teamMembersTable.getSelectionModel()
-          .getSelectedItem();
+      TeamMemberViewModel selectedItem = teamMembersTable.getSelectionModel().getSelectedItem();
       responsibleTeamMemberInput.setText(selectedItem.getIdProperty().getValue() + " " + selectedItem.getNameProperty().getValue());
     }
     catch (Exception e)
@@ -243,10 +237,8 @@ public class DetailsAndEditRequirementController
 
   @FXML private void removeRequirementButtonPressed()
   {
-    Requirement requirement = model.getRequirementList(
-        model.getProjectList().getProjectByID(state.getSelectedProject()))
-        .getRequirementById(state.getSelectedRequirement());
-    boolean remove = confirmation();
+    Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
+    boolean remove = confirmation("remove");
     if (remove)
     {
       model.removeRequirement(requirement.getRelatedProject(), requirement);
@@ -262,14 +254,15 @@ public class DetailsAndEditRequirementController
     viewHandler.openView("requirementList");
   }
 
-  private boolean confirmation()
+  private boolean confirmation(String string)
   {
-    Requirement requirement = model.getRequirementList(
-        model.getProjectList().getProjectByID(state.getSelectedProject()))
-        .getRequirementById(state.getSelectedRequirement());
+    Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Confirmation");
-    alert.setHeaderText("Removing requirement - id: " + requirement.getId());
+    if (string.equals("edit"))
+      alert.setHeaderText("Are you sure you want to edit the requirement?");
+    else
+      alert.setHeaderText("Removing requirement - id: " + requirement.getId());
     Optional<ButtonType> result = alert.showAndWait();
     return (result.isPresent()) && (result.get() == ButtonType.OK);
   }

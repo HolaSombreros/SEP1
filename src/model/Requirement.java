@@ -16,9 +16,7 @@ public class Requirement
   private Type type;
   private Priority priority;
 
-  public Requirement(String userStory, Date startingDate, Date deadline,
-      double estimatedTime, Priority priority, Type type,
-      Project relatedProject)
+  public Requirement(String userStory, Date startingDate, Date deadline, double estimatedTime, Priority priority, Type type, Project relatedProject)
   {
     this.relatedProject = relatedProject;
     Date.checkDates(startingDate, deadline);
@@ -59,14 +57,15 @@ public class Requirement
   /**
    * The system checks if the starting date is after the project's starting
    * date and before the project's deadline
+   *
    * @param startingDate
    */
   public void setStartingDate(Date startingDate)
   {
-    if(startingDate.isBefore(relatedProject.getStartingDate()))
-      throw new IllegalArgumentException("Starting date can not be before project's starting date");
-    if(!(startingDate.isBefore(relatedProject.getDeadline())))
-      throw new IllegalArgumentException("Starting date can not be after project's deadline");
+    if (startingDate.isBefore(relatedProject.getStartingDate()))
+      throw new IllegalArgumentException("Starting date can not be before project's starting date: " + relatedProject.getStartingDate().toString());
+    if (!(startingDate.isBefore(relatedProject.getDeadline())))
+      throw new IllegalArgumentException("Starting date can not be after project's deadline: " + relatedProject.getDeadline().toString());
     this.startingDate = startingDate.copy();
   }
 
@@ -77,12 +76,13 @@ public class Requirement
 
   /**
    * The system checks if the deadline is before the project's deadline
+   *
    * @param deadline
    */
   public void setDeadline(Date deadline)
   {
     if (!(deadline.isBefore(relatedProject.getDeadline())))
-      throw new IllegalArgumentException("Deadline can not be after project's deadline");
+      throw new IllegalArgumentException("Deadline can not be after project's deadline: " + relatedProject.getDeadline());
     this.deadline = deadline.copy();
   }
 
@@ -93,11 +93,12 @@ public class Requirement
 
   /**
    * The estimated time is not allowed to be less or equal to 0
+   *
    * @param estimatedTime
    */
   public void setEstimatedTime(double estimatedTime)
   {
-    if (estimatedTime<=0)
+    if (estimatedTime <= 0)
       throw new IllegalArgumentException("Estimated time has to be higher than 0");
     this.estimatedTime = estimatedTime;
   }
@@ -127,7 +128,6 @@ public class Requirement
     return type;
   }
 
-
   public void setStatus(RequirementStatus status)
   {
     this.status = status;
@@ -136,11 +136,12 @@ public class Requirement
   /**
    * The system checks if all tasks are ended
    * If yes, the status changes to ended
+   *
    * @return status
    */
   public RequirementStatus getStatus()
   {
-    if(status==RequirementStatus.STARTED)
+    if (status == RequirementStatus.STARTED)
     {
       boolean d = true;
       for (Task task : taskList.getTasks())
@@ -149,7 +150,8 @@ public class Requirement
           d = false;
           break;
         }
-      if (d) setStatus(RequirementStatus.ENDED);
+      if (d)
+        setStatus(RequirementStatus.ENDED);
     }
     return status;
   }
@@ -194,15 +196,29 @@ public class Requirement
     return teamMemberList;
   }
 
+  public void edit(String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline, RequirementStatus status, Type type,
+      Priority priority)
+  {
+    setUserStory(userStory);
+    setEstimatedTime(estimatedTime);
+    assignResponsibleTeamMember(responsibleTeamMember);
+    setStartingDate(startingDate);
+    setDeadline(deadline);
+    setStatus(status);
+    setType(type);
+    setPriority(priority);
+  }
+
   public void assignTeamMember(TeamMember teamMember)
   {
     if (!(teamMemberList.contains(teamMember)))
-    teamMemberList.add(teamMember);
+      teamMemberList.add(teamMember);
   }
 
   /**
    * The system checks if the team member is a responsible one
    * If yes, it can not be removed
+   *
    * @param teamMember
    */
   public void unassignTeamMember(TeamMember teamMember)
@@ -231,7 +247,7 @@ public class Requirement
   public String toString()
   {
     return "Id: " + id + "\n"
-        + "Related Project: "
+        + "Related Project: " + relatedProject.getName() + "\n"
         + "User Story: " + userStory + "\n"
         + "Estimated Time: " + estimatedTime + "\n"
         + "Hours Worked: " + hoursWorked + "\n"
@@ -251,8 +267,10 @@ public class Requirement
       return false;
     Requirement other = (Requirement) obj;
 
-    if (other.getResponsibleTeamMember() != null) {
-      if (getResponsibleTeamMember() != null && !other.getResponsibleTeamMember().equals(getResponsibleTeamMember())) {
+    if (other.getResponsibleTeamMember() != null)
+    {
+      if (getResponsibleTeamMember() != null && !other.getResponsibleTeamMember().equals(getResponsibleTeamMember()))
+      {
         return false;
       }
     }

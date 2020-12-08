@@ -2,16 +2,17 @@ package model;
 
 public enum Type
 {
-  FUNCTIONAL,
-  NON_FUNCTIONAL,
-  PROJECT_RELATED;
+  FUNCTIONAL, NON_FUNCTIONAL, PROJECT_RELATED;
 
   /**
    * Method to get the string representation of the task's type.
+   *
    * @return The string representation of a type in a proper format.
    */
-  public String getName() {
-    switch (this) {
+  public String getName()
+  {
+    switch (this)
+    {
       case FUNCTIONAL:
         return "Functional";
       case NON_FUNCTIONAL:
