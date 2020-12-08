@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>pMEu1VRZ2</id>
+      <id>L9ZtbuaEk</id>
       <title>Project Management System for Colour IT</title>
-      <startingdate>07/12/2020</startingdate>
+      <startingdate>7/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
       <scrummaster>
       </scrummaster>
@@ -16,9 +16,9 @@
             <tasklist>
                <task>
                   <id>1</id>
-                  <title>Do some stuff</title>
-                  <startingdate>15/03/2021</startingdate>
-                  <deadline>19/04/2021</deadline>
+                  <title>Do some shit</title>
+                  <startingdate>15/3/2021</startingdate>
+                  <deadline>19/4/2021</deadline>
                   <estimatedtime>5.0</estimatedtime>
                   <status>Not Started</status>
                   <timeregistration>
@@ -33,10 +33,10 @@
       </requirementlist>
    </project>
    <project>
-      <id>uRclTSNG7</id>
+      <id>pqqKyhP3X</id>
       <title>Some other thing for whoever</title>
-      <startingdate>07/12/2020</startingdate>
-      <deadline>18/05/2021</deadline>
+      <startingdate>7/12/2020</startingdate>
+      <deadline>18/5/2021</deadline>
       <scrummaster>
       </scrummaster>
       <productowner>

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditProjectController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditProjectController">
    <children>
       <VBox prefHeight="460.0" prefWidth="600.0">
          <children>
@@ -26,9 +26,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="329.0" prefWidth="600.0">
+            <HBox prefHeight="348.0" prefWidth="600.0">
                <children>
-                  <VBox prefHeight="361.0" prefWidth="187.0" spacing="30.0">
+                  <VBox prefHeight="361.0" prefWidth="187.0" spacing="35.0">
                      <children>
                         <TextField fx:id="IDInput" prefHeight="25.0" prefWidth="192.0" promptText="ID" />
                         <TextField fx:id="nameInput" promptText="Name" />
@@ -43,11 +43,11 @@
                   </VBox>
                   <VBox prefHeight="294.0" prefWidth="359.0">
                      <children>
-                        <ScrollPane prefHeight="259.0" prefWidth="359.0">
+                        <ScrollPane prefHeight="226.0" prefWidth="171.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="348.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="224.0" prefWidth="339.0">
                                  <children>
-                                    <TableView fx:id="teamMembersTable" layoutX="-2.0" layoutY="5.0" prefHeight="190.0" prefWidth="342.0">
+                                    <TableView fx:id="teamMembersTable" layoutX="-2.0" layoutY="5.0" prefHeight="214.0" prefWidth="341.0">
                                        <columns>
                                           <TableColumn fx:id="IDColumn" prefWidth="75.0" text="ID" />
                                           <TableColumn fx:id="nameColumn" minWidth="50.0" prefWidth="250.0" text="Name" />
@@ -63,13 +63,22 @@
                                  <children>
                                     <HBox prefHeight="138.0" prefWidth="359.0">
                                        <children>
-                                          <VBox prefHeight="185.0" prefWidth="162.0" spacing="30.0">
+                                          <VBox prefHeight="105.0" prefWidth="306.0" spacing="30.0">
                                              <children>
-                                                <TextField fx:id="scrumMasterInput" promptText="Scrum Master" />
-                                                <TextField fx:id="productOwnerInput" promptText="Product Owner" />
+                                                <TextField fx:id="scrumMaster" promptText="Scrum Master" />
+                                                <TextField fx:id="productOwner" promptText="Product Owner" />
                                              </children>
                                              <HBox.margin>
-                                                <Insets left="100.0" top="25.0" />
+                                                <Insets top="30.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="80.0" prefWidth="295.0" spacing="30.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" text="Assign as Scrum Master" />
+                                                <Button mnemonicParsing="false" text="Assign as Product Owner" />
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="30.0" top="30.0" />
                                              </HBox.margin>
                                           </VBox>
                                        </children>
