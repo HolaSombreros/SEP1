@@ -54,6 +54,8 @@ public class DetailsTeamMemberController {
        errorLabel.setText("");
        productivityLabel.setText("");
        frequentTeamMemberLabel.setText("");
+       idField.setText("");
+       nameField.setText("");
        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
        teamMemberViewTable.setItems(viewModel.getList());
