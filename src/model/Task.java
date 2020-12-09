@@ -131,10 +131,14 @@ public class Task {
 
     /**
      * Method to assign a team member to the task's list of team members.
+     * Also assigns a team member to the requirement's list of team members if necessary.
      * @param teamMember The TeamMember object which will be added to the list.
      */
     public void assignTeamMember(TeamMember teamMember) {
         teamMemberList.add(teamMember);
+        if (!getRelatedRequirement().getTeamMemberList().getTeamMembers().contains(teamMember)) {
+            getRelatedRequirement().assignTeamMember(teamMember);
+        }
     }
 
     /**
@@ -181,7 +185,7 @@ public class Task {
         else {
             assignResponsibleTeamMember(responsibleTeamMember);
         }
-        if (hoursWorked != 0 || teamMember != null) {
+        if (teamMember != null) {
             addHoursWorked(teamMember, hoursWorked);
         }
     }
