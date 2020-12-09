@@ -34,14 +34,10 @@ public class Requirement
     this.responsibleTeamMember = null;
   }
 
+  //    SETTERS
   public void setId(int id)
   {
     this.id = id;
-  }
-
-  public int getId()
-  {
-    return id;
   }
 
   public void setUserStory(String userStory)
@@ -49,15 +45,9 @@ public class Requirement
     this.userStory = userStory;
   }
 
-  public String getUserStory()
-  {
-    return userStory;
-  }
-
   /**
    * The system checks if the starting date is after the project's starting
    * date and before the project's deadline
-   *
    * @param startingDate
    */
   public void setStartingDate(Date startingDate)
@@ -69,14 +59,8 @@ public class Requirement
     this.startingDate = startingDate.copy();
   }
 
-  public Date getStartingDate()
-  {
-    return startingDate.copy();
-  }
-
   /**
    * The system checks if the deadline is before the project's deadline
-   *
    * @param deadline
    */
   public void setDeadline(Date deadline)
@@ -86,14 +70,8 @@ public class Requirement
     this.deadline = deadline.copy();
   }
 
-  public Date getDeadline()
-  {
-    return deadline.copy();
-  }
-
   /**
    * The estimated time is not allowed to be less or equal to 0
-   *
    * @param estimatedTime
    */
   public void setEstimatedTime(double estimatedTime)
@@ -103,19 +81,11 @@ public class Requirement
     this.estimatedTime = estimatedTime;
   }
 
-  public double getEstimatedTime()
-  {
-    return estimatedTime;
-  }
+  //   GETTERS
 
   public void setPriority(Priority priority)
   {
     this.priority = priority;
-  }
-
-  public Priority getPriority()
-  {
-    return priority;
   }
 
   public void setType(Type type)
@@ -123,20 +93,49 @@ public class Requirement
     this.type = type;
   }
 
-  public Type getType()
-  {
-    return type;
-  }
-
   public void setStatus(RequirementStatus status)
   {
     this.status = status;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
+  public String getUserStory()
+  {
+    return userStory;
+  }
+
+  public Date getStartingDate()
+  {
+    return startingDate.copy();
+  }
+
+  public Date getDeadline()
+  {
+    return deadline.copy();
+  }
+
+  public double getEstimatedTime()
+  {
+    return estimatedTime;
+  }
+
+  public Priority getPriority()
+  {
+    return priority;
+  }
+
+  public Type getType()
+  {
+    return type;
+  }
+
   /**
    * The system checks if all tasks are ended
    * If yes, the status changes to ended
-   *
    * @return status
    */
   public RequirementStatus getStatus()
@@ -169,6 +168,8 @@ public class Requirement
     return relatedProject;
   }
 
+  //   TASK RELATED
+
   public void addTask(Task task)
   {
     taskList.add(task);
@@ -179,49 +180,34 @@ public class Requirement
     taskList.remove(task);
   }
 
-  public void removeTaskById(int id)
-  {
-    for (Task task : taskList.getTasks())
-      if (task.getId() == id)
-        removeTask(task);
-  }
-
   public TaskList getTaskList()
   {
     return taskList;
   }
+
+  //   TEAMMEMBER RELATED
 
   public TeamMemberList getTeamMemberList()
   {
     return teamMemberList;
   }
 
-  public void edit(String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline, RequirementStatus status, Type type,
-      Priority priority)
-  {
-    setUserStory(userStory);
-    setEstimatedTime(estimatedTime);
-    if (responsibleTeamMember == null)
-      unassignResponsibleTeamMember();
-    else
-      assignResponsibleTeamMember(responsibleTeamMember);
-    setStartingDate(startingDate);
-    setDeadline(deadline);
-    setStatus(status);
-    setType(type);
-    setPriority(priority);
-  }
-
+  /**
+   * The system will assign the team member in a requirement and the related project as well if they are not already there
+   * @param teamMember
+   */
   public void assignTeamMember(TeamMember teamMember)
   {
     if (!(teamMemberList.contains(teamMember)))
       teamMemberList.add(teamMember);
+    if(!(relatedProject.getTeamMemberList().contains(teamMember)))
+      relatedProject.assignTeamMember(teamMember);
   }
 
   /**
    * The system checks if the team member is a responsible one
    * If yes, it can not be removed
-   *
+   * If no, the system will unassign him from the requirement and the related tasks
    * @param teamMember
    */
   public void unassignTeamMember(TeamMember teamMember)
@@ -229,8 +215,16 @@ public class Requirement
     if (teamMember.equals(getResponsibleTeamMember()))
       throw new IllegalArgumentException("You can not unassign a responsible team member");
     teamMemberList.remove(teamMember);
+    for (Task task : taskList.getTasks())
+    {
+      task.unassignTeamMember(teamMember);
+    }
   }
 
+  /**
+   * The system unassigns first the responsible team member, then assigns the other one
+   * @param teamMember
+   */
   public void assignResponsibleTeamMember(TeamMember teamMember)
   {
     unassignResponsibleTeamMember();
@@ -245,6 +239,36 @@ public class Requirement
   public TeamMember getResponsibleTeamMember()
   {
     return responsibleTeamMember;
+  }
+
+
+  //   OTHER METHODS
+
+  /**
+   * The method sets all the editable variables of the requirement
+   * @param userStory
+   * @param estimatedTime
+   * @param responsibleTeamMember
+   * @param startingDate
+   * @param deadline
+   * @param status
+   * @param type
+   * @param priority
+   */
+  public void edit(String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline, RequirementStatus status, Type type,
+      Priority priority)
+  {
+    setUserStory(userStory);
+    setEstimatedTime(estimatedTime);
+    if (responsibleTeamMember == null)
+      unassignResponsibleTeamMember();
+    else
+      assignResponsibleTeamMember(responsibleTeamMember);
+    setStartingDate(startingDate);
+    setDeadline(deadline);
+    setStatus(status);
+    setType(type);
+    setPriority(priority);
   }
 
   public String toString()

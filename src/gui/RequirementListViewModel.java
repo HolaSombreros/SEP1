@@ -22,6 +22,11 @@ public class RequirementListViewModel
     return list;
   }
 
+  /**
+   * The method takes an id and display only the requirement with the selected id
+   * If the id equals 0, then all the requirements will be in the table
+   * @param id
+   */
   public void update(int id)
   {
     list.clear();

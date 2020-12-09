@@ -9,7 +9,10 @@ public class ViewState
   private int selectedTask;
   private int selectedTeamMember;
 
-
+  /**
+   * All the variables will be initialised with -1 in the constructor
+   * The String variable will be "-1" also
+   */
   public ViewState()
   {
     selectedProject = "-1";

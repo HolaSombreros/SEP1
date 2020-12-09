@@ -35,7 +35,7 @@ public class TeamMemberListViewModel
   }
 
   /**
-   *
+   * The method will update just the team members in a requirement
    * */
   public void update(Project project) {
     list.clear();
