@@ -137,7 +137,7 @@
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </padding>
       </Button>
-      <Button mnemonicParsing="false" onAction="#removeTask" style="-fx-font-weight: bold;" text="Register Time">
+      <Button mnemonicParsing="false" onAction="#registerTime" style="-fx-font-weight: bold;" text="Register Time">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </padding>

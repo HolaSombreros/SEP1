@@ -181,6 +181,9 @@ public class Task {
         else {
             assignResponsibleTeamMember(responsibleTeamMember);
         }
+        if (hoursWorked != 0 || teamMember != null) {
+            addHoursWorked(teamMember, hoursWorked);
+        }
     }
 
     /**
