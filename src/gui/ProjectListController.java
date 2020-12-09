@@ -105,4 +105,15 @@ public class ProjectListController
          return (result.isPresent()) && (result.get() == ButtonType.OK);
      }
 
+     @FXML private void searchButtonPressed()
+     {
+
+        /*try
+         {
+            if(!searchInput.getText().equals(""))
+            {
+
+            }
+         }*/
+     }
 }
