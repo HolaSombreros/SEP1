@@ -27,6 +27,7 @@ public class RequirementList
    * the idCounter will keep track of the number of the requirements id
    * it will increase everytime a requirement is added and it will be set as a
    * requirement id
+   * Everytime a requirement is added, the requirements will be sorted by priority
    *
    * @param requirement
    */
@@ -85,38 +86,6 @@ public class RequirementList
     throw new IllegalArgumentException("No requirement found");
   }
 
-  /**
-   * @param priority
-   * @return The system throws an exception if there are no requirements with
-   * the selected priority
-   */
-  public ArrayList<Requirement> getRequirementByPriority(Priority priority)
-  {
-    ArrayList<Requirement> requirements1 = new ArrayList<>();
-    for (Requirement requirement : requirements)
-      if (requirement.getPriority() == priority)
-        requirements1.add(requirement);
-    if (requirements1.size() == 0)
-      throw new IllegalArgumentException("No requirements found");
-    return requirements1;
-  }
-
-  /**
-   * @param status
-   * @return The system throws an exception if there are no requirements with
-   * the selected priority
-   */
-  public ArrayList<Requirement> getRequirementByStatus(RequirementStatus status)
-  {
-    ArrayList<Requirement> requirements1 = new ArrayList<>();
-    for (Requirement requirement : requirements)
-      if (requirement.getStatus() == status)
-        requirements1.add(requirement);
-    if (requirements1.size() == 0)
-      throw new IllegalArgumentException("No requirements found");
-    return requirements1;
-  }
-
   public boolean contains(Requirement requirement)
   {
     return requirements.contains(requirement);
@@ -136,5 +105,4 @@ public class RequirementList
     }
     return false;
   }
-
 }

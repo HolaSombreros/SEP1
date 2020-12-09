@@ -14,8 +14,10 @@ public class ViewHandler
   private Stage primaryStage;
   private IProjectManagementModel model;
   private ViewState viewState;
-  
+
+
   // View Controllers:
+
   private ProjectListController projectListController;
   private RequirementListController requirementListController;
   private TaskListController taskListController;
@@ -108,6 +110,9 @@ public class ViewHandler
   {
     primaryStage.close();
   }
+
+
+  //   LOADERS
 
   private Region loadProjectList(String fxmlFile, ViewState viewState)
   {
