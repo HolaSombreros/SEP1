@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>7EsqSe7Fc</id>
+      <id>vuV3TLhX2</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
@@ -14,8 +14,9 @@
          <timeregistration>
             <hoursworked>0.0</hoursworked>
          </timeregistration>
-</scrummaster>
-      <productowner></productowner>
+      </scrummaster>
+      <productowner>
+      </productowner>
       <teammemberlist>
          <teammember>
             <firstname>Joseph</firstname>
@@ -40,7 +41,7 @@
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
-            <relatedproject>7EsqSe7Fc</relatedproject>
+            <relatedproject>vuV3TLhX2</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
@@ -96,14 +97,16 @@
       </requirementlist>
    </project>
    <project>
-      <id>qeMfVRHyL</id>
+      <id>nJRwHbNoO</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>
       <startingdate>09/12/2020</startingdate>
       <deadline>18/05/2021</deadline>
-      <scrummaster></scrummaster>
-      <productowner></productowner>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
       <teammemberlist>
          <teammember>
             <firstname>Pizza</firstname>
@@ -131,8 +134,9 @@
          <timeregistration>
             <hoursworked>0.0</hoursworked>
          </timeregistration>
-</scrummaster>
-      <productowner></productowner>
+      </scrummaster>
+      <productowner>
+      </productowner>
       <teammemberlist>
       </teammemberlist>
       <requirementlist>

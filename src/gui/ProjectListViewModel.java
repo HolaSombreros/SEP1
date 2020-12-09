@@ -4,9 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.IProjectManagementModel;
 import model.Project;
-import model.TeamMember;
 
-import javax.swing.text.View;
 
 public class ProjectListViewModel {
 
@@ -48,9 +46,27 @@ public class ProjectListViewModel {
     public void update()
     {
         list.clear();
-        for(Project project: model.getProjectList().getProjects())
+
         {
-            list.add(new ProjectViewModel(project));
+            for(Project project: model.getProjectList().getProjects())
+            {
+                list.add(new ProjectViewModel(project));
+            }
+        }
+    }
+    public void update(String id)
+    {
+        list.clear();
+        if(id == null)
+        {
+            for(Project project: model.getProjectList().getProjects())
+             {
+                list.add(new ProjectViewModel(project));
+             }
+        }
+        else
+        {
+            list.add(new ProjectViewModel(model.getProjectList().getProjectByID(id)));
         }
 
 
@@ -61,6 +77,7 @@ public class ProjectListViewModel {
         for (Project project: model.getProjectList().getProjects())
             if(project.getTeamMemberList().getByID(id) != null)
                 list.add(new ProjectViewModel(project));
+
     }
 
     //TODO update by id and name for TeamMember and get project role for teamMember (Adriana)
