@@ -41,6 +41,11 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
+            <Label fx:id="errorLabel" prefHeight="47.0" prefWidth="219.0" text="Error Label " textFill="#d30000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                <font>
                   <Font size="14.0" />
@@ -49,20 +54,12 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Unassign">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="30.0" right="20.0" />
-               </HBox.margin>
-            </Button>
             <Button mnemonicParsing="false" onAction="#unassignButtonPressed" text="Unassign">
                <font>
                   <Font size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="30.0" right="20.0" />
+                  <Insets left="15.0" right="10.0" />
                </HBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#requirementButtonPressed" text="Go to Requirement">
@@ -70,7 +67,7 @@
                   <Font size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="30.0" right="50.0" />
+                  <Insets left="15.0" right="50.0" />
                </HBox.margin>
             </Button>
          </children>

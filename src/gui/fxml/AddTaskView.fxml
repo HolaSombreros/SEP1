@@ -18,32 +18,63 @@
          <Insets bottom="20.0" />
       </VBox.margin>
    </Label>
-   <HBox alignment="CENTER" prefWidth="460.0" spacing="45.0">
+   <HBox alignment="CENTER" maxWidth="460.0" spacing="75.0">
+      <children>
+         <Label style="-fx-font-weight: bold;" text="Project title" />
+         <TextField fx:id="projectTitle" editable="false" minWidth="316.0" promptText="Project title">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </TextField>
+      </children>
       <VBox.margin>
-         <Insets bottom="5.0"/>
+         <Insets bottom="10.0" />
       </VBox.margin>
-      <Label style="-fx-font-weight: bold;" text="Requirement Startdate"/>
-      <Label style="-fx-font-weight: bold;" text="Requirement Deadline"/>
    </HBox>
-   <HBox alignment="CENTER" prefWidth="460.0" spacing="25.0">
+   <HBox alignment="CENTER" maxWidth="460.0" spacing="9.0">
+      <children>
+         <Label style="-fx-font-weight: bold;" text="Requirement user story" />
+         <TextField fx:id="requirementTitle" editable="false" minWidth="316.0" promptText="Requirement user story" />
+      </children>
       <VBox.margin>
-         <Insets bottom="30.0"/>
+         <Insets bottom="10.0" />
       </VBox.margin>
-      <TextField fx:id="requirementStart" editable="false" minWidth="100.0"/>
-      <TextField fx:id="requirementEnd" editable="false" minWidth="100.0"/>
+   </HBox>
+   <HBox alignment="CENTER" maxWidth="460.0">
+      <VBox.margin>
+         <Insets bottom="40.0" />
+      </VBox.margin>
+      <children>
+         <Label style="-fx-font-weight: bold;" text="Starting date">
+            <HBox.margin>
+               <Insets right="5.0" />
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="requirementStart" maxWidth="140.0">
+            <HBox.margin>
+               <Insets right="45.0" />
+            </HBox.margin>
+         </TextField>
+         <Label style="-fx-font-weight: bold;" text="Deadline">
+            <HBox.margin>
+               <Insets right="5.0" />
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="requirementEnd" maxWidth="140.0" />
+      </children>
    </HBox>
    <TextField fx:id="titleInput" maxWidth="460.0" promptText="Title">
       <VBox.margin>
          <Insets bottom="10.0" />
       </VBox.margin>
    </TextField>
-   <HBox alignment="CENTER_LEFT" maxWidth="460.0" prefHeight="25.0">
+   <HBox alignment="CENTER_LEFT" maxWidth="460.0">
       <VBox.margin>
          <Insets bottom="10.0" />
       </VBox.margin>
       <DatePicker fx:id="startingDateInput" editable="false" minWidth="180.0" promptText="Starting date" />
    </HBox>
-   <HBox alignment="CENTER_LEFT" maxWidth="460.0" prefHeight="25.0">
+   <HBox alignment="CENTER_LEFT" maxWidth="460.0">
       <VBox.margin>
          <Insets bottom="10.0" />
       </VBox.margin>

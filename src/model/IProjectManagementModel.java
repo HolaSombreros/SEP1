@@ -12,7 +12,7 @@ public interface IProjectManagementModel
   void editProject(Project project);
   void editRequirement(Project project, Requirement requirement, String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline,
       RequirementStatus status, Type type, Priority priority);
-  void editTask(Task task, String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember);
+  void editTask(Task task, String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember, double hoursWorked, TeamMember teamMember);
   void removeProject(Project project);
   void removeRequirement(Project project, Requirement requirement);
   void removeTask(Requirement requirement, Task task);
@@ -26,7 +26,7 @@ public interface IProjectManagementModel
   TeamMemberList getTeamMemberList(Project Project, Requirement requirement);
   TeamMemberList getTeamMemberList(Project Project, Requirement requirement, Task task);
   ArrayList<Project> getRelatedProjects(TeamMember teamMember);
-  TeamMember getMostFrequentTeamMember(TeamMember teamMember);
+  TeamMember getMostFrequentTeamMember(TeamMember teamMember) throws FileNotFoundException;
   double getProductivity(TeamMember teamMember);
   TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException;
 }

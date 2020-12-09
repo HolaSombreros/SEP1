@@ -201,7 +201,10 @@ public class Requirement
   {
     setUserStory(userStory);
     setEstimatedTime(estimatedTime);
-    assignResponsibleTeamMember(responsibleTeamMember);
+    if (responsibleTeamMember == null)
+      unassignResponsibleTeamMember();
+    else
+      assignResponsibleTeamMember(responsibleTeamMember);
     setStartingDate(startingDate);
     setDeadline(deadline);
     setStatus(status);
@@ -246,19 +249,10 @@ public class Requirement
 
   public String toString()
   {
-    return "Id: " + id + "\n"
-        + "Related Project: " + relatedProject.getName() + "\n"
-        + "User Story: " + userStory + "\n"
-        + "Estimated Time: " + estimatedTime + "\n"
-        + "Hours Worked: " + hoursWorked + "\n"
-        + "Starting date: " + startingDate.toString() + "\n"
-        + "Deadline: " + deadline + "\n"
-        + "Status" + getStatus().getName() + "\n"
-        + "Priority: " + getPriority().getName() + "\n"
-        + "Type: " + getType().getName() + "\n"
-        + "Responsible Team Member: " + getResponsibleTeamMember() + "\n"
-        + "Tasks: " + taskList.toString() + "\n"
-        + "Team Members: " + teamMemberList.toString();
+    return "Id: " + id + "\n" + "Related Project: " + relatedProject.getName() + "\n" + "User Story: " + userStory + "\n" + "Estimated Time: " + estimatedTime + "\n"
+        + "Hours Worked: " + hoursWorked + "\n" + "Starting date: " + startingDate.toString() + "\n" + "Deadline: " + deadline + "\n" + "Status" + getStatus().getName() + "\n"
+        + "Priority: " + getPriority().getName() + "\n" + "Type: " + getType().getName() + "\n" + "Responsible Team Member: " + getResponsibleTeamMember() + "\n" + "Tasks: "
+        + taskList.toString() + "\n" + "Team Members: " + teamMemberList.toString();
   }
 
   public boolean equals(Object obj)
@@ -274,18 +268,9 @@ public class Requirement
         return false;
       }
     }
-    return id == other.id
-        && relatedProject.getID() == other.relatedProject.getID()
-        && userStory.equals(other.userStory)
-        && estimatedTime == other.estimatedTime
-        && hoursWorked == other.hoursWorked
-        && startingDate.equals(other.startingDate)
-        && deadline.equals(other.deadline)
-        && status == other.status
-        && type == other.type
-        && priority == other.priority
-        && taskList.equals(other.taskList)
-        && teamMemberList.equals(other.teamMemberList);
+    return id == other.id && relatedProject.getID() == other.relatedProject.getID() && userStory.equals(other.userStory) && estimatedTime == other.estimatedTime
+        && hoursWorked == other.hoursWorked && startingDate.equals(other.startingDate) && deadline.equals(other.deadline) && status == other.status && type == other.type
+        && priority == other.priority && taskList.equals(other.taskList) && teamMemberList.equals(other.teamMemberList);
   }
 
 }

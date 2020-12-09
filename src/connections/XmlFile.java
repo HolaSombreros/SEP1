@@ -1,7 +1,8 @@
 package connections;
 
 import model.*;
-
+import parser.ParserException;
+import parser.XmlJsonParser;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,29 +31,99 @@ public class XmlFile implements IFileConnection {
         return filePath;
     }
     
-    @Override public IProjectManagementModel loadModel() {
-//        File file = new File(getFilePath());
-//        Scanner sc = new Scanner(file);
-//        IProjectManagementModel model = new ProjectManagementModelManager();
+    @Override public IProjectManagementModel loadModel() throws FileNotFoundException, ParserException {
+        File file = new File(getFilePath());
+        Scanner sc = new Scanner(file);
+        
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        XmlJsonParser parser = new XmlJsonParser();
+        IProjectManagementModel model;
+        model = parser.fromXml(getFileName(), ProjectManagementModelManager.class);
+        return model;
+        
+//        String projectId = "";
+//        String title = "";
+//        Methodology methodology = null;
+//        Date startingDate = null;
+//        Date deadline = null;
 //
-//        int state = 0;
+//        Status status = null;
+//
+//        String firstName = "";
+//        String lastName = "";
+//        int id = 0;
+//        double hoursWorked = 0;
 //
 //        while (sc.hasNext()) {
 //            String line = sc.nextLine();
-//            if (line.contains("<project>")) {
-//                state = 1;
+//            if (line.contains("<id>")) {
+//                line = line.replace("<id>", "");
+//                line = line.replace("</id>", "");
+//                projectId = line.trim();
+//            }
+//            else if (line.contains("<title>")) {
+//                line = line.replace("<title>", "");
+//                line = line.replace("</title>", "");
+//                title = line.trim();
+//            }
+//            else if (line.contains("<status>")) {
+//                line = line.replace("<status>", "");
+//                line = line.replace("</status>", "");
+//                String temp = line.trim();
+//                switch (temp) {
+//                    case "Not Started":
+//                        status = Status.NOT_STARTED;
+//                        break;
+//                    case "Started":
+//                        status = Status.STARTED;
+//                        break;
+//                    case "Ended":
+//                        status = Status.ENDED;
+//                        break;
+//                }
+//            }
+//            else if (line.contains("<methodology>")) {
+//                line = line.replace("<methodology>", "");
+//                line = line.replace("</methodology>", "");
+//                String temp = line.trim();
+//                switch (temp) {
+//                    case "Scrum":
+//                        methodology = Methodology.SCRUM;
+//                        break;
+//                    case "Waterfall":
+//                        methodology = Methodology.WATERFALL;
+//                        break;
+//                }
+//            }
+//            else if (line.contains("<startingdate>")) {
+//                line = line.replace("<startingdate>", "");
+//                line = line.replace("</startingdate>", "");
+//                String[] temp = line.trim().split("/");
+//                startingDate = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
+//            }
+//            else if (line.contains("<deadline>")) {
+//                line = line.replace("<deadline>", "");
+//                line = line.replace("</deadline>", "");
+//                String[] temp = line.trim().split("/");
+//                deadline = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
 //            }
 //
-//            if (line.contains("<requirement>")) {
-//                state = 2;
-//            }
-//
-//            if (line.contains("<task>")) {
-//                state = 3;
+//            else if (line.contains("</project>")) {
+//                model.addProject(new Project(title, projectId, startingDate, deadline, methodology));
+//                Project project = model.getProjectList().getProjectByID(projectId);
+//                project.setStatus(status);
 //            }
 //        }
-//
-        return null;
+//        return model;
     }
     
     @Override public void saveModel(IProjectManagementModel model) throws FileNotFoundException {
@@ -77,26 +148,26 @@ public class XmlFile implements IFileConnection {
             xml += "      <methodology>" + project.getMethodology() + "</methodology>\n";
             xml += "      <startingdate>" + project.getStartingDate().toString() + "</startingdate>\n";
             xml += "      <deadline>" + project.getDeadline().toString() + "</deadline>\n";
-            xml += "      <scrummaster>";
+            xml += "      <scrummaster>\n";
             if (project.getScrumMaster() != null) {
-                xml += "\n         <firstname>" + project.getScrumMaster().getFirstName() + "</firstname>\n";
+                xml += "         <firstname>" + project.getScrumMaster().getFirstName() + "</firstname>\n";
                 xml += "         <lastname>" + project.getScrumMaster().getLastName() + "</lastname>\n";
                 xml += "         <id>" + project.getScrumMaster().getId() + "</id>\n";
                 xml += "         <timeregistration>\n";
                 xml += "            <hoursworked>" + project.getScrumMaster().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "         </timeregistration>\n";
             }
-            xml += "</scrummaster>\n";
-            xml += "      <productowner>";
+            xml += "      </scrummaster>\n";
+            xml += "      <productowner>\n";
             if (project.getProductOwner() != null) {
-                xml += "\n         <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
+                xml += "         <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
                 xml += "         <lastname>" + project.getProductOwner().getLastName() + "</lastname>\n";
                 xml += "         <id>" + project.getProductOwner().getId() + "</id>\n";
                 xml += "         <timeregistration>\n";
                 xml += "            <hoursworked>" + project.getProductOwner().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "         </timeregistration>\n";
             }
-            xml += "</productowner>\n";
+            xml += "      </productowner>\n";
             xml += "      <teammemberlist>\n";
             for (TeamMember teamMember : project.getTeamMemberList().getTeamMembers()) {
                 xml += "         <teammember>\n";
@@ -215,29 +286,28 @@ public class XmlFile implements IFileConnection {
         xml += "   <methodology>" + project.getMethodology() + "</methodology>\n";
         xml += "   <startingdate>" + project.getStartingDate().toString() + "</startingdate>\n";
         xml += "   <deadline>" + project.getDeadline().toString() + "</deadline>\n";
-        xml += "   <scrummaster>";
+        xml += "   <scrummaster>\n";
         if (project.getScrumMaster() != null) {
-            xml += "\n      <firstname>" + project.getScrumMaster().getFirstName() + "</firstname>\n";
+            xml += "      <firstname>" + project.getScrumMaster().getFirstName() + "</firstname>\n";
             xml += "      <lastname>" + project.getScrumMaster().getLastName() + "</lastname>\n";
             xml += "      <id>" + project.getScrumMaster().getId() + "</id>\n";
             xml += "      <timeregistration>\n";
             xml += "         <hoursworked>" + project.getScrumMaster().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
             xml += "      </timeregistration>\n";
-            xml += "   </scrummaster>\n";
         }
         else {
-            xml += "</scrummaster>\n";
+            xml += "   </scrummaster>\n";
         }
         xml += "   <productowner>\n";
         if (project.getProductOwner() != null) {
-            xml += "\n      <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
+            xml += "      <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
             xml += "      <lastname>" + project.getProductOwner().getLastName() + "</lastname>\n";
             xml += "      <id>" + project.getProductOwner().getId() + "</id>\n";
             xml += "      <timeregistration>\n";
             xml += "         <hoursworked>" + project.getProductOwner().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
             xml += "      </timeregistration>\n";
         }
-        xml += "</productowner>\n";
+        xml += "   </productowner>\n";
         xml += "   <teammemberlist>\n";
         for (TeamMember teamMember : project.getTeamMemberList().getTeamMembers()) {
             xml += "      <teammember>\n";

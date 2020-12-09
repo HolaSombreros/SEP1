@@ -23,6 +23,8 @@ public class AddTaskController {
     @FXML private TextField estimatedHoursInput;
     @FXML private Label errorLabel;
     
+    @FXML private TextField projectTitle;
+    @FXML private TextField requirementTitle;
     @FXML private TextField requirementStart;
     @FXML private TextField requirementEnd;
 
@@ -47,6 +49,8 @@ public class AddTaskController {
         
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
+        projectTitle.setText(project.getName());
+        requirementTitle.setText(requirement.getUserStory());
         requirementStart.setText(requirement.getStartingDate().toString());
         requirementEnd.setText(requirement.getDeadline().toString());
         

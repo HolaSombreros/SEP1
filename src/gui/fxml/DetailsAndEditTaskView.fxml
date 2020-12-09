@@ -18,49 +18,85 @@
          <Font size="24.0" />
       </font>
       <VBox.margin>
-         <Insets bottom="20.0" />
+         <Insets bottom="10.0" />
       </VBox.margin>
    </Label>
-   <HBox alignment="CENTER" prefWidth="460.0" spacing="45.0">
+   <HBox alignment="CENTER" maxWidth="460.0" spacing="77.0">
+      <children>
+         <Label style="-fx-font-weight: bold;" text="Project title" />
+         <TextField fx:id="projectTitle" editable="false" minWidth="316.0" promptText="Project title">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </TextField>
+      </children>
       <VBox.margin>
-         <Insets bottom="5.0"/>
+         <Insets bottom="10.0" />
       </VBox.margin>
-      <Label style="-fx-font-weight: bold;" text="Requirement Startdate"/>
-      <Label style="-fx-font-weight: bold;" text="Requirement Deadline">
-         <HBox.margin>
-            <Insets/>
-         </HBox.margin>
-      </Label>
    </HBox>
-   <HBox alignment="CENTER" prefWidth="460.0" spacing="25.0">
+   <HBox alignment="CENTER" maxWidth="460.0" spacing="10.0">
+      <children>
+         <Label style="-fx-font-weight: bold;" text="Requirement user story" />
+         <TextField fx:id="requirementTitle" editable="false" minWidth="316.0" promptText="Requirement user story" />
+      </children>
       <VBox.margin>
-         <Insets bottom="30.0"/>
+         <Insets bottom="10.0" />
       </VBox.margin>
-      <TextField fx:id="requirementStart" editable="false" minWidth="100.0"/>
-      <TextField fx:id="requirementEnd" editable="false" minWidth="100.0"/>
    </HBox>
-   <HBox alignment="CENTER" prefWidth="460.0">
+   <HBox alignment="CENTER" maxWidth="460.0">
+      <children>
+         <Label style="-fx-font-weight: bold;" text="Starting date">
+            <HBox.margin>
+               <Insets right="5.0" />
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="requirementStart" editable="false" maxWidth="140.0">
+            <HBox.margin>
+               <Insets right="45.0" />
+            </HBox.margin>
+         </TextField>
+         <Label style="-fx-font-weight: bold;" text="Deadline">
+            <HBox.margin>
+               <Insets right="5.0" />
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="requirementEnd" editable="false" maxWidth="140.0" />
+      </children>
       <VBox.margin>
-         <Insets bottom="10.0"/>
+         <Insets bottom="30.0" />
       </VBox.margin>
-      <TextField fx:id="titleInput" maxWidth="400.0" prefHeight="25.0" prefWidth="396.0" promptText="Title">
+   </HBox>
+   <HBox alignment="CENTER" maxWidth="460.0">
+      <VBox.margin>
+         <Insets bottom="8.0" />
+      </VBox.margin>
+      <TextField fx:id="titleInput" minWidth="210.0" prefHeight="25.0" promptText="Title">
          <HBox.margin>
-            <Insets right="15.0"/>
+            <Insets right="15.0" />
          </HBox.margin>
       </TextField>
       <Label text="#">
          <HBox.margin>
-            <Insets right="5.0"/>
+            <Insets right="5.0" />
          </HBox.margin>
       </Label>
-      <TextField fx:id="idField" editable="false" maxWidth="35.0" prefHeight="25.0" prefWidth="35.0" promptText="Id"/>
+      <TextField fx:id="idField" editable="false" maxWidth="35.0" prefHeight="25.0" prefWidth="35.0" promptText="Id">
+         <HBox.margin>
+            <Insets right="59.0" />
+         </HBox.margin></TextField>
+      <Label text="Register Time">
+         <HBox.margin>
+            <Insets right="5.0" />
+         </HBox.margin>
+      </Label>
+      <TextField fx:id="timeRegisterInput" maxWidth="50.0" prefHeight="25.0" promptText="hours" />
    </HBox>
-   <HBox alignment="CENTER" maxWidth="460.0" prefHeight="200.0" spacing="80.0">
+   <HBox alignment="CENTER" maxWidth="460.0" prefHeight="170.0" spacing="80.0">
       <VBox.margin>
-         <Insets bottom="10.0" />
+         <Insets bottom="8.0" />
       </VBox.margin>
-      <VBox alignment="CENTER_RIGHT" maxWidth="180.0" spacing="10.0">
-         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="280.0" spacing="10.0">
+      <VBox alignment="CENTER_RIGHT" maxWidth="170.0" spacing="5.0">
+         <HBox alignment="CENTER_RIGHT" spacing="10.0">
             <VBox.margin>
                <Insets />
             </VBox.margin>
@@ -71,13 +107,13 @@
          <DatePicker fx:id="deadlineInput" editable="false" minWidth="180.0" promptText="Deadline" />
          <ChoiceBox fx:id="statusInput" prefWidth="180.0" />
          <TextField fx:id="responsibleTeamMemberInput" maxWidth="180.0" promptText="Responsible Team Member" />
-         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="280.0" spacing="10.0">
-            <Label text="Hours worked on" />
-            <TextField fx:id="hoursWorkedInput" maxWidth="50.0" />
+         <HBox alignment="CENTER_RIGHT" prefWidth="280.0" spacing="10.0">
+            <Label style="-fx-font-weight: bold;" text="Total work (hours)" />
+            <TextField fx:id="totalHoursWorked" editable="false" maxWidth="50.0" />
          </HBox>
       </VBox>
       <VBox alignment="CENTER_LEFT" maxWidth="200.0" spacing="10.0">
-         <TableView fx:id="teamTable" prefHeight="200.0" prefWidth="200.0">
+         <TableView fx:id="teamTable" prefWidth="200.0">
             <columns>
                <TableColumn fx:id="idColumn" prefWidth="36.0" text="Id" />
                <TableColumn fx:id="nameColumn" prefWidth="163.0" text="Name" />
@@ -87,7 +123,7 @@
    </HBox>
    <Label fx:id="errorLabel" style="-fx-font-weight: bold;" text="ErrorLabel" textFill="RED">
       <VBox.margin>
-         <Insets bottom="10.0" />
+         <Insets bottom="8.0" />
       </VBox.margin>
    </Label>
    <HBox alignment="TOP_CENTER" maxWidth="460.0" spacing="20.0">
@@ -101,7 +137,7 @@
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </padding>
       </Button>
-      <Button mnemonicParsing="false" onAction="#removeTask" style="-fx-font-weight: bold;" text="Remove Task">
+      <Button mnemonicParsing="false" onAction="#registerTime" style="-fx-font-weight: bold;" text="Register Time">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </padding>

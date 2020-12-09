@@ -169,7 +169,7 @@ public class Task {
      * @param startingDate The task's start date.
      * @param deadline The task's deadline.
      */
-    public void edit(String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember) {
+    public void edit(String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember, double hoursWorked, TeamMember teamMember) {
         setTitle(title);
         setEstimatedTime(estimatedTime);
         setStartingDate(startingDate);
@@ -180,6 +180,9 @@ public class Task {
         }
         else {
             assignResponsibleTeamMember(responsibleTeamMember);
+        }
+        if (hoursWorked != 0 || teamMember != null) {
+            addHoursWorked(teamMember, hoursWorked);
         }
     }
 
