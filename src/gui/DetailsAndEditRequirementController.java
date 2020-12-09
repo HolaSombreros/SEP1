@@ -63,6 +63,7 @@ public class DetailsAndEditRequirementController
     typeInput.setValue(requirement.getType().getName());
     statusInput.setValue(requirement.getStatus().getName());
     hoursWorkedShow.setText("Number of Hours Worked: " + requirement.getHoursWorked());
+
     if (requirement.getResponsibleTeamMember() != null)
       responsibleTeamMemberInput.setText(requirement.getResponsibleTeamMember().getId() + " " + requirement.getResponsibleTeamMember().getFullName());
     else
@@ -121,8 +122,10 @@ public class DetailsAndEditRequirementController
         throw new IllegalArgumentException("Estimated Time has to be a number");
       }
 
-      TeamMember rtm = requirement.getResponsibleTeamMember();
-      if (!(responsibleTeamMemberInput.getText().equals("")))
+      TeamMember rtm;
+      if (responsibleTeamMemberInput.getText().equals(""))
+        rtm = null;
+      else
       {
         String member = responsibleTeamMemberInput.getText();
         String[] member1 = member.split(" ");
@@ -181,7 +184,11 @@ public class DetailsAndEditRequirementController
     try
     {
       TeamMemberViewModel selectedItem = teamMembersTable.getSelectionModel().getSelectedItem();
-      responsibleTeamMemberInput.setText(selectedItem.getIdProperty().getValue() + " " + selectedItem.getNameProperty().getValue());
+      if (selectedItem == null)
+        responsibleTeamMemberInput.setText("");
+      else
+        responsibleTeamMemberInput.setText(selectedItem.getIdProperty().getValue() + " " + selectedItem.getNameProperty().getValue());
+      teamMembersTable.getSelectionModel().clearSelection();
     }
     catch (Exception e)
     {
