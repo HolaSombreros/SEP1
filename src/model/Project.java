@@ -149,6 +149,10 @@ public class Project
         }
         else{
             this.projectTeamMemberList.remove(teamMember);
+            for(Requirement requirement : projectRequirementList.getRequirements())
+            {
+                requirement.unassignTeamMember(teamMember);
+            }
         }
     }
 
