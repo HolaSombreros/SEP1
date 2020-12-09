@@ -70,7 +70,10 @@ public class DetailsTeamMemberController {
      * Opens the SelectProject window
      * */
     public void assignButtonPressed(){
-        viewHandler.openView("projectSelect");
+        if(viewState.getSelectedTeamMember() != -1)
+            viewHandler.openView("projectSelect");
+        else
+            errorLabel.setText("Pick a team member first!");
     }
 
     /**

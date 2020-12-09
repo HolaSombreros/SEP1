@@ -81,7 +81,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" text="View ">
+                  <Button mnemonicParsing="false" onAction="#viewButtonPressed" text="View ">
                      <font>
                         <Font size="14.0" />
                      </font>

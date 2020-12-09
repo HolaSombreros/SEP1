@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>UnEbR1SjT</id>
+      <id>0syWP06cl</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
@@ -40,8 +40,8 @@
             <id>1</id>
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
-            <hoursworked>6.0</hoursworked>
-            <relatedproject>UnEbR1SjT</relatedproject>
+            <hoursworked>0.0</hoursworked>
+            <relatedproject>0syWP06cl</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
@@ -68,7 +68,7 @@
                   <estimatedtime>5.0</estimatedtime>
                   <status>Not Started</status>
                   <timeregistration>
-                     <hoursworked>6.0</hoursworked>
+                     <hoursworked>0.0</hoursworked>
                   </timeregistration>
                   <responsibleteammember>
                   </responsibleteammember>
@@ -87,7 +87,7 @@
                         <lastname>Magdalena</lastname>
                         <id>9</id>
                         <timeregistration>
-                           <hoursworked>6.0</hoursworked>
+                           <hoursworked>0.0</hoursworked>
                         </timeregistration>
                      </teammember>
                   </teammemberlist>
@@ -97,7 +97,7 @@
       </requirementlist>
    </project>
    <project>
-      <id>WewDCoO9i</id>
+      <id>3W0eafv7W</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>
