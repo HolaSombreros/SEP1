@@ -72,6 +72,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
         projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",1));
         project.assignScrumMaster(m1);
+        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",9));
 
 
 
@@ -341,7 +342,10 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                         for (Task task : requirement.getTaskList().getTasks())
                             if (task.getTeamMemberList().contains(teamMember))
                                 total += task.getEstimatedTime();
-        return teamMember.getTimeRegistration().getHoursWorked()*100/total;
+        if(total != 0)
+            return teamMember.getTimeRegistration().getHoursWorked()*100/total;
+        else
+            return 0;
     }
 
     /**

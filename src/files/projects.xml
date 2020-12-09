@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
+<<<<<<< HEAD
       <id>3QtvHsERa</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
@@ -90,6 +91,9 @@
    </project>
    <project>
       <id>sFBt1dUhY</id>
+=======
+      <id>2NVbgzOqK</id>
+>>>>>>> 3386041cbab2ab110e887494364c39beb8e2c1f5
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>

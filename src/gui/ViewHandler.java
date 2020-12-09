@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+
 public class ViewHandler
 {
   private Scene currentScene;
@@ -43,8 +45,7 @@ public class ViewHandler
     openView("projectList");
   }
 
-  public void openView(String id)
-  {
+  public void openView(String id)  {
     Region root = null;
     switch (id)
     {
@@ -324,8 +325,7 @@ public class ViewHandler
     return detailsAndEditTaskController.getRoot();
   }
 
-  private Region loadDetailsTeamMember(String fxmlFile, ViewState state)
-  {
+  private Region loadDetailsTeamMember(String fxmlFile, ViewState state) {
     if (detailsTeamMemberController == null)
     {
       try

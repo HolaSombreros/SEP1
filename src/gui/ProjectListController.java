@@ -65,16 +65,7 @@ public class ProjectListController
 
     @FXML private void assignTeamMembersButtonPressed()
     {
-        try
-        {
-            ProjectViewModel selectedItem = projectListTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedProject(selectedItem.getIDProperty().get());
             viewHandler.openView("detailsTeamMember");
-        }
-        catch (Exception e)
-        {
-            errorLabel.setText(e.getMessage());
-        }
     }
     @FXML private void removeProjectButtonPressed()
     {
