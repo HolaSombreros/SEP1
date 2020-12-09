@@ -67,6 +67,7 @@ public class DetailsAndEditProjectController
            productOwner.setText("#" + project.getProductOwner().getId() + " " + project.getProductOwner().getFullName());
         else
             productOwner.setText("");
+
         if(project.getScrumMaster() != null)
             scrumMaster.setText("#" + project.getScrumMaster().getId() + " " + project.getScrumMaster().getFullName());
         else
@@ -142,7 +143,7 @@ public class DetailsAndEditProjectController
              //SCRUM MASTER
              TeamMember scrumMaster2 = null;
              TeamMember productOwner2 = null;
-             if((!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null) || (scrumMaster.getText().equals("") && selectedProject.getScrumMaster() !=null))
+            /* if((!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null) || (scrumMaster.getText().equals("") && selectedProject.getScrumMaster() !=null))
              {
                  editedProject = true;
              }
@@ -158,7 +159,7 @@ public class DetailsAndEditProjectController
              if(!productOwner.getText().equals(""))
              {
                  productOwner2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
-             }
+             }*/
              Status status = null;
              Methodology methodology = null;
              switch(statusChoice.getValue())

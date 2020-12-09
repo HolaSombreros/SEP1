@@ -68,8 +68,6 @@ public class ProjectListViewModel {
         {
             list.add(new ProjectViewModel(model.getProjectList().getProjectByID(id)));
         }
-
-
     }
 
     public void update(int id){
