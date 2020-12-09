@@ -27,7 +27,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <TextField fx:id="searchInput" prefHeight="29.0" prefWidth="421.0" promptText="Search" />
-                  <Button  mnemonicParsing="false" text="Search">
+                  <Button onAction="#searchButtonPressed"  mnemonicParsing="false" text="Search">
                      <font>
                         <Font size="14.0" />
                      </font>

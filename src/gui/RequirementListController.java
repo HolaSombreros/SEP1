@@ -46,6 +46,7 @@ public class RequirementListController
     reset();
   }
 
+
   public void reset()
   {
     relatedProjectLabel.setText(model.getProjectList().getProjectByID(state.getSelectedProject()).getName());
@@ -61,6 +62,10 @@ public class RequirementListController
     requirementListTable.setItems(viewModel.getList());
   }
 
+  /**
+   * The method will display in the table only the requirement with the selected id
+   * The id has to be a number
+   */
   @FXML public void searchButtonPressed()
   {
     try
@@ -83,13 +88,15 @@ public class RequirementListController
         }
       }
     }
-
     catch (Exception e)
     {
       errorLabel.setText(e.getMessage());
     }
   }
 
+  /**
+   * The method will clear the id and will display all requirements
+   */
   @FXML private void clearButtonPressed()
   {
     errorLabel.setText("");
@@ -97,6 +104,9 @@ public class RequirementListController
     viewModel.update(0);
   }
 
+  /**
+   * The method will display the user story of the selected requirement
+   */
   @FXML private void onMouseClicked()
   {
     errorLabel.setText("");
@@ -107,13 +117,17 @@ public class RequirementListController
           .getRequirementById(selectedItem.getIdProperty().getValue());
       userStoryShow.setText(requirement.getUserStory());
     }
-
     catch (Exception e)
     {
       errorLabel.setText("");
     }
   }
 
+  /**
+   * The method allows the user to switch the positions of the requirements in the array
+   * The selected index has to be between 0 and the size of the requirement list -1;
+   * Switching between 2 requirements with different priority is not allowed
+   */
   @FXML private void moveButtonPressed()
   {
     try
@@ -160,11 +174,17 @@ public class RequirementListController
     }
   }
 
+  /**
+   * The method will send the user to the adding requirement window
+   */
   @FXML private void addNewRequirementButtonPressed()
   {
     viewHandler.openView("addRequirement");
   }
 
+  /**
+   * The method will send the user to the selected requirement's details
+   */
   @FXML private void viewRequirementButtonPressed()
   {
     try
@@ -179,6 +199,9 @@ public class RequirementListController
     }
   }
 
+  /**
+   * The method will send the user to the selected requirement's task list
+   */
   @FXML private void viewTasksButtonPressed()
   {
     try
@@ -193,6 +216,10 @@ public class RequirementListController
     }
   }
 
+  /**
+   * The method will ask for confirmation
+   * The method will remove the selected requirement
+   */
   @FXML private void removeRequirementButtonPressed()
   {
     errorLabel.setText("");
@@ -209,13 +236,15 @@ public class RequirementListController
         requirementListTable.getSelectionModel().clearSelection();
       }
     }
-
     catch (Exception e)
     {
       errorLabel.setText("Select a requirement");
     }
   }
 
+  /**
+   * The method will go back to the project's details
+   */
   @FXML private void backButtonPressed()
   {
     viewHandler.openView("detailsAndEditProject");

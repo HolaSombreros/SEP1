@@ -78,6 +78,10 @@ public class DetailsAndEditRequirementController
     errorLabel.setText("");
   }
 
+  /**
+   * The method ask for confirmation
+   * The method change the requirement's variables with the typed details
+   */
   @FXML private void confirmEditingButtonPressed()
   {
     Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
@@ -179,6 +183,9 @@ public class DetailsAndEditRequirementController
 
   }
 
+  /**
+   * The method will display the id and the name of the selected team member in @responsibleTeamMemberInput
+   */
   @FXML private void makeResponsibleButtonPressed()
   {
     try
@@ -196,6 +203,11 @@ public class DetailsAndEditRequirementController
     }
   }
 
+  /**
+   * The method will ask for confirmation
+   * The method will remove the requirement
+   * The method will send the user to the requirement list
+   */
   @FXML private void removeRequirementButtonPressed()
   {
     Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
@@ -209,6 +221,9 @@ public class DetailsAndEditRequirementController
 
   }
 
+  /**
+   * The method will send the user to the requirement list
+   */
   @FXML private void backButtonPressed()
   {
     state.setSelectedRequirement(-1);

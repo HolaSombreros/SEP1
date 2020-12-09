@@ -68,19 +68,18 @@ public class TaskSelectController {
 
 
     public void assignButtonPressed() throws FileNotFoundException {
-       // try {
 
 
-            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
-            model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+        TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+        viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
+        model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
-                    model.addTeamMembersToTheSystem().getByID(viewState.getSelectedTeamMember()));
-       // }
-        //catch (Exception e){
-        //    errorLabel.setText("Task has to be selected first!");
-      //  }
+                    model.getTeam().getByID(viewState.getSelectedTeamMember()));
+        if(viewState.getSelectedTask() == -1)
+            errorLabel.setText("Task has to be selected first!");
+        else
+            errorLabel.setText("TeamMember successfully assigned!");
 
     }
 

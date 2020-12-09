@@ -52,6 +52,9 @@ public class AddRequirementController
     typeInput.getSelectionModel().clearAndSelect(0);
   }
 
+  /**
+   * The method will add a new requirement in the list with the typed details
+   */
   @FXML private void createRequirementButtonPressed()
   {
     try
@@ -113,6 +116,9 @@ public class AddRequirementController
     }
   }
 
+  /**
+   * The method will send the user to the requirement list
+   */
   @FXML private void cancelButtonPressed()
   {
     viewHandler.openView("requirementList");

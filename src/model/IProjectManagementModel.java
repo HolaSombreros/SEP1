@@ -29,4 +29,5 @@ public interface IProjectManagementModel
   TeamMember getMostFrequentTeamMember(TeamMember teamMember) throws FileNotFoundException;
   double getProductivity(TeamMember teamMember);
   TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException;
+  TeamMemberList getTeam();
 }

@@ -14,7 +14,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     private ProjectList projectList;
     private ArrayList<IFileConnection> fileConnections;
 
-    public ProjectManagementModelManager() {
+    private TeamMemberList team = addTeamMembersToTheSystem();
+
+    public ProjectManagementModelManager() throws FileNotFoundException {
         this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
         
@@ -76,6 +78,10 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
 */
 
+    }
+
+    public TeamMemberList getTeam(){
+        return team;
     }
 
     /**
@@ -322,7 +328,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
          */
         int[] frequentTeamMembers = new int[addTeamMembersToTheSystem().size()];
-        for(int i = 1; i < addTeamMembersToTheSystem().size(); i++)
+        for(int i = 1; i < getTeam().size(); i++)
             frequentTeamMembers[i] = 0;
         //loops through all the projects
         for(Project project : projectList.getProjects())
@@ -348,7 +354,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             }
 
         if(max != 0)
-            return addTeamMembersToTheSystem().getByID(p);
+            return getTeam().getByID(p);
         else
             return null;
     }

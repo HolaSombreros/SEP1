@@ -1,6 +1,6 @@
 package gui;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -8,7 +8,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
-import model.ProjectList;
 import model.TeamMember;
 
 import java.io.FileNotFoundException;
@@ -54,6 +53,8 @@ public class DetailsTeamMemberController {
        errorLabel.setText("");
        productivityLabel.setText("");
        frequentTeamMemberLabel.setText("");
+       idField.setText("");
+       nameField.setText("");
        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
        teamMemberViewTable.setItems(viewModel.getList());
@@ -88,7 +89,7 @@ public class DetailsTeamMemberController {
                 reset();
             else
                 try {
-                    for(TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                    for(TeamMember teamMember : model.getTeam().getTeamMembers())
                         if(teamMember.getFullName().equals(nameField.getText())) {
                             int id = teamMember.getId();
                             viewState.setSelectedTeamMember(teamMember.getId());
@@ -126,7 +127,7 @@ public class DetailsTeamMemberController {
             else {
                 int id = 0;
                 try {
-                    for (TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                    for (TeamMember teamMember : model.getTeam().getTeamMembers())
                         if (teamMember.getId() == Integer.parseInt(idField.getText())) {
                             id = Integer.parseInt(idField.getText());
                             viewState.setSelectedTeamMember(teamMember.getId());
@@ -135,7 +136,7 @@ public class DetailsTeamMemberController {
                                 frequentTeamMemberLabel.setText("Hasn't worked on tasks yet! ");
                             else
                                 frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
-                            productivityLabel.setText("Productivity: 9"  /*model.getProductivity(teamMember)*/);
+                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
                             viewModel.update(id);
                         }
                 }
