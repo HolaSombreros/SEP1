@@ -141,7 +141,14 @@ public class DetailsAndEditTaskController {
             }
             
             // Responsible Team Member:
-            if (!responsibleTeamMemberInput.getText().equals("") && task.getResponsibleTeamMember() == null ||
+            if (task.getResponsibleTeamMember() != null) {
+                TeamMember responsibleTeamMember = task.getResponsibleTeamMember();
+                TeamMember teamMember = task.getTeamMemberList().getByID(Integer.parseInt(responsibleTeamMemberInput.getText().split(" ")[0].substring(1)));
+                if (!responsibleTeamMember.equals(teamMember)) {
+                    editedTask = true;
+                }
+            }
+            else if (!responsibleTeamMemberInput.getText().equals("") && task.getResponsibleTeamMember() == null ||
                 responsibleTeamMemberInput.getText().equals("") && task.getResponsibleTeamMember() != null) {
                 editedTask = true;
             }
