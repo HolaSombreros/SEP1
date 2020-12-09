@@ -75,7 +75,7 @@ public class TaskSelectController {
         model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
-                    model.addTeamMembersToTheSystem().getByID(viewState.getSelectedTeamMember()));
+                    model.getTeam().getByID(viewState.getSelectedTeamMember()));
         if(viewState.getSelectedTask() == -1)
             errorLabel.setText("Task has to be selected first!");
         else

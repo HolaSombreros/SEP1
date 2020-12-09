@@ -1,6 +1,6 @@
 package gui;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -8,7 +8,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
-import model.ProjectList;
 import model.TeamMember;
 
 import java.io.FileNotFoundException;
@@ -90,7 +89,7 @@ public class DetailsTeamMemberController {
                 reset();
             else
                 try {
-                    for(TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                    for(TeamMember teamMember : model.getTeam().getTeamMembers())
                         if(teamMember.getFullName().equals(nameField.getText())) {
                             int id = teamMember.getId();
                             viewState.setSelectedTeamMember(teamMember.getId());
@@ -128,7 +127,7 @@ public class DetailsTeamMemberController {
             else {
                 int id = 0;
                 try {
-                    for (TeamMember teamMember : model.addTeamMembersToTheSystem().getTeamMembers())
+                    for (TeamMember teamMember : model.getTeam().getTeamMembers())
                         if (teamMember.getId() == Integer.parseInt(idField.getText())) {
                             id = Integer.parseInt(idField.getText());
                             viewState.setSelectedTeamMember(teamMember.getId());
