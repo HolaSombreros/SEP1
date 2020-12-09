@@ -107,7 +107,6 @@ public class ProjectListController
 
      @FXML private void searchButtonPressed()
      {
-
          errorLabel.setText("");
          try {
              if (searchInput.getText().equals("")) {

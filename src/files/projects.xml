@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>vuV3TLhX2</id>
+      <id>lkfMOnj1y</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
       <startingdate>09/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
       <scrummaster>
-         <firstname>Joseph</firstname>
-         <lastname>Joestar</lastname>
-         <id>1</id>
-         <timeregistration>
-            <hoursworked>0.0</hoursworked>
-         </timeregistration>
       </scrummaster>
       <productowner>
       </productowner>
@@ -29,7 +23,7 @@
          <teammember>
             <firstname>Giorno</firstname>
             <lastname>Giovanna</lastname>
-            <id>3</id>
+            <id>2</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
@@ -41,13 +35,21 @@
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
-            <relatedproject>vuV3TLhX2</relatedproject>
+            <relatedproject>lkfMOnj1y</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
                <teammember>
-                  <firstname>Maria</firstname>
-                  <lastname>Magdalena</lastname>
+                  <firstname>Joseph</firstname>
+                  <lastname>Joestar</lastname>
+                  <id>1</id>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+            </teammember>
+               <teammember>
+                  <firstname>Giorno</firstname>
+                  <lastname>Giovanna</lastname>
                   <id>2</id>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
@@ -83,9 +85,9 @@
                         </timeregistration>
                      </teammember>
                      <teammember>
-                        <firstname>Maria</firstname>
-                        <lastname>Magdalena</lastname>
-                        <id>9</id>
+                        <firstname>Giorno</firstname>
+                        <lastname>Giovanna</lastname>
+                        <id>2</id>
                         <timeregistration>
                            <hoursworked>0.0</hoursworked>
                         </timeregistration>
@@ -97,7 +99,7 @@
       </requirementlist>
    </project>
    <project>
-      <id>nJRwHbNoO</id>
+      <id>04KIJoeQV</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>
@@ -108,14 +110,6 @@
       <productowner>
       </productowner>
       <teammemberlist>
-         <teammember>
-            <firstname>Pizza</firstname>
-            <lastname>Pasta</lastname>
-            <id>4</id>
-            <timeregistration>
-               <hoursworked>0.0</hoursworked>
-            </timeregistration>
-         </teammember>
       </teammemberlist>
       <requirementlist>
       </requirementlist>
@@ -128,12 +122,6 @@
       <startingdate>12/12/2020</startingdate>
       <deadline>25/10/2022</deadline>
       <scrummaster>
-         <firstname>Jojo</firstname>
-         <lastname>Rabbit</lastname>
-         <id>0</id>
-         <timeregistration>
-            <hoursworked>0.0</hoursworked>
-         </timeregistration>
       </scrummaster>
       <productowner>
       </productowner>
