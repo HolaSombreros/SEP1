@@ -73,7 +73,7 @@
                         <TableView fx:id="teamMemberViewTable" prefHeight="235.0" prefWidth="295.0">
                           <columns>
                             <TableColumn fx:id="projectNameColumn" prefWidth="173.0" text="Project" />
-                            <TableColumn fx:id="dealineColumn" prefWidth="121.0" text="Details" />
+                            <TableColumn fx:id="deadlineColumn" prefWidth="121.0" text="Deadline" />
                           </columns>
                         </TableView>
                      </content>
