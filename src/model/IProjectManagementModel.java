@@ -12,7 +12,7 @@ public interface IProjectManagementModel
   void editProject(Project project);
   void editRequirement(Project project, Requirement requirement, String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline,
       RequirementStatus status, Type type, Priority priority);
-  void editTask(Task task, String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember);
+  void editTask(Task task, String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember, double hoursWorked, TeamMember teamMember);
   void removeProject(Project project);
   void removeRequirement(Project project, Requirement requirement);
   void removeTask(Requirement requirement, Task task);

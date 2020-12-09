@@ -23,12 +23,15 @@ public class DetailsAndEditTaskController {
     @FXML private DatePicker deadlineInput;
     @FXML private ChoiceBox<String> statusInput;
     @FXML private TextField responsibleTeamMemberInput;
-    @FXML private TextField hoursWorkedInput;
+    @FXML private TextField timeRegisterInput;
+    @FXML private TextField totalHoursWorked;
     @FXML private TableView<TeamMemberViewModel> teamTable;
     @FXML private TableColumn<TeamMemberViewModel, Number> idColumn;
     @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
     @FXML private Label errorLabel;
     
+    @FXML private TextField projectTitle;
+    @FXML private TextField requirementTitle;
     @FXML private TextField requirementStart;
     @FXML private TextField requirementEnd;
     
@@ -67,8 +70,12 @@ public class DetailsAndEditTaskController {
         if (task.getResponsibleTeamMember() != null) {
             responsibleTeamMemberInput.setText("#" + task.getResponsibleTeamMember().getId() + " " + task.getResponsibleTeamMember().getFullName());
         }
-        hoursWorkedInput.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
+        timeRegisterInput.setText("");
+        totalHoursWorked.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
         errorLabel.setText("");
+        
+        projectTitle.setText(project.getName());
+        requirementTitle.setText(requirement.getUserStory());
         requirementStart.setText(requirement.getStartingDate().toString());
         requirementEnd.setText(requirement.getDeadline().toString());
         
@@ -139,27 +146,16 @@ public class DetailsAndEditTaskController {
                 editedTask = true;
             }
             
-            /*
-            // TODO - is this even editable?!??
-            // Hours Worked:
-            if (hoursWorkedInput.getText().equals("")) {
-                throw new IllegalStateException("The hours worked cannot be empty");
-            }
+            // Time registration:
             try {
-                if (Double.parseDouble(estimatedHoursInput.getText()) < 0) {
+                if (Double.parseDouble(timeRegisterInput.getText()) < 0) {
                     throw new NumberFormatException();
                 }
-                if (Double.parseDouble(estimatedHoursInput.getText()) != task.getEstimatedTime()) {
-                    editedTask = true;
-                }
+                editedTask = true;
             }
             catch (NumberFormatException e) {
-                errorLabel.setText("Estimated time has to be a positive number higher than 0");
+                errorLabel.setText("Your time registration has to be a positive number higher than 0");
             }
-            
-            */
-            
-            
             
             if (editedTask && confirmation("edit")) {
                 Status status = null;
@@ -179,7 +175,7 @@ public class DetailsAndEditTaskController {
                     responsibleTeamMember = task.getTeamMemberList().getByID(Integer.parseInt(responsibleTeamMemberInput.getText().split(" ")[0].substring(1)));
                 }
                 
-                model.editTask(task, titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember); // TODO - Fix
+                //model.editTask(task, titleInput.getText(), Double.parseDouble(estimatedHoursInput.getText()), startingDate, deadline, status, responsibleTeamMember, Double.parseDouble(timeRegisterInput.getText()), selectedTeamMember);
                 goBack();
             }
         }
