@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-<<<<<<< HEAD
-      <id>DYM8acY5R</id>
-=======
-      <id>lkfMOnj1y</id>
->>>>>>> c15636be6cdd4f40b4fcbbf28fbb1b87fa6816eb
+      <id>LlwR9cI1p</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
       <startingdate>09/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
       <scrummaster>
+         <firstname>Giorno</firstname>
+         <lastname>Giovanna</lastname>
+         <id>2</id>
+         <timeregistration>
+            <hoursworked>0.0</hoursworked>
+         </timeregistration>
       </scrummaster>
       <productowner>
+         <firstname>Giorno</firstname>
+         <lastname>Giovanna</lastname>
+         <id>2</id>
+         <timeregistration>
+            <hoursworked>0.0</hoursworked>
+         </timeregistration>
       </productowner>
       <teammemberlist>
          <teammember>
-            <firstname>Giorno</firstname>
-            <lastname>Giovanna</lastname>
-            <id>2</id>
+            <firstname>Joseph</firstname>
+            <lastname>Joestar</lastname>
+            <id>1</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
-<<<<<<< HEAD
-            <firstname>Joseph</firstname>
-            <lastname>Joestar</lastname>
-            <id>1</id>
-=======
             <firstname>Giorno</firstname>
             <lastname>Giovanna</lastname>
             <id>2</id>
->>>>>>> c15636be6cdd4f40b4fcbbf28fbb1b87fa6816eb
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
@@ -45,17 +47,11 @@
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
-<<<<<<< HEAD
-            <relatedproject>DYM8acY5R</relatedproject>
-=======
-            <relatedproject>lkfMOnj1y</relatedproject>
->>>>>>> c15636be6cdd4f40b4fcbbf28fbb1b87fa6816eb
+            <relatedproject>LlwR9cI1p</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
                <teammember>
-<<<<<<< HEAD
-=======
                   <firstname>Joseph</firstname>
                   <lastname>Joestar</lastname>
                   <id>1</id>
@@ -64,18 +60,9 @@
                   </timeregistration>
             </teammember>
                <teammember>
->>>>>>> c15636be6cdd4f40b4fcbbf28fbb1b87fa6816eb
                   <firstname>Giorno</firstname>
                   <lastname>Giovanna</lastname>
                   <id>2</id>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-            </teammember>
-               <teammember>
-                  <firstname>Joseph</firstname>
-                  <lastname>Joestar</lastname>
-                  <id>1</id>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
@@ -98,33 +85,21 @@
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
                   <responsibleteammember>
-                  <firstname>Giorno</firstname>
-                  <lastname>Giovanna</lastname>
-                  <id>2</id>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
                   </responsibleteammember>
                   <relatedrequirement>1</relatedrequirement>
                   <teammemberlist>
                      <teammember>
-                        <firstname>Giorno</firstname>
-                        <lastname>Giovanna</lastname>
-                        <id>2</id>
+                        <firstname>Joseph</firstname>
+                        <lastname>Joestar</lastname>
+                        <id>1</id>
                         <timeregistration>
                            <hoursworked>0.0</hoursworked>
                         </timeregistration>
                      </teammember>
                      <teammember>
-<<<<<<< HEAD
-                        <firstname>Joseph</firstname>
-                        <lastname>Joestar</lastname>
-                        <id>1</id>
-=======
                         <firstname>Giorno</firstname>
                         <lastname>Giovanna</lastname>
                         <id>2</id>
->>>>>>> c15636be6cdd4f40b4fcbbf28fbb1b87fa6816eb
                         <timeregistration>
                            <hoursworked>0.0</hoursworked>
                         </timeregistration>
@@ -136,11 +111,7 @@
       </requirementlist>
    </project>
    <project>
-<<<<<<< HEAD
-      <id>dgWZ7mvGK</id>
-=======
-      <id>04KIJoeQV</id>
->>>>>>> c15636be6cdd4f40b4fcbbf28fbb1b87fa6816eb
+      <id>3SWg0bOLU</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>

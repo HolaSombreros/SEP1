@@ -6,7 +6,6 @@ import javafx.scene.layout.Region;
 import model.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class DetailsAndEditProjectController
@@ -141,24 +140,26 @@ public class DetailsAndEditProjectController
              //TODO: INITIAL SCRUM MASTER IS NOT THERE AFTER MAKING CHANGES TO THE PR
 
              //SCRUM MASTER
-             TeamMember scrumMaster2 = null;
-             TeamMember productOwner2 = null;
-            /* if((!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null) || (scrumMaster.getText().equals("") && selectedProject.getScrumMaster() !=null))
-             {
+            /* TeamMember SM = selectedProject.getScrumMaster();
+             if (SM  != null) {
+                 TeamMember teamMember = selectedProject.getTeamMemberList().getByID(Integer.parseInt(scrumMaster.getText().split(" ")[0].substring(1)));
+                 if (!SM.equals(teamMember)) {
+                     editedProject = true;
+                 }
+             }
+             else if (!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null ||
+                     scrumMaster.getText().equals("") && selectedProject.getScrumMaster() != null) {
                  editedProject = true;
              }
-             if((!productOwner.getText().equals("") && selectedProject.getProductOwner() == null) || (productOwner.getText().equals("") && selectedProject.getProductOwner() !=null))
+             TeamMember PO = selectedProject.getProductOwner();
+             if(PO != null)
              {
-                 editedProject = true;
-             }
 
-             if(!scrumMaster.getText().equals(""))
-             {
-                 scrumMaster2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(scrumMaster.getText().split(" ")[0].substring(1)));
-             }
-             if(!productOwner.getText().equals(""))
-             {
-                 productOwner2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
+                 TeamMember teamMember = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
+                 if(!PO.equals(teamMember))
+                 {
+                     editedProject = true;
+                 }
              }*/
              Status status = null;
              Methodology methodology = null;
@@ -186,10 +187,23 @@ public class DetailsAndEditProjectController
              }
              if(editedProject && confirmation("edit"))
              {
-                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline,status, methodology,scrumMaster2,productOwner2);
+                 TeamMember scrumM = null;
+                 if(!scrumMaster.getText().equals(""))
+                 {
+                     scrumM = selectedProject.getTeamMemberList().getByID(Integer.parseInt(scrumMaster.getText().split(" ")[0].substring(1)));
+                 }
+                 TeamMember prodO = null;
+                 if(!productOwner.getText().equals(""))
+                 {
+                     prodO = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
+                 }
+
+
+                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline,status, methodology,scrumM,prodO);
                  model.editProject(selectedProject);
                  backButtonPressed();
              }
+
          }
          catch(Exception e)
          {

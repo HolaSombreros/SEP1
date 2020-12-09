@@ -166,9 +166,8 @@ public class Project
     public void assignScrumMaster(TeamMember teamMember)
     {
         //TODO: IN GUI MAKE A CONFIRMATION BEFORE OVERWRITING THAT PERSON
-        if(scrumMaster != null)
         unassignScrumMaster();
-        else this.scrumMaster = teamMember;
+        this.scrumMaster = teamMember;
     }
     /**
      * If you are trying to assign a team member to a special role
@@ -180,9 +179,9 @@ public class Project
     {
 
         //TODO: IN GUI MAKE A CONFIRMATION BEFORE OVERWRITING THAT PERSON
-        if(productOwner != null)
+
         unassignProductOwner();
-        else this.productOwner = teamMember;
+        this.productOwner = teamMember;
     }
     public void unassignScrumMaster()
     {
@@ -203,7 +202,8 @@ public class Project
         setDeadline(deadline);
         setStatus(status);
         setMethodology(methodology);
-        if(this.scrumMaster == null) unassignScrumMaster();
+        if(this.scrumMaster == null)
+            unassignScrumMaster();
         assignScrumMaster(scrumMaster);
         if(this.productOwner == null) unassignProductOwner();
             assignProductOwner(productOwner);
