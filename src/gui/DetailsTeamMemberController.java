@@ -51,14 +51,12 @@ public class DetailsTeamMemberController {
     }
 
     public void reset(){
-        if(viewState.getSelectedTeamMember() == -1) {
-            errorLabel.setText("");
-            productivityLabel.setText("");
-            frequentTeamMemberLabel.setText("");
-        }
-        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
-        teamMemberViewTable.setItems(viewModel.getList());
+       errorLabel.setText("");
+       productivityLabel.setText("");
+       frequentTeamMemberLabel.setText("");
+       projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+       deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+       teamMemberViewTable.setItems(viewModel.getList());
 
     }
 
@@ -70,7 +68,10 @@ public class DetailsTeamMemberController {
      * Opens the SelectProject window
      * */
     public void assignButtonPressed(){
-        viewHandler.openView("projectSelect");
+        if(viewState.getSelectedTeamMember() != -1)
+            viewHandler.openView("projectSelect");
+        else
+            errorLabel.setText("Pick a team member first!");
     }
 
     /**
@@ -134,7 +135,7 @@ public class DetailsTeamMemberController {
                                 frequentTeamMemberLabel.setText("Hasn't worked on tasks yet! ");
                             else
                                 frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
-                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
+                            productivityLabel.setText("Productivity: 9"  /*model.getProductivity(teamMember)*/);
                             viewModel.update(id);
                         }
                 }

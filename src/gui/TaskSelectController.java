@@ -11,6 +11,8 @@ import model.ProjectList;
 import model.Task;
 import model.TaskList;
 
+import java.io.FileNotFoundException;
+
 public class TaskSelectController {
 
     private Region root;
@@ -39,19 +41,19 @@ public class TaskSelectController {
         this.model = model;
         this.root = root;
         this.viewState = viewState;
-
+        this.viewModel = new TaskListViewModel(model, viewState);
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        taskTable.setItems(viewModel.getList());
         reset();
 
     }
 
     public void reset() {
-        errorLabel.setText("");
-        this.viewModel = new TaskListViewModel(model, viewState);
         viewModel.update(0);
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-        titleColumn.setCellValueFactory(cellData -> cellData.getValue().getTitleProperty());
-        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
-        taskTable.setItems(viewModel.getList());
+        errorLabel.setText("");
+
     }
 
     public Region getRoot() {
@@ -64,19 +66,22 @@ public class TaskSelectController {
     }
 
 
-    //TODO create a big teamMemberList with all the teamMembers
-    public void assignButtonPressed() {
-        try {
+
+    public void assignButtonPressed() throws FileNotFoundException {
+       // try {
+
+
             TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
             viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
             model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
                     model.addTeamMembersToTheSystem().getByID(viewState.getSelectedTeamMember()));
-        }
-        catch (Exception e){
-            errorLabel.setText("Task has to be selected first!");
-        }
+       // }
+        //catch (Exception e){
+        //    errorLabel.setText("Task has to be selected first!");
+      //  }
+
     }
 
     /**

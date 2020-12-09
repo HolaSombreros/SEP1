@@ -32,19 +32,20 @@ public class RequirementSelectController {
         this.model = model;
         this.root = root;
         this.viewState = state;
-
+        this.viewModel = new RequirementListViewModel(model,viewState);
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+        priorityColumn.setCellValueFactory(cellData -> cellData.getValue().getPriorityProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        requirementTable.setItems(viewModel.getList());
         reset();
 
 
     }
 
     public void reset(){
-        this.viewModel = new RequirementListViewModel(model,viewState);
+
         viewModel.update(0);
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-        priorityColumn.setCellValueFactory(cellData -> cellData.getValue().getPriorityProperty());
-        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
-        requirementTable.setItems(viewModel.getList());
+        errorLabel.setText("");
 
     }
 

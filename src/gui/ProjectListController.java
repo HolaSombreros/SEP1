@@ -105,4 +105,27 @@ public class ProjectListController
          return (result.isPresent()) && (result.get() == ButtonType.OK);
      }
 
+     @FXML private void searchButtonPressed()
+     {
+
+         errorLabel.setText("");
+         try {
+             if (searchInput.getText().equals("")) {
+                 reset();
+             }
+             else {
+                 int id = 0;
+                 try {
+                     id = Integer.parseInt(searchInput.getText());
+                     projectListViewModel.update(id);
+                 }
+                 catch (NumberFormatException e) {
+                     errorLabel.setText("The id to search for has to be numeric");
+                 }
+             }
+         }
+         catch (Exception e) {
+             errorLabel.setText(e.getMessage());
+         }
+     }
 }

@@ -55,7 +55,7 @@ public class Project
                     break;
                 }
             }
-            if (notEnded = true)
+            if (notEnded)
             {
                 this.status = Status.ENDED;
             }
@@ -147,7 +147,13 @@ public class Project
         {
             throw new IllegalArgumentException("You cannot unassign a Scrum Master as an ordinary team member" + "\n Go to unassign Scrum Master");
         }
-        else this.projectTeamMemberList.remove(teamMember);
+        else{
+            this.projectTeamMemberList.remove(teamMember);
+            for(Requirement requirement : projectRequirementList.getRequirements())
+            {
+                requirement.unassignTeamMember(teamMember);
+            }
+        }
     }
 
     /**

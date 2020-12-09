@@ -62,13 +62,13 @@ public class DetailsAndEditProjectController
         startingDateInput.setValue(LOCAL_DATE(project.getStartingDate()));
         deadlineInput.setValue(LOCAL_DATE(project.getDeadline()));
         methodologyChoice.setValue(project.getMethodology().getMethodology());
-        statusChoice.setValue(project.getStatus().toString());
+        statusChoice.setValue(project.getStatus().getName());
         if(project.getProductOwner() != null)
-        productOwner.setText(project.getProductOwner().getFullName());
+           productOwner.setText("#" + project.getProductOwner().getId() + " " + project.getProductOwner().getFullName());
         else
             productOwner.setText("");
         if(project.getScrumMaster() != null)
-            scrumMaster.setText(project.getScrumMaster().getFullName());
+            scrumMaster.setText("#" + project.getScrumMaster().getId() + " " + project.getScrumMaster().getFullName());
         else
             scrumMaster.setText("");
         errorLabel.setText("");
@@ -89,7 +89,7 @@ public class DetailsAndEditProjectController
              // EDIT ID
              if(IDInput.getText().isEmpty() || IDInput.getText().trim().isEmpty())
              {
-                 editDetailsButton.setDisable(true);
+                 throw new IllegalStateException("ID cannot be empty");
              }
              if(!IDInput.getText().equals(selectedProject.getID()))
              {
@@ -98,26 +98,26 @@ public class DetailsAndEditProjectController
              //EDIT NAME
              if(nameInput.getText().isEmpty() || nameInput.getText().trim().isEmpty())
              {
-                 editDetailsButton.setDisable(true);
+                 throw new IllegalStateException("Name cannot be empty");
              }
              if(!nameInput.getText().equals(selectedProject.getName()))
              {
                  editedProject = true;
              }
-             //EDIT STATUS
+            /* //EDIT STATUS
             if(statusChoice.getValue().equals(""))
              {
                  editDetailsButton.setDisable(true);
-             }
+             }*/
              if(!statusChoice.getValue().equals(selectedProject.getStatus()))
              {
                  editedProject = true;
              }
              //EDIT METHODOLOGY
-             if(methodologyChoice.getValue().equals(""))
+             /*if(methodologyChoice.getValue().equals(""))
              {
                  editDetailsButton.setDisable(true);
-             }
+             }*/
              if(!methodologyChoice.getValue().equals(selectedProject.getMethodology()))
              {
                  editedProject = true;
@@ -125,31 +125,23 @@ public class DetailsAndEditProjectController
              //STARTING DATE
              Date startingDate = new Date(startingDateInput.getValue().getDayOfMonth(), startingDateInput.getValue().getMonthValue(), startingDateInput.getValue().getYear());
 
-             if(startingDateInput.getValue().equals(""))
-             {
-                 editDetailsButton.setDisable(true);
-             }
              if(!startingDateInput.getValue().equals(selectedProject.getStartingDate()))
              {
                  editedProject = true;
              }
              //DEADLINE
              Date deadline = new Date(deadlineInput.getValue().getDayOfMonth(), deadlineInput.getValue().getMonthValue(), deadlineInput.getValue().getYear());
-             if(deadlineInput.getValue().equals(""))
-             {
-                 editDetailsButton.setDisable(true);
-             }
+
              if(!deadlineInput.getValue().equals(selectedProject.getDeadline()))
              {
                  editedProject = true;
              }
              Date.checkDates(startingDate,deadline);
-             //TODO: SCRUM MASTER AND PRODUCT OWNER
-
-            //if(editedProject)
+             //TODO: INITIAL SCRUM MASTER IS NOT THERE AFTER MAKING CHANGES TO THE PR
 
              //SCRUM MASTER
-
+             TeamMember scrumMaster2 = null;
+             TeamMember productOwner2 = null;
              if((!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null) || (scrumMaster.getText().equals("") && selectedProject.getScrumMaster() !=null))
              {
                  editedProject = true;
@@ -158,15 +150,45 @@ public class DetailsAndEditProjectController
              {
                  editedProject = true;
              }
-             /*
-            if(editedProject)
+
+             if(!scrumMaster.getText().equals(""))
              {
-                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline, statusChoice.getValue(), methodologyChoice.getValue(),scrumMaster.getText(),productOwner.getText());
+                 scrumMaster2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(scrumMaster.getText().split(" ")[0].substring(1)));
              }
-             */
+             if(!productOwner.getText().equals(""))
+             {
+                 productOwner2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
+             }
+             Status status = null;
+             Methodology methodology = null;
+             switch(statusChoice.getValue())
+             {
+                 case "Not Started":
+                     status = Status.NOT_STARTED;
+                     break;
+                 case "Started":
+                     status = Status.STARTED;
+                     break;
+                 case "Ended":
+                     status = Status. ENDED;
+                     break;
+             }
+             switch(methodologyChoice.getValue())
+             {
 
-
-
+                 case "Waterfall":
+                     methodology = Methodology.WATERFALL;
+                     break;
+                 case "SCRUM":
+                     methodology = Methodology.SCRUM;
+                     break;
+             }
+             if(editedProject && confirmation("edit"))
+             {
+                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline,status, methodology,scrumMaster2,productOwner2);
+                 model.editProject(selectedProject);
+                 backButtonPressed();
+             }
          }
          catch(Exception e)
          {
@@ -180,8 +202,8 @@ public class DetailsAndEditProjectController
         try
         {
             Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
-            boolean remove = confirmation();
-            if (remove)
+
+            if (confirmation("remove"))
             {
 
                 model.removeProject(selectedProject);
@@ -193,13 +215,22 @@ public class DetailsAndEditProjectController
             errorLabel.setText("Project not selected");
         }
     }
-    private boolean confirmation()
+    private boolean confirmation(String id)
     {
         Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Are you sure you want to remove the selected project " + selectedProject.getID() + "?");
+        switch(id)
+        {
+            case "remove":
+                alert.setTitle("Confirm removing project");
+                alert.setHeaderText("Are you sure you want to remove the selected project #" + selectedProject.getID() + "?");
+                break;
+            case "edit":
+                alert.setTitle("Confirm editing project");
+                alert.setHeaderText("Are you sure you want to edit the project #" + selectedProject.getID() + "?");
+                break;
+        }
         Optional<ButtonType> result = alert.showAndWait();
         return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
@@ -223,7 +254,7 @@ public class DetailsAndEditProjectController
             }
             else
             {
-                scrumMaster.setText(selectedTeamMember.getNameProperty().get());
+                scrumMaster.setText("#" + selectedTeamMember.getIdProperty().get() + " " + selectedTeamMember.getNameProperty().get());
             }
         }
         catch (Exception e)
@@ -242,7 +273,7 @@ public class DetailsAndEditProjectController
             }
             else
             {
-                productOwner.setText(selectedTeamMember.getNameProperty().get());
+                productOwner.setText("#" + selectedTeamMember.getIdProperty().get() + " " + selectedTeamMember.getNameProperty().get());
             }
         }
         catch (Exception e)
@@ -256,7 +287,7 @@ public class DetailsAndEditProjectController
     {
         String name = nameInput.getText();
         String ID = IDInput.getText();
-        boolean disableButtons = name.isEmpty() || name.trim().isEmpty() || ID.isEmpty() || ID.trim().isEmpty();
+        boolean disableButtons = (name.isEmpty() || name.trim().isEmpty()) || (ID.isEmpty() || ID.trim().isEmpty());
         editDetailsButton.setDisable(disableButtons);
 
     }

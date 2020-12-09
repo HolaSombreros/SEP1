@@ -33,18 +33,17 @@ public class ProjectSelectController {
         this.root = root;
         this.state = state;
         this.viewModel = new ProjectListViewModel(model,state);
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
+        projectTable.setItems(viewModel.getList());
         reset();
 
     }
 
     public void reset(){
-        errorLabel.setText("");
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().getIDProperty());
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
-        projectTable.setItems(viewModel.getList());
         viewModel.update();
-
+        errorLabel.setText("");
     }
 
     public Region getRoot(){

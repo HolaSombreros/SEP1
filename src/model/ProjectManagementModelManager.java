@@ -64,7 +64,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+       /* projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",2));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",3));
@@ -74,7 +74,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         project.assignScrumMaster(m1);
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",9));
 
-
+*/
 
     }
 
@@ -294,19 +294,15 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     
     loop through HashMap and sort values, return ™ object with largest value.
      */
-    @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) {
-        HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<>();
-        for(int i = 0; i < projectList.size(); i++)
-            if(projectList.getProject(i).getTeamMemberList().contains(teamMember)) {
-                Project project = projectList.getProject(i);
-                for (int j = 0; j < project.getProjectRequirementList().size(); j++)
-                    if (project.getProjectRequirementList().getRequirement(i).getTeamMemberList().contains(teamMember)) {
-                        Requirement requirement = project.getProjectRequirementList().getRequirement(i);
-                        for (int k = 0; k < requirement.getTaskList().size(); k++)
-                            if (requirement.getTaskList().getTask(i).getTeamMemberList().contains(teamMember)) {
-                                Task task = requirement.getTaskList().getTask(i);
-                                for (int m = 0; m < task.getTeamMemberList().size(); m++){
-                                    TeamMember member = task.getTeamMemberList().getByIndex(m);
+    @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) throws FileNotFoundException {
+        /*HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<>();
+        for(Project project : projectList.getProjects())
+            if(project.getTeamMemberList().getTeamMember(teamMember) != null) {
+                for (Requirement requirement : project.getProjectRequirementList().getRequirements())
+                    if (requirement.getTeamMemberList().getTeamMember(teamMember) != null) {
+                        for (Task task : requirement.getTaskList().getTasks())
+                            if (task.getTeamMemberList().getTeamMember(teamMember) != null) {
+                                for (TeamMember member : task.getTeamMemberList().getTeamMembers()){
                                     if(!frequentTeamMembers.containsKey(member) && !member.equals(teamMember))
                                         frequentTeamMembers.put(member,1);
                                     else
@@ -323,6 +319,38 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             if(i.equals(frequentTeamMembers.containsValue(max)))
                 return i;
         return null;
+
+         */
+        int[] frequentTeamMembers = new int[addTeamMembersToTheSystem().size()];
+        for(int i = 1; i < addTeamMembersToTheSystem().size(); i++)
+            frequentTeamMembers[i] = 0;
+        //loops through all the projects
+        for(Project project : projectList.getProjects())
+            if(project.getTeamMemberList().getTeamMember(teamMember) != null)
+
+                for (Requirement requirement : project.getProjectRequirementList().getRequirements())
+                    if (requirement.getTeamMemberList().getTeamMember(teamMember) != null)
+
+                        for (Task task : requirement.getTaskList().getTasks())
+                            if (task.getTeamMemberList().getTeamMember(teamMember) != null)
+
+                                for (TeamMember member : task.getTeamMemberList().getTeamMembers())
+                                    if(!member.equals(teamMember)) {
+                                        frequentTeamMembers[member.getId()]++;
+                                        System.out.println(member.getFullName());
+                                    }
+        int max = 0,p = 0 ;
+        for(int i = 1; i < addTeamMembersToTheSystem().size(); i++)
+            if(frequentTeamMembers[i] > max && i != addTeamMembersToTheSystem().getTeamMember(teamMember).getId()){
+                max = frequentTeamMembers[i];
+                p = i;
+                System.out.println(i);
+            }
+
+        if(max != 0)
+            return addTeamMembersToTheSystem().getByID(p);
+        else
+            return null;
     }
 
     /**
