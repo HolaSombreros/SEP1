@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class DetailsAndEditRequirementController
@@ -13,9 +14,7 @@ public class DetailsAndEditRequirementController
   @FXML private TextArea relatedProjectInput;
   @FXML private TextField userStoryInput;
   @FXML private DatePicker deadlineInput;
-  @FXML private Label deadlineShow;
   @FXML private DatePicker startingDateInput;
-  @FXML private Label startingDateShow;
   @FXML private TextField estimatedTimeInput;
   @FXML private ChoiceBox<String> priorityInput;
   @FXML private ChoiceBox<String> typeInput;
@@ -54,70 +53,26 @@ public class DetailsAndEditRequirementController
   {
     Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject())).getRequirementById(state.getSelectedRequirement());
 
-    this.viewModel = new TeamMemberListViewModel(model, state);
-    viewModel.update(requirement.getRelatedProject());
-    idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-    nameColumn.setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
-    teamMembersTable.setItems(viewModel.getList());
-
     idLabel.setText("Requirement Id: " + state.getSelectedRequirement());
     relatedProjectInput.setText(requirement.getRelatedProject().getName());
     userStoryInput.setText(requirement.getUserStory());
-    startingDateInput.getEditor().clear();
-    startingDateShow.setText("Now: " + requirement.getStartingDate().toString());
-    deadlineInput.getEditor().clear();
-    deadlineShow.setText("Now: " + requirement.getDeadline().toString());
+    startingDateInput.setValue(LocalDate.of(requirement.getStartingDate().getYear(), requirement.getStartingDate().getMonth(), requirement.getStartingDate().getDay()));
+    deadlineInput.setValue(LocalDate.of(requirement.getDeadline().getYear(), requirement.getDeadline().getMonth(), requirement.getDeadline().getDay()));
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
+    priorityInput.setValue(requirement.getPriority().getName());
+    typeInput.setValue(requirement.getType().getName());
+    statusInput.setValue(requirement.getStatus().getName());
     hoursWorkedShow.setText("Number of Hours Worked: " + requirement.getHoursWorked());
     if (requirement.getResponsibleTeamMember() != null)
       responsibleTeamMemberInput.setText(requirement.getResponsibleTeamMember().getId() + " " + requirement.getResponsibleTeamMember().getFullName());
     else
       responsibleTeamMemberInput.setText("");
 
-    switch (requirement.getPriority())
-    {
-      case CRITICAL:
-        priorityInput.getSelectionModel().clearAndSelect(0);
-        break;
-      case HIGH:
-        priorityInput.getSelectionModel().clearAndSelect(1);
-        break;
-      case LOW:
-        priorityInput.getSelectionModel().clearAndSelect(2);
-        break;
-    }
-
-    switch (requirement.getType())
-    {
-      case FUNCTIONAL:
-        typeInput.getSelectionModel().clearAndSelect(0);
-        break;
-      case NON_FUNCTIONAL:
-        typeInput.getSelectionModel().clearAndSelect(1);
-        break;
-      case PROJECT_RELATED:
-        typeInput.getSelectionModel().clearAndSelect(2);
-        break;
-    }
-
-    switch (requirement.getStatus())
-    {
-      case NOT_STARTED:
-        statusInput.getSelectionModel().clearAndSelect(0);
-        break;
-      case STARTED:
-        statusInput.getSelectionModel().clearAndSelect(1);
-        break;
-      case ENDED:
-        statusInput.getSelectionModel().clearAndSelect(2);
-        break;
-      case APPROVED:
-        statusInput.getSelectionModel().clearAndSelect(3);
-        break;
-      case REJECTED:
-        statusInput.getSelectionModel().clearAndSelect(4);
-        break;
-    }
+    this.viewModel = new TeamMemberListViewModel(model, state);
+    viewModel.update(requirement.getRelatedProject());
+    idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+    nameColumn.setCellValueFactory(cellDate -> cellDate.getValue().getNameProperty());
+    teamMembersTable.setItems(viewModel.getList());
 
     errorLabel.setText("");
   }
@@ -154,7 +109,7 @@ public class DetailsAndEditRequirementController
 
       Date.checkDates(d1, d2);
 
-      double estimatedTime = requirement.getEstimatedTime();
+      double estimatedTime;
       if (estimatedTimeInput.getText().equals(""))
         throw new IllegalArgumentException("Estimated Time can not be empty");
       try
@@ -208,7 +163,7 @@ public class DetailsAndEditRequirementController
       boolean remove = confirmation("edit");
       if (remove)
       {
-        model.editRequirement(requirement.getRelatedProject(), requirement,userStory, estimatedTime, rtm, d1, d2, status, type, priority);
+        model.editRequirement(requirement.getRelatedProject(), requirement, userStory, estimatedTime, rtm, d1, d2, status, type, priority);
         state.setSelectedRequirement(-1);
         viewHandler.openView("requirementList");
       }
