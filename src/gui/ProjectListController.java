@@ -57,6 +57,10 @@ public class ProjectListController
     {
         viewHandler.openView("addProject");
     }
+
+    /**
+     * The selected project is passed to the Details and Edit Project Window
+     */
     @FXML private void viewProjectButtonPressed()
     {
         ProjectViewModel selectedItem = projectListTable
@@ -84,13 +88,11 @@ public class ProjectListController
                 projectListViewModel.remove(project);
                 projectListTable.getSelectionModel().clearSelection();
             }
-
         }
         catch(Exception e)
         {
             errorLabel.setText("Project not selected");
         }
-
     }
      private boolean confirmation()
      {
@@ -107,6 +109,9 @@ public class ProjectListController
          return (result.isPresent()) && (result.get() == ButtonType.OK);
      }
 
+    /**
+     * Searches/Sorts the projects by ID or/and Name
+     */
     @FXML
     public void handleKeyReleased() //**
     {

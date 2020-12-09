@@ -18,7 +18,6 @@ public class ProjectListViewModel {
         this.list = FXCollections.observableArrayList();
         this.viewState = viewState;
         update();
-        //TODO: UPDATE
     }
     public ObservableList<ProjectViewModel> getList()
     {
