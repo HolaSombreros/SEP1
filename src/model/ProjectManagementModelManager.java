@@ -64,7 +64,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+       /* projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",2));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",3));
@@ -74,7 +74,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         project.assignScrumMaster(m1);
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",9));
 
-
+*/
 
     }
 
