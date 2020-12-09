@@ -119,6 +119,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     @Override public void editRequirement(Project project, Requirement requirement,String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline, RequirementStatus status, Type type,
         Priority priority) {
+        requirement.edit(userStory,estimatedTime,responsibleTeamMember,startingDate,deadline,status,type,priority);
         saveModel();
         if (project.getStatus()==Status.ENDED)
             saveProject(project);
