@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox userData="Project Management System" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProjectListController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" userData="Project Management System" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProjectListController">
    <children>
       <VBox prefHeight="400.0" prefWidth="629.0">
          <children>
@@ -24,15 +24,19 @@
                   </Label>
                </children>
             </HBox>
-            <VBox prefHeight="51.0" prefWidth="600.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <TextField fx:id="searchInput">
-                     <VBox.margin>
-                        <Insets left="50.0" right="50.0" />
-                     </VBox.margin>
-                  </TextField>
+                  <TextField fx:id="searchInput" prefHeight="29.0" prefWidth="421.0" promptText="Search" />
+                  <Button onAction="#searchButtonPressed"  mnemonicParsing="false" text="Search">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
-            </VBox>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0">
