@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectlist>
    <project>
-      <id>LlwR9cI1p</id>
+      <id>ez0ZXuyDC</id>
       <title>Project Management System for Colour IT</title>
       <status>Not Started</status>
       <methodology>WATERFALL</methodology>
       <startingdate>09/12/2020</startingdate>
       <deadline>29/12/2021</deadline>
       <scrummaster>
-         <firstname>Giorno</firstname>
-         <lastname>Giovanna</lastname>
-         <id>2</id>
-         <timeregistration>
-            <hoursworked>0.0</hoursworked>
-         </timeregistration>
       </scrummaster>
       <productowner>
-         <firstname>Giorno</firstname>
-         <lastname>Giovanna</lastname>
-         <id>2</id>
-         <timeregistration>
-            <hoursworked>0.0</hoursworked>
-         </timeregistration>
       </productowner>
       <teammemberlist>
-         <teammember>
-            <firstname>Joseph</firstname>
-            <lastname>Joestar</lastname>
-            <id>1</id>
-            <timeregistration>
-               <hoursworked>0.0</hoursworked>
-            </timeregistration>
-         </teammember>
-         <teammember>
-            <firstname>Giorno</firstname>
-            <lastname>Giovanna</lastname>
-            <id>2</id>
-            <timeregistration>
-               <hoursworked>0.0</hoursworked>
-            </timeregistration>
-         </teammember>
       </teammemberlist>
       <requirementlist>
          <requirement>
@@ -47,26 +19,10 @@
             <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start</userstory>
             <estimatedtime>24.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
-            <relatedproject>LlwR9cI1p</relatedproject>
+            <relatedproject>ez0ZXuyDC</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
-               <teammember>
-                  <firstname>Joseph</firstname>
-                  <lastname>Joestar</lastname>
-                  <id>1</id>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-            </teammember>
-               <teammember>
-                  <firstname>Giorno</firstname>
-                  <lastname>Giovanna</lastname>
-                  <id>2</id>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-            </teammember>
             </teammemberlist>
             <startingdate>12/03/2021</startingdate>
             <deadline>21/05/2021</deadline>
@@ -88,22 +44,6 @@
                   </responsibleteammember>
                   <relatedrequirement>1</relatedrequirement>
                   <teammemberlist>
-                     <teammember>
-                        <firstname>Joseph</firstname>
-                        <lastname>Joestar</lastname>
-                        <id>1</id>
-                        <timeregistration>
-                           <hoursworked>0.0</hoursworked>
-                        </timeregistration>
-                     </teammember>
-                     <teammember>
-                        <firstname>Giorno</firstname>
-                        <lastname>Giovanna</lastname>
-                        <id>2</id>
-                        <timeregistration>
-                           <hoursworked>0.0</hoursworked>
-                        </timeregistration>
-                     </teammember>
                   </teammemberlist>
                </task>
             </tasklist>
@@ -111,12 +51,92 @@
       </requirementlist>
    </project>
    <project>
-      <id>3SWg0bOLU</id>
+      <id>LWCxXD0Xx</id>
       <title>Some other thing for whoever</title>
       <status>Not Started</status>
       <methodology>SCRUM</methodology>
       <startingdate>09/12/2020</startingdate>
       <deadline>18/05/2021</deadline>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
+      <teammemberlist>
+      </teammemberlist>
+      <requirementlist>
+      </requirementlist>
+   </project>
+   <project>
+      <id>1</id>
+      <title>test</title>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>09/12/2020</startingdate>
+      <deadline>20/10/2025</deadline>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
+      <teammemberlist>
+      </teammemberlist>
+      <requirementlist>
+      </requirementlist>
+   </project>
+   <project>
+      <id>test</id>
+      <title>jhdajh</title>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>09/12/2020</startingdate>
+      <deadline>20/10/2025</deadline>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
+      <teammemberlist>
+      </teammemberlist>
+      <requirementlist>
+      </requirementlist>
+   </project>
+   <project>
+      <id>13</id>
+      <title>test</title>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>09/12/2020</startingdate>
+      <deadline>20/10/2025</deadline>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
+      <teammemberlist>
+      </teammemberlist>
+      <requirementlist>
+      </requirementlist>
+   </project>
+   <project>
+      <id>155</id>
+      <title>test55</title>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>09/12/2020</startingdate>
+      <deadline>20/10/2025</deadline>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
+      <teammemberlist>
+      </teammemberlist>
+      <requirementlist>
+      </requirementlist>
+   </project>
+   <project>
+      <id>3</id>
+      <title>random</title>
+      <status>Not Started</status>
+      <methodology>SCRUM</methodology>
+      <startingdate>09/12/2020</startingdate>
+      <deadline>20/10/2025</deadline>
       <scrummaster>
       </scrummaster>
       <productowner>

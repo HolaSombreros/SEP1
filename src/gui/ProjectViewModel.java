@@ -10,6 +10,7 @@ public class ProjectViewModel
     private StringProperty nameProperty;
     private StringProperty deadlineProperty;
     private StringProperty statusProperty;
+    private StringProperty methodologyProperty;
 
     public ProjectViewModel(Project project)
     {
@@ -17,6 +18,7 @@ public class ProjectViewModel
         nameProperty = new SimpleStringProperty(project.getName());
         deadlineProperty = new SimpleStringProperty(project.getDeadline().toString());
         statusProperty = new SimpleStringProperty(project.getStatus().getName());
+        methodologyProperty = new SimpleStringProperty(project.getMethodology().getMethodology());
 
     }
     public StringProperty getIDProperty()
@@ -34,5 +36,8 @@ public class ProjectViewModel
     public StringProperty getStatusProperty()
     {
         return statusProperty;
+    }
+    public StringProperty getMethodologyProperty() {
+        return methodologyProperty;
     }
 }

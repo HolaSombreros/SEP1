@@ -35,7 +35,8 @@ public class ProjectListViewModel {
             if(list.get(index).getIDProperty().get().equals(project.getID()) &&
                     list.get(index).getNameProperty().get().equals(project.getName()) &&
                     list.get(index).getStatusProperty().get().equals(project.getStatus().getName()) &&
-                    list.get(index).getDeadlineProperty().get().equals(project.getDeadline().toString()))
+                    list.get(index).getDeadlineProperty().get().equals(project.getDeadline().toString()) &&
+                     list.get(index).getMethodologyProperty().get().equals(project.getMethodology().getMethodology()))
             {
                 list.remove(index);
 
@@ -66,7 +67,10 @@ public class ProjectListViewModel {
         }
         else
         {
-            list.add(new ProjectViewModel(model.getProjectList().getProjectByID(id)));
+            for(Project project: model.getProjectList().getProjectByIDBetterVersion(id))
+            {
+                list.add(new ProjectViewModel(project));
+            }
         }
     }
 

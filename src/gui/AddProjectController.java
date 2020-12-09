@@ -111,6 +111,5 @@ public class AddProjectController
         String ID = IDInput.getText();
         boolean disableButtons = name.isEmpty() || name.trim().isEmpty() || ID.isEmpty() || ID.trim().isEmpty();
         createProject.setDisable(disableButtons);
-
     }
 }

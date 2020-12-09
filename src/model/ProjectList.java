@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ProjectList
 {
@@ -45,7 +47,7 @@ public class ProjectList
                 count++;
             }
         }
-        if(count == 0) throw new IllegalArgumentException("No projects exists with this methodology");
+        if(count == 0) throw new IllegalArgumentException("No projects found with this methodology");
         return count;
     }
     public ArrayList<Project> getProjectsByMethodology(Methodology methodology)
@@ -91,17 +93,37 @@ public class ProjectList
             throw new IllegalArgumentException("No projects found with this status");
         return projectsSameStatus;
     }
-    public Project getProjectByID(String ID)
-    {
+    public Project getProjectByID(String ID){
         for(Project project : projects)
         {
-            if(project.getID().equals(ID))
+            if(project.getID().contains(ID))
             {
                 return project;
             }
         }
         return null;
     }
+
+    public ArrayList<Project> getProjectByIDBetterVersion(String ID)
+    {
+        /*ProjectList list = new ProjectList();
+        for(Project project : projects)
+        {
+            if(project.getID().contains(ID))
+            {
+                list.addProject(project);
+            }
+        }
+        return list.getProjects().size() == 0?null:list;*/
+        ArrayList<Project> project1 = projects.stream().filter(project -> project.getID().toLowerCase().contains(ID.toLowerCase())).collect(Collectors
+                .toCollection(ArrayList::new));
+        ArrayList<Project> project2 = projects.stream().filter(project -> project.getName().toLowerCase().contains(ID.toLowerCase())).collect(Collectors
+                .toCollection(ArrayList::new));
+        return Stream.of(project1, project2)
+                .flatMap(x -> x.stream()).collect(Collectors
+                .toCollection(ArrayList::new));
+    }
+
     public boolean contains(Project project)
     {
         return projects.contains(project);

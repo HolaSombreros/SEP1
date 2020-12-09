@@ -181,7 +181,7 @@ public class DetailsAndEditProjectController
                  case "Waterfall":
                      methodology = Methodology.WATERFALL;
                      break;
-                 case "SCRUM":
+                 case "Scrum":
                      methodology = Methodology.SCRUM;
                      break;
              }
