@@ -137,7 +137,7 @@ public class DetailsTeamMemberController {
                                 frequentTeamMemberLabel.setText("Hasn't worked on tasks yet! ");
                             else
                                 frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
-                            productivityLabel.setText("Productivity: 9"  /*model.getProductivity(teamMember)*/);
+                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
                             viewModel.update(id);
                         }
                 }
