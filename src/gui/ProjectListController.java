@@ -114,13 +114,13 @@ public class ProjectListController
                  reset();
              }
              else {
-                 int id = 0;
+                 String id = null;
                  try {
-                     id = Integer.parseInt(searchInput.getText());
+                     id = searchInput.getText();
                      projectListViewModel.update(id);
                  }
                  catch (NumberFormatException e) {
-                     errorLabel.setText("The id to search for has to be numeric");
+                     errorLabel.setText("ID must be a number");
                  }
              }
          }
