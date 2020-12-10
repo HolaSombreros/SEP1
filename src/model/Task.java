@@ -115,9 +115,6 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
-        if (status != Status.STARTED && getRelatedRequirement().getStatus() != RequirementStatus.NOT_STARTED) {
-            getRelatedRequirement().setStatus(RequirementStatus.STARTED);
-        }
     }
 
     public void assignResponsibleTeamMember(TeamMember responsibleTeamMember) {

@@ -315,7 +315,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     
     loop through HashMap and sort values, return ™ object with largest value.
      */
-    @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) throws FileNotFoundException {
+    @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) {
         /*HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<>();
         for(Project project : projectList.getProjects())
             if(project.getTeamMemberList().getTeamMember(teamMember) != null) {
@@ -342,7 +342,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         return null;
 
          */
-        int[] frequentTeamMembers = new int[addTeamMembersToTheSystem().size()];
+        int[] frequentTeamMembers = new int[getTeam().size()];
         for(int i = 1; i < getTeam().size(); i++)
             frequentTeamMembers[i] = 0;
         //loops through all the projects
@@ -361,8 +361,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                                         //System.out.println(member.getFullName());
                                     }
         int max = 0,p = 0 ;
-        for(int i = 1; i < addTeamMembersToTheSystem().size(); i++)
-            if(frequentTeamMembers[i] > max && i != addTeamMembersToTheSystem().getTeamMember(teamMember).getId()){
+        for(int i = 1; i < getTeam().size(); i++)
+            if(frequentTeamMembers[i] > max && i != getTeam().getTeamMember(teamMember).getId()){
                 max = frequentTeamMembers[i];
                 p = i;
               //  System.out.println(i);

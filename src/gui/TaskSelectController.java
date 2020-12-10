@@ -62,7 +62,7 @@ public class TaskSelectController {
 
 
     public void backButtonPressed() {
-        viewHandler.openView("detailsTeamMember");
+        viewHandler.openView("requirementSelect");
     }
 
 
@@ -106,4 +106,10 @@ public class TaskSelectController {
 
         }
     }
+
+    public void homeButtonPressed(){
+        viewHandler.openView("projectList");
+    }
+
+
 }
