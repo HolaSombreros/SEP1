@@ -22,15 +22,16 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         //this.projectList = loadModel();
         
         createDummyData();
-        fileConnections.add(new XmlFile("projects"));
+        fileConnections.add(new XmlFile("model"));
         //saveModel();
     }
     
-    private IProjectManagementModel loadModel() throws FileNotFoundException {
-        return fileConnections.get(0).loadModel();
+    public static IProjectManagementModel loadModel() throws FileNotFoundException {
+        IFileConnection xml = new XmlFile("model");
+        return xml.loadModel();
     }
     
-    private void saveModel() {
+    public void saveModel() {
         for (IFileConnection file : fileConnections) {
             try {
                 file.saveModel(this);
@@ -41,7 +42,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         }
     }
 
-    private void saveProject(Project project) {
+    public void saveProject(Project project) {
         for (IFileConnection file : fileConnections) {
             try {
                 file.saveProject(project);
