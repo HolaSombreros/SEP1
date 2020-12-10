@@ -138,9 +138,6 @@ public class Project
     {
         if(!projectTeamMemberList.contains(teamMember))
         this.projectTeamMemberList.add(teamMember);
-        else
-            throw new IllegalArgumentException("Team member is already in the project list");
-
     }
 
     /** Unassigns an ordinary team member
