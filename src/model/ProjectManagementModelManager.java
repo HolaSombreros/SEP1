@@ -19,11 +19,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     public ProjectManagementModelManager() throws FileNotFoundException {
         this.fileConnections = new ArrayList<>();
         this.projectList = new ProjectList();
-        //this.projectList = loadModel();
         
-        createDummyData();
+        //createDummyData();
         fileConnections.add(new XmlFile("model"));
-        //saveModel();
     }
     
     public static IProjectManagementModel loadModel() throws FileNotFoundException {

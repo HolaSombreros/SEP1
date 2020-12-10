@@ -31,9 +31,6 @@ public class XmlFile implements IFileConnection {
     
     @Override public IProjectManagementModel loadModel() throws FileNotFoundException {
         File file = new File(getFilePath());
-        Scanner sc = new Scanner(file);
-        IProjectManagementModel model = new ProjectManagementModelManager();
-        
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -43,6 +40,8 @@ public class XmlFile implements IFileConnection {
                 e.printStackTrace();
             }
         }
+        Scanner sc = new Scanner(file);
+        IProjectManagementModel model = new ProjectManagementModelManager();
         
         
         
@@ -54,40 +53,13 @@ public class XmlFile implements IFileConnection {
         Date deadline = null;
         Status status = null;
         
-        
-        TeamMember scrumMaster = null;
-        TeamMember productOwner = null;
-        TeamMemberList projectTeamMemberList = null;
-        RequirementList requirementList = null;
-        
         // Requirement variables:
-        int requirementId = 0;
         String userStory = "";
         double estimatedTime = 0;
         double hoursWorked = 0;
-        Project relatedProject = null;
-        TaskList taskList = null;
-        TeamMemberList reqTeamMemberList = null;
-        TeamMember reqRTM = null;
-        Date reqStartDate = null;
-        Date reqDeadline = null;
         RequirementStatus requirementStatus = null;
         Type type = null;
         Priority priority = null;
-        int i = 0;
-        
-        // Task variables:
-        int taskId = 0;
-        String taskTitle = "";
-        Date taskStartDate = null;
-        Date taskDeadline = null;
-        double taskEstimatedTime = 0;
-        Status taskStatus = null;
-        TeamMemberList taskTeamMemberList = null;
-        TeamMember taskRTM = null;
-        TimeRegistration timeRegistration = null;
-        Requirement relatedRequirement = null;
-        int j = 0;
         
         // Teammember related:
         String firstName;
@@ -96,14 +68,14 @@ public class XmlFile implements IFileConnection {
         TeamMember teamMember;
         
         String temp[] = null;
-        
         Project project = null;
         Requirement requirement = null;
         Task task = null;
+        String line = "";
+        
         while (sc.hasNext()) {
-            String line = sc.nextLine();
-    
-            // Project data:
+            line = sc.nextLine();
+            System.out.println(line); // <------
             if (line.contains("<project>")) {
                 line = sc.nextLine();
                 line = line.replace("<id>", "");
@@ -208,43 +180,42 @@ public class XmlFile implements IFileConnection {
                     sc.nextLine();
                     sc.nextLine();
                 }
-                //sc.nextLine(); TODO - was this a mistake or should this actually be here?
                 sc.nextLine(); // <teammemberlist>
-                line = sc.nextLine(); // <teammember> OR </teammemberlist>
-                if (line.contains("<teammember>")) {
-                    while (sc.hasNext()) {
+                while (sc.hasNext()) {
+                    line = sc.nextLine(); // <teammember> OR </teammemberlist>
+                    if (line.contains("<teammember>")) {
                         line = sc.nextLine();
-                        if (line.contains("<firstname>")) {
-                            line = line.replace("<firstname>", "");
-                            line = line.replace("</firstname>", "");
-                            firstName = line.trim();
-                            line = sc.nextLine();
-                            line = line.replace("<lastname>", "");
-                            line = line.replace("</lastname>", "");
-                            lastName = line.trim();
-                            line = sc.nextLine();
-                            line = line.replace("<id>", "");
-                            line = line.replace("</id>", "");
-                            id = Integer.parseInt(line.trim());
-                            teamMember = new TeamMember(firstName, lastName, id);
-                            project.assignTeamMember(teamMember);
-    
-                            sc.nextLine();
-                            line = sc.nextLine();
-                            line = line.replace("<hoursworked>", "");
-                            line = line.replace("</hoursworked>", "");
-                            teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
-                        }
-                        else if (line.contains("</teammemberlist>")) {
-                            break;
-                        }
+                        line = line.replace("<firstname>", "");
+                        line = line.replace("</firstname>", "");
+                        firstName = line.trim();
+                        line = sc.nextLine();
+                        line = line.replace("<lastname>", "");
+                        line = line.replace("</lastname>", "");
+                        lastName = line.trim();
+                        line = sc.nextLine();
+                        line = line.replace("<id>", "");
+                        line = line.replace("</id>", "");
+                        id = Integer.parseInt(line.trim());
+                        teamMember = new TeamMember(firstName, lastName, id);
+                        project.assignTeamMember(teamMember);
+            
+                        sc.nextLine();
+                        line = sc.nextLine();
+                        line = line.replace("<hoursworked>", "");
+                        line = line.replace("</hoursworked>", "");
+                        teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                        sc.nextLine();
+                        sc.nextLine();
+                    }
+                    else if (line.contains("</teammemberlist>")) {
+                        break;
                     }
                 }
-    
+                
                 sc.nextLine(); // <requirementlist>
-                line = sc.nextLine(); // <requirement> OR </requirementlist>
-                if (line.contains("<requirement>")) {
-                    while (sc.hasNext()) {
+                while (sc.hasNext()) {
+                    line = sc.nextLine(); // <requirement> OR </requirementlist>
+                    if (line.contains("<requirement>")) {
                         line = sc.nextLine();
                         line = line.replace("<id>", "");
                         line = line.replace("</id>", "");
@@ -361,10 +332,99 @@ public class XmlFile implements IFileConnection {
                         }
     
                         sc.nextLine(); // <teammemberlist>
-                        line = sc.nextLine(); // <teammember> OR </teammemberlist>
-                        if (line.contains("<teammember>")) {
-                            while (sc.hasNext()) {
+                        while (sc.hasNext()) {
+                            line = sc.nextLine(); // <teammember> OR </teammemberlist>
+                            if (line.contains("<teammember>")) {
                                 line = sc.nextLine();
+                                line = line.replace("<firstname>", "");
+                                line = line.replace("</firstname>", "");
+                                firstName = line.trim();
+                                line = sc.nextLine();
+                                line = line.replace("<lastname>", "");
+                                line = line.replace("</lastname>", "");
+                                lastName = line.trim();
+                                line = sc.nextLine();
+                                line = line.replace("<id>", "");
+                                line = line.replace("</id>", "");
+                                id = Integer.parseInt(line.trim());
+                                teamMember = new TeamMember(firstName, lastName, id);
+                                requirement.assignTeamMember(teamMember);
+
+                                sc.nextLine();
+                                line = sc.nextLine();
+                                line = line.replace("<hoursworked>", "");
+                                line = line.replace("</hoursworked>", "");
+                                teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                                sc.nextLine();
+                                sc.nextLine();
+                            }
+                            else if (line.contains("</teammemberlist>")) {
+                                break;
+                            }
+                        }
+    
+                        sc.nextLine(); // <tasklist>
+                        while (sc.hasNext()) {
+                            line = sc.nextLine(); // <task> OR </tasklist>
+                            if (line.contains("<task>")) {
+                                line = sc.nextLine();
+                                line = line.replace("<id>", "");
+                                line = line.replace("</id>", "");
+                                id = Integer.parseInt(line.trim());
+    
+                                line = sc.nextLine();
+                                line = line.replace("<title>", "");
+                                line = line.replace("</title>", "");
+                                title = line.trim();
+    
+                                line = sc.nextLine();
+                                line = line.replace("<estimatedtime>", "");
+                                line = line.replace("</estimatedtime>", "");
+                                estimatedTime = Double.parseDouble(line.trim());
+    
+                                line = sc.nextLine();
+                                line = line.replace("<startingdate>", "");
+                                line = line.replace("</startingdate>", "");
+                                temp = line.trim().split("/");
+                                startingDate = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
+    
+                                line = sc.nextLine();
+                                line = line.replace("<deadline>", "");
+                                line = line.replace("</deadline>", "");
+                                temp = line.trim().split("/");
+                                deadline = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
+    
+                                line = sc.nextLine();
+                                line = line.replace("<status>", "");
+                                line = line.replace("</status>", "");
+                                switch (line.trim()) {
+                                    case "Not Started":
+                                        status = Status.NOT_STARTED;
+                                        break;
+                                    case "Started":
+                                        status = Status.STARTED;
+                                        break;
+                                    case "Ended":
+                                        status = Status.ENDED;
+                                        break;
+                                }
+    
+                                sc.nextLine(); // <timeregistration>
+                                line = sc.nextLine();
+                                line = line.replace("<hoursworked>", "");
+                                line = line.replace("</hoursworked>", "");
+                                hoursWorked = Double.parseDouble(line.trim());
+                                sc.nextLine(); // </timeregistration>
+    
+                                sc.nextLine(); // <relatedrequirement></relatedrequirement>
+                                task = new Task(title, startingDate, deadline, estimatedTime, requirement);
+                                model.addTask(requirement, task);
+                                task.setId(id);
+                                task.setStatus(status);
+                                task.getTimeRegistration().setHoursWorked(hoursWorked);
+    
+                                sc.nextLine(); // <responsibleteammember>
+                                line = sc.nextLine(); // </responsibleteammember> OR <firstname>
                                 if (line.contains("<firstname>")) {
                                     line = line.replace("<firstname>", "");
                                     line = line.replace("</firstname>", "");
@@ -378,128 +438,69 @@ public class XmlFile implements IFileConnection {
                                     line = line.replace("</id>", "");
                                     id = Integer.parseInt(line.trim());
                                     teamMember = new TeamMember(firstName, lastName, id);
-                                    requirement.assignTeamMember(teamMember);
-    
+                                    task.assignResponsibleTeamMember(teamMember);
+        
                                     sc.nextLine();
                                     line = sc.nextLine();
                                     line = line.replace("<hoursworked>", "");
                                     line = line.replace("</hoursworked>", "");
                                     teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                                    sc.nextLine();
+                                    sc.nextLine();
                                 }
-                                else if (line.contains("</teammemberlist>")) {
-                                    break;
-                                }
-                            }
-                        }
-    
-                        sc.nextLine(); // <tasklist>
-                        line = sc.nextLine(); // <task> OR </tasklist>
-                        if (line.contains("<task>")) {
-                            while (sc.hasNext()) {
-                                line = sc.nextLine();
-                                if (line.contains("<id>")) {
-                                    line = line.replace("<id>", "");
-                                    line = line.replace("</id>", "");
-                                    id = Integer.parseInt(line.trim());
-    
-                                    line = sc.nextLine();
-                                    line = line.replace("<title>", "");
-                                    line = line.replace("</title>", "");
-                                    title = line.trim();
-    
-                                    line = sc.nextLine();
-                                    line = line.replace("<estimatedtime>", "");
-                                    line = line.replace("</estimatedtime>", "");
-                                    estimatedTime = Double.parseDouble(line.trim());
-    
-                                    line = sc.nextLine();
-                                    line = line.replace("<startingdate>", "");
-                                    line = line.replace("</startingdate>", "");
-                                    temp = line.trim().split("/");
-                                    startingDate = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
-    
-                                    line = sc.nextLine();
-                                    line = line.replace("<deadline>", "");
-                                    line = line.replace("</deadline>", "");
-                                    temp = line.trim().split("/");
-                                    deadline = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
-    
-                                    line = sc.nextLine();
-                                    line = line.replace("<status>", "");
-                                    line = line.replace("</status>", "");
-                                    switch (line.trim()) {
-                                        case "Not Started":
-                                            status = Status.NOT_STARTED;
-                                            break;
-                                        case "Started":
-                                            status = Status.STARTED;
-                                            break;
-                                        case "Ended":
-                                            status = Status.ENDED;
-                                            break;
-                                    }
-    
-                                    sc.nextLine(); // <timeregistration>
-                                    line = sc.nextLine();
-                                    line = line.replace("<hoursworked>", "");
-                                    line = line.replace("</hoursworked>", "");
-                                    hoursWorked = Double.parseDouble(line.trim());
-                                    sc.nextLine(); // </timeregistration>
-    
-                                    sc.nextLine(); // <relatedrequirement></relatedrequirement>
-                                    task = new Task(title, startingDate, deadline, estimatedTime, requirement);
-                                    model.addTask(requirement, task);
-                                    task.setId(id);
-                                    task.setStatus(status);
-                                    task.getTimeRegistration().setHoursWorked(hoursWorked);
-    
-                                    sc.nextLine(); // <teammemberlist>
-                                    line = sc.nextLine(); // <teammember> OR </teammemberlist>
+                                
+                                sc.nextLine(); // <teammemberlist>
+                                line = sc.nextLine(); // <teammember> OR </teammemberlist>
+                                while (sc.hasNext()) {
                                     if (line.contains("<teammember>")) {
-                                        while (sc.hasNext()) {
+                                        line = sc.nextLine();
+                                        if (line.contains("<firstname>")) {
+                                            line = line.replace("<firstname>", "");
+                                            line = line.replace("</firstname>", "");
+                                            firstName = line.trim();
                                             line = sc.nextLine();
-                                            if (line.contains("<firstname>")) {
-                                                line = line.replace("<firstname>", "");
-                                                line = line.replace("</firstname>", "");
-                                                firstName = line.trim();
-                                                line = sc.nextLine();
-                                                line = line.replace("<lastname>", "");
-                                                line = line.replace("</lastname>", "");
-                                                lastName = line.trim();
-                                                line = sc.nextLine();
-                                                line = line.replace("<id>", "");
-                                                line = line.replace("</id>", "");
-                                                id = Integer.parseInt(line.trim());
-                                                teamMember = new TeamMember(firstName, lastName, id);
-                                                task.assignTeamMember(teamMember);
+                                            line = line.replace("<lastname>", "");
+                                            line = line.replace("</lastname>", "");
+                                            lastName = line.trim();
+                                            line = sc.nextLine();
+                                            line = line.replace("<id>", "");
+                                            line = line.replace("</id>", "");
+                                            id = Integer.parseInt(line.trim());
+                                            teamMember = new TeamMember(firstName, lastName, id);
+                                            task.assignTeamMember(teamMember);
     
-                                                sc.nextLine();
-                                                line = sc.nextLine();
-                                                line = line.replace("<hoursworked>", "");
-                                                line = line.replace("</hoursworked>", "");
-                                                teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
-                                            }
-                                            else if (line.contains("</teammemberlist>")) {
-                                                break;
-                                            }
+                                            sc.nextLine();
+                                            line = sc.nextLine();
+                                            line = line.replace("<hoursworked>", "");
+                                            line = line.replace("</hoursworked>", "");
+                                            teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         }
                                     }
-                                    sc.nextLine(); // </task>
+                                    else if (line.contains("</teammemberlist>")) {
+                                        break;
+                                    }
                                 }
-                                else if (line.contains("</tasklist>")) {
-                                    break;
-                                }
+                                line = sc.nextLine(); // </task>
+                            }
+                            else if (line.contains("</tasklist>")) {
+                                break;
                             }
                         }
-                        sc.nextLine(); // </requirement>
+                        line = sc.nextLine(); // </requirement>
                     }
-                } // </requirement>
-                else if (line.contains("</requirementlist>")) {
-                    break;
+                    else if (line.contains("</requirementlist>")) {
+                        break;
+                    }
                 }
+                line = sc.nextLine(); // </project>
+            }
+            else if (line.contains("</projectlist>")) {
+                break;
             }
         }
-        return null;
+        return model;
     }
     
     @Override public void saveModel(IProjectManagementModel model) throws FileNotFoundException {
@@ -521,7 +522,7 @@ public class XmlFile implements IFileConnection {
             xml += "      <id>" + project.getID() + "</id>\n";
             xml += "      <title>" + project.getName() + "</title>\n";
             xml += "      <status>" + project.getStatus().getName() + "</status>\n";
-            xml += "      <methodology>" + project.getMethodology() + "</methodology>\n";
+            xml += "      <methodology>" + project.getMethodology().getMethodology() + "</methodology>\n";
             xml += "      <startingdate>" + project.getStartingDate().toString() + "</startingdate>\n";
             xml += "      <deadline>" + project.getDeadline().toString() + "</deadline>\n";
             xml += "      <scrummaster>\n";
@@ -638,7 +639,7 @@ public class XmlFile implements IFileConnection {
         out.println(xml);
         out.close();
         
-        System.out.println("Wrote to file at [" + file.getAbsolutePath() + "]"); // TODO - eventually remove...
+        //System.out.println("Wrote to file at [" + file.getAbsolutePath() + "]"); // TODO - eventually remove...
     }
     
     @Override public void saveProject(Project project) throws FileNotFoundException {
@@ -776,7 +777,5 @@ public class XmlFile implements IFileConnection {
         
         out.println(xml);
         out.close();
-        
-        System.out.println("Wrote to file at [" + file.getAbsolutePath() + "]"); // TODO - eventually remove...
     }
 }
