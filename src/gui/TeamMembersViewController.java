@@ -53,6 +53,7 @@ public class TeamMembersViewController {
     public void reset(){
         errorLabel.setText("");
         searchField.setText("");
+        viewModel.update();
 
     }
 
@@ -75,6 +76,30 @@ public class TeamMembersViewController {
         }
     }
 
-    public void searchKeyReleased() {
+    public void searchKeyTyped() {
+        errorLabel.setText("");
+        try {
+            if(searchField.getText().equals("")){
+                reset();
+            }
+            else {
+
+                String name = null;
+                int id = 0;
+                try {
+                    id = Integer.parseInt(searchField.getText());
+                    viewModel.update(id);
+                }
+                catch (NumberFormatException e) {
+                    name = searchField.getText();
+                    viewModel.update(name);
+                }
+            }
+
+        }
+        catch (Exception e){
+            errorLabel.setText("No team members with this name");
+        }
+
     }
 }

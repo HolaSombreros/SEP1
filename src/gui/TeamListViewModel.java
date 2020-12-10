@@ -3,6 +3,7 @@ package gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.IProjectManagementModel;
+import model.TeamMember;
 
 public class TeamListViewModel {
 
@@ -27,5 +28,27 @@ public class TeamListViewModel {
         return list;
     }
 
+
+    public void update(String name){
+        list.clear();
+        if(name == null)
+            for(TeamMember teamMember : model.getTeam().getTeamMembers())
+                list.add(new TeamViewModel(teamMember,model));
+        else
+            for(TeamMember teamMember : model.getTeam().getByNameUpgraded(name))
+                list.add(new TeamViewModel(teamMember,model));
+
+    }
+
+    public void update(int id){
+        list.clear();
+        if(id == 0)
+            for(TeamMember teamMember : model.getTeam().getTeamMembers())
+                list.add(new TeamViewModel(teamMember,model));
+        else
+            for(TeamMember teamMember : model.getTeam().getTeamMembers())
+                if(teamMember.getId() == id)
+                    list.add(new TeamViewModel(teamMember,model));
+    }
 
 }
