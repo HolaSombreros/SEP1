@@ -21,11 +21,11 @@ public class DetailsTeamMemberController {
     private IProjectManagementModel model;
     private ProjectListViewModel viewModel;
 
-    @FXML private TextField nameField;
-    @FXML private TextField idField;
+
     @FXML private Label productivityLabel;
     @FXML private Label frequentTeamMemberLabel;
     @FXML private Label errorLabel;
+    @FXML private Label nameLabel;
     @FXML private TableView<ProjectViewModel> teamMemberViewTable;
     @FXML private TableColumn<ProjectViewModel,String> projectNameColumn;
     @FXML private TableColumn<ProjectViewModel,String> deadlineColumn;
@@ -40,21 +40,25 @@ public class DetailsTeamMemberController {
         this.root = root;
         this.viewState = viewState;
         this.viewModel = new ProjectListViewModel(model,viewState);
-        errorLabel.setText("");
-        productivityLabel.setText("");
-        frequentTeamMemberLabel.setText("");
-
         reset();
 
 
     }
 
-    public void reset(){
+    public void reset() {
        errorLabel.setText("");
-       productivityLabel.setText("");
-       frequentTeamMemberLabel.setText("");
-       idField.setText("");
-       nameField.setText("");
+       try {
+           productivityLabel.setText("Productivity: " + model.getProductivity(model.getTeam().getByID(viewState.getSelectedTeamMember())));
+           if(model.getMostFrequentTeamMember(model.getTeam().getByID(viewState.getSelectedTeamMember()))==null)
+               frequentTeamMemberLabel.setText("Does not have a frequent team member!");
+           else
+               frequentTeamMemberLabel.setText("" + model.getMostFrequentTeamMember(model.getTeam().getByID(viewState.getSelectedTeamMember())));
+           nameLabel.setText( model.getTeam().getByID(viewState.getSelectedTeamMember()).getId() + "    " + model.getTeam().getByID(viewState.getSelectedTeamMember()).getFullName());
+       }
+       catch (Exception e){
+
+       }
+
        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
        teamMemberViewTable.setItems(viewModel.getList());
@@ -69,83 +73,20 @@ public class DetailsTeamMemberController {
      * Opens the SelectProject window
      * */
     public void assignButtonPressed(){
-        if(viewState.getSelectedTeamMember() != -1)
+        if(model.getProjectList().size() != 0)
             viewHandler.openView("projectSelect");
         else
-            errorLabel.setText("Pick a team member first!");
+            errorLabel.setText("Please create a project first!");
     }
 
     /**
      * opens the ProjectList window
      * */
     public void backButtonPressed() {
-        viewHandler.openView("projectList");
-    }
-
-    public void searchByNameButtonPressed() {
-        try{
-            errorLabel.setText("");
-            if(nameField.getText().equals(""))
-                reset();
-            else
-                try {
-                    for(TeamMember teamMember : model.getTeam().getTeamMembers())
-                        if(teamMember.getFullName().equals(nameField.getText())) {
-                            int id = teamMember.getId();
-                            viewState.setSelectedTeamMember(teamMember.getId());
-                            idField.setText(teamMember.getId() + "");if(model.getMostFrequentTeamMember(teamMember) == null)
-                                frequentTeamMemberLabel.setText("Hasn't worked on tasks yet! ");
-                            else
-                                frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
-                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
-                            viewModel.update(id);
-                        }
-                }
-                catch (Exception e){
-                    errorLabel.setText("Invalid name!");
-                }
-
-        }
-        catch (Exception e){
-            errorLabel.setText("No team member with this id in the system");
-        }
+        viewHandler.openView("teamMembers");
     }
 
 
-
-    /**
-     * searches a TeamMember by the given Id and updates the
-     *          nameField,
-     *          frequent teamMember,
-     *          productivity
-     *          table data with the related information
-     * */
-    public void searchByIDButtonPressed() throws FileNotFoundException {
-            errorLabel.setText("");
-            if (idField.getText().equals(""))
-                reset();
-            else {
-                int id = 0;
-                try {
-                    for (TeamMember teamMember : model.getTeam().getTeamMembers())
-                        if (teamMember.getId() == Integer.parseInt(idField.getText())) {
-                            id = Integer.parseInt(idField.getText());
-                            viewState.setSelectedTeamMember(teamMember.getId());
-                            nameField.setText(teamMember.getFullName());
-                            if(model.getMostFrequentTeamMember(teamMember) == null)
-                                frequentTeamMemberLabel.setText("Hasn't worked on tasks yet! ");
-                            else
-                                frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));
-                            productivityLabel.setText("Productivity: " + model.getProductivity(teamMember));
-                            viewModel.update(id);
-                        }
-                }
-                catch (NumberFormatException e){
-                    errorLabel.setText("Id has to be a number!");
-                }
-
-            }
-        }
 
     public void viewButtonPressed(){
         try{

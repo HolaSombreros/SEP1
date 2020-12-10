@@ -44,6 +44,14 @@
       </Label>
         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
             <children>
+            <Button mnemonicParsing="false" onAction="#homeButtonPressed" text="Home">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
                 <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                     <font>
                         <Font size="14.0" />

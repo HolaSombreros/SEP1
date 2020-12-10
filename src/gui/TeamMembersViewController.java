@@ -5,11 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
-import model.TeamMember;
-import model.TeamMemberList;
 
 public class TeamMembersViewController {
 
@@ -101,5 +98,16 @@ public class TeamMembersViewController {
             errorLabel.setText("No team members with this name");
         }
 
+    }
+
+    public void assignButtonPressed(){
+        try{
+            TeamViewModel selectedItem = teamMemberTable.getSelectionModel().getSelectedItem();
+            viewState.setSelectedTeamMember(selectedItem.getIdProperty().getValue());
+            viewHandler.openView("projectSelect");
+        }
+        catch (Exception e){
+            errorLabel.setText("Select a Team Member first!");
+        }
     }
 }
