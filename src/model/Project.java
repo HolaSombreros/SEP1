@@ -52,20 +52,41 @@ public class Project
     {
         if (projectRequirementList.size()==0)
             setStatus(Status.NOT_STARTED);
-        else if(status.equals(Status.STARTED))
-        {
-            boolean notEnded = true;
-            for (Requirement requirement : getProjectRequirementList().getRequirements())
+        else {
+            if(status.equals(Status.STARTED) || status.equals(Status.ENDED))
             {
-                if (!requirement.getStatus().equals(RequirementStatus.APPROVED))
+                boolean notEnded = true;
+                for (Requirement requirement : getProjectRequirementList().getRequirements())
                 {
-                    notEnded = false;
-                    break;
+                    if (!requirement.getStatus().equals(RequirementStatus.APPROVED))
+                    {
+                        notEnded = false;
+                        break;
+                    }
+                }
+                if (notEnded)
+                {
+                    this.status = Status.ENDED;
+                }
+                else
+                {
+                    this.status = Status.STARTED;
                 }
             }
-            if (notEnded)
+
+            if (status.equals(Status.NOT_STARTED))
             {
-                this.status = Status.ENDED;
+                boolean notStarted = true;
+                for (Requirement requirement : projectRequirementList.getRequirements())
+                    if (requirement.getStatus().equals(RequirementStatus.STARTED))
+                    {
+                        notStarted = false;
+                        break;
+                    }
+                if (notStarted)
+                {
+                    this.status = Status.STARTED;
+                }
             }
         }
         return status;

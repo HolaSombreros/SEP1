@@ -12,7 +12,6 @@
       <productowner>
       </productowner>
       <teammemberlist>
-<<<<<<< HEAD
          <teammember>
             <firstname>Joseph</firstname>
             <lastname>Joestar</lastname>
@@ -69,8 +68,6 @@
                <hoursworked>5.0</hoursworked>
             </timeregistration>
          </teammember>
-=======
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
       </teammemberlist>
       <requirementlist>
          <requirement>
@@ -80,14 +77,13 @@
             <hoursworked>0.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
-            <status>Started</status>
+            <status>Not Started</status>
             <type>Non Functional</type>
             <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
-<<<<<<< HEAD
                <teammember>
                   <firstname>Joseph</firstname>
                   <lastname>Joestar</lastname>
@@ -112,8 +108,6 @@
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
                </teammember>
-=======
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
             </teammemberlist>
             <tasklist>
                <task>
@@ -130,7 +124,6 @@
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
-<<<<<<< HEAD
                      <teammember>
                         <firstname>Joseph</firstname>
                         <lastname>Joestar</lastname>
@@ -147,8 +140,6 @@
                            <hoursworked>0.0</hoursworked>
                         </timeregistration>
                      </teammember>
-=======
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
                   </teammemberlist>
                </task>
                <task>
@@ -165,7 +156,6 @@
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
-<<<<<<< HEAD
                      <teammember>
                         <firstname>Pasta</firstname>
                         <lastname>Pizza</lastname>
@@ -174,8 +164,6 @@
                            <hoursworked>0.0</hoursworked>
                         </timeregistration>
                      </teammember>
-=======
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
                   </teammemberlist>
                </task>
             </tasklist>
@@ -184,24 +172,16 @@
             <id>2</id>
             <userstory>Make a website that works with the GUI</userstory>
             <estimatedtime>20.0</estimatedtime>
-<<<<<<< HEAD
-            <hoursworked>6.0</hoursworked>
-            <startingdate>10/12/2020</startingdate>
-            <deadline>10/12/2021</deadline>
-            <status>Not Started</status>
-=======
             <hoursworked>0.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
             <status>Started</status>
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
             <type>Non Functional</type>
-            <priority>High</priority>
+            <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
-<<<<<<< HEAD
                <teammember>
                   <firstname>Vlad</firstname>
                   <lastname>Dirlea</lastname>
@@ -232,281 +212,56 @@
                   <id>8</id>
                   <timeregistration>
                      <hoursworked>5.0</hoursworked>
-=======
-            </teammemberlist>
-            <tasklist>
-               <task>
-                  <id>1</id>
-                  <title>Make HTML</title>
-                  <estimatedtime>4.0</estimatedtime>
-                  <startingdate>10/12/2020</startingdate>
-                  <deadline>10/12/2021</deadline>
-                  <status>Started</status>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>2</relatedrequirement>
-                  <responsibleteammember>
-                  </responsibleteammember>
-                  <teammemberlist>
-                  </teammemberlist>
-               </task>
-               <task>
-                  <id>2</id>
-                  <title>Do JavaScript</title>
-                  <estimatedtime>5.0</estimatedtime>
-                  <startingdate>10/12/2020</startingdate>
-                  <deadline>10/12/2021</deadline>
-                  <status>Started</status>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>2</relatedrequirement>
-                  <responsibleteammember>
-                  </responsibleteammember>
-                  <teammemberlist>
-                  </teammemberlist>
-               </task>
-               <task>
-                  <id>3</id>
-                  <title>Add CSS styling</title>
-                  <estimatedtime>3.0</estimatedtime>
-                  <startingdate>10/12/2020</startingdate>
-                  <deadline>10/12/2021</deadline>
-                  <status>Not Started</status>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>2</relatedrequirement>
-                  <responsibleteammember>
-                  </responsibleteammember>
-                  <teammemberlist>
-                  </teammemberlist>
-               </task>
-            </tasklist>
-         </requirement>
-      </requirementlist>
-   </project>
-   <project>
-      <id>krsjgn</id>
-      <title>Maria Magdalena's porn page</title>
-      <status>Ended</status>
-      <methodology>Scrum</methodology>
-      <startingdate>16/12/2020</startingdate>
-      <deadline>17/12/2020</deadline>
-      <scrummaster>
-         <firstname>Maria</firstname>
-         <lastname>Magdalena</lastname>
-         <id>9</id>
-         <timeregistration>
-            <hoursworked>15.0</hoursworked>
-         </timeregistration>
-      </scrummaster>
-      <productowner>
-         <firstname>Maria</firstname>
-         <lastname>Magdalena</lastname>
-         <id>9</id>
-         <timeregistration>
-            <hoursworked>15.0</hoursworked>
-         </timeregistration>
-      </productowner>
-      <teammemberlist>
-         <teammember>
-            <firstname>Maria</firstname>
-            <lastname>Magdalena</lastname>
-            <id>9</id>
-            <timeregistration>
-               <hoursworked>15.0</hoursworked>
-            </timeregistration>
-         </teammember>
-      </teammemberlist>
-      <requirementlist>
-         <requirement>
-            <id>1</id>
-            <userstory>As a pornstar I want to break my pussy so that I can earn money to feed my children</userstory>
-            <estimatedtime>190.0</estimatedtime>
-            <hoursworked>105.0</hoursworked>
-            <startingdate>16/12/2020</startingdate>
-            <deadline>17/12/2020</deadline>
-            <status>Started</status>
-            <type>Functional</type>
-            <priority>Critical</priority>
-            <relatedproject>krsjgn</relatedproject>
-            <responsibleteammember>
-               <firstname>Maria</firstname>
-               <lastname>Magdalena</lastname>
-               <id>9</id>
-               <timeregistration>
-                  <hoursworked>15.0</hoursworked>
-               </timeregistration>
-            </responsibleteammember>
-            <teammemberlist>
-               <teammember>
-                  <firstname>Maria</firstname>
-                  <lastname>Magdalena</lastname>
-                  <id>9</id>
-                  <timeregistration>
-                     <hoursworked>15.0</hoursworked>
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
                   </timeregistration>
                </teammember>
             </teammemberlist>
             <tasklist>
                <task>
                   <id>1</id>
-<<<<<<< HEAD
                   <title>Make HTML</title>
                   <estimatedtime>4.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
                   <status>Started</status>
                   <timeregistration>
-                     <hoursworked>2.0</hoursworked>
+                     <hoursworked>0.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>2</relatedrequirement>
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
-                     <teammember>
-                        <firstname>Vlad</firstname>
-                        <lastname>Dirlea</lastname>
-                        <id>5</id>
-                        <timeregistration>
-                           <hoursworked>0.0</hoursworked>
-                        </timeregistration>
-                     </teammember>
-                     <teammember>
-                        <firstname>Morten</firstname>
-                        <lastname>Hansen</lastname>
-                        <id>8</id>
-                        <timeregistration>
-                           <hoursworked>5.0</hoursworked>
-=======
-                  <title>Lip fill appointment</title>
-                  <estimatedtime>20.0</estimatedtime>
-                  <startingdate>16/12/2020</startingdate>
-                  <deadline>17/12/2020</deadline>
-                  <status>Not Started</status>
-                  <timeregistration>
-                     <hoursworked>15.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>1</relatedrequirement>
-                  <responsibleteammember>
-                     <firstname>Maria</firstname>
-                     <lastname>Magdalena</lastname>
-                     <id>9</id>
-                     <timeregistration>
-                        <hoursworked>15.0</hoursworked>
-                     </timeregistration>
-                  </responsibleteammember>
-                  <teammemberlist>
-                     <teammember>
-                        <firstname>Maria</firstname>
-                        <lastname>Magdalena</lastname>
-                        <id>9</id>
-                        <timeregistration>
-                           <hoursworked>15.0</hoursworked>
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
-                        </timeregistration>
-                     </teammember>
                   </teammemberlist>
                </task>
                <task>
                   <id>2</id>
-<<<<<<< HEAD
                   <title>Do JavaScript</title>
                   <estimatedtime>5.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
                   <status>Started</status>
                   <timeregistration>
-                     <hoursworked>3.0</hoursworked>
+                     <hoursworked>0.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>2</relatedrequirement>
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
-                     <teammember>
-                        <firstname>Stefania</firstname>
-                        <lastname>Tomuta</lastname>
-                        <id>6</id>
-                        <timeregistration>
-                           <hoursworked>0.0</hoursworked>
-                        </timeregistration>
-                     </teammember>
-                     <teammember>
-                        <firstname>Morten</firstname>
-                        <lastname>Hansen</lastname>
-                        <id>8</id>
-                        <timeregistration>
-                           <hoursworked>5.0</hoursworked>
-=======
-                  <title>Pole dance classes</title>
-                  <estimatedtime>120.0</estimatedtime>
-                  <startingdate>16/12/2020</startingdate>
-                  <deadline>17/12/2020</deadline>
-                  <status>Started</status>
-                  <timeregistration>
-                     <hoursworked>90.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>1</relatedrequirement>
-                  <responsibleteammember>
-                     <firstname>Maria</firstname>
-                     <lastname>Magdalena</lastname>
-                     <id>9</id>
-                     <timeregistration>
-                        <hoursworked>105.0</hoursworked>
-                     </timeregistration>
-                  </responsibleteammember>
-                  <teammemberlist>
-                     <teammember>
-                        <firstname>Maria</firstname>
-                        <lastname>Magdalena</lastname>
-                        <id>9</id>
-                        <timeregistration>
-                           <hoursworked>105.0</hoursworked>
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
-                        </timeregistration>
-                     </teammember>
                   </teammemberlist>
                </task>
                <task>
                   <id>3</id>
-<<<<<<< HEAD
                   <title>Add CSS styling</title>
                   <estimatedtime>3.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Started</status>
+                  <status>Not Started</status>
                   <timeregistration>
-                     <hoursworked>1.0</hoursworked>
+                     <hoursworked>0.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>2</relatedrequirement>
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
-                     <teammember>
-                        <firstname>Adriana</firstname>
-                        <lastname>Grecea</lastname>
-                        <id>7</id>
-                        <timeregistration>
-                           <hoursworked>1.0</hoursworked>
-                        </timeregistration>
-                     </teammember>
-=======
-                  <title>Strip class</title>
-                  <estimatedtime>50.0</estimatedtime>
-                  <startingdate>16/12/2020</startingdate>
-                  <deadline>17/12/2020</deadline>
-                  <status>Not Started</status>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-                  <relatedrequirement>1</relatedrequirement>
-                  <responsibleteammember>
-                  </responsibleteammember>
-                  <teammemberlist>
->>>>>>> fe7b012b683535ec6a445c40d1e378f0bd3106e5
                   </teammemberlist>
                </task>
             </tasklist>
