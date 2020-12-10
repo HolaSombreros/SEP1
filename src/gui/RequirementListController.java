@@ -46,7 +46,6 @@ public class RequirementListController
     reset();
   }
 
-
   public void reset()
   {
     relatedProjectLabel.setText(model.getProjectList().getProjectByID(state.getSelectedProject()).getName());
@@ -63,17 +62,15 @@ public class RequirementListController
   }
 
   /**
-   * The method will display in the table only the requirement with the selected id
-   * The id has to be a number
+   * The method updates the table displaying only the typed requirement
    */
-  @FXML public void searchButtonPressed()
+  @FXML private void onKeyTyped()
   {
     try
     {
       errorLabel.setText("");
       if (searchInput.getText().equals(""))
         reset();
-
       else
       {
         int id = 0;
@@ -92,16 +89,6 @@ public class RequirementListController
     {
       errorLabel.setText(e.getMessage());
     }
-  }
-
-  /**
-   * The method will clear the id and will display all requirements
-   */
-  @FXML private void clearButtonPressed()
-  {
-    errorLabel.setText("");
-    searchInput.setText("");
-    viewModel.update(0);
   }
 
   /**
