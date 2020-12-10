@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsTeamMemberController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsTeamMemberController">
    <children>
       <Label alignment="CENTER" prefHeight="36.0" prefWidth="600.0" text="Team Member Details">
          <VBox.margin>
@@ -51,7 +51,10 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-               </children></VBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin></VBox>
             <VBox prefHeight="323.0" prefWidth="74.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#searchByIDButtonPressed" text="Search">
@@ -66,14 +69,14 @@
                   </Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER_RIGHT" prefHeight="338.0" prefWidth="307.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="310.0" prefWidth="373.0">
                <children>
-                  <ScrollPane prefHeight="235.0" prefWidth="307.0">
+                  <ScrollPane prefHeight="240.0" prefWidth="365.0">
                      <content>
-                        <TableView fx:id="teamMemberViewTable" prefHeight="235.0" prefWidth="295.0">
+                        <TableView fx:id="teamMemberViewTable" prefHeight="246.0" prefWidth="370.0">
                           <columns>
-                            <TableColumn fx:id="projectNameColumn" prefWidth="173.0" text="Project" />
-                            <TableColumn fx:id="deadlineColumn" prefWidth="121.0" text="Deadline" />
+                            <TableColumn fx:id="projectNameColumn" prefWidth="229.0" text="Project" />
+                            <TableColumn fx:id="deadlineColumn" prefWidth="145.0" text="Deadline" />
                           </columns>
                         </TableView>
                      </content>
@@ -86,12 +89,12 @@
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="20.0" top="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
                </children>
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="20.0" right="75.0" />
                </HBox.margin>
             </VBox>
          </children>
@@ -99,16 +102,13 @@
             <Insets top="30.0" />
          </VBox.margin>
       </HBox>
+      <Label fx:id="errorLabel" alignment="CENTER" prefHeight="25.0" prefWidth="747.0" text="Error Label " textFill="#f20000">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="errorLabel" alignment="CENTER" prefHeight="25.0" prefWidth="250.0" text="Error Label " textFill="#f20000">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </Label>
             <Button mnemonicParsing="false" onAction="#assignButtonPressed" text="Assign">
                <HBox.margin>
                   <Insets right="30.0" />
@@ -122,7 +122,7 @@
                   <Font size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets right="30.0" />
+                  <Insets right="75.0" />
                </HBox.margin>
             </Button>
          </children>

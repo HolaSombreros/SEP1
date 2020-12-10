@@ -1,9 +1,7 @@
 package gui;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import model.IProjectManagementModel;
 import model.Project;
 import model.TeamMember;
 
@@ -11,11 +9,16 @@ public class TeamMemberViewModel {
     private IntegerProperty idProperty;
     private StringProperty nameProperty;
     private StringProperty roleProperty;
+    private DoubleProperty productivityProperty;
+    private IProjectManagementModel model;
     
-    public TeamMemberViewModel(Project project, TeamMember teamMember) {
+    public TeamMemberViewModel(Project project, TeamMember teamMember,IProjectManagementModel model) {
+        this.model = model;
         idProperty = new SimpleIntegerProperty(teamMember.getId());
         nameProperty = new SimpleStringProperty(teamMember.getFullName());
         roleProperty = new SimpleStringProperty(teamMember.getRole(project));
+        productivityProperty = new SimpleDoubleProperty(model.getProductivity(teamMember));
+
     }
 
 
@@ -28,5 +31,8 @@ public class TeamMemberViewModel {
     }
     public StringProperty getRoleProperty() {
         return roleProperty;
+    }
+    public DoubleProperty getProductivityProperty(){
+        return productivityProperty;
     }
 }

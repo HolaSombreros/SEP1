@@ -71,7 +71,7 @@ public class ProjectListController
 
     @FXML private void assignTeamMembersButtonPressed()
     {
-            viewHandler.openView("detailsTeamMember");
+            viewHandler.openView("teamMembers");
     }
     @FXML private void removeProjectButtonPressed()
     {
