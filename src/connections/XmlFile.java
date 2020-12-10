@@ -115,7 +115,7 @@ public class XmlFile implements IFileConnection {
                 line = line.replace("<title>", "");
                 line = line.replace("</title>", "");
                 projectTitle = line.trim();
-    
+                
                 line = line.replace("<status>", "");
                 line = line.replace("</status>", "");
                 switch (line.trim()) {
@@ -141,13 +141,13 @@ public class XmlFile implements IFileConnection {
                         methodology = Methodology.WATERFALL;
                         break;
                 }
-    
+                
                 line = sc.nextLine();
                 line = line.replace("<startingdate>", "");
                 line = line.replace("</startingdate>", "");
                 String[] temp = line.trim().split("/");
                 projectStartingDate = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
-    
+                
                 line = sc.nextLine();
                 line = line.replace("<deadline>", "");
                 line = line.replace("</deadline>", "");
@@ -157,7 +157,7 @@ public class XmlFile implements IFileConnection {
                 model.addProject(new Project(projectTitle, projectId, projectStartingDate, projectDeadline, methodology));
                 project = model.getProjectList().getProjectByID(projectId);
                 project.setStatus(status);
-    
+                
                 sc.nextLine(); // <scrummaster>
                 line = sc.nextLine(); // </scrummaster> OR <firstname>
                 if (line.contains("<firstname>")) {
@@ -174,7 +174,7 @@ public class XmlFile implements IFileConnection {
                     id = Integer.parseInt(line.trim());
                     teamMember = new TeamMember(firstName, lastName, id);
                     project.assignScrumMaster(teamMember);
-    
+                    
                     sc.nextLine();
                     line = sc.nextLine();
                     line = line.replace("<hoursworked>", "");
@@ -199,7 +199,7 @@ public class XmlFile implements IFileConnection {
                     id = Integer.parseInt(line.trim());
                     teamMember = new TeamMember(firstName, lastName, id);
                     project.assignProductOwner(teamMember);
-    
+                    
                     sc.nextLine();
                     line = sc.nextLine();
                     line = line.replace("<hoursworked>", "");
@@ -228,7 +228,7 @@ public class XmlFile implements IFileConnection {
                             id = Integer.parseInt(line.trim());
                             teamMember = new TeamMember(firstName, lastName, id);
                             project.assignTeamMember(teamMember);
-    
+                            
                             sc.nextLine();
                             line = sc.nextLine();
                             line = line.replace("<hoursworked>", "");
@@ -240,7 +240,7 @@ public class XmlFile implements IFileConnection {
                         }
                     }
                 }
-    
+                
                 sc.nextLine(); // <requirementlist>
                 line = sc.nextLine(); // <requirement> OR </requirementlist>
                 if (line.contains("<requirement>")) {

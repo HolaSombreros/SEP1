@@ -15,14 +15,19 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     private ArrayList<IFileConnection> fileConnections;
 
     private TeamMemberList team = addTeamMembersToTheSystem();
-
+    
     public ProjectManagementModelManager() throws FileNotFoundException {
-        this.projectList = new ProjectList();
         this.fileConnections = new ArrayList<>();
+        this.projectList = new ProjectList();
+        //this.projectList = loadModel();
         
         createDummyData();
         fileConnections.add(new XmlFile("projects"));
-        saveModel();
+        //saveModel();
+    }
+    
+    private IProjectManagementModel loadModel() throws FileNotFoundException {
+        return fileConnections.get(0).loadModel();
     }
     
     private void saveModel() {
