@@ -63,10 +63,18 @@ public class ProjectListController
      */
     @FXML private void viewProjectButtonPressed()
     {
-        ProjectViewModel selectedItem = projectListTable
-                .getSelectionModel().getSelectedItem();
-        viewState.setSelectedProject(selectedItem.getIDProperty().get());
-        viewHandler.openView("detailsAndEditProject");
+        try
+        {
+            ProjectViewModel selectedItem = projectListTable
+                    .getSelectionModel().getSelectedItem();
+
+            viewState.setSelectedProject(selectedItem.getIDProperty().get());
+            viewHandler.openView("detailsAndEditProject");
+        }
+        catch (Exception e)
+        {
+            errorLabel.setText("Select a project first");
+        }
     }
 
     @FXML private void assignTeamMembersButtonPressed()
