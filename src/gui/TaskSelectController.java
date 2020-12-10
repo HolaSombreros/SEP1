@@ -72,14 +72,19 @@ public class TaskSelectController {
 
         TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
         viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
-        model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+        try {
+            model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
                     model.getTeam().getByID(viewState.getSelectedTeamMember()));
-        if(viewState.getSelectedTask() == -1)
-            errorLabel.setText("Task has to be selected first!");
-        else
-            errorLabel.setText("TeamMember successfully assigned!");
+            if (viewState.getSelectedTask() == -1)
+                errorLabel.setText("Task has to be selected first!");
+            else
+                errorLabel.setText("TeamMember successfully assigned!");
+        }
+        catch(IllegalArgumentException e){
+            errorLabel.setText("TeamMember already assigned!");
+        }
 
     }
 
