@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import model.*;
 
+import java.time.LocalDate;
+
 public class AddRequirementController
 {
   @FXML TextArea userStoryInput;
@@ -43,10 +45,11 @@ public class AddRequirementController
 
   public void reset()
   {
+    Project project = model.getProjectList().getProjectByID(state.getSelectedProject());
     userStoryInput.setText("");
     errorLabel.setText("");
-    startingDateInput.getEditor().clear();
-    deadlineInput.getEditor().clear();
+    startingDateInput.setValue(LocalDate.of(project.getStartingDate().getYear(),project.getStartingDate().getMonth(),project.getStartingDate().getDay()));
+    deadlineInput.setValue(LocalDate.of(project.getDeadline().getYear(), project.getDeadline().getMonth(), project.getDeadline().getDay()));
     estimatedTimeInput.setText("");
     priorityInput.getSelectionModel().clearAndSelect(0);
     typeInput.getSelectionModel().clearAndSelect(0);

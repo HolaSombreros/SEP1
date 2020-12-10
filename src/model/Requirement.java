@@ -48,6 +48,7 @@ public class Requirement
   /**
    * The system checks if the starting date is after the project's starting
    * date and before the project's deadline
+   *
    * @param startingDate
    */
   public void setStartingDate(Date startingDate)
@@ -61,17 +62,21 @@ public class Requirement
 
   /**
    * The system checks if the deadline is before the project's deadline
+   *
    * @param deadline
    */
   public void setDeadline(Date deadline)
   {
-    if (!(deadline.isBefore(relatedProject.getDeadline())))
+    if (relatedProject.getDeadline().isBefore(deadline))
       throw new IllegalArgumentException("Deadline can not be after project's deadline: " + relatedProject.getDeadline());
-    this.deadline = deadline.copy();
+    else
+      this.deadline = deadline.copy();
+
   }
 
   /**
    * The estimated time is not allowed to be less or equal to 0
+   *
    * @param estimatedTime
    */
   public void setEstimatedTime(double estimatedTime)
@@ -80,8 +85,6 @@ public class Requirement
       throw new IllegalArgumentException("Estimated time has to be higher than 0");
     this.estimatedTime = estimatedTime;
   }
-
-  //   GETTERS
 
   public void setPriority(Priority priority)
   {
@@ -97,6 +100,8 @@ public class Requirement
   {
     this.status = status;
   }
+
+  //   GETTERS
 
   public int getId()
   {
@@ -136,6 +141,7 @@ public class Requirement
   /**
    * The system checks if all tasks are ended
    * If yes, the status changes to ended
+   *
    * @return status
    */
   public RequirementStatus getStatus()
@@ -194,13 +200,14 @@ public class Requirement
 
   /**
    * The system will assign the team member in a requirement and the related project as well if they are not already there
+   *
    * @param teamMember
    */
   public void assignTeamMember(TeamMember teamMember)
   {
     if (!(teamMemberList.contains(teamMember)))
       teamMemberList.add(teamMember);
-    if(!(relatedProject.getTeamMemberList().contains(teamMember)))
+    if (!(relatedProject.getTeamMemberList().contains(teamMember)))
       relatedProject.assignTeamMember(teamMember);
   }
 
@@ -208,6 +215,7 @@ public class Requirement
    * The system checks if the team member is a responsible one
    * If yes, it can not be removed
    * If no, the system will unassign him from the requirement and the related tasks
+   *
    * @param teamMember
    */
   public void unassignTeamMember(TeamMember teamMember)
@@ -223,6 +231,7 @@ public class Requirement
 
   /**
    * The system unassigns first the responsible team member, then assigns the other one
+   *
    * @param teamMember
    */
   public void assignResponsibleTeamMember(TeamMember teamMember)
@@ -241,11 +250,11 @@ public class Requirement
     return responsibleTeamMember;
   }
 
-
   //   OTHER METHODS
 
   /**
    * The method sets all the editable variables of the requirement
+   *
    * @param userStory
    * @param estimatedTime
    * @param responsibleTeamMember
