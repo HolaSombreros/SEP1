@@ -17,8 +17,6 @@ public class TeamMemberViewModel {
         idProperty = new SimpleIntegerProperty(teamMember.getId());
         nameProperty = new SimpleStringProperty(teamMember.getFullName());
         roleProperty = new SimpleStringProperty(teamMember.getRole(project));
-        productivityProperty = new SimpleDoubleProperty(model.getProductivity(teamMember));
-
     }
 
 
@@ -31,8 +29,5 @@ public class TeamMemberViewModel {
     }
     public StringProperty getRoleProperty() {
         return roleProperty;
-    }
-    public DoubleProperty getProductivityProperty(){
-        return productivityProperty;
     }
 }

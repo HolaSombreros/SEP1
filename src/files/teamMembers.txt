@@ -1,10 +1,10 @@
-Joseph Joestar
-Giorno Giovanna
-Pasta Pizza
-Fuck Off
-Vlad Dirlea
-Stefania Tomuta
-Adriana Grecea
-Morten Hansen
-Maria Magdalena
-Jesus Christ
+1 Joseph Joestar
+2 Giorno Giovanna
+3 Pasta Pizza
+4 Fuck Off
+5 Vlad Dirlea
+6 Stefania Tomuta
+6 Adriana Grecea
+7 Morten Hansen
+8 Maria Magdalena
+9 Jesus Christ

@@ -115,6 +115,9 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
+        if (status != Status.STARTED && getRelatedRequirement().getStatus() != RequirementStatus.NOT_STARTED) {
+            getRelatedRequirement().setStatus(RequirementStatus.STARTED);
+        }
     }
 
     public void assignResponsibleTeamMember(TeamMember responsibleTeamMember) {
@@ -164,6 +167,9 @@ public class Task {
         }
         timeRegistration.addHoursWorked(hoursWorked);
         teamMember.getTimeRegistration().addHoursWorked(hoursWorked);
+        if (getStatus() == Status.NOT_STARTED) {
+            setStatus(Status.STARTED);
+        }
     }
     
     /**

@@ -68,7 +68,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="assignTeamMembersButton" mnemonicParsing="false" onAction="#assignTeamMembersButtonPressed" prefHeight="30.0" prefWidth="178.0" text="Assign Team Members">
+                  <Button fx:id="assignTeamMembersButton" mnemonicParsing="false" onAction="#assignTeamMembersButtonPressed" prefHeight="30.0" prefWidth="162.0" text=" Team Members">
                      <font>
                         <Font size="14.0" />
                      </font>

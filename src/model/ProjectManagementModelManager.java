@@ -390,8 +390,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                 for (Requirement requirement : project.getProjectRequirementList().getRequirements())
                     if (requirement.getTeamMemberList().contains(teamMember))
                         for (Task task : requirement.getTaskList().getTasks())
-                            if (task.getTeamMemberList().contains(teamMember))
+                            if (task.getTeamMemberList().contains(teamMember)) {
                                 total += task.getEstimatedTime();
+                                System.out.println("Team Member: " + teamMember.getFullName() + " | " + teamMember.getTimeRegistration().getHoursWorked() + " hrs");
+                                System.out.println("Total: " + total);
+                            }
         if(total != 0)
             return teamMember.getTimeRegistration().getHoursWorked()*100/total;
         else
@@ -416,7 +419,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         while (input.hasNext()){
             String line = input.nextLine();
             String element[] = line.split(" ");
-            team.add(new TeamMember(element[0],element[1],id++));
+            TeamMember teamMember = new TeamMember(element[1],element[2],Integer.parseInt(element[0]));
+            team.add(teamMember);
+            
+            // teamMember.getTimeRegistration().setHoursWorked(); // FIX THIS SOMEHOW
+            // instead of making new TeamMember when loading, just change their values? Have this method called before loading.
         }
         input.close();
         //System.out.println(team.getByIndex(0).getFullName());

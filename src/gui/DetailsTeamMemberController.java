@@ -93,7 +93,8 @@ public class DetailsTeamMemberController {
                         if(teamMember.getFullName().equals(nameField.getText())) {
                             int id = teamMember.getId();
                             viewState.setSelectedTeamMember(teamMember.getId());
-                            idField.setText(teamMember.getId() + "");if(model.getMostFrequentTeamMember(teamMember) == null)
+                            idField.setText(teamMember.getId() + "");
+                            if(model.getMostFrequentTeamMember(teamMember) == null)
                                 frequentTeamMemberLabel.setText("Hasn't worked on tasks yet! ");
                             else
                                 frequentTeamMemberLabel.setText("Frequent Team Member: " + model.getMostFrequentTeamMember(teamMember));

@@ -464,6 +464,7 @@ public class XmlFile implements IFileConnection {
                                             line = line.replace("<hoursworked>", "");
                                             line = line.replace("</hoursworked>", "");
                                             teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                                            System.out.println("||| Adding " + teamMember.getFullName() + " to task #" + task.getId() + "! They worked " + teamMember.getTimeRegistration().getHoursWorked() + " hrs |||");
                                             sc.nextLine();
                                             sc.nextLine();
                                         }
