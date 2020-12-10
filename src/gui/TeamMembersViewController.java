@@ -16,13 +16,13 @@ public class TeamMembersViewController {
     private Region root;
     private ViewState viewState;
     private ViewHandler viewHandler;
-    private TeamMemberListViewModel viewModel;
+    private TeamListViewModel viewModel;
     private IProjectManagementModel model;
 
-    @FXML private TableView<TeamMemberViewModel> teamMemberTable;
-    @FXML private TableColumn<TeamMemberViewModel,Number> idColumn;
-    @FXML private TableColumn<TeamMemberViewModel,String> nameColumn;
-    @FXML private TableColumn<TeamMemberViewModel,Number> productivityColumn;
+    @FXML private TableView<TeamViewModel> teamMemberTable;
+    @FXML private TableColumn<TeamViewModel,Number> idColumn;
+    @FXML private TableColumn<TeamViewModel,String> nameColumn;
+    @FXML private TableColumn<TeamViewModel,Number> productivityColumn;
     @FXML private Label errorLabel;
     @FXML private TextField searchField;
 
@@ -38,13 +38,14 @@ public class TeamMembersViewController {
         this.model = model;
         this.root = root;
         this.viewState = viewState;
-        this.viewModel = new TeamMemberListViewModel(model,viewState);
+        this.viewModel = new TeamListViewModel(model,viewState);
         errorLabel.setText("");
         searchField.setText("");
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         productivityColumn.setCellValueFactory(cellData -> cellData.getValue().getProductivityProperty());
         teamMemberTable.setItems(viewModel.getList());
+        System.out.println(model.getTeam().size());
 
         reset();
     }
@@ -52,8 +53,6 @@ public class TeamMembersViewController {
     public void reset(){
         errorLabel.setText("");
         searchField.setText("");
-        //viewModel.update();
-
 
     }
 
@@ -67,7 +66,7 @@ public class TeamMembersViewController {
 
     public void viewButtonPressed(){
         try{
-            TeamMemberViewModel selectedItem = teamMemberTable.getSelectionModel().getSelectedItem();
+            TeamViewModel selectedItem = teamMemberTable.getSelectionModel().getSelectedItem();
             viewState.setSelectedTeamMember(selectedItem.getIdProperty().getValue());
             viewHandler.openView("detailsTeamMember");
         }
@@ -76,6 +75,6 @@ public class TeamMembersViewController {
         }
     }
 
-    public void searchKeyReleased(KeyEvent keyEvent) {
+    public void searchKeyReleased() {
     }
 }
