@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditRequirementController">
+<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsAndEditRequirementController">
     <children>
         <Label text="Requirement Details">
             <font>
@@ -147,19 +147,10 @@
                                         <Font size="17.0" />
                                     </font>
                                 </Label>
-                                <ChoiceBox fx:id="statusInput" prefWidth="150.0" value="Not Started">
+                                <ChoiceBox fx:id="statusInput" prefWidth="150.0">
                                     <HBox.margin>
                                         <Insets left="7.0" />
                                     </HBox.margin>
-                                    <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="Not Started" />
-                                            <String fx:value="Started" />
-                                            <String fx:value="Ended" />
-                                            <String fx:value="Approved" />
-                                            <String fx:value="Rejected" />
-                                        </FXCollections>
-                                    </items>
                                 </ChoiceBox>
                             </children>
                         </HBox>

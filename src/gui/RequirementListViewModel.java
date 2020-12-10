@@ -25,7 +25,7 @@ public class RequirementListViewModel
   /**
    * The method takes an id and display only the requirement with the selected id
    * If the id equals 0, then all the requirements will be in the table
-   * @param id
+   * @param id the id of the requirement wanted to be displayed
    */
   public void update(int id)
   {

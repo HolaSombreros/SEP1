@@ -1,9 +1,7 @@
 package gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.Requirement;
@@ -46,7 +44,6 @@ public class RequirementListController
     reset();
   }
 
-
   public void reset()
   {
     relatedProjectLabel.setText(model.getProjectList().getProjectByID(state.getSelectedProject()).getName());
@@ -63,20 +60,18 @@ public class RequirementListController
   }
 
   /**
-   * The method will display in the table only the requirement with the selected id
-   * The id has to be a number
+   * The method updates the table displaying only the typed requirement
    */
-  @FXML public void searchButtonPressed()
+  @FXML private void onKeyTyped()
   {
     try
     {
       errorLabel.setText("");
       if (searchInput.getText().equals(""))
         reset();
-
       else
       {
-        int id = 0;
+        int id;
         try
         {
           id = Integer.parseInt(searchInput.getText());
@@ -92,16 +87,6 @@ public class RequirementListController
     {
       errorLabel.setText(e.getMessage());
     }
-  }
-
-  /**
-   * The method will clear the id and will display all requirements
-   */
-  @FXML private void clearButtonPressed()
-  {
-    errorLabel.setText("");
-    searchInput.setText("");
-    viewModel.update(0);
   }
 
   /**
@@ -141,7 +126,7 @@ public class RequirementListController
         errorLabel.setText("");
       else
       {
-        int index = 0;
+        int index;
         try
         {
           index = Integer.parseInt(indexInput.getText());
@@ -154,9 +139,8 @@ public class RequirementListController
           Requirement req2 = model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirement(index);
           if (req1.getPriority() != req2.getPriority())
             throw new IllegalArgumentException("Movement not allowed");
-          Requirement other = req1;
           model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirements().remove(req1);
-          model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirements().add(index, other);
+          model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirements().add(index, req1);
           model.editProject(model.getProjectList().getProjectByID(state.getSelectedProject()));
           reset();
           indexInput.setText("");
@@ -254,7 +238,7 @@ public class RequirementListController
   {
     int index = requirementListTable.getSelectionModel().getSelectedIndex();
     RequirementViewModel selectedItem = requirementListTable.getItems().get(index);
-    if (index < 0 || index >= requirementListTable.getItems().size())
+    if (index >= requirementListTable.getItems().size())
     {
       return false;
     }
