@@ -31,6 +31,11 @@ public class Date
         this.month = Date.today().month;
         this. year = Date.today().year;
     }
+
+    /**
+     *
+     * @return today's date
+     */
     public static Date today()
     {
         GregorianCalendar currentDate = new GregorianCalendar();
@@ -42,19 +47,38 @@ public class Date
 
     //VALIDATION DATE
 
+    /**
+     * Validates the date's day, month, year
+     *
+     * @param day
+     * @param month
+     * @param year
+     *
+     */
+
     public boolean isLegalDate(int day, int month, int year)
     {
-        if (month < 1 || month > 12) {
-            throw new IllegalArgumentException(month + " is an invalid month");
+        if (month < 1 || month > 12)
+        {
+            throw new IllegalArgumentException(month + " is an invalid month!");
         }
-        if (day < 0 || day > numberOfDaysInMonth(month)) {
-            throw new IllegalArgumentException(day + " is an invalid day");
+        if (day < 0 || day > numberOfDaysInMonth(month))
+        {
+            throw new IllegalArgumentException(day + " is an invalid day!");
         }
-        if (year < 0) {
-            throw new IllegalArgumentException(year + " is an invalid year");
+        if (year < 0)
+        {
+            throw new IllegalArgumentException(year + " is an invalid year!");
         }
         return true;
     }
+
+    /**
+     * Checks if the deadline is before today's day
+     * Checks if the deadline is before the starting date
+     * @param startingDate
+     * @param deadline
+     */
     public static void checkDates(Date startingDate, Date deadline)
     {
         if(deadline.isBefore(Date.today()))
@@ -127,6 +151,11 @@ public class Date
                 return -1;
         }
     }
+
+    /**
+     * Leap year : February has 29 days, the year has 366 days :)
+     * @return a boolean value if the date's year is a leap year
+     */
     public boolean isLeapYear()
     {
         if(( (year/4) == 0) && ((year/100) != 0) || ((year/400) == 0))
@@ -140,7 +169,8 @@ public class Date
     /**
      * @param other a second date
      * @return a date object which checks if the second date is before the first one
-     * daca prima data este inaintea celei de-a doua
+     * RO:daca prima data este inaintea celei de-a doua
+     * DK: hvis den første dato ligger før den anden
      *
      * */
     public boolean isBefore(Date other)

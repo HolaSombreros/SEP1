@@ -6,7 +6,6 @@ import javafx.scene.layout.Region;
 import model.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class DetailsAndEditProjectController
@@ -31,7 +30,8 @@ public class DetailsAndEditProjectController
     private IProjectManagementModel model;
     private ViewState viewState;
     private TeamMemberListViewModel teamMemberListViewModel;
-    public static final LocalDate LOCAL_DATE (Date dateString){
+    public static final LocalDate LOCAL_DATE (Date dateString)
+    {
        LocalDate localDate = LocalDate.of(dateString.getYear(), dateString.getMonth(), dateString.getDay());
         return localDate;
     }
@@ -82,6 +82,9 @@ public class DetailsAndEditProjectController
         return root;
     }
 
+    /**
+     * Edits the selected project in the model
+     */
     @FXML private void editDetailsButtonPressed()
     {
         Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
@@ -105,20 +108,12 @@ public class DetailsAndEditProjectController
              {
                  editedProject = true;
              }
-            /* //EDIT STATUS
-            if(statusChoice.getValue().equals(""))
-             {
-                 editDetailsButton.setDisable(true);
-             }*/
+             //EDIT STATUS
              if(!statusChoice.getValue().equals(selectedProject.getStatus()))
              {
                  editedProject = true;
              }
              //EDIT METHODOLOGY
-             /*if(methodologyChoice.getValue().equals(""))
-             {
-                 editDetailsButton.setDisable(true);
-             }*/
              if(!methodologyChoice.getValue().equals(selectedProject.getMethodology()))
              {
                  editedProject = true;
@@ -138,30 +133,10 @@ public class DetailsAndEditProjectController
                  editedProject = true;
              }
              Date.checkDates(startingDate,deadline);
-             //TODO: INITIAL SCRUM MASTER IS NOT THERE AFTER MAKING CHANGES TO THE PR
 
-             //SCRUM MASTER
-             TeamMember scrumMaster2 = null;
-             TeamMember productOwner2 = null;
-            /* if((!scrumMaster.getText().equals("") && selectedProject.getScrumMaster() == null) || (scrumMaster.getText().equals("") && selectedProject.getScrumMaster() !=null))
-             {
-                 editedProject = true;
-             }
-             if((!productOwner.getText().equals("") && selectedProject.getProductOwner() == null) || (productOwner.getText().equals("") && selectedProject.getProductOwner() !=null))
-             {
-                 editedProject = true;
-             }
-
-             if(!scrumMaster.getText().equals(""))
-             {
-                 scrumMaster2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(scrumMaster.getText().split(" ")[0].substring(1)));
-             }
-             if(!productOwner.getText().equals(""))
-             {
-                 productOwner2 = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
-             }*/
              Status status = null;
              Methodology methodology = null;
+
              switch(statusChoice.getValue())
              {
                  case "Not Started":
@@ -180,16 +155,27 @@ public class DetailsAndEditProjectController
                  case "Waterfall":
                      methodology = Methodology.WATERFALL;
                      break;
-                 case "SCRUM":
+                 case "Scrum":
                      methodology = Methodology.SCRUM;
                      break;
              }
              if(editedProject && confirmation("edit"))
              {
-                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline,status, methodology,scrumMaster2,productOwner2);
+                 TeamMember scrumM = null;
+                 if(!scrumMaster.getText().equals(""))
+                 {
+                     scrumM = selectedProject.getTeamMemberList().getByID(Integer.parseInt(scrumMaster.getText().split(" ")[0].substring(1)));
+                 }
+                 TeamMember prodO = null;
+                 if(!productOwner.getText().equals(""))
+                 {
+                     prodO = selectedProject.getTeamMemberList().getByID(Integer.parseInt(productOwner.getText().split(" ")[0].substring(1)));
+                 }
+                 selectedProject.edit(nameInput.getText(), IDInput.getText(), startingDate, deadline,status, methodology,scrumM,prodO);
                  model.editProject(selectedProject);
                  backButtonPressed();
              }
+
          }
          catch(Exception e)
          {
@@ -213,12 +199,13 @@ public class DetailsAndEditProjectController
         }
         catch(Exception e)
         {
-            errorLabel.setText("Project not selected");
+            errorLabel.setText(e.getMessage());
         }
     }
     private boolean confirmation(String id)
     {
         Project selectedProject = model.getProjectList().getProjectByID(viewState.getSelectedProject());
+        TeamMemberViewModel selectedTeamMember = teamMembersTable.getSelectionModel().getSelectedItem();
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         switch(id)
@@ -231,6 +218,10 @@ public class DetailsAndEditProjectController
                 alert.setTitle("Confirm editing project");
                 alert.setHeaderText("Are you sure you want to edit the project #" + selectedProject.getID() + "?");
                 break;
+            case "assign":
+                alert.setTitle("Confirm assigning a team member");
+                alert.setHeaderText("Are you sure you want to assign " + selectedTeamMember.getNameProperty().get() + " to the project " + selectedProject.getName() + "?");
+                break;
         }
         Optional<ButtonType> result = alert.showAndWait();
         return (result.isPresent()) && (result.get() == ButtonType.OK);
@@ -239,11 +230,19 @@ public class DetailsAndEditProjectController
     {
         viewHandler.openView("requirementList");
     }
+
+    /**
+     * The view state is set to -1: no project selected
+     */
     @FXML private void backButtonPressed()
     {
         viewState.setSelectedProject("-1");
         viewHandler.openView("projectList");
     }
+
+    /**
+     * Changes the Textfiled, does not literally assigns the team member
+     */
     @FXML private void assignScrumMasterButtonPressed()
     {
         try
@@ -255,6 +254,7 @@ public class DetailsAndEditProjectController
             }
             else
             {
+                confirmation("assign");
                 scrumMaster.setText("#" + selectedTeamMember.getIdProperty().get() + " " + selectedTeamMember.getNameProperty().get());
             }
         }
@@ -263,6 +263,9 @@ public class DetailsAndEditProjectController
             errorLabel.setText(e.getMessage());
         }
     }
+    /**
+     * Changes the Textfiled, does not literally assigns the team member
+     */
     @FXML private void assignProductOwnerButtonPressed()
     {
         try
@@ -274,6 +277,7 @@ public class DetailsAndEditProjectController
             }
             else
             {
+                confirmation("assign");
                 productOwner.setText("#" + selectedTeamMember.getIdProperty().get() + " " + selectedTeamMember.getNameProperty().get());
             }
         }
@@ -283,14 +287,4 @@ public class DetailsAndEditProjectController
         }
 
     }
-    @FXML
-    public void handleKeyReleased() //**
-    {
-        String name = nameInput.getText();
-        String ID = IDInput.getText();
-        boolean disableButtons = (name.isEmpty() || name.trim().isEmpty()) || (ID.isEmpty() || ID.trim().isEmpty());
-        editDetailsButton.setDisable(disableButtons);
-
-    }
-
 }

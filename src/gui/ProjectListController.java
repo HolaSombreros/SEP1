@@ -15,6 +15,7 @@ public class ProjectListController
     @FXML private TableColumn<ProjectViewModel, String> projectNameColumn;
     @FXML private TableColumn<ProjectViewModel, String> projectDeadlineColumn;
     @FXML private TableColumn<ProjectViewModel, String> projectStatusColumn;
+    @FXML private TableColumn<ProjectViewModel, String> projectMethodologyColumn;
     @FXML private Label errorLabel;
 
     private Region root;
@@ -38,6 +39,7 @@ public class ProjectListController
         projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         projectDeadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
         projectStatusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
+        projectMethodologyColumn.setCellValueFactory(cellData -> cellData.getValue().getMethodologyProperty());
         projectListTable.setItems(projectListViewModel.getList());
         reset();
     }
@@ -55,6 +57,10 @@ public class ProjectListController
     {
         viewHandler.openView("addProject");
     }
+
+    /**
+     * The selected project is passed to the Details and Edit Project Window
+     */
     @FXML private void viewProjectButtonPressed()
     {
         ProjectViewModel selectedItem = projectListTable
@@ -82,13 +88,11 @@ public class ProjectListController
                 projectListViewModel.remove(project);
                 projectListTable.getSelectionModel().clearSelection();
             }
-
         }
         catch(Exception e)
         {
             errorLabel.setText("Project not selected");
         }
-
     }
      private boolean confirmation()
      {
@@ -100,31 +104,31 @@ public class ProjectListController
          }
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
          alert.setTitle("Confirmation");
-         alert.setHeaderText("Are you sure you want to remove the project: id" + selectedItem.getIDProperty().get());
+         alert.setHeaderText("Are you sure you want to remove the project: id #" + selectedItem.getIDProperty().get());
          Optional<ButtonType> result = alert.showAndWait();
          return (result.isPresent()) && (result.get() == ButtonType.OK);
      }
 
-     @FXML private void searchButtonPressed()
-     {
-         errorLabel.setText("");
-         try {
-             if (searchInput.getText().equals("")) {
-                 reset();
-             }
-             else {
-                 String id = null;
-                 try {
-                     id = searchInput.getText();
-                     projectListViewModel.update(id);
-                 }
-                 catch (NumberFormatException e) {
-                     errorLabel.setText("ID must be a number");
-                 }
-             }
-         }
-         catch (Exception e) {
-             errorLabel.setText(e.getMessage());
-         }
-     }
+    /**
+     * Searches/Sorts the projects by ID or/and Name
+     */
+    @FXML
+    public void handleKeyReleased() //**
+    {
+        errorLabel.setText("");
+        try {
+            if (searchInput.getText().equals("")) {
+                reset();
+            }
+            else {
+                String id = null;
+
+                    id = searchInput.getText();
+                    projectListViewModel.update(id);
+            }
+        }
+        catch (Exception e) {
+            errorLabel.setText(e.getMessage());
+        }
+    }
 }

@@ -42,6 +42,12 @@ public class Project
     {
         return ID;
     }
+
+    /** Checks if the all requirements are APPROVED
+     * If yes: the project status will be set to ENDED
+     *
+     * @return
+     */
     public Status getStatus()
     {
         if(status.equals(Status.STARTED))
@@ -67,8 +73,6 @@ public class Project
     {
         return methodology;
     }
-
-
     public Date getStartingDate()
     {
         return startingDate.copy();
@@ -124,6 +128,12 @@ public class Project
 
     //ASSIGN AND UNASSIGN
 
+    /**Checks if the team member is in the project, if no: adds him
+     * if yes:
+     * @throws IllegalArgumentException if the team member was already assigned to the project
+     *
+     * @param teamMember
+     */
     public void assignTeamMember(TeamMember teamMember)
     {
         if(!projectTeamMemberList.contains(teamMember))
@@ -133,14 +143,15 @@ public class Project
 
     }
 
-    /** Unassigns an ordinary team member, !ScrumMaster !ProductOwner
-     *
+    /** Unassigns an ordinary team member
+     * @throws IllegalArgumentException when trying to unassign a ScrumMaster or a ProductOwner
      * @param teamMember
      */
     public void unassignTeamMember(TeamMember teamMember)
     {
         if(teamMember.equals(getProductOwner()))
         {
+            //TODO: check adriana's unassign and labels
             throw new IllegalArgumentException("You cannot unassign a Product Owner as an ordinary team member" + "\n Go to unassign Product Owner");
         }
         else if(teamMember.equals(getScrumMaster()))
@@ -165,10 +176,8 @@ public class Project
 
     public void assignScrumMaster(TeamMember teamMember)
     {
-        //TODO: IN GUI MAKE A CONFIRMATION BEFORE OVERWRITING THAT PERSON
-        if(scrumMaster != null)
         unassignScrumMaster();
-        else this.scrumMaster = teamMember;
+        this.scrumMaster = teamMember;
     }
     /**
      * If you are trying to assign a team member to a special role
@@ -178,11 +187,8 @@ public class Project
      */
     public void assignProductOwner(TeamMember teamMember)
     {
-
-        //TODO: IN GUI MAKE A CONFIRMATION BEFORE OVERWRITING THAT PERSON
-        if(productOwner != null)
         unassignProductOwner();
-        else this.productOwner = teamMember;
+        this.productOwner = teamMember;
     }
     public void unassignScrumMaster()
     {
@@ -195,6 +201,17 @@ public class Project
 
     //EDIT PROJECT
 
+    /**
+     * Method for editing the project (a setter in disguise)
+     * @param name
+     * @param ID
+     * @param startingDate
+     * @param deadline
+     * @param status
+     * @param methodology
+     * @param scrumMaster
+     * @param productOwner
+     */
     public void edit(String name, String ID, Date startingDate, Date deadline, Status status, Methodology methodology, TeamMember scrumMaster, TeamMember productOwner)
     {
         setName(name);
@@ -203,7 +220,8 @@ public class Project
         setDeadline(deadline);
         setStatus(status);
         setMethodology(methodology);
-        if(this.scrumMaster == null) unassignScrumMaster();
+        if(this.scrumMaster == null)
+            unassignScrumMaster();
         assignScrumMaster(scrumMaster);
         if(this.productOwner == null) unassignProductOwner();
             assignProductOwner(productOwner);
@@ -211,6 +229,10 @@ public class Project
 
     //RELATED REQUIREMENTS AND LIST
 
+    /**
+     * adds a requirement to the project's requirements list
+     * @param requirement
+     */
     public void addRequirement(Requirement requirement)
     {
         this.projectRequirementList.add(requirement);
@@ -219,6 +241,11 @@ public class Project
     {
         this.projectRequirementList.remove(requirement);
     }
+
+    /**
+     *
+     * @return a list of all the requirements belonging to a project
+     */
     public RequirementList getProjectRequirementList()
     {
         return projectRequirementList;
