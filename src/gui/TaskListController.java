@@ -58,20 +58,20 @@ public class TaskListController {
         return root;
     }
     
-    @FXML private void search() {
-        errorLabel.setText("");
+    @FXML private void searching() {
         try {
+            errorLabel.setText("");
             if (searchBar.getText().equals("")) {
                 reset();
             }
             else {
-                int id = 0;
+                int id;
                 try {
                     id = Integer.parseInt(searchBar.getText());
                     viewModel.update(id);
                 }
                 catch (NumberFormatException e) {
-                    errorLabel.setText("The id to search for has to be numeric");
+                    throw new IllegalStateException("The id to search for has to be numeric");
                 }
             }
         }

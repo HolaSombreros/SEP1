@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<projectlist>
+   <project>
+      <id>PMSColourIT</id>
+      <title>Project Management System for Colour IT</title>
+      <status>Started</status>
+      <methodology>Waterfall</methodology>
+      <startingdate>10/12/2020</startingdate>
+      <deadline>10/12/2021</deadline>
+      <scrummaster>
+      </scrummaster>
+      <productowner>
+      </productowner>
+      <teammemberlist>
+      </teammemberlist>
+      <requirementlist>
+         <requirement>
+            <id>1</id>
+            <userstory>Make a GUI so that some stuff</userstory>
+            <estimatedtime>100.0</estimatedtime>
+            <hoursworked>0.0</hoursworked>
+            <startingdate>10/12/2020</startingdate>
+            <deadline>10/12/2021</deadline>
+            <status>Started</status>
+            <type>Non Functional</type>
+            <priority>Critical</priority>
+            <relatedproject>PMSColourIT</relatedproject>
+            <responsibleteammember>
+            </responsibleteammember>
+            <teammemberlist>
+            </teammemberlist>
+            <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>Make the view controllers</title>
+                  <estimatedtime>30.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>24/12/2020</deadline>
+                  <status>Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>1</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+               <task>
+                  <id>2</id>
+                  <title>Implement dummy data</title>
+                  <estimatedtime>10.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>10/12/2021</deadline>
+                  <status>Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>1</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+            </tasklist>
+         </requirement>
+         <requirement>
+            <id>2</id>
+            <userstory>Make a website that works with the GUI</userstory>
+            <estimatedtime>20.0</estimatedtime>
+            <hoursworked>0.0</hoursworked>
+            <startingdate>10/12/2020</startingdate>
+            <deadline>10/12/2021</deadline>
+            <status>Not Started</status>
+            <type>Non Functional</type>
+            <priority>High</priority>
+            <relatedproject>PMSColourIT</relatedproject>
+            <responsibleteammember>
+            </responsibleteammember>
+            <teammemberlist>
+            </teammemberlist>
+            <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>Make HTML</title>
+                  <estimatedtime>4.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>10/12/2021</deadline>
+                  <status>Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>2</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+               <task>
+                  <id>2</id>
+                  <title>Do JavaScript</title>
+                  <estimatedtime>5.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>10/12/2021</deadline>
+                  <status>Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>2</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+               <task>
+                  <id>3</id>
+                  <title>Add CSS styling</title>
+                  <estimatedtime>3.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>10/12/2021</deadline>
+                  <status>Not Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>2</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+            </tasklist>
+         </requirement>
+      </requirementlist>
+   </project>
+</projectlist>
+
