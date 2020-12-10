@@ -1,9 +1,7 @@
 package gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.Requirement;
@@ -73,7 +71,7 @@ public class RequirementListController
         reset();
       else
       {
-        int id = 0;
+        int id;
         try
         {
           id = Integer.parseInt(searchInput.getText());
@@ -128,7 +126,7 @@ public class RequirementListController
         errorLabel.setText("");
       else
       {
-        int index = 0;
+        int index;
         try
         {
           index = Integer.parseInt(indexInput.getText());
@@ -141,9 +139,8 @@ public class RequirementListController
           Requirement req2 = model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirement(index);
           if (req1.getPriority() != req2.getPriority())
             throw new IllegalArgumentException("Movement not allowed");
-          Requirement other = req1;
           model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirements().remove(req1);
-          model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirements().add(index, other);
+          model.getProjectList().getProjectByID(state.getSelectedProject()).getProjectRequirementList().getRequirements().add(index, req1);
           model.editProject(model.getProjectList().getProjectByID(state.getSelectedProject()));
           reset();
           indexInput.setText("");
@@ -241,7 +238,7 @@ public class RequirementListController
   {
     int index = requirementListTable.getSelectionModel().getSelectedIndex();
     RequirementViewModel selectedItem = requirementListTable.getItems().get(index);
-    if (index < 0 || index >= requirementListTable.getItems().size())
+    if (index >= requirementListTable.getItems().size())
     {
       return false;
     }

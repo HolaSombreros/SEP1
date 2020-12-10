@@ -29,7 +29,7 @@ public class RequirementList
    * requirement id
    * Everytime a requirement is added, the requirements will be sorted by priority
    *
-   * @param requirement
+   * @param requirement the requirement that will be added to the list
    */
   public void add(Requirement requirement)
   {
@@ -63,7 +63,7 @@ public class RequirementList
   /**
    * The system checks the index before searching in the array
    *
-   * @param index
+   * @param index the index of the requirement
    * @return the requirement in the selected position
    */
   public Requirement getRequirement(int index)
@@ -74,7 +74,7 @@ public class RequirementList
   }
 
   /**
-   * @param id
+   * @param id the id of the searched requirement
    * @return The system throws an exception if there is not a requirement with
    * the mentioned id
    */

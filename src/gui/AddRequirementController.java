@@ -80,7 +80,7 @@ public class AddRequirementController
       int year2 = deadlineInput.getValue().getYear();
       Date deadline = new Date(day2, month2, year2);
 
-      double estimatedTime = 0;
+      double estimatedTime;
       if (estimatedTimeInput.getText().equals(""))
         throw new IllegalArgumentException("Estimated Time can not be empty");
       try
