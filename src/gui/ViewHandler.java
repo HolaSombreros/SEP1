@@ -31,6 +31,7 @@ public class ViewHandler
   private ProjectSelectController projectSelectController;
   private RequirementSelectController requirementSelectController;
   private TaskSelectController taskSelectController;
+  private TeamMembersViewController teamMembersViewController;
 
   
 
@@ -89,6 +90,9 @@ public class ViewHandler
         break;
       case "taskSelect":
         root = loadTaskSelect("fxml/TaskSelectView.fxml",viewState);
+        break;
+      case "teamMembers":
+        root = loadTeamMembers("fxml/TeamMembersView.fxml",viewState);
         break;
     }
     currentScene.setRoot(root);
@@ -420,4 +424,22 @@ private Region loadTaskSelect(String fxmlFile, ViewState state){
     return taskSelectController.getRoot();
   }
 
-}
+  private Region loadTeamMembers(String fxmlFile, ViewState state) {
+    if (teamMembersViewController == null) {
+      try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlFile));
+        Region root = loader.load();
+        teamMembersViewController = loader.getController();
+        teamMembersViewController.init(this, model, root, state);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+      else{
+        teamMembersViewController.reset();
+      }
+      return teamMembersViewController.getRoot();
+    }
+  }
+

@@ -358,14 +358,14 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                                 for (TeamMember member : task.getTeamMemberList().getTeamMembers())
                                     if(!member.equals(teamMember)) {
                                         frequentTeamMembers[member.getId()]++;
-                                        System.out.println(member.getFullName());
+                                        //System.out.println(member.getFullName());
                                     }
         int max = 0,p = 0 ;
         for(int i = 1; i < addTeamMembersToTheSystem().size(); i++)
             if(frequentTeamMembers[i] > max && i != addTeamMembersToTheSystem().getTeamMember(teamMember).getId()){
                 max = frequentTeamMembers[i];
                 p = i;
-                System.out.println(i);
+              //  System.out.println(i);
             }
 
         if(max != 0)
