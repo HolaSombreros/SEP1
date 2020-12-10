@@ -43,31 +43,22 @@ public class XmlFile implements IFileConnection {
         Scanner sc = new Scanner(file);
         IProjectManagementModel model = new ProjectManagementModelManager();
         
-        
-        
-        // Project variables:
         String projectId = "";
         String title = "";
         Methodology methodology = null;
         Date startingDate = null;
         Date deadline = null;
         Status status = null;
-        
-        // Requirement variables:
-        String userStory = "";
         double estimatedTime = 0;
         double hoursWorked = 0;
         RequirementStatus requirementStatus = null;
         Type type = null;
         Priority priority = null;
-        
-        // Teammember related:
         String firstName;
         String lastName;
         int id;
         TeamMember teamMember;
-        
-        String temp[] = null;
+        String temp[] = null; // for the dates
         Project project = null;
         Requirement requirement = null;
         Task task = null;
@@ -75,7 +66,6 @@ public class XmlFile implements IFileConnection {
         
         while (sc.hasNext()) {
             line = sc.nextLine();
-            System.out.println(line); // <------
             if (line.contains("<project>")) {
                 line = sc.nextLine();
                 line = line.replace("<id>", "");
@@ -127,7 +117,7 @@ public class XmlFile implements IFileConnection {
                 deadline = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
     
                 project = new Project(title, projectId, startingDate, deadline, methodology);
-                model.addProject(project);
+                model.addProject(project, false);
                 project.setStatus(status);
     
                 sc.nextLine(); // <scrummaster>
@@ -231,10 +221,11 @@ public class XmlFile implements IFileConnection {
                         line = line.replace("</estimatedtime>", "");
                         estimatedTime = Double.parseDouble(line.trim());
     
-                        line = sc.nextLine();
-                        line = line.replace("<hoursworked>", "");
-                        line = line.replace("</hoursworked>", "");
-                        hoursWorked = Double.parseDouble(line.trim());
+                        sc.nextLine();
+//                        line = sc.nextLine();
+//                        line = line.replace("<hoursworked>", "");
+//                        line = line.replace("</hoursworked>", "");
+//                        hoursWorked = Double.parseDouble(line.trim());
     
                         line = sc.nextLine();
                         line = line.replace("<startingdate>", "");
@@ -300,8 +291,8 @@ public class XmlFile implements IFileConnection {
                         }
     
                         sc.nextLine(); // <relatedproject></relatedproject>
-                        requirement = new Requirement(userStory, startingDate, deadline, estimatedTime, priority, type, project);
-                        model.addRequirement(project, requirement);
+                        requirement = new Requirement(title, startingDate, deadline, estimatedTime, priority, type, project);
+                        model.addRequirement(project, requirement, false);
                         requirement.setId(id);
                         requirement.setStatus(requirementStatus);
     
@@ -418,7 +409,7 @@ public class XmlFile implements IFileConnection {
     
                                 sc.nextLine(); // <relatedrequirement></relatedrequirement>
                                 task = new Task(title, startingDate, deadline, estimatedTime, requirement);
-                                model.addTask(requirement, task);
+                                model.addTask(requirement, task, false);
                                 task.setId(id);
                                 task.setStatus(status);
                                 task.getTimeRegistration().setHoursWorked(hoursWorked);
@@ -450,8 +441,8 @@ public class XmlFile implements IFileConnection {
                                 }
                                 
                                 sc.nextLine(); // <teammemberlist>
-                                line = sc.nextLine(); // <teammember> OR </teammemberlist>
                                 while (sc.hasNext()) {
+                                    line = sc.nextLine(); // <teammember> OR </teammemberlist>
                                     if (line.contains("<teammember>")) {
                                         line = sc.nextLine();
                                         if (line.contains("<firstname>")) {
@@ -468,7 +459,6 @@ public class XmlFile implements IFileConnection {
                                             id = Integer.parseInt(line.trim());
                                             teamMember = new TeamMember(firstName, lastName, id);
                                             task.assignTeamMember(teamMember);
-    
                                             sc.nextLine();
                                             line = sc.nextLine();
                                             line = line.replace("<hoursworked>", "");
@@ -482,19 +472,19 @@ public class XmlFile implements IFileConnection {
                                         break;
                                     }
                                 }
-                                line = sc.nextLine(); // </task>
+                                sc.nextLine(); // </task>
                             }
                             else if (line.contains("</tasklist>")) {
                                 break;
                             }
                         }
-                        line = sc.nextLine(); // </requirement>
+                        sc.nextLine(); // </requirement>
                     }
                     else if (line.contains("</requirementlist>")) {
                         break;
                     }
                 }
-                line = sc.nextLine(); // </project>
+                sc.nextLine(); // </project>
             }
             else if (line.contains("</projectlist>")) {
                 break;
@@ -569,7 +559,7 @@ public class XmlFile implements IFileConnection {
                 xml += "            <status>" + requirement.getStatus().getName() + "</status>\n";
                 xml += "            <type>" + requirement.getType().getName() + "</type>\n";
                 xml += "            <priority>" + requirement.getPriority().getName() + "</priority>\n";
-                xml += "            <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n"; // storing the id should be good enough...?
+                xml += "            <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n";
                 xml += "            <responsibleteammember>\n";
                 if (requirement.getResponsibleTeamMember() != null) {
                     xml += "               <firstname>" + requirement.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
@@ -604,15 +594,15 @@ public class XmlFile implements IFileConnection {
                     xml += "                  <timeregistration>\n";
                     xml += "                     <hoursworked>" + task.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                     xml += "                  </timeregistration>\n";
-                    xml += "                  <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n"; // storing the id should be good enough...?
+                    xml += "                  <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n";
                     xml += "                  <responsibleteammember>\n";
                     if (task.getResponsibleTeamMember() != null) {
-                        xml += "                  <firstname>" + task.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
-                        xml += "                  <lastname>" + task.getResponsibleTeamMember().getLastName() + "</lastname>\n";
-                        xml += "                  <id>" + task.getResponsibleTeamMember().getId() + "</id>\n";
-                        xml += "                  <timeregistration>\n";
-                        xml += "                     <hoursworked>" + task.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
-                        xml += "                  </timeregistration>\n";
+                        xml += "                     <firstname>" + task.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
+                        xml += "                     <lastname>" + task.getResponsibleTeamMember().getLastName() + "</lastname>\n";
+                        xml += "                     <id>" + task.getResponsibleTeamMember().getId() + "</id>\n";
+                        xml += "                     <timeregistration>\n";
+                        xml += "                        <hoursworked>" + task.getResponsibleTeamMember().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
+                        xml += "                     </timeregistration>\n";
                     }
                     xml += "                  </responsibleteammember>\n";
                     xml += "                  <teammemberlist>\n";
@@ -638,8 +628,6 @@ public class XmlFile implements IFileConnection {
         xml += "</projectlist>\n";
         out.println(xml);
         out.close();
-        
-        //System.out.println("Wrote to file at [" + file.getAbsolutePath() + "]"); // TODO - eventually remove...
     }
     
     @Override public void saveProject(Project project) throws FileNotFoundException {
@@ -704,7 +692,7 @@ public class XmlFile implements IFileConnection {
             xml += "         <userstory>" + requirement.getUserStory() + "</userstory>\n";
             xml += "         <estimatedtime>" + requirement.getEstimatedTime() + "</estimatedtime>\n";
             xml += "         <hoursworked>" + requirement.getHoursWorked() + "</hoursworked>\n";
-            xml += "         <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n"; // storing the id should be good enough...?
+            xml += "         <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n";
             xml += "         <responsibleteammember>\n";
             if (requirement.getResponsibleTeamMember() != null) {
                 xml += "            <firstname>" + requirement.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
@@ -754,7 +742,7 @@ public class XmlFile implements IFileConnection {
                     xml += "                  </timeregistration>\n";
                 }
                 xml += "               </responsibleteammember>\n";
-                xml += "               <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n"; // storing the id should be good enough...?
+                xml += "               <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n";
                 xml += "               <teammemberlist>\n";
                 for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers()) {
                     xml += "                  <teammember>\n";

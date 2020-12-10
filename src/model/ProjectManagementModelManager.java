@@ -107,26 +107,31 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     // Model methods from IProjectManagementModel:
-    @Override public void addProject(Project project) {
+    @Override public void addProject(Project project, boolean doSave) {
         projectList.addProject(project);
-        saveModel();
+    
+        if (doSave)
+            saveModel();
     }
 
-    @Override public void addRequirement(Project project,Requirement requirement) {
+    @Override public void addRequirement(Project project,Requirement requirement, boolean doSave) {
         project.addRequirement(requirement);
-        saveModel();
+    
+        if (doSave)
+            saveModel();
     }
 
-    @Override public void addTask(Requirement requirement, Task task) {
+    @Override public void addTask(Requirement requirement, Task task, boolean doSave) {
         requirement.addTask(task);
-        saveModel();
+    
+        if (doSave)
+            saveModel();
     }
 
     @Override public void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
         project.assignTeamMember(teamMember);
         requirement.assignTeamMember(teamMember);
         task.assignTeamMember(teamMember);
-        saveModel();
     }
 
     @Override public void editProject(Project project) {
