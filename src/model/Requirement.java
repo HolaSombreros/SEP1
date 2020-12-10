@@ -6,9 +6,9 @@ public class Requirement
   private String userStory;
   private double estimatedTime;
   private double hoursWorked;
-  private Project relatedProject;
-  private TaskList taskList;
-  private TeamMemberList teamMemberList;
+  private final Project relatedProject;
+  private final TaskList taskList;
+  private final TeamMemberList teamMemberList;
   private TeamMember responsibleTeamMember;
   private Date startingDate;
   private Date deadline;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class RequirementList
 {
   private int idCounter;
-  private ArrayList<Requirement> requirements;
+  private final ArrayList<Requirement> requirements;
 
   public RequirementList()
   {
