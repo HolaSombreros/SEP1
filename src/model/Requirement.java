@@ -48,6 +48,7 @@ public class Requirement
   /**
    * The system checks if the starting date is after the project's starting
    * date and before the project's deadline
+   *
    * @param startingDate starting date of the requirement
    */
   public void setStartingDate(Date startingDate)
@@ -61,6 +62,7 @@ public class Requirement
 
   /**
    * The system checks if the deadline is before the project's deadline
+   *
    * @param deadline the deadline of the requirement
    */
   public void setDeadline(Date deadline)
@@ -74,6 +76,7 @@ public class Requirement
 
   /**
    * The estimated time is not allowed to be less or equal to 0
+   *
    * @param estimatedTime the estimated time of the requirement
    */
   public void setEstimatedTime(double estimatedTime)
@@ -122,6 +125,11 @@ public class Requirement
 
   public double getEstimatedTime()
   {
+    double tasks = 0;
+    for (Task task : taskList.getTasks())
+      tasks +=task.getEstimatedTime();
+    if (tasks>estimatedTime)
+      setEstimatedTime(tasks);
     return estimatedTime;
   }
 
@@ -138,21 +146,41 @@ public class Requirement
   /**
    * The system checks if all tasks are ended
    * If yes, the status changes to ended
+   *
    * @return status
    */
   public RequirementStatus getStatus()
   {
-    if (status == RequirementStatus.STARTED)
+    if (taskList.size() == 0)
+      status = RequirementStatus.NOT_STARTED;
+    else
     {
-      boolean d = true;
-      for (Task task : taskList.getTasks())
-        if (task.getStatus() != Status.ENDED)
-        {
-          d = false;
-          break;
-        }
-      if (d)
-        setStatus(RequirementStatus.ENDED);
+      if (status == RequirementStatus.NOT_STARTED)
+      {
+        boolean d = true;
+        for (Task task : taskList.getTasks())
+          if (task.getStatus() == Status.STARTED)
+          {
+            d = false;
+            break;
+          }
+        if (!d)
+          setStatus(RequirementStatus.STARTED);
+      }
+      if (status == RequirementStatus.STARTED || status == RequirementStatus.ENDED)
+      {
+        boolean d = true;
+        for (Task task : taskList.getTasks())
+          if (task.getStatus() != Status.ENDED)
+          {
+            d = false;
+            break;
+          }
+        if (d)
+          setStatus(RequirementStatus.ENDED);
+        else
+          setStatus(RequirementStatus.STARTED);
+      }
     }
     return status;
   }
@@ -196,6 +224,7 @@ public class Requirement
 
   /**
    * The system will assign the team member in a requirement and the related project as well if they are not already there
+   *
    * @param teamMember the team member which will be assigned
    */
   public void assignTeamMember(TeamMember teamMember)
@@ -210,6 +239,7 @@ public class Requirement
    * The system checks if the team member is a responsible one
    * If yes, it can not be removed
    * If no, the system will unassign him from the requirement and the related tasks
+   *
    * @param teamMember the team member which will be unassigned
    */
   public void unassignTeamMember(TeamMember teamMember)
@@ -225,6 +255,7 @@ public class Requirement
 
   /**
    * The system unassigns first the responsible team member, then assigns the other one
+   *
    * @param teamMember the team member which will be responsible
    */
   public void assignResponsibleTeamMember(TeamMember teamMember)
@@ -247,14 +278,15 @@ public class Requirement
 
   /**
    * The method sets all the editable variables of the requirement
-   * @param userStory the new user story
-   * @param estimatedTime the new estimated time
+   *
+   * @param userStory             the new user story
+   * @param estimatedTime         the new estimated time
    * @param responsibleTeamMember the new responsible member
-   * @param startingDate the new starting date
-   * @param deadline the new deadline
-   * @param status the new status
-   * @param type the new type
-   * @param priority the new priority
+   * @param startingDate          the new starting date
+   * @param deadline              the new deadline
+   * @param status                the new status
+   * @param type                  the new type
+   * @param priority              the new priority
    */
   public void edit(String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline, RequirementStatus status, Type type,
       Priority priority)
@@ -293,7 +325,7 @@ public class Requirement
         return false;
       }
     }
-    return id == other.id && relatedProject.getID() .equals(other.relatedProject.getID()) && userStory.equals(other.userStory) && estimatedTime == other.estimatedTime
+    return id == other.id && relatedProject.getID().equals(other.relatedProject.getID()) && userStory.equals(other.userStory) && estimatedTime == other.estimatedTime
         && hoursWorked == other.hoursWorked && startingDate.equals(other.startingDate) && deadline.equals(other.deadline) && status == other.status && type == other.type
         && priority == other.priority && taskList.equals(other.taskList) && teamMemberList.equals(other.teamMemberList);
   }
