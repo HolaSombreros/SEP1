@@ -61,7 +61,16 @@ public class DetailsAndEditRequirementController
     estimatedTimeInput.setText(requirement.getEstimatedTime() + "");
     priorityInput.setValue(requirement.getPriority().getName());
     typeInput.setValue(requirement.getType().getName());
+
+    statusInput.getItems().removeAll("Not Started", "Started", "Ended", "Approved", "Rejected");
     statusInput.setValue(requirement.getStatus().getName());
+    if (requirement.getStatus() != RequirementStatus.ENDED && requirement.getStatus() != RequirementStatus.APPROVED && requirement.getStatus() != RequirementStatus.REJECTED)
+      for (Status status : Status.values())
+        statusInput.getItems().add(status.getName());
+    else
+      for (RequirementStatus status : RequirementStatus.values())
+        statusInput.getItems().add(status.getName());
+
     hoursWorkedShow.setText("Number of Hours Worked: " + requirement.getHoursWorked());
 
     if (requirement.getResponsibleTeamMember() != null)

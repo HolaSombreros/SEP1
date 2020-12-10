@@ -107,7 +107,7 @@ public class Task {
         if (startingDate.isBefore(relatedRequirement.getStartingDate())) {
             throw new IllegalArgumentException("The starting date cannot be before the requirement's starting date (" + relatedRequirement.getStartingDate().toString() + ")");
         }
-        else if (!deadline.isBefore(relatedRequirement.getDeadline())) {
+        else if (relatedRequirement.getDeadline().isBefore(deadline)) {
             throw new IllegalArgumentException("The deadline cannot be after the requirement's deadline (" + relatedRequirement.getDeadline().toString() + ")");
         }
         this.deadline = deadline.copy();

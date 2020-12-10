@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import model.*;
 
+import java.time.LocalDate;
+
 public class AddRequirementController
 {
   @FXML TextArea userStoryInput;
@@ -43,10 +45,11 @@ public class AddRequirementController
 
   public void reset()
   {
+    Project project = model.getProjectList().getProjectByID(state.getSelectedProject());
     userStoryInput.setText("");
     errorLabel.setText("");
-    startingDateInput.getEditor().clear();
-    deadlineInput.getEditor().clear();
+    startingDateInput.setValue(LocalDate.of(project.getStartingDate().getYear(),project.getStartingDate().getMonth(),project.getStartingDate().getDay()));
+    deadlineInput.setValue(LocalDate.of(project.getDeadline().getYear(), project.getDeadline().getMonth(), project.getDeadline().getDay()));
     estimatedTimeInput.setText("");
     priorityInput.getSelectionModel().clearAndSelect(0);
     typeInput.getSelectionModel().clearAndSelect(0);
@@ -77,7 +80,7 @@ public class AddRequirementController
       int year2 = deadlineInput.getValue().getYear();
       Date deadline = new Date(day2, month2, year2);
 
-      double estimatedTime = 0;
+      double estimatedTime;
       if (estimatedTimeInput.getText().equals(""))
         throw new IllegalArgumentException("Estimated Time can not be empty");
       try
@@ -106,7 +109,7 @@ public class AddRequirementController
         type = Type.PROJECT_RELATED;
 
       model.addRequirement(model.getProjectList().getProjectByID(state.getSelectedProject()),
-          new Requirement(userStory, startingDate, deadline, estimatedTime, priority, type, model.getProjectList().getProjectByID(state.getSelectedProject())));
+          new Requirement(userStory, startingDate, deadline, estimatedTime, priority, type, model.getProjectList().getProjectByID(state.getSelectedProject())), true);
       errorLabel.setText("");
       viewHandler.openView("requirementList");
     }

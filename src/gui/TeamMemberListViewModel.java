@@ -31,7 +31,7 @@ public class TeamMemberListViewModel
         .size(); i++)
       list.add(new TeamMemberViewModel(project,model.getTaskList(project, requirement)
           .getTaskById(viewState.getSelectedTask()).getTeamMemberList()
-          .getByIndex(i)));
+          .getByIndex(i),model));
   }
 
   /**
@@ -44,7 +44,7 @@ public class TeamMemberListViewModel
         .getTeamMemberList().size(); i++)
       list.add(new TeamMemberViewModel(project, model.getRequirementList(project)
           .getRequirementById(viewState.getSelectedRequirement())
-          .getTeamMemberList().getByIndex(i)));
+          .getTeamMemberList().getByIndex(i),model));
   }
 
   /**
@@ -55,14 +55,14 @@ public class TeamMemberListViewModel
     for (int i = 0; i < model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().size(); i++)
       list.add(new TeamMemberViewModel(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
           model.getProjectList().getProjectByID(viewState.getSelectedProject())
-              .getTeamMemberList().getByIndex(i)));
+              .getTeamMemberList().getByIndex(i),model));
   }
 
 
 
 
   public void add( TeamMember teamMember) {
-    list.add(new TeamMemberViewModel(model.getProjectList().getProjectByID(viewState.getSelectedProject()), teamMember));
+    list.add(new TeamMemberViewModel(model.getProjectList().getProjectByID(viewState.getSelectedProject()), teamMember,model));
   }
 
   public void remove(TeamMember teamMember) {

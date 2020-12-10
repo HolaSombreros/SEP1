@@ -19,18 +19,17 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     public ProjectManagementModelManager() throws FileNotFoundException {
         this.fileConnections = new ArrayList<>();
         this.projectList = new ProjectList();
-        //this.projectList = loadModel();
         
-        createDummyData();
-        fileConnections.add(new XmlFile("projects"));
-        //saveModel();
+        //createDummyData();
+        fileConnections.add(new XmlFile("model"));
     }
     
-    private IProjectManagementModel loadModel() throws FileNotFoundException {
-        return fileConnections.get(0).loadModel();
+    public static IProjectManagementModel loadModel() throws FileNotFoundException {
+        IFileConnection xml = new XmlFile("model");
+        return xml.loadModel();
     }
     
-    private void saveModel() {
+    public void saveModel() {
         for (IFileConnection file : fileConnections) {
             try {
                 file.saveModel(this);
@@ -41,7 +40,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         }
     }
 
-    private void saveProject(Project project) {
+    public void saveProject(Project project) {
         for (IFileConnection file : fileConnections) {
             try {
                 file.saveProject(project);
@@ -108,26 +107,31 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     // Model methods from IProjectManagementModel:
-    @Override public void addProject(Project project) {
+    @Override public void addProject(Project project, boolean doSave) {
         projectList.addProject(project);
-        saveModel();
+    
+        if (doSave)
+            saveModel();
     }
 
-    @Override public void addRequirement(Project project,Requirement requirement) {
+    @Override public void addRequirement(Project project,Requirement requirement, boolean doSave) {
         project.addRequirement(requirement);
-        saveModel();
+    
+        if (doSave)
+            saveModel();
     }
 
-    @Override public void addTask(Requirement requirement, Task task) {
+    @Override public void addTask(Requirement requirement, Task task, boolean doSave) {
         requirement.addTask(task);
-        saveModel();
+    
+        if (doSave)
+            saveModel();
     }
 
     @Override public void addTeamMember(Project project, Requirement requirement, Task task,TeamMember teamMember) {
         project.assignTeamMember(teamMember);
         requirement.assignTeamMember(teamMember);
         task.assignTeamMember(teamMember);
-        saveModel();
     }
 
     @Override public void editProject(Project project) {
@@ -354,14 +358,14 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                                 for (TeamMember member : task.getTeamMemberList().getTeamMembers())
                                     if(!member.equals(teamMember)) {
                                         frequentTeamMembers[member.getId()]++;
-                                        System.out.println(member.getFullName());
+                                        //System.out.println(member.getFullName());
                                     }
         int max = 0,p = 0 ;
         for(int i = 1; i < addTeamMembersToTheSystem().size(); i++)
             if(frequentTeamMembers[i] > max && i != addTeamMembersToTheSystem().getTeamMember(teamMember).getId()){
                 max = frequentTeamMembers[i];
                 p = i;
-                System.out.println(i);
+              //  System.out.println(i);
             }
 
         if(max != 0)

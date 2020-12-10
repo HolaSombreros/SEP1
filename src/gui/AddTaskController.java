@@ -40,13 +40,6 @@ public class AddTaskController {
     }
 
     public void reset() {
-        titleInput.setText("");
-        startingDateInput.setValue(null);
-        deadlineInput.setValue(null);
-        estimatedHoursInput.setText("");
-        errorLabel.setText("");
-        
-        
         Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
         Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
         projectTitle.setText(project.getName());
@@ -54,15 +47,11 @@ public class AddTaskController {
         requirementStart.setText(requirement.getStartingDate().toString());
         requirementEnd.setText(requirement.getDeadline().toString());
         
-        /* THIS CODE IS FOR LIMITING TO FORWARD DATES ONLY! in case we want to use it... TODO - remove this
-        deadlineInput.setDayCellFactory(date -> new DateCell() {    // this shit makes it so dates before TODAY are disabled and can't be selected.
-            public void updateItem(java.time.LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                java.time.LocalDate today = java.time.LocalDate.now();
-                setDisable(empty || date.compareTo(today) < 0);
-            }
-        });
-        */
+        titleInput.setText("");
+        estimatedHoursInput.setText("");
+        errorLabel.setText("");
+        startingDateInput.setValue(LocalDate.of(requirement.getStartingDate().getYear(), requirement.getStartingDate().getMonth(), requirement.getStartingDate().getDay()));
+        deadlineInput.setValue(LocalDate.of(requirement.getDeadline().getYear(), requirement.getDeadline().getMonth(), requirement.getDeadline().getDay()));
     }
 
     public Region getRoot() {
@@ -95,7 +84,7 @@ public class AddTaskController {
             }
             Requirement relatedRequirement = model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement());
             Task task = new Task(titleInput.getText(), startingDate, deadline, estimatedTime, relatedRequirement);
-            model.addTask(relatedRequirement, task);
+            model.addTask(relatedRequirement, task, true);
             cancel();
         }
         catch (Exception e) {

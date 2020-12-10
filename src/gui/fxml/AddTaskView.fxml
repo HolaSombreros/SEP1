@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" userData="Add a new Task" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddTaskController">
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="800.0" userData="Add a new Task" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddTaskController">
    <Label style="-fx-font-weight: bold;" text="Add a new Task">
       <font>
          <Font size="24.0" />

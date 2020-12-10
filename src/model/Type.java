@@ -16,7 +16,7 @@ public enum Type
       case FUNCTIONAL:
         return "Functional";
       case NON_FUNCTIONAL:
-        return "Non functional";
+        return "Non Functional";
       case PROJECT_RELATED:
         return "Project Related";
       default:

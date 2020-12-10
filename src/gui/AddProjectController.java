@@ -93,7 +93,7 @@ public class AddProjectController
             else if(methodology.getValue().equals("Waterfall")) chosenMet = Methodology.WATERFALL;
 
 
-           model.addProject(new Project(name, ID, startingDate, deadlineDate, chosenMet));
+           model.addProject(new Project(name, ID, startingDate, deadlineDate, chosenMet), true);
            cancelButtonPressed();
 
         }
