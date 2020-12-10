@@ -50,7 +50,9 @@ public class Project
      */
     public Status getStatus()
     {
-        if(status.equals(Status.STARTED))
+        if (projectRequirementList.size()==0)
+            setStatus(Status.NOT_STARTED);
+        else if(status.equals(Status.STARTED))
         {
             boolean notEnded = true;
             for (Requirement requirement : getProjectRequirementList().getRequirements())
@@ -68,7 +70,7 @@ public class Project
         }
         return status;
     }
-    
+
     public Methodology getMethodology()
     {
         return methodology;

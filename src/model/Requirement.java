@@ -127,8 +127,8 @@ public class Requirement
   {
     double tasks = 0;
     for (Task task : taskList.getTasks())
-      tasks +=task.getEstimatedTime();
-    if (tasks>estimatedTime)
+      tasks += task.getEstimatedTime();
+    if (tasks > estimatedTime)
       setEstimatedTime(tasks);
     return estimatedTime;
   }
@@ -155,18 +155,6 @@ public class Requirement
       status = RequirementStatus.NOT_STARTED;
     else
     {
-      if (status == RequirementStatus.NOT_STARTED)
-      {
-        boolean d = true;
-        for (Task task : taskList.getTasks())
-          if (task.getStatus() == Status.STARTED)
-          {
-            d = false;
-            break;
-          }
-        if (!d)
-          setStatus(RequirementStatus.STARTED);
-      }
       if (status == RequirementStatus.STARTED || status == RequirementStatus.ENDED)
       {
         boolean d = true;
@@ -179,6 +167,18 @@ public class Requirement
         if (d)
           setStatus(RequirementStatus.ENDED);
         else
+          setStatus(RequirementStatus.STARTED);
+      }
+      if (status == RequirementStatus.NOT_STARTED)
+      {
+        boolean f = true;
+        for (Task task : taskList.getTasks())
+          if (task.getStatus() != Status.STARTED)
+          {
+            f = false;
+            break;
+          }
+        if (!f)
           setStatus(RequirementStatus.STARTED);
       }
     }
