@@ -109,7 +109,7 @@ public class AddRequirementController
         type = Type.PROJECT_RELATED;
 
       model.addRequirement(model.getProjectList().getProjectByID(state.getSelectedProject()),
-          new Requirement(userStory, startingDate, deadline, estimatedTime, priority, type, model.getProjectList().getProjectByID(state.getSelectedProject())));
+          new Requirement(userStory, startingDate, deadline, estimatedTime, priority, type, model.getProjectList().getProjectByID(state.getSelectedProject())), true);
       errorLabel.setText("");
       viewHandler.openView("requirementList");
     }

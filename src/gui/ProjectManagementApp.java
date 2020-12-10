@@ -9,8 +9,8 @@ public class ProjectManagementApp extends Application {
     @Override public void start(Stage stage) throws Exception {
     
         IProjectManagementModel model = ProjectManagementModelManager.loadModel();
-        
         ViewHandler view = new ViewHandler(model);
+    
         //ViewHandler view = new ViewHandler(new ProjectManagementModelManager());
         view.start(stage);
     }

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public interface IProjectManagementModel
 {
-  void addProject(Project project);
-  void addRequirement(Project project, Requirement requirement);
-  void addTask(Requirement requirement, Task task);
+  void addProject(Project project, boolean doSave);
+  void addRequirement(Project project, Requirement requirement, boolean doSave);
+  void addTask(Requirement requirement, Task task, boolean doSave);
   void addTeamMember(Project project, Requirement requirement, Task task, TeamMember teamMember);
   void editProject(Project project);
   void editRequirement(Project project, Requirement requirement, String userStory, double estimatedTime, TeamMember responsibleTeamMember, Date startingDate, Date deadline,
