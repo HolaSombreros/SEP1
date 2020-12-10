@@ -1,8 +1,6 @@
 package connections;
 
 import model.*;
-import parser.ParserException;
-import parser.XmlJsonParser;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,9 +29,10 @@ public class XmlFile implements IFileConnection {
         return filePath;
     }
     
-    @Override public IProjectManagementModel loadModel() throws FileNotFoundException, ParserException {
+    @Override public IProjectManagementModel loadModel() throws FileNotFoundException {
         File file = new File(getFilePath());
         Scanner sc = new Scanner(file);
+        IProjectManagementModel model = new ProjectManagementModelManager();
         
         if (!file.exists()) {
             try {
@@ -45,85 +44,231 @@ public class XmlFile implements IFileConnection {
             }
         }
         
-        XmlJsonParser parser = new XmlJsonParser();
-        IProjectManagementModel model;
-        model = parser.fromXml(getFileName(), ProjectManagementModelManager.class);
-        return model;
         
-//        String projectId = "";
-//        String title = "";
-//        Methodology methodology = null;
-//        Date startingDate = null;
-//        Date deadline = null;
-//
-//        Status status = null;
-//
-//        String firstName = "";
-//        String lastName = "";
-//        int id = 0;
-//        double hoursWorked = 0;
-//
-//        while (sc.hasNext()) {
-//            String line = sc.nextLine();
-//            if (line.contains("<id>")) {
-//                line = line.replace("<id>", "");
-//                line = line.replace("</id>", "");
-//                projectId = line.trim();
-//            }
-//            else if (line.contains("<title>")) {
-//                line = line.replace("<title>", "");
-//                line = line.replace("</title>", "");
-//                title = line.trim();
-//            }
-//            else if (line.contains("<status>")) {
-//                line = line.replace("<status>", "");
-//                line = line.replace("</status>", "");
-//                String temp = line.trim();
-//                switch (temp) {
-//                    case "Not Started":
-//                        status = Status.NOT_STARTED;
-//                        break;
-//                    case "Started":
-//                        status = Status.STARTED;
-//                        break;
-//                    case "Ended":
-//                        status = Status.ENDED;
-//                        break;
-//                }
-//            }
-//            else if (line.contains("<methodology>")) {
-//                line = line.replace("<methodology>", "");
-//                line = line.replace("</methodology>", "");
-//                String temp = line.trim();
-//                switch (temp) {
-//                    case "Scrum":
-//                        methodology = Methodology.SCRUM;
-//                        break;
-//                    case "Waterfall":
-//                        methodology = Methodology.WATERFALL;
-//                        break;
-//                }
-//            }
-//            else if (line.contains("<startingdate>")) {
-//                line = line.replace("<startingdate>", "");
-//                line = line.replace("</startingdate>", "");
-//                String[] temp = line.trim().split("/");
-//                startingDate = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
-//            }
-//            else if (line.contains("<deadline>")) {
-//                line = line.replace("<deadline>", "");
-//                line = line.replace("</deadline>", "");
-//                String[] temp = line.trim().split("/");
-//                deadline = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
-//            }
-//
-//            else if (line.contains("</project>")) {
-//                model.addProject(new Project(title, projectId, startingDate, deadline, methodology));
-//                Project project = model.getProjectList().getProjectByID(projectId);
-//                project.setStatus(status);
-//            }
-//        }
-//        return model;
+        
+        // Project variables:
+        String projectId = "";
+        String projectTitle = "";
+        Methodology methodology = null;
+        Date projectStartingDate = null;
+        Date projectDeadline = null;
+        Status status = null;
+        
+        
+        TeamMember scrumMaster = null;
+        TeamMember productOwner = null;
+        TeamMemberList projectTeamMemberList = null;
+        RequirementList requirementList = null;
+        
+        // Requirement variables:
+        int reqId = 0;
+        String userStory = "";
+        double reqEstimatedTime = 0;
+        double reqHoursWorked = 0;
+        Project relatedProject = null;
+        TaskList taskList = null;
+        TeamMemberList reqTeamMemberList = null;
+        TeamMember reqRTM = null;
+        Date reqStartDate = null;
+        Date reqDeadline = null;
+        RequirementStatus reqStatus = null;
+        Type type = null;
+        Priority priority = null;
+        int i = 0;
+        
+        // Task variables:
+        int taskId = 0;
+        String taskTitle = "";
+        Date taskStartDate = null;
+        Date taskDeadline = null;
+        double taskEstimatedTime = 0;
+        Status taskStatus = null;
+        TeamMemberList taskTeamMemberList = null;
+        TeamMember taskRTM = null;
+        TimeRegistration timeRegistration = null;
+        Requirement relatedRequirement = null;
+        int j = 0;
+        
+        // Teammember related:
+        String firstName;
+        String lastName;
+        int id;
+        double hoursWorked;
+        TeamMember teamMember;
+        
+        
+        
+        Project project = null;
+        Requirement requirement = null;
+        Task task = null;
+        while (sc.hasNext()) {
+            String line = sc.nextLine();
+            
+            // Project data:
+            if (line.contains("<project>")) {
+                line = sc.nextLine();
+                line = line.replace("<id>", "");
+                line = line.replace("</id>", "");
+                projectId = line.trim();
+                
+                line = sc.nextLine();
+                line = line.replace("<title>", "");
+                line = line.replace("</title>", "");
+                projectTitle = line.trim();
+    
+                line = line.replace("<status>", "");
+                line = line.replace("</status>", "");
+                switch (line.trim()) {
+                    case "Not Started":
+                        status = Status.NOT_STARTED;
+                        break;
+                    case "Started":
+                        status = Status.STARTED;
+                        break;
+                    case "Ended":
+                        status = Status.ENDED;
+                        break;
+                }
+                
+                line = sc.nextLine();
+                line = line.replace("<methodology>", "");
+                line = line.replace("</methodology>", "");
+                switch (line.trim()) {
+                    case "Scrum":
+                        methodology = Methodology.SCRUM;
+                        break;
+                    case "Waterfall":
+                        methodology = Methodology.WATERFALL;
+                        break;
+                }
+    
+                line = sc.nextLine();
+                line = line.replace("<startingdate>", "");
+                line = line.replace("</startingdate>", "");
+                String[] temp = line.trim().split("/");
+                projectStartingDate = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
+    
+                line = sc.nextLine();
+                line = line.replace("<deadline>", "");
+                line = line.replace("</deadline>", "");
+                temp = line.trim().split("/");
+                projectDeadline = new Date(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
+                
+                model.addProject(new Project(projectTitle, projectId, projectStartingDate, projectDeadline, methodology));
+                project = model.getProjectList().getProjectByID(projectId);
+                project.setStatus(status);
+    
+                sc.nextLine(); // <scrummaster>
+                line = sc.nextLine(); // </scrummaster> OR <firstname>
+                if (line.contains("<firstname>")) {
+                    line = line.replace("<firstname>", "");
+                    line = line.replace("</firstname>", "");
+                    firstName = line.trim();
+                    line = sc.nextLine();
+                    line = line.replace("<lastname>", "");
+                    line = line.replace("</lastname>", "");
+                    lastName = line.trim();
+                    line = sc.nextLine();
+                    line = line.replace("<id>", "");
+                    line = line.replace("</id>", "");
+                    id = Integer.parseInt(line.trim());
+                    teamMember = new TeamMember(firstName, lastName, id);
+                    project.assignScrumMaster(teamMember);
+    
+                    sc.nextLine();
+                    line = sc.nextLine();
+                    line = line.replace("<hoursworked>", "");
+                    line = line.replace("</hoursworked>", "");
+                    teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                    sc.nextLine();
+                    sc.nextLine();
+                }
+                sc.nextLine(); // <productowner>
+                line = sc.nextLine(); // </scrummaster> OR <firstname>
+                if (line.contains("<firstname>")) {
+                    line = line.replace("<firstname>", "");
+                    line = line.replace("</firstname>", "");
+                    firstName = line.trim();
+                    line = sc.nextLine();
+                    line = line.replace("<lastname>", "");
+                    line = line.replace("</lastname>", "");
+                    lastName = line.trim();
+                    line = sc.nextLine();
+                    line = line.replace("<id>", "");
+                    line = line.replace("</id>", "");
+                    id = Integer.parseInt(line.trim());
+                    teamMember = new TeamMember(firstName, lastName, id);
+                    project.assignProductOwner(teamMember);
+    
+                    sc.nextLine();
+                    line = sc.nextLine();
+                    line = line.replace("<hoursworked>", "");
+                    line = line.replace("</hoursworked>", "");
+                    teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                    sc.nextLine();
+                    sc.nextLine();
+                }
+                sc.nextLine();
+                sc.nextLine(); // <teammemberlist>
+                line = sc.nextLine(); // <teammember> OR </teammemberlist>
+                if (line.contains("<teammember>")) {
+                    while (sc.hasNext()) {
+                        line = sc.nextLine();
+                        if (line.contains("<firstname>")) {
+                            line = line.replace("<firstname>", "");
+                            line = line.replace("</firstname>", "");
+                            firstName = line.trim();
+                            line = sc.nextLine();
+                            line = line.replace("<lastname>", "");
+                            line = line.replace("</lastname>", "");
+                            lastName = line.trim();
+                            line = sc.nextLine();
+                            line = line.replace("<id>", "");
+                            line = line.replace("</id>", "");
+                            id = Integer.parseInt(line.trim());
+                            teamMember = new TeamMember(firstName, lastName, id);
+                            project.assignTeamMember(teamMember);
+    
+                            sc.nextLine();
+                            line = sc.nextLine();
+                            line = line.replace("<hoursworked>", "");
+                            line = line.replace("</hoursworked>", "");
+                            teamMember.getTimeRegistration().setHoursWorked(Double.parseDouble(line.trim()));
+                        }
+                        else if (line.contains("</teammemberlist>")) {
+                            break;
+                        }
+                    }
+                }
+    
+                sc.nextLine(); // <requirementlist>
+                line = sc.nextLine(); // <requirement> OR </requirementlist>
+                if (line.contains("<requirement>")) {
+                    while (sc.hasNext()) {
+                        line = sc.nextLine();
+                        if (line.contains("<id>")) {
+                            // do all the stuff, holy fuck yo
+                            
+                            // eventually create the requirement when hitting '<relatedproject>'
+                        }
+                        else if (line.contains("</requirementlist>")) {
+                            break;
+                        }
+                    }
+                }
+                
+                // next line will be </project> so go back up
+                // will loop through the whole thing again if there are more projects
+            }
+            
+            // return the ENTIRE model.
+            // now we just need to somehow overwrite THIS model with the other one...
+            return model;
+        }
+        
+        
+        
+        return null;
     }
     
     @Override public void saveModel(IProjectManagementModel model) throws FileNotFoundException {
@@ -207,7 +352,7 @@ public class XmlFile implements IFileConnection {
                     xml += "                  <timeregistration>\n";
                     xml += "                     <hoursworked>" + teamMember.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                     xml += "                  </timeregistration>\n";
-                    xml += "            </teammember>\n";
+                    xml += "               </teammember>\n";
                 }
                 xml += "            </teammemberlist>\n";
                 xml += "            <startingdate>" + requirement.getStartingDate().toString() + "</startingdate>\n";
