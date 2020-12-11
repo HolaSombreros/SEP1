@@ -3,7 +3,7 @@
    <project>
       <id>PMSColourIT</id>
       <title>Project Management System for Colour IT</title>
-      <status>Started</status>
+      <status>Ended</status>
       <methodology>Waterfall</methodology>
       <startingdate>10/12/2020</startingdate>
       <deadline>10/12/2021</deadline>
@@ -89,7 +89,7 @@
             <hoursworked>18.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
-            <status>Started</status>
+            <status>Approved</status>
             <type>Non Functional</type>
             <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
@@ -128,7 +128,7 @@
                   <estimatedtime>30.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>24/12/2020</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
                      <hoursworked>12.0</hoursworked>
                   </timeregistration>
@@ -166,7 +166,7 @@
                   <estimatedtime>10.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
                      <hoursworked>6.0</hoursworked>
                   </timeregistration>
@@ -199,7 +199,7 @@
             <hoursworked>4.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
-            <status>Started</status>
+            <status>Approved</status>
             <type>Non Functional</type>
             <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
@@ -252,7 +252,7 @@
                   <estimatedtime>4.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
@@ -268,12 +268,18 @@
                   <estimatedtime>5.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
                      <hoursworked>3.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>2</relatedrequirement>
                   <responsibleteammember>
+                     <firstname>Adriana</firstname>
+                     <lastname>Grecea</lastname>
+                     <id>6</id>
+                     <timeregistration>
+                        <hoursworked>4.0</hoursworked>
+                     </timeregistration>
                   </responsibleteammember>
                   <teammemberlist>
                      <teammember>
@@ -292,7 +298,7 @@
                   <estimatedtime>3.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Not Started</status>
+                  <status>Ended</status>
                   <timeregistration>
                      <hoursworked>1.0</hoursworked>
                   </timeregistration>
@@ -314,6 +320,40 @@
                            <hoursworked>4.0</hoursworked>
                         </timeregistration>
                      </teammember>
+                  </teammemberlist>
+               </task>
+            </tasklist>
+         </requirement>
+         <requirement>
+            <id>3</id>
+            <userstory>asdasdasdasd</userstory>
+            <estimatedtime>45.0</estimatedtime>
+            <hoursworked>0.0</hoursworked>
+            <startingdate>10/12/2020</startingdate>
+            <deadline>10/12/2021</deadline>
+            <status>Approved</status>
+            <type>Functional</type>
+            <priority>Critical</priority>
+            <relatedproject>PMSColourIT</relatedproject>
+            <responsibleteammember>
+            </responsibleteammember>
+            <teammemberlist>
+            </teammemberlist>
+            <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>asdasd</title>
+                  <estimatedtime>4.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>10/12/2021</deadline>
+                  <status>Ended</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>3</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
                   </teammemberlist>
                </task>
             </tasklist>

@@ -645,12 +645,12 @@ public class XmlFile implements IFileConnection {
         }
         PrintWriter out = new PrintWriter(file);
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n";
-        
+    
         xml += "<project>\n";
         xml += "   <id>" + project.getID() + "</id>\n";
         xml += "   <title>" + project.getName() + "</title>\n";
         xml += "   <status>" + project.getStatus().getName() + "</status>\n";
-        xml += "   <methodology>" + project.getMethodology() + "</methodology>\n";
+        xml += "   <methodology>" + project.getMethodology().getMethodology() + "</methodology>\n";
         xml += "   <startingdate>" + project.getStartingDate().toString() + "</startingdate>\n";
         xml += "   <deadline>" + project.getDeadline().toString() + "</deadline>\n";
         xml += "   <scrummaster>\n";
@@ -662,9 +662,7 @@ public class XmlFile implements IFileConnection {
             xml += "         <hoursworked>" + project.getScrumMaster().getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
             xml += "      </timeregistration>\n";
         }
-        else {
-            xml += "   </scrummaster>\n";
-        }
+        xml += "   </scrummaster>\n";
         xml += "   <productowner>\n";
         if (project.getProductOwner() != null) {
             xml += "      <firstname>" + project.getProductOwner().getFirstName() + "</firstname>\n";
@@ -694,6 +692,11 @@ public class XmlFile implements IFileConnection {
             xml += "         <userstory>" + requirement.getUserStory() + "</userstory>\n";
             xml += "         <estimatedtime>" + requirement.getEstimatedTime() + "</estimatedtime>\n";
             xml += "         <hoursworked>" + requirement.getHoursWorked() + "</hoursworked>\n";
+            xml += "         <startingdate>" + requirement.getStartingDate().toString() + "</startingdate>\n";
+            xml += "         <deadline>" + requirement.getDeadline().toString() + "</deadline>\n";
+            xml += "         <status>" + requirement.getStatus().getName() + "</status>\n";
+            xml += "         <type>" + requirement.getType().getName() + "</type>\n";
+            xml += "         <priority>" + requirement.getPriority().getName() + "</priority>\n";
             xml += "         <relatedproject>" + requirement.getRelatedProject().getID() + "</relatedproject>\n";
             xml += "         <responsibleteammember>\n";
             if (requirement.getResponsibleTeamMember() != null) {
@@ -714,26 +717,22 @@ public class XmlFile implements IFileConnection {
                 xml += "               <timeregistration>\n";
                 xml += "                  <hoursworked>" + teamMember.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "               </timeregistration>\n";
-                xml += "         </teammember>\n";
+                xml += "            </teammember>\n";
             }
             xml += "         </teammemberlist>\n";
-            xml += "         <startingdate>" + requirement.getStartingDate().toString() + "</startingdate>\n";
-            xml += "         <deadline>" + requirement.getDeadline().toString() + "</deadline>\n";
-            xml += "         <status>" + requirement.getStatus().getName() + "</status>\n";
-            xml += "         <type>" + requirement.getType().getName() + "</type>\n";
-            xml += "         <priority>" + requirement.getPriority().getName() + "</priority>\n";
             xml += "         <tasklist>\n";
             for (Task task : requirement.getTaskList().getTasks()) {
                 xml += "            <task>\n";
                 xml += "               <id>" + task.getId() + "</id>\n";
                 xml += "               <title>" + task.getTitle() + "</title>\n";
+                xml += "               <estimatedtime>" + task.getEstimatedTime() + "</estimatedtime>\n";
                 xml += "               <startingdate>" + task.getStartingDate().toString() + "</startingdate>\n";
                 xml += "               <deadline>" + task.getDeadline().toString() + "</deadline>\n";
-                xml += "               <estimatedtime>" + task.getEstimatedTime() + "</estimatedtime>\n";
                 xml += "               <status>" + task.getStatus().getName() + "</status>\n";
                 xml += "               <timeregistration>\n";
                 xml += "                  <hoursworked>" + task.getTimeRegistration().getHoursWorked() + "</hoursworked>\n";
                 xml += "               </timeregistration>\n";
+                xml += "               <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n";
                 xml += "               <responsibleteammember>\n";
                 if (task.getResponsibleTeamMember() != null) {
                     xml += "                  <firstname>" + task.getResponsibleTeamMember().getFirstName() + "</firstname>\n";
@@ -744,7 +743,6 @@ public class XmlFile implements IFileConnection {
                     xml += "                  </timeregistration>\n";
                 }
                 xml += "               </responsibleteammember>\n";
-                xml += "               <relatedrequirement>" + requirement.getId() + "</relatedrequirement>\n";
                 xml += "               <teammemberlist>\n";
                 for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers()) {
                     xml += "                  <teammember>\n";

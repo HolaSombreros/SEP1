@@ -40,15 +40,14 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             }
         }
     }
-
+    
     public void saveProject(Project project) {
-        for (IFileConnection file : fileConnections) {
-            try {
-                file.saveProject(project);
-            }
-            catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+        try {
+            IFileConnection projectFile = new XmlFile(project.getID());
+            projectFile.saveProject(project);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -239,7 +238,6 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
         return project.getTeamMemberList();
     }
-
 
     /**
      * checks if the given requirement exists within the given project
