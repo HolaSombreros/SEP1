@@ -35,9 +35,11 @@ public class TeamListViewModel {
             for(TeamMember teamMember : model.getTeam().getTeamMembers())
                 list.add(new TeamViewModel(teamMember,model));
         else
-            for(TeamMember teamMember : model.getTeam().getByNameUpgraded(name))
-                list.add(new TeamViewModel(teamMember,model));
-
+            //for(TeamMember teamMember : model.getTeam().getByNameUpgraded(name))
+               // list.add(new TeamViewModel(teamMember,model));
+            for(TeamMember teamMember : model.getTeam().getTeamMembers())
+                if(teamMember.getFullName().contains(name))
+                    list.add(new TeamViewModel(teamMember,model));
     }
 
     public void update(int id){
@@ -49,6 +51,7 @@ public class TeamListViewModel {
             for(TeamMember teamMember : model.getTeam().getTeamMembers())
                 if(teamMember.getId() == id)
                     list.add(new TeamViewModel(teamMember,model));
+
     }
 
 }

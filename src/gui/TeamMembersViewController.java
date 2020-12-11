@@ -20,6 +20,7 @@ public class TeamMembersViewController {
     @FXML private TableColumn<TeamViewModel,Number> idColumn;
     @FXML private TableColumn<TeamViewModel,String> nameColumn;
     @FXML private TableColumn<TeamViewModel,Number> productivityColumn;
+    @FXML private TableColumn<TeamViewModel,Number> taskColumn;
     @FXML private Label errorLabel;
     @FXML private TextField searchField;
 
@@ -41,6 +42,7 @@ public class TeamMembersViewController {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         productivityColumn.setCellValueFactory(cellData -> cellData.getValue().getProductivityProperty());
+        taskColumn.setCellValueFactory(cellData -> cellData.getValue().getTaskProperty());
         teamMemberTable.setItems(viewModel.getList());
         System.out.println(model.getTeam().size());
 
