@@ -1,4 +1,6 @@
-package model;
+package Mediator;
+
+import model.*;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

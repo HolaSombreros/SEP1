@@ -1,8 +1,7 @@
 package gui;
 
 import javafx.beans.property.*;
-import model.IProjectManagementModel;
-import model.Project;
+import Mediator.IProjectManagementModel;
 import model.TeamMember;
 
 public class TeamViewModel {

@@ -1,15 +1,10 @@
 package gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.IProjectManagementModel;
-import model.ProjectList;
-import model.Task;
-import model.TaskList;
+import Mediator.IProjectManagementModel;
 
-import java.io.FileNotFoundException;
 import java.util.Optional;
 
 public class TaskSelectController {

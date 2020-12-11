@@ -1,12 +1,10 @@
 package gui;
 
-import model.IProjectManagementModel;
+import Mediator.IProjectManagementModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-
-import java.io.FileNotFoundException;
 
 public class ViewHandler
 {

@@ -1,7 +1,8 @@
-package model;
+package Mediator;
 
 import connections.IFileConnection;
 import connections.XmlFile;
+import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;

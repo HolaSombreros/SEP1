@@ -2,7 +2,7 @@ package gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.IProjectManagementModel;
+import Mediator.IProjectManagementModel;
 import model.TeamMember;
 
 public class TeamListViewModel {

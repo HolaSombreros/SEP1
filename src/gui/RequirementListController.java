@@ -3,7 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.IProjectManagementModel;
+import Mediator.IProjectManagementModel;
 import model.Requirement;
 
 import java.util.Optional;

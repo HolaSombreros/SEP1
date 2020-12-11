@@ -1,6 +1,6 @@
 package connections;
 
-import model.IProjectManagementModel;
+import Mediator.IProjectManagementModel;
 import model.Project;
 
 import java.io.FileNotFoundException;
