@@ -2,12 +2,12 @@ package gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.ProjectList;
+
+import java.util.Optional;
 
 public class ProjectSelectController {
 
@@ -56,7 +56,40 @@ public class ProjectSelectController {
     }
 
     public void unassignButtonPressed() {
+        errorLabel.setText("");
+        try{
+            ProjectViewModel selectedItem = projectTable.getSelectionModel().getSelectedItem();
+            state.setSelectedProject(selectedItem.getIDProperty().getValue());
+            boolean remove = confirmation();
+            if(remove){
+               try {
+                    model.removeTeamMember(model.getProjectList().getProjectByID(state.getSelectedProject()),
+                            model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().getByID(state.getSelectedTeamMember()));
+                    errorLabel.setText("Team Member successfully unassigned!");
+               }
+               catch (IllegalArgumentException e){
+                       errorLabel.setText("You cannot unassign a team member with a special role!");
+               }
+            }
+        }
+        catch (Exception e){
 
+            errorLabel.setText("Select a Project First!");
+           // e.printStackTrace();
+        }
+
+    }
+    public boolean confirmation(){
+        int index = projectTable.getSelectionModel().getSelectedIndex();
+        ProjectViewModel selectedItem = projectTable.getItems().get(index);
+        if (index >= projectTable.getItems().size()) {
+            return false;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Unnassigning team member - id: " + state.getSelectedTeamMember());
+        Optional<ButtonType> result = alert.showAndWait();
+        return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
 
     /**
