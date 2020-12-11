@@ -80,19 +80,18 @@ public class RequirementSelectController {
             viewState.setSelectedRequirement(selectedItem.getIdProperty().getValue());
             boolean remove = confirmation();
             if(remove) {
-                try {
+               // try {
                     model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                             model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                             model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
                     errorLabel.setText("Team Member successfully unassigned!");
-                }
-                catch (IllegalArgumentException e){
-                    errorLabel.setText("You cannot unnasign the responsible team member!");
-                }
+              //  }
+               // catch (IllegalArgumentException e){
+                //    errorLabel.setText("You cannot unnasign the responsible team member!");
+                //}
             }
         } catch (Exception e) {
-            errorLabel.setText("Select a Requirement first!");
-
+            errorLabel.setText(e.getMessage());
         }
     }
 
