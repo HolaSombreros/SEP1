@@ -1,36 +1,19 @@
-input[type=text] {
-  width: 130px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+
+body {
+    background-color: #f0f0f0;
 }
 
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-  width: 100%;
-}
-h1{
-    text-align: center;
-    padding: 20px 20px;
-}
-/*#myCarousel {
-   /* background-color: rgba(0, 0, 0, 0.75);*/
-    box-shadow: -3px 3px 10px 0px rgba(0,0,0,1);
-    -webkit-box-shadow: -3px 3px 10px 0px rgba(0,0,0,1);
-    -moz-box-shadow: -3px 3px 10px 0px rgba(0,0,0,1);
-}*/
-/*#myCarousel {
-}
-.carousel-item img {
-    object-fit: cover;
-}*/
-.carousel-caption h3,
-.carousel-caption p {
-    color: #f0f0f0;
-    background-color: rgba(0, 0, 0, 0.50);
-}
-#greeting-wrapper {
+#mainContent{
     width: 100%;
+    justify-self: flex-end;
+
 }
+ .title{
+     font-family: 'Kumbh Sans', sans-serif;
+     font-size: 20px;
+     margin: 60px;
+     display: flex;
+ }
 
  #about_header{
      width: 100%;
@@ -45,16 +28,6 @@ h1{
      font-size: 60px;
 
  }
-.aboutImg{
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
-    transition: .3s ease;
-    box-shadow: -3px 3px 10px 0px rgba(0,0,0,1);
-    -webkit-box-shadow: -3px 3px 10px 0px rgba(0,0,0,1);
-    -moz-box-shadow: -3px 3px 10px 0px rgba(0,0,0,1);
-
-}
 
 .carousel-item{
     padding: 5% 0%;

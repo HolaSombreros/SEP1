@@ -96,7 +96,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     /**
      * creates a new string of length 8 from letters of the alphabet picked randomly
      **/
-    private String generateProjectId() {
+    public static String generateProjectId() {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         String id = "";
         Random random = new Random();
