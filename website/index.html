@@ -5,23 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Colour IT </title>
 
-    <!-- CSS STYLESHEETS: -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+
+    <!-- Custom CSS: -->
     <link rel="stylesheet" type="text/css" href="css/shared.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../website/bootstrap-4.3.1-dist/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <!-- Scripts -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+    <script src="js/jquery-3.5.1.min.js" defer></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.js" defer></script>
+    <script src="js/script.js" defer></script>
 
 </head>
      <!--
@@ -40,37 +38,42 @@
     <!-- HEADER: -->
     <header>
         <nav class="navbar navbar-light navbar-expand-xl">
-          <a class="navbar-brand" href="../website/index.html"><img src="../website/images/logo.jpg" alt=""/></a>
+            <a class="navbar-brand" href="index.html"><img src="images/logo.jpg" alt="ColourIT Logo"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="collapseNavbar">
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="navbar-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="navbar-item"><a class="nav-link" href="pages/projects.html">Projects</a></li>
                 </ul>
             </div>
-         </nav>
+        </nav>
     </header>
      <main>
-        <div id="about_header">
-            <h1><b>HOME</b></h1>
-        </div>
-
-         <div id="carousel_about" class = "carousel slide" data-ride = "carousel"  data-interval="3000">
+         <div class="indent">
+            <h1 class="text-center">HOME</h1>
+         </div>
+         <div id="carousel_about" class = "carousel slide col-sm-12 col-md-12 col-lg-12" data-ride = "carousel"  data-interval="5000">
             <ol class="carousel-indicators">
                 <li data-target="#carousel_about" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel_about" data-slide-to="1"></li>
                 <li data-target="#carousel_about" data-slide-to="2"></li>
                 <li data-target="#carousel_about" data-slide-to="3"></li>
             </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner col-md-12 ">
             <div class="carousel-item active">
                 <div class="row d-flex justify-content-center">
-                    <div class = "col-lg-3 ">
+                    <div class = "col-lg-3 col-sm-12 col-md-8 col-sm-12">
                         <h3 class="text-center">Description</h3>
                         <img src = "../website/images/coding_img.jpg" alt="" class="img-fluid">
                     </div>
-                    <div class = "col-lg-3  d-flex align-items-center">
+                    <div class = "col-lg-3 col-md-4 col-sm-12 d-flex align-items-center">
                         <p>
-                           ColorIT, a small Danish company, conceives and designs IT systems for particular customers.
+                           ColorIT, a small Danish company, conceives and designs IT systems for particular customers. Its focus is more on practical skills than computer science fundamentals.
+                            As Joseph Weizenbaum said "The computer programmer is a creator of universes for which he alone is the lawgiver. No playwright, no stage director, no emperor, however powerful,
+                            has ever exercised such absolute authority to arrange a stage or field of battle and to command such unswervingly dutiful actors or troops.”
+
                         </p>
                     </div>
 
@@ -78,11 +81,11 @@
             </div>
           <div class="carousel-item" >
               <div class="row d-flex justify-content-center">
-                  <div class = "col-lg-3">
+                  <div class = "col-lg-3 col-md-8 col-sm-12">
                       <h3  class="text-center">History</h3>
                       <img src="../website/images/img2.jpg" alt="Coding" class = "img-fluid">
                   </div>
-                  <div class = "col-lg-3  d-flex align-items-center">
+                  <div class = "col-lg-3 col-md-4 col-sm-12 d-flex align-items-center">
                       <p>
                           All began in 2010, when two people met and made history. <span class="jacky">Jack Turquoise</span> and <span class="ronald">Ronald Green</span>, who worked together for several years,
                           came to the conclusion that they are going to build a company from the ground. Passionated about computers and software, Jack and Ronald
@@ -95,13 +98,16 @@
 
           <div class="carousel-item">
                   <div class = "row d-flex justify-content-center" >
-                      <div class = "col-lg-3 ">
+                      <div class = "col-lg-3 col-md-8 col-sm-12">
                           <h3 class="text-center">Projects & Team</h3>
                           <img src = "../website/images/img3.jpg" alt = "Projects and team" class="img-fluid">
                       </div>
-                      <div class = "col-lg-3 d-flex align-items-center">
+                      <div class = "col-lg-3 d-flex align-items-center col-md-4 col-sm-12">
                           <p>
-                              
+                              It is said that a close and strong team is the foundation of a high-performance business. Also, a good cooperation and a good team ethic are accountable
+                              for a successful business. ColorIT team follows a set of principles: good communication, focus on goals, equal contribution and diversification.
+                              Therefore, the team is coordinating both Waterfall and Scrum projects for certain customers. These projects comprise entertainment, artificial intelligence
+                              games and simulation, personal finance projects.
 
                           </p>
                       </div>
