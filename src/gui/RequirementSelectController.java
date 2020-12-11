@@ -2,12 +2,12 @@ package gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.RequirementList;
+
+import java.util.Optional;
 
 public class RequirementSelectController {
 
@@ -77,13 +77,36 @@ public class RequirementSelectController {
         errorLabel.setText("");
         try {
             RequirementViewModel selectedItem = requirementTable.getSelectionModel().getSelectedItem();
-            model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
-                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
-                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+            viewState.setSelectedRequirement(selectedItem.getIdProperty().getValue());
+            boolean remove = confirmation();
+            if(remove) {
+                try {
+                    model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+                    errorLabel.setText("Team Member successfully unassigned!");
+                }
+                catch (IllegalArgumentException e){
+                    errorLabel.setText("You cannot unnasign the responsible team member!");
+                }
+            }
         } catch (Exception e) {
             errorLabel.setText("Select a Requirement first!");
 
         }
+    }
+
+    public boolean confirmation(){
+        int index = requirementTable.getSelectionModel().getSelectedIndex();
+        RequirementViewModel selectedItem = requirementTable.getItems().get(index);
+        if (index >= requirementTable.getItems().size()) {
+            return false;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Unnassigning team member - id: " + viewState.getSelectedTeamMember());
+        Optional<ButtonType> result = alert.showAndWait();
+        return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
 
 }

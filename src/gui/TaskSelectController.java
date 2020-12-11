@@ -2,9 +2,7 @@ package gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.IProjectManagementModel;
 import model.ProjectList;
@@ -12,6 +10,7 @@ import model.Task;
 import model.TaskList;
 
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 public class TaskSelectController {
 
@@ -97,10 +96,19 @@ public class TaskSelectController {
         try {
             TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
             viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
-            model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
-                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
-                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
-                    model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+            boolean remove = confirmation();
+            if(remove){
+                try {
+                    model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
+                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+                    errorLabel.setText("Team Member successfully unassigned!");
+                }
+                catch (IllegalArgumentException e){
+                    errorLabel.setText("You cannot unnassign the responsible team member!");
+                }
+            }
         } catch (Exception e) {
             errorLabel.setText("Select a task first!");
 
@@ -112,4 +120,16 @@ public class TaskSelectController {
     }
 
 
+    public boolean confirmation(){
+        int index = taskTable.getSelectionModel().getSelectedIndex();
+        TaskViewModel selectedItem = taskTable.getItems().get(index);
+        if (index >= taskTable.getItems().size()) {
+            return false;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Unnassigning team member - id: " + viewState.getSelectedTeamMember());
+        Optional<ButtonType> result = alert.showAndWait();
+        return (result.isPresent()) && (result.get() == ButtonType.OK);
+    }
 }
