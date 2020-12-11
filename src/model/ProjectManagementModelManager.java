@@ -75,7 +75,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
             new Date(19, 4, 2021),
             5,
             projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-       /* projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
+        /* projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",2));
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
         projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",3));
@@ -84,8 +84,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",1));
         project.assignScrumMaster(m1);
         projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",9));
-
-*/
+        */
 
     }
 
@@ -95,9 +94,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     /**
      * creates a new string of length 8 from letters of the alphabet picked randomly
-     * */
-    private String generateProjectId() {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+     **/
+    public static String generateProjectId() {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         String id = "";
         Random random = new Random();
         for(int i = 0; i < 9; i++)
@@ -211,8 +210,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      * @return the requirementList of the project
      * */
     @Override public RequirementList getRequirementList(Project project) {
-        /*if(!projectList.contains(project))
-            throw new IllegalArgumentException("Project not found!");*/
+        if(!projectList.contains(project))
+            throw new IllegalArgumentException("Project not found!");
         return project.getProjectRequirementList();
     }
 
@@ -223,10 +222,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      * @return the taskList of the requirement
      * */
     @Override public TaskList getTaskList(Project project, Requirement requirement) {
-        /*if(!project.getProjectRequirementList().contains(requirement))
+        if(!project.getProjectRequirementList().contains(requirement))
             throw new IllegalArgumentException("Requirement not found!");
-        else*/
-            return requirement.getTaskList();
+        return requirement.getTaskList();
     }
 
     /**

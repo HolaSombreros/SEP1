@@ -1,0 +1,15 @@
+table {
+    margin-top: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #ffebd1;
+}
+
+tr:nth-child(odd) {
+    background-color: #f8ffd1;
+}
+
+th {
+    background-color: #ffdcd1;
+}

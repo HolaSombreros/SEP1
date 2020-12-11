@@ -43,7 +43,7 @@ public class AddProjectController
     public void reset()
     {
         nameInput.setText("");
-        IDInput.setText("");
+        IDInput.setText(ProjectManagementModelManager.generateProjectId());
         startingDateInput.getEditor().clear();
         deadlineInput.getEditor().clear();
         errorLabel.setText("");
