@@ -62,6 +62,37 @@ function createProjectTable() {
     }
 }
 
-function createRequirementTable() {
-
+function readXML()
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function ()
+  {
+    if (this.readyState == 4 && this.status == 200)
+    {
+      showData(this);
+    }
+  };
+  xhttp.open("GET", "../../src/files/model.xml", true);
+  xhttp.send();
 }
+
+function createRequirementTable(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var x = xmlDoc.getElementsByTagName("project");
+    for (i=0;i<x.lenght;i++)
+      if (x[i].getElementsByTagName("id") == some function to input id)
+        var project = x[i];
+    var listLenght = project.length;
+    var tableReq = "<table><th>Requirement Id</th><th>Type</th><th>Deadline</th><th>Status</th>";
+    for (i = 0 ; i <x.length; i++) {
+        tableReq += "<tr><td>" + getRequirementId(i) + "</td>";
+        tableReq += "<td>" + getRequirementType(i) + "</td>";
+        tableReq += "<td>" + getRequirementDeadline(i) + "</td>";
+        tableReq += "<td>" + getRequirementStatus(i) "</td></tr>";
+    }
+    table2 += "</table>"
+    document.getElementById("tableReq").innerHTML = table2:
+}
+
+readXML();
