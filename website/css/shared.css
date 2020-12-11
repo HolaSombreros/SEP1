@@ -39,8 +39,17 @@ h4 { font-size: 1.8em; }
 h5 { font-size: 1.5em; }
 h6 { font-size: 1.3em; }
 
+.nav-active {
+    color: #000000 !important;
+}
 
+.nav-link {
+    color: #afafaf !important;
+}
 
+.nav-link:hover {
+    color: #000000 !important;
+}
 
 
 
@@ -63,16 +72,11 @@ h6 { font-size: 1.3em; }
      border-bottom: 1px solid var(--borderColor);
  }
  nav ul a {
-     color: var(--textColor) !important;
      text-transform: uppercase;
      font-weight: bold;
      margin: 0 18px;
      letter-spacing: 2px;
      transition: 0.3s ease;
- }
-
- nav ul a:hover {
-     color: var(--buttonColor) !important;
  }
 
  nav button:focus {
