@@ -2,7 +2,7 @@ package gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import Mediator.IProjectManagementModel;
+import mediator.IProjectManagementModel;
 import model.Project;
 
 

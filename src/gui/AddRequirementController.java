@@ -1,6 +1,6 @@
 package gui;
 
-import Mediator.IProjectManagementModel;
+import mediator.IProjectManagementModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;

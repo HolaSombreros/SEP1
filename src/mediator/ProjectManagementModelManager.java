@@ -1,4 +1,4 @@
-package Mediator;
+package mediator;
 
 import connections.IFileConnection;
 import connections.XmlFile;

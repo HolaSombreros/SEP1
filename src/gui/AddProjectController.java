@@ -1,7 +1,7 @@
 package gui;
 
-import Mediator.IProjectManagementModel;
-import Mediator.ProjectManagementModelManager;
+import mediator.IProjectManagementModel;
+import mediator.ProjectManagementModelManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
