@@ -44,8 +44,6 @@ public class TeamMembersViewController {
         productivityColumn.setCellValueFactory(cellData -> cellData.getValue().getProductivityProperty());
         taskColumn.setCellValueFactory(cellData -> cellData.getValue().getTaskProperty());
         teamMemberTable.setItems(viewModel.getList());
-        System.out.println(model.getTeam().size());
-
         reset();
     }
 
