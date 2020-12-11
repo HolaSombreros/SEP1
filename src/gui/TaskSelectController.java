@@ -66,7 +66,7 @@ public class TaskSelectController {
 
 
 
-    public void assignButtonPressed() throws FileNotFoundException {
+    public void assignButtonPressed()  {
 
 
         TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
@@ -106,11 +106,11 @@ public class TaskSelectController {
                     errorLabel.setText("Team Member successfully unassigned!");
                 }
                 catch (IllegalArgumentException e){
-                    errorLabel.setText("You cannot unnassign the responsible team member!");
+                    errorLabel.setText(e.getMessage());
                 }
             }
         } catch (Exception e) {
-            errorLabel.setText("Select a task first!");
+            errorLabel.setText(e.getMessage());
 
         }
     }

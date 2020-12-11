@@ -6,7 +6,7 @@
       <status>Ended</status>
       <methodology>Waterfall</methodology>
       <startingdate>10/12/2020</startingdate>
-      <deadline>10/12/2021</deadline>
+      <deadline>16/12/2021</deadline>
       <scrummaster>
          <firstname>Pasta</firstname>
          <lastname>Pizza</lastname>
@@ -150,14 +150,6 @@
                            <hoursworked>5.0</hoursworked>
                         </timeregistration>
                      </teammember>
-                     <teammember>
-                        <firstname>Giorno</firstname>
-                        <lastname>Giovanna</lastname>
-                        <id>2</id>
-                        <timeregistration>
-                           <hoursworked>7.0</hoursworked>
-                        </timeregistration>
-                     </teammember>
                   </teammemberlist>
                </task>
                <task>
@@ -188,6 +180,22 @@
                            <hoursworked>6.0</hoursworked>
                         </timeregistration>
                      </teammember>
+                  </teammemberlist>
+               </task>
+               <task>
+                  <id>3</id>
+                  <title>ghjkl</title>
+                  <estimatedtime>8.0</estimatedtime>
+                  <startingdate>10/12/2020</startingdate>
+                  <deadline>10/12/2021</deadline>
+                  <status>Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>1</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
                   </teammemberlist>
                </task>
             </tasklist>

@@ -68,13 +68,14 @@ public class ProjectSelectController {
                     errorLabel.setText("Team Member successfully unassigned!");
                }
                catch (IllegalArgumentException e){
-                       errorLabel.setText("You cannot unassign a team member with a special role!");
+                      // errorLabel.setText("You cannot unassign a team member with a special role!");
+                       errorLabel.setText(e.getMessage());
                }
             }
         }
         catch (Exception e){
-
-            errorLabel.setText("Select a Project First!");
+            errorLabel.setText(e.getMessage());
+            //errorLabel.setText("Select a Project First!");
            // e.printStackTrace();
         }
 
