@@ -42,12 +42,14 @@ public class XmlFile implements IFileConnection {
         }
         Scanner sc = new Scanner(file);
         IProjectManagementModel model = new ProjectManagementModelManager();
+        TeamMemberList teamMemberList = model.getTeam();
         
         String projectId = "";
         String title = "";
         Methodology methodology = null;
         Date startingDate = null;
         Date deadline = null;
+        String temp[] = null; // for the dates
         Status status = null;
         double estimatedTime = 0;
         double hoursWorked = 0;
@@ -58,7 +60,6 @@ public class XmlFile implements IFileConnection {
         String lastName;
         int id;
         TeamMember teamMember;
-        String temp[] = null; // for the dates
         Project project = null;
         Requirement requirement = null;
         Task task = null;
@@ -134,7 +135,7 @@ public class XmlFile implements IFileConnection {
                     line = line.replace("<id>", "");
                     line = line.replace("</id>", "");
                     id = Integer.parseInt(line.trim());
-                    teamMember = new TeamMember(firstName, lastName, id);
+                    teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                     project.assignScrumMaster(teamMember);
     
                     sc.nextLine();
@@ -159,7 +160,7 @@ public class XmlFile implements IFileConnection {
                     line = line.replace("<id>", "");
                     line = line.replace("</id>", "");
                     id = Integer.parseInt(line.trim());
-                    teamMember = new TeamMember(firstName, lastName, id);
+                    teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                     project.assignProductOwner(teamMember);
     
                     sc.nextLine();
@@ -186,7 +187,7 @@ public class XmlFile implements IFileConnection {
                         line = line.replace("<id>", "");
                         line = line.replace("</id>", "");
                         id = Integer.parseInt(line.trim());
-                        teamMember = new TeamMember(firstName, lastName, id);
+                        teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                         project.assignTeamMember(teamMember);
             
                         sc.nextLine();
@@ -310,7 +311,7 @@ public class XmlFile implements IFileConnection {
                             line = line.replace("<id>", "");
                             line = line.replace("</id>", "");
                             id = Integer.parseInt(line.trim());
-                            teamMember = new TeamMember(firstName, lastName, id);
+                            teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                             requirement.assignResponsibleTeamMember(teamMember);
     
                             sc.nextLine();
@@ -338,7 +339,7 @@ public class XmlFile implements IFileConnection {
                                 line = line.replace("<id>", "");
                                 line = line.replace("</id>", "");
                                 id = Integer.parseInt(line.trim());
-                                teamMember = new TeamMember(firstName, lastName, id);
+                                teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                                 requirement.assignTeamMember(teamMember);
 
                                 sc.nextLine();
@@ -428,7 +429,7 @@ public class XmlFile implements IFileConnection {
                                     line = line.replace("<id>", "");
                                     line = line.replace("</id>", "");
                                     id = Integer.parseInt(line.trim());
-                                    teamMember = new TeamMember(firstName, lastName, id);
+                                    teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                                     task.assignResponsibleTeamMember(teamMember);
         
                                     sc.nextLine();
@@ -457,7 +458,7 @@ public class XmlFile implements IFileConnection {
                                             line = line.replace("<id>", "");
                                             line = line.replace("</id>", "");
                                             id = Integer.parseInt(line.trim());
-                                            teamMember = new TeamMember(firstName, lastName, id);
+                                            teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
                                             task.assignTeamMember(teamMember);
                                             sc.nextLine();
                                             line = sc.nextLine();

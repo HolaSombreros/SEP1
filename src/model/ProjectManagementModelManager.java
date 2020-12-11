@@ -14,11 +14,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     private ProjectList projectList;
     private ArrayList<IFileConnection> fileConnections;
 
-    private TeamMemberList team = addTeamMembersToTheSystem();
+    private TeamMemberList team;//addTeamMembersToTheSystem();
     
     public ProjectManagementModelManager() throws FileNotFoundException {
         this.fileConnections = new ArrayList<>();
         this.projectList = new ProjectList();
+        this.team = addTeamMembersToTheSystem();
         
         //createDummyData();
         fileConnections.add(new XmlFile("model"));
@@ -396,7 +397,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                                 System.out.println("Total: " + total);
                             }
         if(total != 0)
-            return teamMember.getTimeRegistration().getHoursWorked()*100/total;
+            return Math.round(teamMember.getTimeRegistration().getHoursWorked()*100/total);
         else
             return 0;
     }

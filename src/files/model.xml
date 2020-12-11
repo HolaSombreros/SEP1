@@ -8,8 +8,20 @@
       <startingdate>10/12/2020</startingdate>
       <deadline>10/12/2021</deadline>
       <scrummaster>
+         <firstname>Pasta</firstname>
+         <lastname>Pizza</lastname>
+         <id>3</id>
+         <timeregistration>
+            <hoursworked>6.0</hoursworked>
+         </timeregistration>
       </scrummaster>
       <productowner>
+         <firstname>Giorno</firstname>
+         <lastname>Giovanna</lastname>
+         <id>2</id>
+         <timeregistration>
+            <hoursworked>7.0</hoursworked>
+         </timeregistration>
       </productowner>
       <teammemberlist>
          <teammember>
@@ -17,7 +29,7 @@
             <lastname>Joestar</lastname>
             <id>1</id>
             <timeregistration>
-               <hoursworked>0.0</hoursworked>
+               <hoursworked>5.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
@@ -25,7 +37,7 @@
             <lastname>Giovanna</lastname>
             <id>2</id>
             <timeregistration>
-               <hoursworked>0.0</hoursworked>
+               <hoursworked>7.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
@@ -33,21 +45,13 @@
             <lastname>Pizza</lastname>
             <id>3</id>
             <timeregistration>
-               <hoursworked>0.0</hoursworked>
-            </timeregistration>
-         </teammember>
-         <teammember>
-            <firstname>Vlad</firstname>
-            <lastname>Dirlea</lastname>
-            <id>5</id>
-            <timeregistration>
-               <hoursworked>0.0</hoursworked>
+               <hoursworked>6.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
             <firstname>Stefania</firstname>
             <lastname>Tomuta</lastname>
-            <id>6</id>
+            <id>5</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
@@ -55,14 +59,22 @@
          <teammember>
             <firstname>Adriana</firstname>
             <lastname>Grecea</lastname>
+            <id>6</id>
+            <timeregistration>
+               <hoursworked>4.0</hoursworked>
+            </timeregistration>
+         </teammember>
+         <teammember>
+            <firstname>Morten</firstname>
+            <lastname>Hansen</lastname>
             <id>7</id>
             <timeregistration>
                <hoursworked>0.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
-            <firstname>Morten</firstname>
-            <lastname>Hansen</lastname>
+            <firstname>Maria</firstname>
+            <lastname>Magdalena</lastname>
             <id>8</id>
             <timeregistration>
                <hoursworked>5.0</hoursworked>
@@ -74,10 +86,10 @@
             <id>1</id>
             <userstory>Make a GUI so that some stuff</userstory>
             <estimatedtime>100.0</estimatedtime>
-            <hoursworked>0.0</hoursworked>
+            <hoursworked>18.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
-            <status>Not Started</status>
+            <status>Started</status>
             <type>Non Functional</type>
             <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
@@ -89,7 +101,7 @@
                   <lastname>Joestar</lastname>
                   <id>1</id>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>5.0</hoursworked>
                   </timeregistration>
                </teammember>
                <teammember>
@@ -97,7 +109,7 @@
                   <lastname>Giovanna</lastname>
                   <id>2</id>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>7.0</hoursworked>
                   </timeregistration>
                </teammember>
                <teammember>
@@ -105,7 +117,7 @@
                   <lastname>Pizza</lastname>
                   <id>3</id>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>6.0</hoursworked>
                   </timeregistration>
                </teammember>
             </teammemberlist>
@@ -118,10 +130,16 @@
                   <deadline>24/12/2020</deadline>
                   <status>Started</status>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>12.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>1</relatedrequirement>
                   <responsibleteammember>
+                     <firstname>Joseph</firstname>
+                     <lastname>Joestar</lastname>
+                     <id>1</id>
+                     <timeregistration>
+                        <hoursworked>5.0</hoursworked>
+                     </timeregistration>
                   </responsibleteammember>
                   <teammemberlist>
                      <teammember>
@@ -129,7 +147,7 @@
                         <lastname>Joestar</lastname>
                         <id>1</id>
                         <timeregistration>
-                           <hoursworked>0.0</hoursworked>
+                           <hoursworked>5.0</hoursworked>
                         </timeregistration>
                      </teammember>
                      <teammember>
@@ -137,7 +155,7 @@
                         <lastname>Giovanna</lastname>
                         <id>2</id>
                         <timeregistration>
-                           <hoursworked>0.0</hoursworked>
+                           <hoursworked>7.0</hoursworked>
                         </timeregistration>
                      </teammember>
                   </teammemberlist>
@@ -150,10 +168,16 @@
                   <deadline>10/12/2021</deadline>
                   <status>Started</status>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>6.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>1</relatedrequirement>
                   <responsibleteammember>
+                     <firstname>Pasta</firstname>
+                     <lastname>Pizza</lastname>
+                     <id>3</id>
+                     <timeregistration>
+                        <hoursworked>6.0</hoursworked>
+                     </timeregistration>
                   </responsibleteammember>
                   <teammemberlist>
                      <teammember>
@@ -161,7 +185,7 @@
                         <lastname>Pizza</lastname>
                         <id>3</id>
                         <timeregistration>
-                           <hoursworked>0.0</hoursworked>
+                           <hoursworked>6.0</hoursworked>
                         </timeregistration>
                      </teammember>
                   </teammemberlist>
@@ -172,7 +196,7 @@
             <id>2</id>
             <userstory>Make a website that works with the GUI</userstory>
             <estimatedtime>20.0</estimatedtime>
-            <hoursworked>0.0</hoursworked>
+            <hoursworked>4.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
             <status>Started</status>
@@ -180,20 +204,18 @@
             <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
             <responsibleteammember>
+               <firstname>Stefania</firstname>
+               <lastname>Tomuta</lastname>
+               <id>5</id>
+               <timeregistration>
+                  <hoursworked>0.0</hoursworked>
+               </timeregistration>
             </responsibleteammember>
             <teammemberlist>
                <teammember>
-                  <firstname>Vlad</firstname>
-                  <lastname>Dirlea</lastname>
-                  <id>5</id>
-                  <timeregistration>
-                     <hoursworked>0.0</hoursworked>
-                  </timeregistration>
-               </teammember>
-               <teammember>
                   <firstname>Stefania</firstname>
                   <lastname>Tomuta</lastname>
-                  <id>6</id>
+                  <id>5</id>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
@@ -201,14 +223,22 @@
                <teammember>
                   <firstname>Adriana</firstname>
                   <lastname>Grecea</lastname>
+                  <id>6</id>
+                  <timeregistration>
+                     <hoursworked>4.0</hoursworked>
+                  </timeregistration>
+               </teammember>
+               <teammember>
+                  <firstname>Morten</firstname>
+                  <lastname>Hansen</lastname>
                   <id>7</id>
                   <timeregistration>
                      <hoursworked>0.0</hoursworked>
                   </timeregistration>
                </teammember>
                <teammember>
-                  <firstname>Morten</firstname>
-                  <lastname>Hansen</lastname>
+                  <firstname>Maria</firstname>
+                  <lastname>Magdalena</lastname>
                   <id>8</id>
                   <timeregistration>
                      <hoursworked>5.0</hoursworked>
@@ -240,12 +270,20 @@
                   <deadline>10/12/2021</deadline>
                   <status>Started</status>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>3.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>2</relatedrequirement>
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
+                     <teammember>
+                        <firstname>Adriana</firstname>
+                        <lastname>Grecea</lastname>
+                        <id>6</id>
+                        <timeregistration>
+                           <hoursworked>4.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
                   </teammemberlist>
                </task>
                <task>
@@ -256,12 +294,26 @@
                   <deadline>10/12/2021</deadline>
                   <status>Not Started</status>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>1.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>2</relatedrequirement>
                   <responsibleteammember>
+                     <firstname>Adriana</firstname>
+                     <lastname>Grecea</lastname>
+                     <id>6</id>
+                     <timeregistration>
+                        <hoursworked>4.0</hoursworked>
+                     </timeregistration>
                   </responsibleteammember>
                   <teammemberlist>
+                     <teammember>
+                        <firstname>Adriana</firstname>
+                        <lastname>Grecea</lastname>
+                        <id>6</id>
+                        <timeregistration>
+                           <hoursworked>4.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
                   </teammemberlist>
                </task>
             </tasklist>
