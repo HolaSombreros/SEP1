@@ -73,7 +73,7 @@ function getRequirementStatus(i,id) {
     return req[i].childNodes[3].childNodes[0].nodeValue;
 }
 
-//createProjectTable();
+createProjectTable();
 function createProjectTable() {
     let parser = new DOMParser();
     let XMLDoc = parser.parseFromString(text, "text/xml");
@@ -86,7 +86,7 @@ function createProjectTable() {
     document.getElementById("table").innerHTML = tablePrj;
 }
 
-createRequirementTable(1)
+//createRequirementTable(1)
 function createRequirementTable(id) {
     let parser = new DOMParser();
     let XMLDoc = parser.parseFromString(text, "text/xml");

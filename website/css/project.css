@@ -1,5 +1,9 @@
+h2 {
+    margin-bottom: 50px;
+}
+
 table {
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 tr:nth-child(even) {
@@ -12,4 +16,28 @@ tr:nth-child(odd) {
 
 th {
     background-color: #ffdcd1;
+}
+
+.search-container {
+    float: right;
+}
+
+.search-container input {
+    padding: 8px;
+    width: 200px;
+    background-color: #e7e7e7;
+    border: none;
+    outline: none;
+}
+
+.search-container button {
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: #e7e7e7;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #d8d8d8;
 }
