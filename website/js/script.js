@@ -73,7 +73,7 @@ function getRequirementStatus(i,id) {
     return req[i].childNodes[3].childNodes[0].nodeValue;
 }
 
-createProjectTable();
+//createProjectTable();
 function createProjectTable() {
     let parser = new DOMParser();
     let XMLDoc = parser.parseFromString(text, "text/xml");
@@ -86,7 +86,7 @@ function createProjectTable() {
     document.getElementById("table").innerHTML = tablePrj;
 }
 
-createRequirementTable(id)
+createRequirementTable(1)
 function createRequirementTable(id) {
     let parser = new DOMParser();
     let XMLDoc = parser.parseFromString(text, "text/xml");
@@ -95,7 +95,8 @@ function createRequirementTable(id) {
             if(x[j].childNodes[0].childNodes[0].nodeValue == id)
                 var project = x[j];
     var y = project.getElementsByTagName("requirement");
-    var tableReq = "<div><p></p><p></p><p></p></div><table><th>Requirement Id</th><th>Type</th><th>Deadline</th><th>Status</th>";
+    var tableReq = "<div><p>Project Id: "+ id +"</p><p>Project Name: "+project.childNodes[1].childNodes[0].nodeValue+"</p><p>Project Status: "
+                  + project.childNodes[2].childNodes[0].nodeValue +"</p></div><table><th>Requirement Id</th><th>Type</th><th>Deadline</th><th>Status</th>";
     for (var i = 0 ; i <y.length; i++) {
         tableReq += "<tr><td>" + getRequirementId(i,id) + "</td>";
         tableReq += "<td>" + getRequirementType(i,id) + "</td>";
