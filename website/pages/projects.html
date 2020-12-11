@@ -38,30 +38,16 @@
     </nav>
 
 <!-- Main Content: -->
-    <div class="container">
-        <h2 class="text-center">Projects</h2>
-        <div class="table-responsive">
-            <table class="table ">
-                <tr>
-                    <th>Project Id</th>
-                    <th>Title</th>
-                    <th>Deadline</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>PMSColourIT</td>
-                    <td>Project Management System for Colour IT</td>
-                    <td>10/12/2021</td>
-                    <td>Ended</td>
-                </tr>
-                <tr>
-                    <td>PMSColourIT</td>
-                    <td>Project Management System for Colour IT</td>
-                    <td>10/12/2021</td>
-                    <td>Ended</td>
-                </tr>
-            </table>
-        </div>
+<div class="container">
+    <h2 class="text-center">Projects</h2>
+    <div class="search-container">
+        <input type="text" placeholder="Search by Id...">
+        <button type="submit"><i class="fa fa-search"></i></button>
     </div>
+    <div class="table-responsive">
+        <table id="table" class="table">
+        </table>
+    </div>
+</div>
 </body>
 </html>
