@@ -1,9 +1,8 @@
 var text = "<projectlist><project><id>1</id><title>Hooga</title><status>Not Started</status></project>" + 
                         "<project><id>3</id><title>Booga</title><status>Started</status></project></projectlist>";
 
-console.log(displayProjectTitle(0));
-console.log(displayProjectTitle(1));
-
+console.log(getProjectTitle(0));
+console.log(getProjectTitle(1));
 
 function getProjectId(i) {
     let parser = new DOMParser();
