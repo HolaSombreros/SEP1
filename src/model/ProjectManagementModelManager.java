@@ -289,6 +289,25 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         return relatedProjects;
     }
 
+    /**
+     * the method searches through all the started projects, requirements and tasks and if the team member
+     * is working there, the counter of the working tasks will increase
+     * @param teamMember the selected team member
+     * @return the number of tasks the member is working on
+     */
+    public int getWorkingTasks(TeamMember teamMember)
+    {
+        int total=0;
+        for (Project project : projectList.getProjects())
+            if (project.getTeamMemberList().contains(teamMember) && project.getStatus()==Status.STARTED)
+                for (Requirement requirement : project.getProjectRequirementList().getRequirements())
+                    if (requirement.getTeamMemberList().contains(teamMember) && requirement.getStatus() == RequirementStatus.STARTED)
+                        for (Task task : requirement.getTaskList().getTasks())
+                            if (task.getTeamMemberList().contains(teamMember) && task.getStatus() == Status.STARTED)
+                                total++;
+        return total;
+    }
+
 
     /**
      * @param teamMember a given teamMember selected by the user
@@ -303,44 +322,9 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      *                the teamMember with the maximum number value is returned
      *
      * */
-    
-    /*
-    loop through every task the person is in (project -> requirement -> task -> teamMemberList)
-    loop through every person in the task
-    add the team members to a HashMap (if needed) where ™ is key and HW is value.
-    compare teamMember’s hoursWorked with X’s hoursWorked.
-    if X’s hoursWorked is higher than ™’s, add ™’s hoursWorked to HashMap.
-    if X’s hoursWorked is lower than ™’s, add X’s hoursWorked to HashMap.
-    
-    loop through HashMap and sort values, return ™ object with largest value.
-     */
-    @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember) {
-        /*HashMap<TeamMember, Integer> frequentTeamMembers = new HashMap<>();
-        for(Project project : projectList.getProjects())
-            if(project.getTeamMemberList().getTeamMember(teamMember) != null) {
-                for (Requirement requirement : project.getProjectRequirementList().getRequirements())
-                    if (requirement.getTeamMemberList().getTeamMember(teamMember) != null) {
-                        for (Task task : requirement.getTaskList().getTasks())
-                            if (task.getTeamMemberList().getTeamMember(teamMember) != null) {
-                                for (TeamMember member : task.getTeamMemberList().getTeamMembers()){
-                                    if(!frequentTeamMembers.containsKey(member) && !member.equals(teamMember))
-                                        frequentTeamMembers.put(member,1);
-                                    else
-                                        frequentTeamMembers.put(member, frequentTeamMembers.get(member) + 1);
-                            }
-                        }
-                }
-            }
-        int max = 0;
-        for(int i : frequentTeamMembers.values())
-            if(max < i)
-                max = i;
-        for(TeamMember i : frequentTeamMembers.keySet())
-            if(i.equals(frequentTeamMembers.containsValue(max)))
-                return i;
-        return null;
 
-         */
+    @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember)
+    {
         int[] frequentTeamMembers = new int[getTeam().size()];
         for(int i = 1; i < getTeam().size(); i++)
             frequentTeamMembers[i] = 0;
@@ -357,14 +341,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                                 for (TeamMember member : task.getTeamMemberList().getTeamMembers())
                                     if(!member.equals(teamMember)) {
                                         frequentTeamMembers[member.getId()]++;
-                                        //System.out.println(member.getFullName());
                                     }
         int max = 0,p = 0 ;
         for(int i = 1; i < getTeam().size(); i++)
             if(frequentTeamMembers[i] > max && i != getTeam().getTeamMember(teamMember).getId()){
                 max = frequentTeamMembers[i];
                 p = i;
-              //  System.out.println(i);
             }
 
         if(max != 0)
@@ -391,8 +373,6 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                         for (Task task : requirement.getTaskList().getTasks())
                             if (task.getTeamMemberList().contains(teamMember)) {
                                 total += task.getEstimatedTime();
-                                System.out.println("Team Member: " + teamMember.getFullName() + " | " + teamMember.getTimeRegistration().getHoursWorked() + " hrs");
-                                System.out.println("Total: " + total);
                             }
         if(total != 0)
             return Math.round(teamMember.getTimeRegistration().getHoursWorked()*100/total);
@@ -414,19 +394,13 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
         File file = new File("src/files/teamMembers.txt");
         Scanner input = new Scanner(file);
 
-        int id = 1;
         while (input.hasNext()){
             String line = input.nextLine();
             String element[] = line.split(" ");
             TeamMember teamMember = new TeamMember(element[1],element[2],Integer.parseInt(element[0]));
             team.add(teamMember);
-            
-            // teamMember.getTimeRegistration().setHoursWorked(); // FIX THIS SOMEHOW
-            // instead of making new TeamMember when loading, just change their values? Have this method called before loading.
         }
         input.close();
-        //System.out.println(team.getByIndex(0).getFullName());
-       // System.out.println(team.size());
         return team;
     }
 }

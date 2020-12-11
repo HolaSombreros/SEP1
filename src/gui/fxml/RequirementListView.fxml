@@ -136,7 +136,7 @@
                         <Font size="13.0" />
                     </font>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#removeRequirementButtonPressed" text="Remove Requriement">
+                <Button mnemonicParsing="false" onAction="#removeRequirementButtonPressed" text="Remove Requirement">
                     <HBox.margin>
                         <Insets right="20.0" />
                     </HBox.margin>

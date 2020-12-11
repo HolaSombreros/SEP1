@@ -26,6 +26,7 @@ public interface IProjectManagementModel
   TeamMemberList getTeamMemberList(Project Project, Requirement requirement);
   TeamMemberList getTeamMemberList(Project Project, Requirement requirement, Task task);
   ArrayList<Project> getRelatedProjects(TeamMember teamMember);
+  int getWorkingTasks(TeamMember teamMember);
   TeamMember getMostFrequentTeamMember(TeamMember teamMember) throws FileNotFoundException;
   double getProductivity(TeamMember teamMember);
   TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException;
