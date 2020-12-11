@@ -56,9 +56,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="84.0" prefWidth="800.0" spacing="50.0">
+            <HBox alignment="CENTER" prefHeight="84.0" prefWidth="800.0" spacing="40.0">
                <children>
-                  <Button fx:id="addNewProjectButton" mnemonicParsing="false" onAction="#addProjectButtonPressed" prefHeight="30.0" prefWidth="160.0" text="Add New Project">
+                  <Button fx:id="addNewProjectButton" mnemonicParsing="false" onAction="#addProjectButtonPressed" prefHeight="30.0" prefWidth="131.0" text="Add New Project">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -68,7 +68,12 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="assignTeamMembersButton" mnemonicParsing="false" onAction="#assignTeamMembersButtonPressed" prefHeight="30.0" prefWidth="162.0" text=" Team Members">
+                  <Button mnemonicParsing="false" onAction="#viewRequirementsButtonPressed" prefHeight="31.0" prefWidth="150.0" text="View Requirements">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="assignTeamMembersButton" mnemonicParsing="false" onAction="#assignTeamMembersButtonPressed" prefHeight="30.0" prefWidth="121.0" text=" Team Members">
                      <font>
                         <Font size="14.0" />
                      </font>

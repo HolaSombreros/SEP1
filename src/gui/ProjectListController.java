@@ -139,4 +139,19 @@ public class ProjectListController
             errorLabel.setText(e.getMessage());
         }
     }
+    @FXML public void viewRequirementsButtonPressed()
+    {
+        try
+        {
+            ProjectViewModel selectedItem = projectListTable
+                    .getSelectionModel().getSelectedItem();
+
+            viewState.setSelectedProject(selectedItem.getIDProperty().get());
+            viewHandler.openView("requirementList");
+        }
+        catch (Exception e)
+        {
+            errorLabel.setText("Select a project first");
+        }
+    }
 }
