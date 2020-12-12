@@ -273,21 +273,6 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     /**
-     * searches through all the projects in the projectList and if the teamMemberList related
-     * to the project contains the teamMember adds the project to the new list that is then returned
-     *
-     * @param teamMember - a given teamMember selected by the user
-     * @return an ArrayList of related projects that contain the teamMember
-     * */
-    @Override public ArrayList<Project> getRelatedProjects(TeamMember teamMember) {
-        ArrayList<Project> relatedProjects = new ArrayList<>();
-        for(int i = 0; i < projectList.size(); i++)
-            if(projectList.getProject(i).getTeamMemberList().contains(teamMember))
-                relatedProjects.add(projectList.getProject(i));
-        return relatedProjects;
-    }
-
-    /**
      * the method searches through all the started projects, requirements and tasks and if the team member
      * is working there, the counter of the working tasks will increase
      * @param teamMember the selected team member
