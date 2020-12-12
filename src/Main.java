@@ -1,4 +1,4 @@
-import gui.ProjectManagementApp;
+import view.ProjectManagementApp;
 import javafx.application.Application;
 
 public class Main {

@@ -1,5 +1,7 @@
 package connections;
 
+import mediator.IProjectManagementModel;
+import mediator.ProjectManagementModelManager;
 import model.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +11,7 @@ import java.util.Scanner;
 
 public class XmlFile implements IFileConnection {
     private String fileName;
-    private String filePath = "src/files/";
+    private String filePath = "src/connections/";
     private static final String FILE_EXTENSION = "xml";
     
     public XmlFile(String fileName) {
