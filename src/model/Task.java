@@ -221,7 +221,7 @@ public class Task {
 
     /**
      * Standard overridden toString() method that displays all object data.
-     * @return A string representation of the TaskList object.
+     * @return A string representation of the Task object.
      */
     @Override public String toString() {
         String str = String.format("Task #%d: ", getId());

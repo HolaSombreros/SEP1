@@ -16,11 +16,11 @@
          </timeregistration>
       </scrummaster>
       <productowner>
-         <firstname>Giorno</firstname>
-         <lastname>Giovanna</lastname>
-         <id>2</id>
+         <firstname>Pasta</firstname>
+         <lastname>Pizza</lastname>
+         <id>3</id>
          <timeregistration>
-            <hoursworked>7.0</hoursworked>
+            <hoursworked>6.0</hoursworked>
          </timeregistration>
       </productowner>
       <teammemberlist>

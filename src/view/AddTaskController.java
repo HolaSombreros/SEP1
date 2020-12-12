@@ -21,12 +21,13 @@ public class AddTaskController {
     @FXML private DatePicker startingDateInput;
     @FXML private DatePicker deadlineInput;
     @FXML private TextField estimatedHoursInput;
-    @FXML private Label errorLabel;
     
+    // Uneditable fields:
     @FXML private TextField projectTitle;
     @FXML private TextField requirementTitle;
     @FXML private TextField requirementStart;
     @FXML private TextField requirementEnd;
+    @FXML private Label errorLabel;
 
     public AddTaskController() { }
 

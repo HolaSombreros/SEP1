@@ -22,6 +22,8 @@ public class TaskListController {
     @FXML private TableColumn<TaskViewModel, String> titleColumn;
     @FXML private TableColumn<TaskViewModel, String> deadlineColumn;
     @FXML private TableColumn<TaskViewModel, String> statusColumn;
+    
+    // Uneditable fields:
     @FXML private Label errorLabel;
     @FXML private TextField projectTitle;
     @FXML private TextField requirementTitle;
@@ -79,12 +81,6 @@ public class TaskListController {
         catch (Exception e) {
             errorLabel.setText(e.getMessage());
         }
-    }
-    
-    @FXML private void clear() {
-        searchBar.setText("");
-        errorLabel.setText("");
-        viewModel.update(0);
     }
 
     @FXML private void addNewTask() {

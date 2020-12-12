@@ -29,12 +29,13 @@ public class DetailsAndEditTaskController {
     @FXML private TableView<TeamMemberViewModel> teamTable;
     @FXML private TableColumn<TeamMemberViewModel, Number> idColumn;
     @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
-    @FXML private Label errorLabel;
     
+    // Uneditable fields:
     @FXML private TextField projectTitle;
     @FXML private TextField requirementTitle;
     @FXML private TextField requirementStart;
     @FXML private TextField requirementEnd;
+    @FXML private Label errorLabel;
     
     public DetailsAndEditTaskController() { }
     
@@ -48,8 +49,6 @@ public class DetailsAndEditTaskController {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         teamTable.setItems(viewModel.getList());
-        
-        // Adding possible statuses to the dropdown menu so they can be selected.
         for (Status status : Status.values()) {
             statusInput.getItems().add(status.getName());
         }
@@ -182,6 +181,10 @@ public class DetailsAndEditTaskController {
         }
     }
     
+    /**
+     * Method to update the responsible team member field.
+     * Actually editing the details is still required.
+     */
     @FXML private void makeResponsible() {
         errorLabel.setText("");
         try {
@@ -199,6 +202,9 @@ public class DetailsAndEditTaskController {
         }
     }
     
+    /**
+     * Method to register time worked on the given task by a specific team member.
+     */
     @FXML private void registerTime() {
         errorLabel.setText("");
         try {
