@@ -136,12 +136,7 @@ public class ProjectList
             }
         }
         return list.getProjects().size() == 0?null:list;*/
-        ArrayList<Project> project1 = projects.stream().filter(project -> project.getID().toLowerCase().contains(ID.toLowerCase())).collect(Collectors
-                .toCollection(ArrayList::new));
-        ArrayList<Project> project2 = projects.stream().filter(project -> project.getName().toLowerCase().contains(ID.toLowerCase())).collect(Collectors
-                .toCollection(ArrayList::new));
-        return Stream.of(project1, project2)
-                .flatMap(x -> x.stream()).collect(Collectors
+        return projects.stream().filter(project -> project.getID().toLowerCase().contains(ID.toLowerCase()) || project.getName().toLowerCase().contains(ID.toLowerCase())).collect(Collectors
                 .toCollection(ArrayList::new));
     }
 
