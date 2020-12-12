@@ -38,11 +38,6 @@ public class TeamMemberList {
         return null;
     }
 
-    public ArrayList<TeamMember> getByNameUpgraded(String name){
-        ArrayList<TeamMember> teamMembers1 = team.stream().filter(teamMember -> teamMember.getFullName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toCollection(ArrayList::new));
-        ArrayList<TeamMember> teamMembers2 = team.stream().filter(teamMember -> teamMember.getFullName().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toCollection(ArrayList::new));
-        return Stream.of(teamMembers1,teamMembers2).flatMap(x -> x.stream()).collect(Collectors.toCollection(ArrayList::new));
-    }
 
     public ArrayList<TeamMember> getTeamMembers(){
         return team;

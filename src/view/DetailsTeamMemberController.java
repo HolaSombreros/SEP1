@@ -81,7 +81,7 @@ public class DetailsTeamMemberController {
      * opens the ProjectList window
      * */
     public void backButtonPressed() {
-        viewHandler.openView("projectList");
+        viewHandler.openView("teamMembers");
     }
 
 
