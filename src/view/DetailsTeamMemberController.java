@@ -60,6 +60,7 @@ public class DetailsTeamMemberController {
        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
        deadlineColumn.setCellValueFactory(cellData -> cellData.getValue().getDeadlineProperty());
        teamMemberViewTable.setItems(viewModel.getList());
+       viewModel.update(viewState.getSelectedTeamMember());
 
     }
 
