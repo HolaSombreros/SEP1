@@ -273,21 +273,6 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
     }
 
     /**
-     * searches through all the projects in the projectList and if the teamMemberList related
-     * to the project contains the teamMember adds the project to the new list that is then returned
-     *
-     * @param teamMember - a given teamMember selected by the user
-     * @return an ArrayList of related projects that contain the teamMember
-     * */
-    @Override public ArrayList<Project> getRelatedProjects(TeamMember teamMember) {
-        ArrayList<Project> relatedProjects = new ArrayList<>();
-        for(int i = 0; i < projectList.size(); i++)
-            if(projectList.getProject(i).getTeamMemberList().contains(teamMember))
-                relatedProjects.add(projectList.getProject(i));
-        return relatedProjects;
-    }
-
-    /**
      * the method searches through all the started projects, requirements and tasks and if the team member
      * is working there, the counter of the working tasks will increase
      * @param teamMember the selected team member
@@ -363,17 +348,19 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
      * */
     @Override public double getProductivity(TeamMember teamMember)
     {
-        double total = 0;
+        double totalEstimate = 0,
+               totalWork = 0;
         for (Project project : projectList.getProjects())
             if (project.getTeamMemberList().contains(teamMember))
                 for (Requirement requirement : project.getProjectRequirementList().getRequirements())
                     if (requirement.getTeamMemberList().contains(teamMember))
                         for (Task task : requirement.getTaskList().getTasks())
-                            if (task.getTeamMemberList().contains(teamMember)) {
-                                total += task.getEstimatedTime();
+                            if (task.getStatus() == Status.ENDED && task.getTeamMemberList().contains(teamMember)) {
+                                totalEstimate += task.getEstimatedTime();
+                                totalWork += task.getTimeRegistration().getHoursWorked();
                             }
-        if(total != 0)
-            return Math.round(teamMember.getTimeRegistration().getHoursWorked()*100/total);
+        if(totalWork != 0)
+            return Math.round(totalEstimate / totalWork * 100);
         else
             return 0;
     }

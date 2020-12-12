@@ -27,9 +27,10 @@ public class Date
      * @return today's date*/
     public Date()
     {
-        this.day = Date.today().day;
-        this.month = Date.today().month;
-        this. year = Date.today().year;
+        Date date = Date.today();
+        this.day = date.day;
+        this.month = date.month;
+        this. year = date.year;
     }
 
     /**
@@ -168,7 +169,7 @@ public class Date
 
     /**
      * @param other a second date
-     * @return a date object which checks if the second date is before the first one
+     * @return a date object which checks if the second date is STRICTLY before the first one
      * RO:daca prima data este inaintea celei de-a doua
      * DK: hvis den første dato ligger før den anden
      *
@@ -222,7 +223,7 @@ public class Date
         return year;
     }
     //EQUALS
-    public boolean equals(Date obj)
+    public boolean equals(Object obj)
     {
         if(! (obj instanceof Date))
         {

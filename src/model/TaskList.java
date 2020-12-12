@@ -103,8 +103,8 @@ public class TaskList {
     }
 
     /**
-     * Standard ArrayList contains(Object obj) method for the 'tasks' instance variable.
-     * @param task The task to search for.
+     * Standard ArrayList contains() method for the 'tasks' instance variable.
+     * @param task The task to check for.
      * @return A boolean value representing whether or not the specified task is in the list of tasks.
      */
     public boolean contains(Task task) {
