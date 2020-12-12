@@ -39,46 +39,44 @@ h4 { font-size: 1.8em; }
 h5 { font-size: 1.5em; }
 h6 { font-size: 1.3em; }
 
-.nav-active {
-    color: #000000 !important;
-}
-
 .nav-link {
-    color: #afafaf !important;
+    color: #333333 !important;
 }
 
 .nav-link:hover {
-    color: #000000 !important;
+    color:  #ff5e00 !important;
 }
 
+.nav-active {
+    color:  #ff5e00 !important;
+}
 
-
-
-
-
+.navbar-brand {
+    margin: 0 20px;
+}
 
  nav img {
     height: 85px;
-    /*padding: 10px 20px;*/
     cursor: pointer;
     border-radius: 25px;
  }
+
  nav {
-     width: 100%;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     background-color: #ffffff;
-     border-bottom: 1px solid var(--borderColor);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
  }
+
  nav ul a {
-     text-transform: uppercase;
-     font-weight: bold;
-     margin: 0 18px;
-     letter-spacing: 2px;
-     transition: 0.3s ease;
+    font-weight: bold;
+    margin: 0 20px;
+    font-size: 1.1em;
+    transition: 0.3s ease;
  }
 
  nav button:focus {
-     outline: none;
+    outline: none;
  }
