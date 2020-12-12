@@ -24,10 +24,10 @@
       </TextField>
       <TableView fx:id="teamMemberTable" prefHeight="258.0" prefWidth="650.0">
         <columns>
-          <TableColumn fx:id="idColumn" prefWidth="127.0" text="ID" />
+          <TableColumn fx:id="idColumn" prefWidth="98.0" text="ID" />
           <TableColumn fx:id="nameColumn" prefWidth="235.0" text="Full Name" />
-            <TableColumn fx:id="productivityColumn" prefWidth="141.0" text="Productivity " />
-            <TableColumn fx:id="taskColumn" prefWidth="146.0" text="Tasks" />
+            <TableColumn fx:id="productivityColumn" prefWidth="146.0" text="Productivity " />
+            <TableColumn fx:id="taskColumn" prefWidth="170.0" text="Ongoing Tasks" />
         </columns>
          <VBox.margin>
             <Insets left="75.0" right="75.0" top="30.0" />

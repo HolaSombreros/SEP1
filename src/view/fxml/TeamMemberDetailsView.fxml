@@ -105,7 +105,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="30.0" prefWidth="83.0" text="Go Back ">
+            <Button mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="30.0" prefWidth="83.0" text="Back ">
                <font>
                   <Font size="14.0" />
                </font>
