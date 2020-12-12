@@ -29,7 +29,7 @@
             <lastname>Joestar</lastname>
             <id>1</id>
             <timeregistration>
-               <hoursworked>5.0</hoursworked>
+               <hoursworked>31.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
@@ -86,10 +86,10 @@
             <id>1</id>
             <userstory>Make a GUI so that some stuff</userstory>
             <estimatedtime>100.0</estimatedtime>
-            <hoursworked>18.0</hoursworked>
+            <hoursworked>44.0</hoursworked>
             <startingdate>10/12/2020</startingdate>
             <deadline>10/12/2021</deadline>
-            <status>Started</status>
+            <status>Ended</status>
             <type>Non Functional</type>
             <priority>Critical</priority>
             <relatedproject>PMSColourIT</relatedproject>
@@ -98,7 +98,7 @@
                <lastname>Joestar</lastname>
                <id>1</id>
                <timeregistration>
-                  <hoursworked>5.0</hoursworked>
+                  <hoursworked>31.0</hoursworked>
                </timeregistration>
             </responsibleteammember>
             <teammemberlist>
@@ -107,7 +107,7 @@
                   <lastname>Joestar</lastname>
                   <id>1</id>
                   <timeregistration>
-                     <hoursworked>5.0</hoursworked>
+                     <hoursworked>31.0</hoursworked>
                   </timeregistration>
                </teammember>
                <teammember>
@@ -134,9 +134,9 @@
                   <estimatedtime>30.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>24/12/2020</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
-                     <hoursworked>12.0</hoursworked>
+                     <hoursworked>26.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>1</relatedrequirement>
                   <responsibleteammember>
@@ -144,7 +144,7 @@
                      <lastname>Joestar</lastname>
                      <id>1</id>
                      <timeregistration>
-                        <hoursworked>5.0</hoursworked>
+                        <hoursworked>31.0</hoursworked>
                      </timeregistration>
                   </responsibleteammember>
                   <teammemberlist>
@@ -153,7 +153,7 @@
                         <lastname>Joestar</lastname>
                         <id>1</id>
                         <timeregistration>
-                           <hoursworked>5.0</hoursworked>
+                           <hoursworked>31.0</hoursworked>
                         </timeregistration>
                      </teammember>
                   </teammemberlist>
@@ -164,7 +164,7 @@
                   <estimatedtime>10.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
                      <hoursworked>6.0</hoursworked>
                   </timeregistration>
@@ -186,6 +186,14 @@
                            <hoursworked>6.0</hoursworked>
                         </timeregistration>
                      </teammember>
+                     <teammember>
+                        <firstname>Joseph</firstname>
+                        <lastname>Joestar</lastname>
+                        <id>1</id>
+                        <timeregistration>
+                           <hoursworked>31.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
                   </teammemberlist>
                </task>
                <task>
@@ -194,14 +202,22 @@
                   <estimatedtime>8.0</estimatedtime>
                   <startingdate>10/12/2020</startingdate>
                   <deadline>10/12/2021</deadline>
-                  <status>Started</status>
+                  <status>Ended</status>
                   <timeregistration>
-                     <hoursworked>0.0</hoursworked>
+                     <hoursworked>12.0</hoursworked>
                   </timeregistration>
                   <relatedrequirement>1</relatedrequirement>
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
+                     <teammember>
+                        <firstname>Joseph</firstname>
+                        <lastname>Joestar</lastname>
+                        <id>1</id>
+                        <timeregistration>
+                           <hoursworked>31.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
                   </teammemberlist>
                </task>
             </tasklist>

@@ -19,12 +19,12 @@
          <Insets bottom="10.0" />
       </VBox.margin>
     </Label>
-    <HBox alignment="CENTER" prefWidth="200.0" spacing="75.0">
+    <HBox alignment="CENTER" prefWidth="200.0" spacing="66.0">
         <VBox.margin>
             <Insets bottom="10.0" />
         </VBox.margin>
-        <Label style="-fx-font-weight: bold;" text="Project title" />
-        <TextField fx:id="projectTitle" editable="false" prefWidth="316.0" promptText="Project title" />
+        <Label style="-fx-font-weight: bold;" text="Project name" />
+        <TextField fx:id="projectTitle" editable="false" prefWidth="316.0" promptText="Project name" />
     </HBox>
     <HBox alignment="CENTER" prefWidth="200.0" spacing="8.0">
         <VBox.margin>
@@ -37,7 +37,7 @@
       <children>
          <HBox alignment="CENTER" spacing="10.0">
             <children>
-               <Label style="-fx-font-weight: bold;" text="Search by Id:" />
+               <Label style="-fx-font-weight: bold;" text="Search by id:" />
                 <TextField fx:id="searchBar" maxWidth="40.0" onKeyTyped="#searching" promptText="Id" />
             </children>
          </HBox>

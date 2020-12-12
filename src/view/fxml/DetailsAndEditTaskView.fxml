@@ -21,10 +21,10 @@
          <Insets bottom="10.0" />
       </VBox.margin>
    </Label>
-   <HBox alignment="CENTER" maxWidth="460.0" spacing="77.0">
+   <HBox alignment="CENTER" maxWidth="460.0" spacing="68.0">
       <children>
-         <Label style="-fx-font-weight: bold;" text="Project title" />
-         <TextField fx:id="projectTitle" editable="false" minWidth="316.0" promptText="Project title">
+         <Label style="-fx-font-weight: bold;" text="Project name" />
+         <TextField fx:id="projectTitle" editable="false" minWidth="316.0" promptText="Project name">
             <HBox.margin>
                <Insets />
             </HBox.margin>

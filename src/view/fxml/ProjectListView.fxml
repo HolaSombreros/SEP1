@@ -25,7 +25,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <TextField fx:id="searchInput" onKeyReleased="#handleKeyReleased" prefHeight="30.0" prefWidth="698.0" promptText="Search" />
+                  <TextField fx:id="searchInput" maxWidth="700.0" minWidth="700.0" onKeyReleased="#handleKeyReleased" prefHeight="30.0" promptText="Search" />
                </children>
                <padding>
                   <Insets left="50.0" />
@@ -33,13 +33,13 @@
             </HBox>
             <VBox prefHeight="266.0" prefWidth="800.0">
                <children>
-                  <TableView fx:id="projectListTable" prefHeight="262.0" prefWidth="699.0">
+                  <TableView fx:id="projectListTable" minWidth="700.0" prefHeight="262.0">
                     <columns>
-                      <TableColumn fx:id="projectIDColumn" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="projectNameColumn" prefWidth="197.60000610351562" text="Name" />
-                        <TableColumn fx:id="projectDeadlineColumn" prefWidth="158.39996337890625" text="Deadline" />
-                        <TableColumn fx:id="projectStatusColumn" prefWidth="142.4000244140625" text="Status" />
-                        <TableColumn fx:id="projectMethodologyColumn" prefWidth="127.199951171875" text="Methodology" />
+                      <TableColumn fx:id="projectIDColumn" prefWidth="121.0" text="ID" />
+                      <TableColumn fx:id="projectNameColumn" prefWidth="280.0" text="Name" />
+                        <TableColumn fx:id="projectDeadlineColumn" prefWidth="93.0" text="Deadline" />
+                        <TableColumn fx:id="projectStatusColumn" prefWidth="96.0" text="Status" />
+                        <TableColumn fx:id="projectMethodologyColumn" prefWidth="113.0" text="Methodology" />
                     </columns>
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
@@ -53,6 +53,9 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>
