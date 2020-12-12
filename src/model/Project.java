@@ -65,16 +65,12 @@ public class Project
                     }
                 }
                 if (notEnded)
-                {
                     this.status = Status.ENDED;
-                }
                 else
-                {
                     this.status = Status.STARTED;
-                }
             }
 
-            if (status.equals(Status.NOT_STARTED))
+            if (status.equals(Status.NOT_STARTED) || status.equals(Status.STARTED))
             {
                 boolean notStarted = true;
                 for (Requirement requirement : projectRequirementList.getRequirements())
@@ -84,9 +80,9 @@ public class Project
                         break;
                     }
                 if (notStarted)
-                {
+                    this.status = Status.NOT_STARTED;
+                else
                     this.status = Status.STARTED;
-                }
             }
         }
         return status;

@@ -202,17 +202,19 @@ public class Requirement
         else
           setStatus(RequirementStatus.STARTED);
       }
-      if (status == RequirementStatus.NOT_STARTED)
+      if (status == RequirementStatus.NOT_STARTED || status == RequirementStatus.STARTED)
       {
         boolean f = true;
         for (Task task : taskList.getTasks())
-          if (task.getStatus() != Status.STARTED)
+          if (task.getStatus() == Status.STARTED)
           {
             f = false;
             break;
           }
         if (!f)
           setStatus(RequirementStatus.STARTED);
+        else
+          setStatus(RequirementStatus.NOT_STARTED);
       }
     }
     return status;
