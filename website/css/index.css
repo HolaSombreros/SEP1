@@ -47,4 +47,6 @@ color: #228B22;
 
 .carousel-control-next, .carousel-control-prev{
     position: fixed;
+    height: 600px;
+    margin-top: 400px;
 }
