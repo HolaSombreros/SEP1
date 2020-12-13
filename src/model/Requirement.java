@@ -206,7 +206,7 @@ public class Requirement
       {
         boolean f = true;
         for (Task task : taskList.getTasks())
-          if (task.getStatus() == Status.STARTED)
+          if (task.getStatus() != Status.NOT_STARTED)
           {
             f = false;
             break;

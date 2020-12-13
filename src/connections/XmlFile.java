@@ -36,7 +36,6 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -501,7 +500,6 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -638,7 +636,6 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();
