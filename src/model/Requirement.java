@@ -280,7 +280,7 @@ public class Requirement
   public void unassignTeamMember(TeamMember teamMember)
   {
     if (teamMember.equals(getResponsibleTeamMember()))
-      throw new IllegalArgumentException("You can not unassign a responsible team member");
+      throw new IllegalArgumentException("You can not unassign a responsible team member - Requirement: " + id);
     teamMemberList.remove(teamMember);
     for (Task task : taskList.getTasks())
     {
