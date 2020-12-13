@@ -4,12 +4,15 @@ body {
 }
 
 .indent {
- margin-bottom: 75px !important;
+ /*margin-bottom: 75px !important;*/
 }
 
 
 .carousel-item{
     padding: 5% 0%;
+
+
+
 }
 a{
     color: #e85a4f;
@@ -25,4 +28,23 @@ color: #007b7d;
 color: #228B22;
 }
 
+@media screen and (max-width: 1000px) {
+    .carousel-item {
+        min-height: 850px;
+    }
+}
+.carousel-indicators li{
 
+    background-color: #1d2124;
+}
+.carousel-indicators{
+    position: fixed;
+}
+.carousel-control-next-icon , .carousel-control-prev-icon{
+    color: #1d2124 ;
+    filter: invert(1);
+}
+
+.carousel-control-next, .carousel-control-prev{
+    position: fixed;
+}
