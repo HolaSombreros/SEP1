@@ -51,10 +51,10 @@ public class DetailsTeamMemberController {
                frequentTeamMemberLabel.setText("Does not have a frequent team member!");
            else
                frequentTeamMemberLabel.setText("" + model.getMostFrequentTeamMember(model.getTeam().getByID(viewState.getSelectedTeamMember())));
-           nameLabel.setText( model.getTeam().getByID(viewState.getSelectedTeamMember()).getId() + "    " + model.getTeam().getByID(viewState.getSelectedTeamMember()).getFullName());
+           nameLabel.setText("#" + model.getTeam().getByID(viewState.getSelectedTeamMember()).getId() + " " + model.getTeam().getByID(viewState.getSelectedTeamMember()).getFullName());
        }
        catch (Exception e){
-
+            errorLabel.setText(e.getMessage());
        }
 
        projectNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());

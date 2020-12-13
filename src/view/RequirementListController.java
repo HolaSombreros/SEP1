@@ -231,7 +231,8 @@ public class RequirementListController
    */
   @FXML private void backButtonPressed()
   {
-    viewHandler.openView("detailsAndEditProject");
+    state.setSelectedProject("-1");
+    viewHandler.openView("projectList");
   }
 
   private boolean confirmation()

@@ -70,6 +70,9 @@ public class DetailsAndEditTaskController {
         if (task.getResponsibleTeamMember() != null) {
             responsibleTeamMemberInput.setText("#" + task.getResponsibleTeamMember().getId() + " " + task.getResponsibleTeamMember().getFullName());
         }
+        else {
+            responsibleTeamMemberInput.setText("");
+        }
         timeRegisterInput.setText("");
         totalHoursWorked.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
         errorLabel.setText("");
@@ -238,6 +241,7 @@ public class DetailsAndEditTaskController {
                     timeRegisterInput.setText("");
                     totalHoursWorked.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
                     teamTable.getSelectionModel().clearSelection();
+                    statusInput.setValue(task.getStatus().getName());
                 }
             }
         }

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class XmlFile implements IFileConnection {
     private String fileName;
-    private String filePath = "src/connections/";
+    private String filePath = "src/files/";
     private static final String FILE_EXTENSION = "xml";
     
     public XmlFile(String fileName) {
@@ -36,7 +36,6 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -501,7 +500,6 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -638,7 +636,6 @@ public class XmlFile implements IFileConnection {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Created file at [" + file.getAbsolutePath() + "]");
             }
             catch (IOException e) {
                 e.printStackTrace();

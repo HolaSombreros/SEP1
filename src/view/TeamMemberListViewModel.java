@@ -22,9 +22,6 @@ public class TeamMemberListViewModel
     return list;
   }
 
-  /**
-   *
-   * */
   public void update(Project project, Requirement requirement) {
     list.clear();
     for (int i = 0; i < model.getTaskList(project, requirement)
@@ -35,9 +32,6 @@ public class TeamMemberListViewModel
           .getByIndex(i),model));
   }
 
-  /**
-   * The method will update just the team members in a requirement
-   * */
   public void update(Project project) {
     list.clear();
     for (int i = 0; i < model.getRequirementList(project)
@@ -48,9 +42,6 @@ public class TeamMemberListViewModel
           .getTeamMemberList().getByIndex(i),model));
   }
 
-  /**
-   *
-   * */
   public void update() {
     list.clear();
     for (int i = 0; i < model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().size(); i++)
@@ -58,9 +49,6 @@ public class TeamMemberListViewModel
           model.getProjectList().getProjectByID(viewState.getSelectedProject())
               .getTeamMemberList().getByIndex(i),model));
   }
-
-
-
 
   public void add( TeamMember teamMember) {
     list.add(new TeamMemberViewModel(model.getProjectList().getProjectByID(viewState.getSelectedProject()), teamMember,model));

@@ -1,9 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class TeamMemberList {
     public ArrayList<TeamMember> team;
@@ -50,7 +48,7 @@ public class TeamMemberList {
      * */
     public TeamMember getTeamMember(TeamMember teamMember){
         for (TeamMember member : team) {
-            if(member.equals(member))
+            if(member.equals(teamMember))
                 return member;
         }
         return null;

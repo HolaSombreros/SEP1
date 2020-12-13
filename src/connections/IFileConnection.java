@@ -2,7 +2,6 @@ package connections;
 
 import mediator.IProjectManagementModel;
 import model.Project;
-
 import java.io.FileNotFoundException;
 
 public interface IFileConnection {

@@ -1,10 +1,3 @@
-//var text = "<projectlist><project><id>PmS</id><title>Hooga</title><status>Not Started</status><deadline>18/05/2020</deadline>" +
-//                        "<requirementList><requirement><id>7</id><type>Functional</type><deadline>19/02/2014</deadline><status>Ended</status></requirement>" +
-//                        "<requirement><id>12</id><type>Project Related</type><deadline>19/05/2018</deadline><status>Not Started</status></requirement>" +
-//                        "<requirement><id>9</id><type>Non Functional</type><deadline>15/02/2019</deadline><status>Started</status></requirement></requirementList></project>" +
-//                        "<project><id>3</id><title>Booga</title><status>Started</status><deadline>18/12/2020</deadline>" +
-//                        "<requirementList><requirement><id>10</id><type>Functional</type><deadline>12/02/2014</deadline><status>Ended</status></requirement>" +
-//                        "<requirement><id>9</id><type>Non Functional</type><deadline>7/02/2019</deadline><status>Started</status></requirement></requirementList></project></projectlist>";
 var XMLDoc;
 readXML();
 
@@ -28,7 +21,7 @@ function validateId(id) {
     var projects = XMLDoc.getElementsByTagName("project");
     var projectId = 0;
     for (var i = 0; i < projects.length; i++) {
-        if(projects[i].getElementsByTagName("id")[0].childNodes[0].nodeValue.toLowerCase() == id.toLowerCase()) {
+        if(projects[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == id) {
             projectId = projects[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
             break;
         }
@@ -63,6 +56,18 @@ function getRequirementId(i, id) {
     }
     var req = project.getElementsByTagName("requirement");
     return req[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+}
+
+function getRequirementPriority(i, id) {
+    var projects = XMLDoc.getElementsByTagName("project");
+    for (var j = 0; j < projects.length; j++) {
+        if (projects[j].getElementsByTagName("id")[0].childNodes[0].nodeValue == id) {
+            var project = projects[j];
+            break;
+        }
+    }
+    var req = project.getElementsByTagName("requirement");
+    return req[i].getElementsByTagName("priority")[0].childNodes[0].nodeValue;
 }
 
 function getRequirementType(i, id) {
@@ -123,9 +128,10 @@ function createRequirementTable(id) {
         }
     }
     var reqs = project.getElementsByTagName("requirement");
-    var table = "<th>Requirement Id</th><th>Type</th><th>Deadline</th><th>Status</th>";
+    var table = "<th>Requirement Id</th><th>Priority</th><th>Type</th><th>Deadline</th><th>Status</th>";
     for (var j = 0; j < reqs.length; j++) {
         table += "<tr><td>" + getRequirementId(j, id) + "</td>";
+        table += "<td>" + getRequirementPriority(j, id) + "</td>";
         table += "<td>" + getRequirementType(j, id) + "</td>";
         table += "<td>" + getRequirementDeadline(j, id) + "</td>";
         table += "<td>" + getRequirementStatus(j, id) + "</td></tr>";

@@ -38,7 +38,7 @@ public class TeamListViewModel {
             //for(TeamMember teamMember : model.getTeam().getByNameUpgraded(name))
                // list.add(new TeamViewModel(teamMember,model));
             for(TeamMember teamMember : model.getTeam().getTeamMembers())
-                if(teamMember.getFullName().contains(name))
+                if(teamMember.getFullName().toLowerCase().contains(name.toLowerCase()))
                     list.add(new TeamViewModel(teamMember,model));
     }
 

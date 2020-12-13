@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class RequirementList
 {
   private int idCounter;
-  private final ArrayList<Requirement> requirements;
+  private ArrayList<Requirement> requirements;
 
   public RequirementList()
   {
@@ -33,26 +33,32 @@ public class RequirementList
    */
   public void add(Requirement requirement)
   {
-    Requirement other;
     requirement.setId(idCounter);
-    requirements.add(requirement);
     idCounter++;
-    for (int i = 0; i < requirements.size() - 1; i++)
-      for (int j = i + 1; j < requirements.size(); j++)
-        if (requirements.get(i).getPriority() != Priority.CRITICAL && requirements.get(j).getPriority() == Priority.CRITICAL)
-        {
-          other = requirements.get(i);
-          requirements.set(i, requirements.get(j));
-          requirements.set(j, other);
-        }
-    for (int i = 0; i < requirements.size() - 1; i++)
-      for (int j = i + 1; j < requirements.size(); j++)
-        if (requirements.get(i).getPriority() == Priority.LOW && requirements.get(j).getPriority() == Priority.HIGH)
-        {
-          other = requirements.get(i);
-          requirements.set(i, requirements.get(j));
-          requirements.set(j, other);
-        }
+    int critical = 0;
+    int high = 0;
+    int low = 0;
+    for (int i = 0; i < requirements.size(); i++)
+    {
+      if (requirements.get(i).getPriority() == Priority.CRITICAL)
+        critical = i;
+      else if (requirements.get(i).getPriority() == Priority.HIGH)
+        high = i;
+      else
+        low = i;
+    }
+    if (critical > high)
+      high = critical;
+    if (high > low)
+      low = high;
+    if (low == 0)
+      requirements.add(requirement);
+    else if (requirement.getPriority() == Priority.CRITICAL)
+      requirements.add(critical + 1, requirement);
+    else if (requirement.getPriority() == Priority.HIGH)
+      requirements.add(high + 1, requirement);
+    else
+      requirements.add(requirement);
   }
 
   public void remove(Requirement requirement)

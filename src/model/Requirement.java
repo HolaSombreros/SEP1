@@ -6,9 +6,9 @@ public class Requirement
   private String userStory;
   private double estimatedTime;
   private double hoursWorked;
-  private final Project relatedProject;
-  private final TaskList taskList;
-  private final TeamMemberList teamMemberList;
+  private Project relatedProject;
+  private TaskList taskList;
+  private TeamMemberList teamMemberList;
   private TeamMember responsibleTeamMember;
   private Date startingDate;
   private Date deadline;
@@ -86,9 +86,42 @@ public class Requirement
     this.estimatedTime = estimatedTime;
   }
 
+  /**
+   * The method sorts the requirements by id if this is edited
+   *
+   * @param priority the new priority
+   */
   public void setPriority(Priority priority)
   {
-    this.priority = priority;
+    if (this.priority != priority)
+    {
+      this.priority = priority;
+      relatedProject.getProjectRequirementList().remove(this);
+      int critical = 0;
+      int high = 0;
+      int low = 0;
+      for (int i = 0; i < relatedProject.getProjectRequirementList().size(); i++)
+      {
+        if (relatedProject.getProjectRequirementList().getRequirements().get(i).getPriority() == Priority.CRITICAL)
+          critical = i;
+        else if (relatedProject.getProjectRequirementList().getRequirements().get(i).getPriority() == Priority.HIGH)
+          high = i;
+        else
+          low = i;
+      }
+      if (critical > high)
+        high = critical;
+      if (high > low)
+        low = high;
+      if (low == 0)
+        relatedProject.getProjectRequirementList().getRequirements().add(this);
+      else if (this.getPriority() == Priority.CRITICAL)
+        relatedProject.getProjectRequirementList().getRequirements().add(critical + 1, this);
+      else if (this.getPriority() == Priority.HIGH)
+        relatedProject.getProjectRequirementList().getRequirements().add(high + 1, this);
+      else
+        relatedProject.getProjectRequirementList().getRequirements().add(this);
+    }
   }
 
   public void setType(Type type)
@@ -169,17 +202,19 @@ public class Requirement
         else
           setStatus(RequirementStatus.STARTED);
       }
-      if (status == RequirementStatus.NOT_STARTED)
+      if (status == RequirementStatus.NOT_STARTED || status == RequirementStatus.STARTED)
       {
         boolean f = true;
         for (Task task : taskList.getTasks())
-          if (task.getStatus() != Status.STARTED)
+          if (task.getStatus() != Status.NOT_STARTED)
           {
             f = false;
             break;
           }
         if (!f)
           setStatus(RequirementStatus.STARTED);
+        else
+          setStatus(RequirementStatus.NOT_STARTED);
       }
     }
     return status;

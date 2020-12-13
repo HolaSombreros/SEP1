@@ -13,15 +13,12 @@ import java.util.Scanner;
 public class ProjectManagementModelManager implements IProjectManagementModel {
     private ProjectList projectList;
     private ArrayList<IFileConnection> fileConnections;
-
-    private TeamMemberList team;//addTeamMembersToTheSystem();
+    private TeamMemberList team;
     
     public ProjectManagementModelManager() throws FileNotFoundException {
         this.fileConnections = new ArrayList<>();
         this.projectList = new ProjectList();
         this.team = addTeamMembersToTheSystem();
-        
-        //createDummyData();
         fileConnections.add(new XmlFile("model"));
     }
     
@@ -308,29 +305,26 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember)
     {
-        int[] frequentTeamMembers = new int[getTeam().size()];
-        for(int i = 1; i < getTeam().size(); i++)
+        int[] frequentTeamMembers = new int[getTeam().size() + 1];
+        for(int i = 1; i < frequentTeamMembers.length; i++)
             frequentTeamMembers[i] = 0;
-        //loops through all the projects
         for(Project project : projectList.getProjects())
-            if(project.getTeamMemberList().getTeamMember(teamMember) != null)
-
+            if (project.getTeamMemberList().getTeamMember(teamMember) != null)
                 for (Requirement requirement : project.getProjectRequirementList().getRequirements())
                     if (requirement.getTeamMemberList().getTeamMember(teamMember) != null)
-
                         for (Task task : requirement.getTaskList().getTasks())
                             if (task.getTeamMemberList().getTeamMember(teamMember) != null)
-
                                 for (TeamMember member : task.getTeamMemberList().getTeamMembers())
-                                    if(!member.equals(teamMember)) {
+                                    if (!member.equals(teamMember)) {
                                         frequentTeamMembers[member.getId()]++;
                                     }
-        int max = 0,p = 0 ;
-        for(int i = 1; i < getTeam().size(); i++)
-            if(frequentTeamMembers[i] > max && i != getTeam().getTeamMember(teamMember).getId()){
+        int max = 0, p = 0;
+        for (int i = 1; i < frequentTeamMembers.length; i++) {
+            if (frequentTeamMembers[i] > max && i != teamMember.getId()) {
                 max = frequentTeamMembers[i];
                 p = i;
             }
+        }
 
         if(max != 0)
             return getTeam().getByID(p);
