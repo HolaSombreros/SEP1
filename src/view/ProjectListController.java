@@ -100,7 +100,7 @@ public class ProjectListController
         }
         catch(Exception e)
         {
-            errorLabel.setText("Project not selected");
+            errorLabel.setText("Select a project first");
         }
     }
      private boolean confirmation()
