@@ -167,11 +167,11 @@ public class Project
         if(teamMember.equals(getProductOwner()))
         {
             //TODO: check adriana's unassign and labels
-            throw new IllegalArgumentException("You cannot unassign a Product Owner as an ordinary team member" + "\n Go to unassign Product Owner");
+            throw new IllegalArgumentException("You cannot unassign a Product Owner - go to the project to unassign the Product Owner");
         }
         else if(teamMember.equals(getScrumMaster()))
         {
-            throw new IllegalArgumentException("You cannot unassign a Scrum Master as an ordinary team member" + "\n Go to unassign Scrum Master");
+            throw new IllegalArgumentException("You cannot unassign a Scrum Master - go to the project to unassign the Scrum Master");
         }
         else{
             this.projectTeamMemberList.remove(teamMember);

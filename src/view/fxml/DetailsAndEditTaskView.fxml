@@ -106,7 +106,7 @@
          <DatePicker fx:id="startingDateInput" editable="false" minWidth="180.0" promptText="Starting date" />
          <DatePicker fx:id="deadlineInput" editable="false" minWidth="180.0" promptText="Deadline" />
          <ChoiceBox fx:id="statusInput" prefWidth="180.0" />
-         <TextField fx:id="responsibleTeamMemberInput" maxWidth="180.0" promptText="Responsible Team Member" />
+         <TextField fx:id="responsibleTeamMemberInput" editable="false" maxWidth="180.0" promptText="Responsible Team Member" />
          <HBox alignment="CENTER_RIGHT" prefWidth="280.0" spacing="10.0">
             <Label style="-fx-font-weight: bold;" text="Total work (hours)" />
             <TextField fx:id="totalHoursWorked" editable="false" maxWidth="50.0" />

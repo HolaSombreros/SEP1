@@ -47,8 +47,8 @@ public class AddProjectController
     {
         nameInput.setText("");
         IDInput.setText(ProjectManagementModelManager.generateProjectId());
-        startingDateInput.getEditor().clear();
-        deadlineInput.getEditor().clear();
+        startingDateInput.setValue(null);
+        deadlineInput.setValue(null);
         errorLabel.setText("");
     }
     public Region getRoot()
@@ -66,11 +66,11 @@ public class AddProjectController
         {
             String name = nameInput.getText();
             String ID = IDInput.getText();
-                if(startingDateInput.getValue() == null)
-                {
-                    errorLabel.setText("Starting date cannot be empty");
-                    throw new IllegalStateException(errorLabel.getText());
-                 }
+            if (startingDateInput.getValue() == null)
+            {
+                errorLabel.setText("Starting date cannot be empty");
+                throw new IllegalStateException(errorLabel.getText());
+             }
 
             int stDay = startingDateInput.getValue().getDayOfMonth();
             int stMonth = startingDateInput.getValue().getMonthValue();
