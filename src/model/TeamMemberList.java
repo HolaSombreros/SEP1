@@ -50,7 +50,7 @@ public class TeamMemberList {
      * */
     public TeamMember getTeamMember(TeamMember teamMember){
         for (TeamMember member : team) {
-            if(member.equals(member))
+            if(member.equals(teamMember))
                 return member;
         }
         return null;

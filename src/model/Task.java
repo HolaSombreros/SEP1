@@ -23,11 +23,9 @@ public class Task {
     public Task(String title, Date startingDate, Date deadline, double estimatedTime, Requirement relatedRequirement) {
         this.relatedRequirement = relatedRequirement;
         Date.checkDates(startingDate, deadline);
-
         setStartingDate(startingDate);
         setDeadline(deadline);
         setEstimatedTime(estimatedTime);
-
         this.id = 0;
         this.title = title;
         this.status = Status.NOT_STARTED;
@@ -159,8 +157,8 @@ public class Task {
      * @param hoursWorked The amount of hours the team member worked on the task.
      */
     public void addHoursWorked(TeamMember teamMember, double hoursWorked) {
-        if (hoursWorked < 0) {
-            throw new IllegalArgumentException("The amount of hours worked cannot be less than 0");
+        if (hoursWorked <= 0) {
+            throw new IllegalArgumentException("The amount of hours worked cannot be less than or equal to 0");
         }
         timeRegistration.addHoursWorked(hoursWorked);
         teamMember.getTimeRegistration().addHoursWorked(hoursWorked);
@@ -171,10 +169,14 @@ public class Task {
     
     /**
      * Method to modify a task's details with the given values.
-     * @param title The title of the task.
-     * @param estimatedTime The estimate time in hours.
-     * @param startingDate The task's start date.
-     * @param deadline The task's deadline.
+     * @param title The new task title.
+     * @param estimatedTime The new estimated time in hours.
+     * @param startingDate The task's new start date.
+     * @param deadline The task's new deadline.
+     * @param status The new status of the task.
+     * @param responsibleTeamMember The new responsible team member for the task.
+     * @param hoursWorked The amount of hours of work (if any) to register.
+     * @param teamMember The team member (if any) to register time for.
      */
     public void edit(String title, double estimatedTime, Date startingDate, Date deadline, Status status, TeamMember responsibleTeamMember, double hoursWorked, TeamMember teamMember) {
         setTitle(title);
@@ -188,7 +190,7 @@ public class Task {
         else {
             assignResponsibleTeamMember(responsibleTeamMember);
         }
-        if (teamMember != null) {
+        if (hoursWorked != 0 && teamMember != null) {
             addHoursWorked(teamMember, hoursWorked);
         }
     }

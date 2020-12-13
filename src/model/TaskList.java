@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TaskList {
     private int idCounter;
-    private ArrayList<Task> tasks;
+    private final ArrayList<Task> tasks;
 
     /**
      * No-argument constructor for the TaskList class.

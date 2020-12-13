@@ -238,6 +238,7 @@ public class DetailsAndEditTaskController {
                     timeRegisterInput.setText("");
                     totalHoursWorked.setText(String.valueOf(task.getTimeRegistration().getHoursWorked()));
                     teamTable.getSelectionModel().clearSelection();
+                    statusInput.setValue(task.getStatus().getName());
                 }
             }
         }

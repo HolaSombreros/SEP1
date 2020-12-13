@@ -12,7 +12,7 @@
          <lastname>Pizza</lastname>
          <id>3</id>
          <timeregistration>
-            <hoursworked>6.0</hoursworked>
+            <hoursworked>11.0</hoursworked>
          </timeregistration>
       </scrummaster>
       <productowner>
@@ -29,7 +29,7 @@
             <lastname>Joestar</lastname>
             <id>1</id>
             <timeregistration>
-               <hoursworked>5.0</hoursworked>
+               <hoursworked>19.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
@@ -45,7 +45,7 @@
             <lastname>Pizza</lastname>
             <id>3</id>
             <timeregistration>
-               <hoursworked>6.0</hoursworked>
+               <hoursworked>11.0</hoursworked>
             </timeregistration>
          </teammember>
          <teammember>
@@ -196,42 +196,184 @@
       <productowner>
       </productowner>
       <teammemberlist>
+         <teammember>
+            <firstname>Joseph</firstname>
+            <lastname>Joestar</lastname>
+            <id>1</id>
+            <timeregistration>
+               <hoursworked>19.0</hoursworked>
+            </timeregistration>
+         </teammember>
+         <teammember>
+            <firstname>Pasta</firstname>
+            <lastname>Pizza</lastname>
+            <id>3</id>
+            <timeregistration>
+               <hoursworked>11.0</hoursworked>
+            </timeregistration>
+         </teammember>
+         <teammember>
+            <firstname>Giorno</firstname>
+            <lastname>Giovanna</lastname>
+            <id>2</id>
+            <timeregistration>
+               <hoursworked>7.0</hoursworked>
+            </timeregistration>
+         </teammember>
       </teammemberlist>
       <requirementlist>
          <requirement>
             <id>4</id>
             <userstory>wlegu</userstory>
             <estimatedtime>54.0</estimatedtime>
-            <hoursworked>0.0</hoursworked>
+            <hoursworked>7.0</hoursworked>
             <startingdate>01/01/2021</startingdate>
             <deadline>07/02/2021</deadline>
-            <status>Not Started</status>
+            <status>Ended</status>
             <type>Functional</type>
             <priority>Critical</priority>
             <relatedproject>DV746YTWZ</relatedproject>
             <responsibleteammember>
+               <firstname>Pasta</firstname>
+               <lastname>Pizza</lastname>
+               <id>3</id>
+               <timeregistration>
+                  <hoursworked>11.0</hoursworked>
+               </timeregistration>
             </responsibleteammember>
             <teammemberlist>
+               <teammember>
+                  <firstname>Joseph</firstname>
+                  <lastname>Joestar</lastname>
+                  <id>1</id>
+                  <timeregistration>
+                     <hoursworked>19.0</hoursworked>
+                  </timeregistration>
+               </teammember>
+               <teammember>
+                  <firstname>Pasta</firstname>
+                  <lastname>Pizza</lastname>
+                  <id>3</id>
+                  <timeregistration>
+                     <hoursworked>11.0</hoursworked>
+                  </timeregistration>
+               </teammember>
+               <teammember>
+                  <firstname>Giorno</firstname>
+                  <lastname>Giovanna</lastname>
+                  <id>2</id>
+                  <timeregistration>
+                     <hoursworked>7.0</hoursworked>
+                  </timeregistration>
+               </teammember>
             </teammemberlist>
             <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>Do stuff</title>
+                  <estimatedtime>10.0</estimatedtime>
+                  <startingdate>01/01/2021</startingdate>
+                  <deadline>07/02/2021</deadline>
+                  <status>Ended</status>
+                  <timeregistration>
+                     <hoursworked>7.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>4</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                     <teammember>
+                        <firstname>Joseph</firstname>
+                        <lastname>Joestar</lastname>
+                        <id>1</id>
+                        <timeregistration>
+                           <hoursworked>19.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                     <teammember>
+                        <firstname>Pasta</firstname>
+                        <lastname>Pizza</lastname>
+                        <id>3</id>
+                        <timeregistration>
+                           <hoursworked>11.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                     <teammember>
+                        <firstname>Giorno</firstname>
+                        <lastname>Giovanna</lastname>
+                        <id>2</id>
+                        <timeregistration>
+                           <hoursworked>7.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                  </teammemberlist>
+               </task>
             </tasklist>
          </requirement>
          <requirement>
             <id>8</id>
             <userstory>sdir</userstory>
             <estimatedtime>6451.0</estimatedtime>
-            <hoursworked>0.0</hoursworked>
+            <hoursworked>8.0</hoursworked>
             <startingdate>01/01/2021</startingdate>
             <deadline>07/02/2021</deadline>
-            <status>Not Started</status>
+            <status>Ended</status>
             <type>Project Related</type>
             <priority>Critical</priority>
             <relatedproject>DV746YTWZ</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
+               <teammember>
+                  <firstname>Joseph</firstname>
+                  <lastname>Joestar</lastname>
+                  <id>1</id>
+                  <timeregistration>
+                     <hoursworked>19.0</hoursworked>
+                  </timeregistration>
+               </teammember>
+               <teammember>
+                  <firstname>Pasta</firstname>
+                  <lastname>Pizza</lastname>
+                  <id>3</id>
+                  <timeregistration>
+                     <hoursworked>11.0</hoursworked>
+                  </timeregistration>
+               </teammember>
             </teammemberlist>
             <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>Do other stuff</title>
+                  <estimatedtime>4.0</estimatedtime>
+                  <startingdate>01/01/2021</startingdate>
+                  <deadline>07/02/2021</deadline>
+                  <status>Ended</status>
+                  <timeregistration>
+                     <hoursworked>8.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>8</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                     <teammember>
+                        <firstname>Joseph</firstname>
+                        <lastname>Joestar</lastname>
+                        <id>1</id>
+                        <timeregistration>
+                           <hoursworked>19.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                     <teammember>
+                        <firstname>Pasta</firstname>
+                        <lastname>Pizza</lastname>
+                        <id>3</id>
+                        <timeregistration>
+                           <hoursworked>11.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                  </teammemberlist>
+               </task>
             </tasklist>
          </requirement>
          <requirement>
@@ -256,18 +398,66 @@
             <id>5</id>
             <userstory>lwqeigh</userstory>
             <estimatedtime>546.0</estimatedtime>
-            <hoursworked>0.0</hoursworked>
+            <hoursworked>4.0</hoursworked>
             <startingdate>01/01/2021</startingdate>
             <deadline>07/02/2021</deadline>
-            <status>Not Started</status>
+            <status>Started</status>
             <type>Functional</type>
             <priority>High</priority>
             <relatedproject>DV746YTWZ</relatedproject>
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
+               <teammember>
+                  <firstname>Joseph</firstname>
+                  <lastname>Joestar</lastname>
+                  <id>1</id>
+                  <timeregistration>
+                     <hoursworked>19.0</hoursworked>
+                  </timeregistration>
+               </teammember>
+               <teammember>
+                  <firstname>Pasta</firstname>
+                  <lastname>Pizza</lastname>
+                  <id>3</id>
+                  <timeregistration>
+                     <hoursworked>11.0</hoursworked>
+                  </timeregistration>
+               </teammember>
             </teammemberlist>
             <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>hooga</title>
+                  <estimatedtime>12.0</estimatedtime>
+                  <startingdate>01/01/2021</startingdate>
+                  <deadline>07/02/2021</deadline>
+                  <status>Started</status>
+                  <timeregistration>
+                     <hoursworked>4.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>5</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                     <teammember>
+                        <firstname>Joseph</firstname>
+                        <lastname>Joestar</lastname>
+                        <id>1</id>
+                        <timeregistration>
+                           <hoursworked>19.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                     <teammember>
+                        <firstname>Pasta</firstname>
+                        <lastname>Pizza</lastname>
+                        <id>3</id>
+                        <timeregistration>
+                           <hoursworked>11.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
+                  </teammemberlist>
+               </task>
             </tasklist>
          </requirement>
          <requirement>

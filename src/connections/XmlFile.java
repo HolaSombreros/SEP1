@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class XmlFile implements IFileConnection {
     private String fileName;
-    private String filePath = "src/connections/";
+    private String filePath = "src/files/";
     private static final String FILE_EXTENSION = "xml";
     
     public XmlFile(String fileName) {
