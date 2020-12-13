@@ -167,6 +167,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     saveModel();
   }
 
+  /**
+   * The method removes the requirement and all the unnecessary team members from the project
+   *
+   * @param project     the selected project
+   * @param requirement the selected requirement
+   */
   @Override public void removeRequirement(Project project, Requirement requirement)
   {
     for (TeamMember teamMember : requirement.getTeamMemberList().getTeamMembers())
@@ -187,6 +193,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     saveModel();
   }
 
+  /**
+   * The method removes the task and all the unnecessary team members from the project/requirement
+   *
+   * @param requirement the selected requirement
+   * @param task        the selected task
+   */
   @Override public void removeTask(Requirement requirement, Task task)
   {
     for (TeamMember teamMember : task.getTeamMemberList().getTeamMembers())
