@@ -305,8 +305,8 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
 
     @Override public TeamMember getMostFrequentTeamMember(TeamMember teamMember)
     {
-        int[] frequentTeamMembers = new int[getTeam().size()];
-        for(int i = 1; i < getTeam().size(); i++)
+        int[] frequentTeamMembers = new int[getTeam().size() + 1];
+        for(int i = 1; i < frequentTeamMembers.length; i++)
             frequentTeamMembers[i] = 0;
         for(Project project : projectList.getProjects())
             if (project.getTeamMemberList().getTeamMember(teamMember) != null)
@@ -319,7 +319,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel {
                                         frequentTeamMembers[member.getId()]++;
                                     }
         int max = 0, p = 0;
-        for (int i = 1; i < getTeam().size(); i++) {
+        for (int i = 1; i < frequentTeamMembers.length; i++) {
             if (frequentTeamMembers[i] > max && i != teamMember.getId()) {
                 max = frequentTeamMembers[i];
                 p = i;

@@ -50,7 +50,7 @@
                <Insets right="5.0" />
             </HBox.margin>
          </Label>
-         <TextField fx:id="requirementStart" maxWidth="140.0">
+         <TextField fx:id="requirementStart" editable="false" maxWidth="140.0">
             <HBox.margin>
                <Insets right="45.0" />
             </HBox.margin>
@@ -60,7 +60,7 @@
                <Insets right="5.0" />
             </HBox.margin>
          </Label>
-         <TextField fx:id="requirementEnd" maxWidth="140.0" />
+         <TextField fx:id="requirementEnd" editable="false" maxWidth="140.0" />
       </children>
    </HBox>
    <TextField fx:id="titleInput" maxWidth="460.0" promptText="Title">
