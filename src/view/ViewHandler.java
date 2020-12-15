@@ -100,9 +100,9 @@ public class ViewHandler
     primaryStage.setTitle(title);
     primaryStage.setScene(currentScene);
     primaryStage.setWidth(root.getPrefWidth());
-    primaryStage.setHeight(root.getPrefHeight());;
+    primaryStage.setHeight(root.getPrefHeight());
     primaryStage.setMinWidth(root.getPrefWidth());
-    primaryStage.setMinHeight(root.getPrefHeight());;
+    primaryStage.setMinHeight(root.getPrefHeight());
     primaryStage.setMaxWidth(root.getPrefWidth());
     primaryStage.setMaxHeight(root.getPrefHeight());
     primaryStage.show();
