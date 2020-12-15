@@ -364,11 +364,14 @@ public class ProjectManagementModelManager implements IProjectManagementModel
   {
     int total = 0;
     for (Project project : projectList.getProjects())
-      if (project.getTeamMemberList().contains(teamMember) && project.getStatus() == Status.STARTED)
+      if (project.getTeamMemberList().contains(teamMember)
+          && project.getStatus() == Status.STARTED)
         for (Requirement requirement : project.getProjectRequirementList().getRequirements())
-          if (requirement.getTeamMemberList().contains(teamMember) && requirement.getStatus() == RequirementStatus.STARTED)
+          if (requirement.getTeamMemberList().contains(teamMember)
+              && requirement.getStatus() == RequirementStatus.STARTED)
             for (Task task : requirement.getTaskList().getTasks())
-              if (task.getTeamMemberList().contains(teamMember) && task.getStatus() == Status.STARTED)
+              if (task.getTeamMemberList().contains(teamMember)
+                  && task.getStatus() == Status.STARTED)
                 total++;
     return total;
   }

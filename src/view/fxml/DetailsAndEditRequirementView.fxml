@@ -68,7 +68,7 @@
                                         <Font size="17.0" />
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="startingDateInput" prefHeight="25.0" prefWidth="143.0" />
+                                <DatePicker fx:id="startingDateInput" editable="false" prefHeight="25.0" prefWidth="143.0" />
                             </children>
                         </HBox>
                         <HBox prefHeight="22.0" prefWidth="399.0">
@@ -78,7 +78,7 @@
                                         <Font size="17.0" />
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="deadlineInput" prefHeight="25.0" prefWidth="144.0">
+                                <DatePicker fx:id="deadlineInput" editable="false" prefHeight="25.0" prefWidth="144.0">
                                     <HBox.margin>
                                         <Insets left="33.0" />
                                     </HBox.margin>
