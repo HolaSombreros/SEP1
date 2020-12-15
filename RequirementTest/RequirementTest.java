@@ -161,11 +161,6 @@ class RequirementTest {
         assertEquals(RequirementStatus.NOT_STARTED, requirement.getStatus());
     }
     
-    @Test void setStatusEndedTasksNotEnded() {
-        requirement.setStatus(RequirementStatus.ENDED);
-        assertEquals(RequirementStatus.NOT_STARTED, requirement.getStatus());
-    }
-    
     @Test void setStatusApprovedTasksEnded() {
         task.setStatus(Status.ENDED);
         requirement.setStatus(RequirementStatus.APPROVED);
