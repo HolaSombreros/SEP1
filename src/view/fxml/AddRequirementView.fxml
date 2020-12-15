@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0"
-      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRequirementController">
+      userData="Add A New Requirement" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRequirementController">
     <children>
         <Label text="Create A New Requirement">
             <font>
@@ -50,7 +50,7 @@
                                 <Font size="17.0"/>
                             </font>
                         </Label>
-                        <DatePicker fx:id="startingDateInput" prefHeight="25.0" prefWidth="180.0">
+                        <DatePicker fx:id="startingDateInput" editable="false" prefHeight="25.0" prefWidth="180.0">
                             <HBox.margin>
                                 <Insets left="22.0"/>
                             </HBox.margin>
@@ -67,7 +67,7 @@
                                 <Insets/>
                             </HBox.margin>
                         </Label>
-                        <DatePicker fx:id="deadlineInput" prefHeight="25.0" prefWidth="180.0">
+                        <DatePicker fx:id="deadlineInput" editable="false" prefHeight="25.0" prefWidth="180.0">
                             <HBox.margin>
                                 <Insets left="51.0"/>
                             </HBox.margin>
