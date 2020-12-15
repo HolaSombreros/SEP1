@@ -48,6 +48,8 @@ public class Requirement
 
   public void setUserStory(String userStory)
   {
+    if (userStory == null || userStory.equals(""))
+      throw new IllegalArgumentException("User story cannot be empty");
     this.userStory = userStory;
   }
 
@@ -98,7 +100,6 @@ public class Requirement
 
   /**
    * The method sorts the requirements by id if this is edited
-   *
    * @param priority the new priority
    */
   public void setPriority(Priority priority)

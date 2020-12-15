@@ -115,8 +115,7 @@ public class AddProjectController
     /**
      * If name field and ID field are empty the create button is disabled
      */
-    @FXML
-    public void handleKeyReleased() //**
+    @FXML public void handleKeyReleased()
     {
         String name = nameInput.getText();
         String ID = IDInput.getText();

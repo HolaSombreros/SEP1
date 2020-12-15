@@ -49,8 +49,15 @@ class RequirementTest {
     }
     
     @Test void setUserStoryEmpty() {
-        requirement.setUserStory("");
-        assertEquals("", requirement.getUserStory());
+        assertThrows(java.lang.IllegalArgumentException.class, () -> {
+            requirement.setUserStory("");
+        });
+    }
+    
+    @Test void setUserStoryNull() {
+        assertThrows(java.lang.IllegalArgumentException.class, () -> {
+            requirement.setUserStory(null);
+        });
     }
     
     // Starting date:

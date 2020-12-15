@@ -33,6 +33,8 @@ public class RequirementList
    */
   public void add(Requirement requirement)
   {
+    if (requirement == null)
+      throw new IllegalArgumentException("Requirement cannot be null");
     requirement.setId(idCounter);
     idCounter++;
     int critical = 0;
