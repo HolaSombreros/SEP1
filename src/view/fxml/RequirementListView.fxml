@@ -131,14 +131,6 @@
                         <Font size="13.0" />
                     </font>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#removeRequirementButtonPressed" text="Remove Requirement">
-                    <HBox.margin>
-                        <Insets right="20.0" />
-                    </HBox.margin>
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Button>
                 <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                     <font>
                         <Font size="13.0" />
