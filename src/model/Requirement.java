@@ -36,7 +36,6 @@ public class Requirement
     this.taskList = new TaskList();
     this.teamMemberList = new TeamMemberList();
     this.responsibleTeamMember = null;
-    System.out.println("Added requirement through constructor");
   }
 
   //    SETTERS
@@ -107,6 +106,8 @@ public class Requirement
    */
   public void setPriority(Priority priority)
   {
+    if (priority == null)
+      throw new IllegalArgumentException("Priority cannot be null");
     if (this.priority != priority)
     {
       this.priority = priority;
