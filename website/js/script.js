@@ -3,9 +3,9 @@ readXML();
 
 $("#searchBtn").on("click", function() {
     validateId($("#searchInput").val());
-    $("#searchInput").val("");
 })
 
+// Purely for when you hit enter when typing to behave as if you hit the search button
 $("#searchInput").on("keypress", function(e) {
     if (e.which == 13) {
         if ($(this).val() == "") {
@@ -21,7 +21,7 @@ function validateId(id) {
     var projects = XMLDoc.getElementsByTagName("project");
     var projectId = 0;
     for (var i = 0; i < projects.length; i++) {
-        if(projects[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == id) {
+        if(projects[i].getElementsByTagName("id")[0].childNodes[0].nodeValue.toLowerCase() == id.toLowerCase()) {
             projectId = projects[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
             break;
         }
@@ -56,18 +56,6 @@ function getRequirementId(i, id) {
     }
     var req = project.getElementsByTagName("requirement");
     return req[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
-}
-
-function getRequirementPriority(i, id) {
-    var projects = XMLDoc.getElementsByTagName("project");
-    for (var j = 0; j < projects.length; j++) {
-        if (projects[j].getElementsByTagName("id")[0].childNodes[0].nodeValue == id) {
-            var project = projects[j];
-            break;
-        }
-    }
-    var req = project.getElementsByTagName("requirement");
-    return req[i].getElementsByTagName("priority")[0].childNodes[0].nodeValue;
 }
 
 function getRequirementType(i, id) {
@@ -128,10 +116,9 @@ function createRequirementTable(id) {
         }
     }
     var reqs = project.getElementsByTagName("requirement");
-    var table = "<th>Requirement Id</th><th>Priority</th><th>Type</th><th>Deadline</th><th>Status</th>";
+    var table = "<th>Requirement Id</th><th>Type</th><th>Deadline</th><th>Status</th>";
     for (var j = 0; j < reqs.length; j++) {
         table += "<tr><td>" + getRequirementId(j, id) + "</td>";
-        table += "<td>" + getRequirementPriority(j, id) + "</td>";
         table += "<td>" + getRequirementType(j, id) + "</td>";
         table += "<td>" + getRequirementDeadline(j, id) + "</td>";
         table += "<td>" + getRequirementStatus(j, id) + "</td></tr>";

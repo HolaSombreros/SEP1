@@ -3,7 +3,6 @@ package mediator;
 import model.*;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public interface IProjectManagementModel
 {

@@ -18,15 +18,19 @@ public class Requirement
 
   public Requirement(String userStory, Date startingDate, Date deadline, double estimatedTime, Priority priority, Type type, Project relatedProject)
   {
+    if (relatedProject == null)
+      throw new IllegalArgumentException("Related project cannot be null");
     this.relatedProject = relatedProject;
     Date.checkDates(startingDate, deadline);
     setStartingDate(startingDate);
     setDeadline(deadline);
+    setUserStory(userStory);
     setEstimatedTime(estimatedTime);
-    id = 0;
-    this.userStory = userStory;
+    if (priority == null)
+      throw new IllegalArgumentException("Priority cannot be null");
     this.priority = priority;
-    this.type = type;
+    setType(type);
+    this.id = 0;
     this.hoursWorked = 0;
     this.status = RequirementStatus.NOT_STARTED;
     this.taskList = new TaskList();
@@ -37,11 +41,17 @@ public class Requirement
   //    SETTERS
   public void setId(int id)
   {
+    if (id == 0)
+      throw new IllegalArgumentException("Id cannot be 0");
+    else if (id < 0)
+      throw new IllegalArgumentException("Id cannot be negative");
     this.id = id;
   }
 
   public void setUserStory(String userStory)
   {
+    if (userStory == null || userStory.equals(""))
+      throw new IllegalArgumentException("User story cannot be empty");
     this.userStory = userStory;
   }
 
@@ -53,6 +63,8 @@ public class Requirement
    */
   public void setStartingDate(Date startingDate)
   {
+    if (startingDate == null)
+      throw new IllegalArgumentException("Starting date cannot be null");
     if (startingDate.isBefore(relatedProject.getStartingDate()))
       throw new IllegalArgumentException("Starting date can not be before project's starting date: " + relatedProject.getStartingDate().toString());
     if (!(startingDate.isBefore(relatedProject.getDeadline())))
@@ -67,6 +79,8 @@ public class Requirement
    */
   public void setDeadline(Date deadline)
   {
+    if (deadline == null)
+      throw new IllegalArgumentException("Deadline cannot be null");
     if (relatedProject.getDeadline().isBefore(deadline))
       throw new IllegalArgumentException("Deadline can not be after project's deadline: " + relatedProject.getDeadline());
     else
@@ -88,11 +102,12 @@ public class Requirement
 
   /**
    * The method sorts the requirements by id if this is edited
-   *
    * @param priority the new priority
    */
   public void setPriority(Priority priority)
   {
+    if (priority == null)
+      throw new IllegalArgumentException("Priority cannot be null");
     if (this.priority != priority)
     {
       this.priority = priority;
@@ -126,11 +141,15 @@ public class Requirement
 
   public void setType(Type type)
   {
+    if (type == null)
+      throw new IllegalArgumentException("Type cannot be null");
     this.type = type;
   }
 
   public void setStatus(RequirementStatus status)
   {
+    if (status == null)
+      throw new IllegalArgumentException("Requirement status cannot be null");
     this.status = status;
   }
 
@@ -237,6 +256,8 @@ public class Requirement
 
   public void addTask(Task task)
   {
+    if (task == null)
+      throw new IllegalArgumentException("Task cannot be null");
     taskList.add(task);
   }
 
@@ -264,6 +285,8 @@ public class Requirement
    */
   public void assignTeamMember(TeamMember teamMember)
   {
+    if (teamMember == null)
+      throw new IllegalArgumentException("Team member cannot be null");
     if (!(teamMemberList.contains(teamMember)))
       teamMemberList.add(teamMember);
     if (!(relatedProject.getTeamMemberList().contains(teamMember)))
@@ -280,7 +303,7 @@ public class Requirement
   public void unassignTeamMember(TeamMember teamMember)
   {
     if (teamMember.equals(getResponsibleTeamMember()))
-      throw new IllegalArgumentException("You can not unassign a responsible team member");
+      throw new IllegalArgumentException("You can not unassign a responsible team member - Requirement: " + id);
     teamMemberList.remove(teamMember);
     for (Task task : taskList.getTasks())
     {
@@ -295,7 +318,6 @@ public class Requirement
    */
   public void assignResponsibleTeamMember(TeamMember teamMember)
   {
-    unassignResponsibleTeamMember();
     responsibleTeamMember = teamMember;
   }
 
@@ -341,10 +363,16 @@ public class Requirement
 
   public String toString()
   {
-    return "Id: " + id + "\n" + "Related Project: " + relatedProject.getName() + "\n" + "User Story: " + userStory + "\n" + "Estimated Time: " + estimatedTime + "\n"
-        + "Hours Worked: " + hoursWorked + "\n" + "Starting date: " + startingDate.toString() + "\n" + "Deadline: " + deadline + "\n" + "Status" + getStatus().getName() + "\n"
-        + "Priority: " + getPriority().getName() + "\n" + "Type: " + getType().getName() + "\n" + "Responsible Team Member: " + getResponsibleTeamMember() + "\n" + "Tasks: "
-        + taskList.toString() + "\n" + "Team Members: " + teamMemberList.toString();
+    String str = "Requirement Id: " + id + "\n" + "Related Project Id: " + getRelatedProject().getID() + "\n" + "User Story: " + getUserStory() + "\n" + "Estimated Time: " + getEstimatedTime() + "\n"
+        + "Hours Worked: " + getHoursWorked() + "\n" + "Starting date: " + getStartingDate().toString() + "\n" + "Deadline: " + getDeadline().toString() + "\n" + "Status" + getStatus().getName() + "\n"
+        + "Priority: " + getPriority().getName() + "\n" + "Type: " + getType().getName() + "\n";
+    if (getResponsibleTeamMember() != null)
+      str += "Responsible Team Member: #" + getResponsibleTeamMember().getId() + " " + getResponsibleTeamMember().getFullName() + "\n";
+    if (taskList.size() > 0)
+      str += "Tasks: " + taskList.toString() + "\n";
+    if (teamMemberList.size() > 0)
+      str += "Team Members: " + teamMemberList.toString();
+    return str;
   }
 
   public boolean equals(Object obj)

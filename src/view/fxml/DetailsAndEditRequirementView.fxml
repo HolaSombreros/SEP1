@@ -15,14 +15,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DetailsAndEditRequirementController">
+<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0" userData="Requirement's details" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="view.DetailsAndEditRequirementController">
     <children>
         <Label text="Requirement Details">
             <font>
-                <Font name="System Bold" size="25.0" />
+                <Font name="System Bold" size="25.0"/>
             </font>
             <VBox.margin>
-                <Insets bottom="10.0" top="10.0" />
+                <Insets bottom="10.0" top="10.0"/>
             </VBox.margin>
         </Label>
         <HBox alignment="TOP_CENTER" prefHeight="308.0" prefWidth="600.0">
@@ -31,32 +32,32 @@
                     <children>
                         <Label fx:id="idLabel" text="Id">
                             <font>
-                                <Font size="17.0" />
+                                <Font size="17.0"/>
                             </font>
                         </Label>
                         <HBox prefHeight="18.0" prefWidth="399.0">
                             <children>
                                 <Label text="RelatedProject: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
-                                <TextArea fx:id="relatedProjectInput" editable="false" prefHeight="37.0" prefWidth="279.0" />
+                                <TextArea fx:id="relatedProjectInput" editable="false" prefHeight="37.0" prefWidth="279.0"/>
                             </children>
                         </HBox>
                         <HBox prefHeight="32.0" prefWidth="399.0">
                             <children>
                                 <Label text="User Story: ">
                                     <HBox.margin>
-                                        <Insets />
+                                        <Insets/>
                                     </HBox.margin>
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
                                 <TextField fx:id="userStoryInput" prefHeight="25.0" prefWidth="309.0">
                                     <HBox.margin>
-                                        <Insets />
+                                        <Insets/>
                                     </HBox.margin>
                                 </TextField>
                             </children>
@@ -65,22 +66,22 @@
                             <children>
                                 <Label text="Starting Date: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="startingDateInput" prefHeight="25.0" prefWidth="143.0" />
+                                <DatePicker fx:id="startingDateInput" editable="false" prefHeight="25.0" prefWidth="143.0"/>
                             </children>
                         </HBox>
                         <HBox prefHeight="22.0" prefWidth="399.0">
                             <children>
                                 <Label text="Deadline: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="deadlineInput" prefHeight="25.0" prefWidth="144.0">
+                                <DatePicker fx:id="deadlineInput" editable="false" prefHeight="25.0" prefWidth="144.0">
                                     <HBox.margin>
-                                        <Insets left="33.0" />
+                                        <Insets left="33.0"/>
                                     </HBox.margin>
                                 </DatePicker>
                             </children>
@@ -89,52 +90,52 @@
                             <children>
                                 <Label text="Estimated Time: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
-                                <TextField fx:id="estimatedTimeInput" prefHeight="25.0" prefWidth="127.0" />
+                                <TextField fx:id="estimatedTimeInput" prefHeight="25.0" prefWidth="127.0"/>
                             </children>
                             <VBox.margin>
-                                <Insets />
+                                <Insets/>
                             </VBox.margin>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Label text="Priority: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
                                 <ChoiceBox fx:id="priorityInput" prefWidth="150.0" value="Critical">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="Critical" />
-                                            <String fx:value="High" />
-                                            <String fx:value="Low" />
+                                            <String fx:value="Critical"/>
+                                            <String fx:value="High"/>
+                                            <String fx:value="Low"/>
                                         </FXCollections>
                                     </items>
                                 </ChoiceBox>
                             </children>
                             <VBox.margin>
-                                <Insets top="2.0" />
+                                <Insets top="2.0"/>
                             </VBox.margin>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Label text="Type: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
                                 <ChoiceBox fx:id="typeInput" prefWidth="150.0" value="Functional">
                                     <HBox.margin>
-                                        <Insets left="17.0" />
+                                        <Insets left="17.0"/>
                                     </HBox.margin>
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="Functional" />
-                                            <String fx:value="Non Functional" />
-                                            <String fx:value="Project Related" />
+                                            <String fx:value="Functional"/>
+                                            <String fx:value="Non Functional"/>
+                                            <String fx:value="Project Related"/>
                                         </FXCollections>
                                     </items>
                                 </ChoiceBox>
@@ -144,12 +145,12 @@
                             <children>
                                 <Label text="Status: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
                                 <ChoiceBox fx:id="statusInput" prefWidth="150.0">
                                     <HBox.margin>
-                                        <Insets left="7.0" />
+                                        <Insets left="7.0"/>
                                     </HBox.margin>
                                 </ChoiceBox>
                             </children>
@@ -158,42 +159,41 @@
                             <children>
                                 <Label fx:id="hoursWorkedShow" text="Number Of Hours Worked: ">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font size="17.0"/>
                                     </font>
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox prefHeight="21.0" prefWidth="305.0">
-                            <children>
-                                <Label fx:id="responsibleTeamMemberShow" text="Responsible Team Member:  ">
-                                    <font>
-                                        <Font size="17.0" />
-                                    </font>
-                                </Label>
-                                <Label fx:id="responsibleTeamMemberInput" text="name">
-                                    <font>
-                                        <Font size="17.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </HBox>
+                        <Label fx:id="responsibleTeamMemberShow" text="Responsible Team Member:  ">
+                            <font>
+                                <Font size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="responsibleTeamMemberInput" text="name">
+                            <font>
+                                <Font size="17.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets left="20.0"/>
+                            </VBox.margin>
+                        </Label>
                     </children>
                     <opaqueInsets>
-                        <Insets />
+                        <Insets/>
                     </opaqueInsets>
                     <HBox.margin>
-                        <Insets right="25.0" />
+                        <Insets right="25.0"/>
                     </HBox.margin>
                 </VBox>
                 <VBox prefHeight="270.0" prefWidth="215.0">
                     <children>
                         <TableView fx:id="teamMembersTable" prefHeight="365.0" prefWidth="215.0">
                             <columns>
-                                <TableColumn fx:id="idColumn" prefWidth="69.0" text="ID" />
-                                <TableColumn fx:id="nameColumn" prefWidth="145.0" text="Name" />
+                                <TableColumn fx:id="idColumn" prefWidth="69.0" text="ID"/>
+                                <TableColumn fx:id="nameColumn" prefWidth="145.0" text="Name"/>
                             </columns>
                             <VBox.margin>
-                                <Insets />
+                                <Insets/>
                             </VBox.margin>
                         </TableView>
                     </children>
@@ -202,46 +202,46 @@
         </HBox>
         <Label fx:id="errorLabel" text="Error label" textFill="#ee0d0d">
             <VBox.margin>
-                <Insets top="5.0" />
+                <Insets top="5.0"/>
             </VBox.margin>
             <font>
-                <Font size="17.0" />
+                <Font size="17.0"/>
             </font>
         </Label>
         <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="688.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#confirmEditingButtonPressed" text="Edit Requirement">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets right="10.0"/>
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#makeResponsibleButtonPressed" text="Make Responsible">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets right="10.0"/>
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#removeRequirementButtonPressed" text="Remove Requirement">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets right="10.0"/>
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Button>
             </children>
             <VBox.margin>
-                <Insets top="10.0" />
+                <Insets top="10.0"/>
             </VBox.margin>
         </HBox>
     </children>

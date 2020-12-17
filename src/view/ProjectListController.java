@@ -121,9 +121,7 @@ public class ProjectListController
     /**
      * Searches/Sorts the projects by ID or/and Name
      */
-    @FXML
-    public void handleKeyReleased() //**
-    {
+    @FXML public void handleKeyReleased() {
         errorLabel.setText("");
         try {
             if (searchInput.getText().equals("")) {
@@ -131,15 +129,15 @@ public class ProjectListController
             }
             else {
                 String id = null;
-
-                    id = searchInput.getText();
-                    projectListViewModel.update(id);
+                id = searchInput.getText();
+                projectListViewModel.update(id);
             }
         }
         catch (Exception e) {
             errorLabel.setText(e.getMessage());
         }
     }
+    
     @FXML public void viewRequirementsButtonPressed()
     {
         try

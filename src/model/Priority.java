@@ -5,8 +5,7 @@ public enum Priority
   CRITICAL, HIGH, LOW;
 
   /**
-   * Method to get the string representation of the task's priority.
-   *
+   * Method to get the string representation of the requirement's priority.
    * @return The string representation of a priority in a proper format.
    */
   public String getName()

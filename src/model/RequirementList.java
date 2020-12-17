@@ -33,6 +33,8 @@ public class RequirementList
    */
   public void add(Requirement requirement)
   {
+    if (requirement == null)
+      throw new IllegalArgumentException("Requirement cannot be null");
     requirement.setId(idCounter);
     idCounter++;
     int critical = 0;
@@ -51,6 +53,7 @@ public class RequirementList
       high = critical;
     if (high > low)
       low = high;
+    
     if (low == 0)
       requirements.add(requirement);
     else if (requirement.getPriority() == Priority.CRITICAL)
@@ -68,7 +71,6 @@ public class RequirementList
 
   /**
    * The system checks the index before searching in the array
-   *
    * @param index the index of the requirement
    * @return the requirement in the selected position
    */

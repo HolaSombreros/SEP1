@@ -2,28 +2,41 @@ package model;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ProjectList
 {
     private ArrayList<Project> projects;
-
+    
+    /**
+     * constructor
+     */
     public ProjectList()
     {
         this.projects = new ArrayList<>();
     }
+    
+    /**
+     * getter for instance variable
+     * @return the projects
+     */
     public ArrayList<Project> getProjects()
     {
         return projects;
     }
+    
+    /**
+     * method to get the size
+     * @return the size
+     */
     public int size()
     {
         return projects.size();
     }
 
     /**
-     * @throws IllegalStateException: the project is already in the project list
-     * @param project
+     * method to add a project
+     * @throws IllegalStateException the project is already in the project list
+     * @param project the project to add
      */
     public void addProject(Project project)
     {
@@ -34,14 +47,20 @@ public class ProjectList
         else
             throw new IllegalStateException("The project already exists");
     }
+    
+    /**
+     * method to remove a project
+     * @param project the project
+     */
     public void removeProject(Project project)
     {
         projects.remove(project);
     }
 
     /**
-     * @throws IndexOutOfBoundsException
-     * @param index
+     * method to get a project by index
+     * @throws IndexOutOfBoundsException if the index does not exist
+     * @param index the index
      * @return the desired project
      */
     public Project getProject(int index)
@@ -52,6 +71,12 @@ public class ProjectList
         }
         return projects.get(index);
     }
+    
+    /**
+     * method to get number of projects by methodology
+     * @param methodology the methodology
+     * @return the number of projects
+     */
     public int getNumberOfProjectsByMethodology(Methodology methodology)
     {
         int count = 0;
@@ -65,6 +90,12 @@ public class ProjectList
         if(count == 0) throw new IllegalArgumentException("No projects found with this methodology");
         return count;
     }
+    
+    /**
+     * method to get projects by on methodology
+     * @param methodology the methodology
+     * @return the arraylist of projects
+     */
     public ArrayList<Project> getProjectsByMethodology(Methodology methodology)
     {
         ArrayList<Project> projectsSameMethodology = new ArrayList<>();
@@ -80,6 +111,12 @@ public class ProjectList
             throw new IllegalArgumentException("No projects found with this methodology");
         return projectsSameMethodology;
     }
+    
+    /**
+     * gets the number of projects by a status
+     * @param status the status
+     * @return the number of projects
+     */
     public int getNumberOfProjectsByStatus(Status status)
     {
         int count = 0;
@@ -94,6 +131,12 @@ public class ProjectList
             throw new IllegalArgumentException("No projects found with this status");
         return count;
     }
+    
+    /**
+     * gets the projects by a status
+     * @param status the status
+     * @return the arraylist of projects
+     */
     public ArrayList<Project> getProjectsByStatus(Status status)
     {
         ArrayList<Project> projectsSameStatus = new ArrayList<>();
@@ -109,6 +152,12 @@ public class ProjectList
             throw new IllegalArgumentException("No projects found with this status");
         return projectsSameStatus;
     }
+    
+    /**
+     * method to get a project by id
+     * @param ID the id
+     * @return the project
+     */
     public Project getProjectByID(String ID){
         for(Project project : projects)
         {
@@ -139,11 +188,22 @@ public class ProjectList
         return projects.stream().filter(project -> project.getID().toLowerCase().contains(ID.toLowerCase()) || project.getName().toLowerCase().contains(ID.toLowerCase())).collect(Collectors
                 .toCollection(ArrayList::new));
     }
-
+    
+    /**
+     * standard contains method
+     * @param project the project
+     * @return whether or not the project is in the list
+     */
     public boolean contains(Project project)
     {
         return projects.contains(project);
     }
+    
+    /**
+     * contains method but by id
+     * @param ID the id
+     * @return whether or not the project is in the list
+     */
     public boolean containsID(String ID)
     {
         for(int index = 0; index < projects.size(); index++)
@@ -155,6 +215,12 @@ public class ProjectList
         }
         return false;
     }
+    
+    /**
+     * standard equals method
+     * @param obj the object
+     * @return if the two objects are equal
+     */
     public boolean equals(Object obj)
     {
         if(!(obj instanceof ProjectList))

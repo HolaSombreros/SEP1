@@ -13,11 +13,20 @@ public class Project
     private TeamMember productOwner;
     private TeamMemberList projectTeamMemberList;
     private RequirementList projectRequirementList;
-
-    //CONSTRUCTOR
-
+    
+    /**
+     * Constructor
+     * @param name the name
+     * @param ID the id
+     * @param startingDate the starting date
+     * @param deadline the deadline
+     * @param methodology the methodology
+     */
     public Project(String name, String ID, Date startingDate, Date deadline, Methodology methodology)
     {
+        if (ID.toLowerCase().equals("model")) {
+            throw new IllegalArgumentException("The id of the project cannot be \"model\"");
+        }
         this.name = name;
         this.ID = ID;
         Date.checkDates(startingDate, deadline);
@@ -45,8 +54,7 @@ public class Project
 
     /** Checks if the all requirements are APPROVED
      * If yes: the project status will be set to ENDED
-     *
-     * @return
+     * @return the status
      */
     public Status getStatus()
     {
@@ -149,8 +157,7 @@ public class Project
     /**Checks if the team member is in the project, if no: adds him
      * if yes:
      * @throws IllegalArgumentException if the team member was already assigned to the project
-     *
-     * @param teamMember
+     * @param teamMember the team member
      */
     public void assignTeamMember(TeamMember teamMember)
     {
@@ -160,7 +167,7 @@ public class Project
 
     /** Unassigns an ordinary team member
      * @throws IllegalArgumentException when trying to unassign a ScrumMaster or a ProductOwner
-     * @param teamMember
+     * @param teamMember the team member
      */
     public void unassignTeamMember(TeamMember teamMember)
     {
@@ -186,7 +193,7 @@ public class Project
      * If you are trying to assign a team member to a special role
      * and that role is already occupied, the previous person is overwritten
      * and the role is taken by the new team member
-     * @param teamMember
+     * @param teamMember the team member
      */
 
     public void assignScrumMaster(TeamMember teamMember)
@@ -198,17 +205,25 @@ public class Project
      * If you are trying to assign a team member to a special role
      * and that role is already occupied, the previous person is overwritten
      * and the role is taken by the new team member
-     * @param teamMember
+     * @param teamMember the team member
      */
     public void assignProductOwner(TeamMember teamMember)
     {
         unassignProductOwner();
         this.productOwner = teamMember;
     }
+    
+    /**
+     * unassigns the scrum master
+     */
     public void unassignScrumMaster()
     {
         this.scrumMaster = null;
     }
+    
+    /**
+     * unassigns the product owner
+     */
     public void unassignProductOwner()
     {
         this.productOwner = null;
@@ -218,17 +233,20 @@ public class Project
 
     /**
      * Method for editing the project (a setter in disguise)
-     * @param name
-     * @param ID
-     * @param startingDate
-     * @param deadline
-     * @param status
-     * @param methodology
-     * @param scrumMaster
-     * @param productOwner
+     * @param name the name
+     * @param ID the id
+     * @param startingDate the starting date
+     * @param deadline the deadline
+     * @param status the status
+     * @param methodology the methodology
+     * @param scrumMaster the scrum master
+     * @param productOwner the product owner
      */
     public void edit(String name, String ID, Date startingDate, Date deadline, Status status, Methodology methodology, TeamMember scrumMaster, TeamMember productOwner)
     {
+        if (ID.toLowerCase().equals("model")) {
+            throw new IllegalArgumentException("The id of the project cannot be \"model\"");
+        }
         setName(name);
         setID(ID);
         setStartingDate(startingDate);
@@ -246,25 +264,36 @@ public class Project
 
     /**
      * adds a requirement to the project's requirements list
-     * @param requirement
+     * @param requirement the requirement
      */
     public void addRequirement(Requirement requirement)
     {
         this.projectRequirementList.add(requirement);
     }
+    
+    /**
+     * removes a requirement
+     * @param requirement the requirement
+     */
     public void removeRequirement(Requirement requirement)
     {
         this.projectRequirementList.remove(requirement);
     }
 
     /**
-     *
+     * getter for the requirement list
      * @return a list of all the requirements belonging to a project
      */
     public RequirementList getProjectRequirementList()
     {
         return projectRequirementList;
     }
+    
+    /**
+     * standard equals method
+     * @param obj the object
+     * @return whether the two objects are equal
+     */
     public boolean equals(Object obj)
     {
         if(!(obj instanceof Project))
@@ -309,6 +338,11 @@ public class Project
                 this.projectTeamMemberList.equals(other.projectTeamMemberList) &&
                 this.projectRequirementList.equals(other.projectRequirementList);
     }
+    
+    /**
+     * standard toString
+     * @return the string representation of the project
+     */
     public String toString()
     {
         return "ID: " + getID() + "\n" +
