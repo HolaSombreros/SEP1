@@ -5,8 +5,7 @@ public enum Type
   FUNCTIONAL, NON_FUNCTIONAL, PROJECT_RELATED;
 
   /**
-   * Method to get the string representation of the task's type.
-   *
+   * Method to get the string representation of the requirement's type.
    * @return The string representation of a type in a proper format.
    */
   public String getName()

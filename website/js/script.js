@@ -1,18 +1,11 @@
-//var text = "<projectlist><project><id>PmS</id><title>Hooga</title><status>Not Started</status><deadline>18/05/2020</deadline>" +
-//                        "<requirementList><requirement><id>7</id><type>Functional</type><deadline>19/02/2014</deadline><status>Ended</status></requirement>" +
-//                        "<requirement><id>12</id><type>Project Related</type><deadline>19/05/2018</deadline><status>Not Started</status></requirement>" +
-//                        "<requirement><id>9</id><type>Non Functional</type><deadline>15/02/2019</deadline><status>Started</status></requirement></requirementList></project>" +
-//                        "<project><id>3</id><title>Booga</title><status>Started</status><deadline>18/12/2020</deadline>" +
-//                        "<requirementList><requirement><id>10</id><type>Functional</type><deadline>12/02/2014</deadline><status>Ended</status></requirement>" +
-//                        "<requirement><id>9</id><type>Non Functional</type><deadline>7/02/2019</deadline><status>Started</status></requirement></requirementList></project></projectlist>";
 var XMLDoc;
 readXML();
 
 $("#searchBtn").on("click", function() {
     validateId($("#searchInput").val());
-    $("#searchInput").val("");
 })
 
+// Purely for when you hit enter when typing to behave as if you hit the search button
 $("#searchInput").on("keypress", function(e) {
     if (e.which == 13) {
         if ($(this).val() == "") {

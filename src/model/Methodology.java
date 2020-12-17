@@ -5,7 +5,7 @@ public enum Methodology
     WATERFALL, SCRUM;
 
     /**
-     * Method to get the string representation of the task's and project's status.
+     * Method to get the string representation of the project's methodology.
      * @return The string representation of a methodology in a proper format.
      */
     public String getMethodology()

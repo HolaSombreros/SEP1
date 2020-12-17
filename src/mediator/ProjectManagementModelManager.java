@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 public class ProjectManagementModelManager implements IProjectManagementModel
 {
-  private ProjectList projectList;
-  private ArrayList<IFileConnection> fileConnections;
-  private TeamMemberList team;
+  private final ProjectList projectList;
+  private final ArrayList<IFileConnection> fileConnections;
+  private final TeamMemberList team;
 
   public ProjectManagementModelManager() throws FileNotFoundException
   {
@@ -29,7 +29,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     IFileConnection xml = new XmlFile("model");
     return xml.loadModel();
   }
-
+  
+  /**
+   * Method to save the entire model in a unique XML file
+   * This method is called whenever changes are made in the model
+   */
   public void saveModel()
   {
     for (IFileConnection file : fileConnections)
@@ -44,7 +48,12 @@ public class ProjectManagementModelManager implements IProjectManagementModel
       }
     }
   }
-
+  
+  /**
+   * Method to save a project in a unique XML file
+   * This method is called when a project has been marked as "Ended"
+   * @param project the project that will be saved
+   */
   public void saveProject(Project project)
   {
     try
@@ -57,39 +66,11 @@ public class ProjectManagementModelManager implements IProjectManagementModel
       System.out.println(e.getMessage());
     }
   }
-
-  private void createDummyData()
-  {
-    Project project = new Project("Movies", "12", new Date(12, 12, 2020), new Date(25, 10, 2022), Methodology.SCRUM);
-    projectList.addProject(new Project("Project Management System for Colour IT", generateProjectId(), Date.today(), new Date(29, 12, 2021), Methodology.WATERFALL));
-    projectList.addProject(new Project("Some other thing for whoever", generateProjectId(), Date.today(), new Date(18, 5, 2021), Methodology.SCRUM));
-    projectList.addProject(new Project("test", "1", Date.today(), new Date(20, 10, 2025), Methodology.SCRUM));
-    projectList.addProject(new Project("jhdajh", "test", Date.today(), new Date(20, 10, 2025), Methodology.SCRUM));
-    projectList.addProject(new Project("test", "13", Date.today(), new Date(20, 10, 2025), Methodology.SCRUM));
-    projectList.addProject(new Project("test55", "155", Date.today(), new Date(20, 10, 2025), Methodology.SCRUM));
-    projectList.addProject(new Project("random", "3", Date.today(), new Date(20, 10, 2025), Methodology.SCRUM));
-
-    projectList.addProject(project);
-
-    projectList.getProject(0).addRequirement(
-        new Requirement("As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start",
-            new Date(12, 3, 2021), new Date(21, 5, 2021), 24, Priority.CRITICAL, Type.FUNCTIONAL, projectList.getProject(0)));
-
-    projectList.getProject(0).getProjectRequirementList().getRequirement(0)
-        .addTask(new Task("Do some stuff", new Date(15, 3, 2021), new Date(19, 4, 2021), 5, projectList.getProject(0).getProjectRequirementList().getRequirement(0)));
-        /* projectList.getProject(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",2));
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Joseph","Joestar",1));
-        projectList.getProject(0).getTeamMemberList().add(new TeamMember("Giorno","Giovanna",3));
-        projectList.getProject(1).getTeamMemberList().add(new TeamMember("Pizza", "Pasta",4));
-        TeamMember m1 = new TeamMember("Jojo", "Rabbit", 0);
-        projectList.getProject(0).assignScrumMaster(new TeamMember("Joseph","Joestar",1));
-        project.assignScrumMaster(m1);
-        projectList.getProject(0).getProjectRequirementList().getRequirement(0).getTaskList().getTask(0).getTeamMemberList().add(new TeamMember("Maria","Magdalena",9));
-        */
-
-  }
-
+  
+  /**
+   * Method to get the full team member list of all people in the system
+   * @return the team member list
+   */
   public TeamMemberList getTeam()
   {
     return team;
@@ -97,6 +78,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel
 
   /**
    * creates a new string of length 8 from letters of the alphabet picked randomly
+   * @return the randomly generated id
    **/
   public static String generateProjectId()
   {

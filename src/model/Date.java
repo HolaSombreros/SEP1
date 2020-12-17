@@ -7,9 +7,13 @@ public class Date
     private int day;
     private int month;
     private int year;
-
-    //CONSTRUCTOR
-
+    
+    /**
+     * constructor for the date class
+     * @param day the day
+     * @param month the month
+     * @param year the year
+     */
     public Date(int day, int month, int year)
     {
         if(isLegalDate(day, month, year))
@@ -22,9 +26,10 @@ public class Date
             throw new IllegalArgumentException("No legal date");
     }
 
-    //CONSTRUCTOR FOR DATE-TODAY
-    /** <p>Uses Gregorian Calendar</p>
-     * @return today's date*/
+    /**
+     * no argument constructor - defaults date to today's date
+     * Uses Gregorian Calendar
+     */
     public Date()
     {
         Date date = Date.today();
@@ -34,7 +39,7 @@ public class Date
     }
 
     /**
-     *
+     * method to get todays date
      * @return today's date
      */
     public static Date today()
@@ -50,11 +55,10 @@ public class Date
 
     /**
      * Validates the date's day, month, year
-     *
-     * @param day
-     * @param month
-     * @param year
-     *
+     * @param day the day
+     * @param month the month
+     * @param year the year
+     * @return if the date is valid
      */
 
     public boolean isLegalDate(int day, int month, int year)
@@ -77,8 +81,8 @@ public class Date
     /**
      * Checks if the deadline is before today's day
      * Checks if the deadline is before the starting date
-     * @param startingDate
-     * @param deadline
+     * @param startingDate the starting date
+     * @param deadline the deadline
      */
     public static void checkDates(Date startingDate, Date deadline)
     {
@@ -91,9 +95,13 @@ public class Date
             throw new IllegalArgumentException("Deadline cannot be before the starting date");
         }
     }
-
-    //SET DATE
-
+    
+    /**
+     * method to set a date
+     * @param day the day
+     * @param month the month
+     * @param year the year
+     */
     public void set(int day, int month, int year)
     {
         if(isLegalDate(day, month, year))
@@ -123,7 +131,12 @@ public class Date
 
 
     //NEEDED METHODS
-
+    
+    /**
+     * method to get number of days in a month
+     * @param month the month
+     * @return the number of days
+     */
     public int numberOfDaysInMonth(int month)
     {
         switch(month)
@@ -168,11 +181,9 @@ public class Date
     }
 
     /**
+     * method to check if a date is strictly before another date
      * @param other a second date
      * @return a date object which checks if the second date is STRICTLY before the first one
-     * RO:daca prima data este inaintea celei de-a doua
-     * DK: hvis den første dato ligger før den anden
-     *
      * */
     public boolean isBefore(Date other)
     {
@@ -222,7 +233,12 @@ public class Date
     {
         return year;
     }
-    //EQUALS
+    
+    /**
+     * equals method
+     * @param obj the object
+     * @return if the objects are equal
+     */
     public boolean equals(Object obj)
     {
         if(! (obj instanceof Date))
@@ -232,14 +248,20 @@ public class Date
         Date other = (Date) obj;
         return day == other.getDay() && month == other.getMonth() && year == other.getYear();
     }
-    //COPY
+    
+    /**
+     * method to return the copy of the date
+     * @return the copy of the date
+     */
     public Date copy()
     {
         return new Date(day, month, year);
     }
-
-    //TO-STRING
-
+    
+    /**
+     * the toString method
+     * @return the string representation of the date object
+     */
     public String toString()
     {
         return String.format("%02d/%02d/%d", day, month, year);
