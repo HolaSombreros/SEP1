@@ -201,32 +201,6 @@ public class RequirementListController
   }
 
   /**
-   * The method will ask for confirmation
-   * The method will remove the selected requirement
-   */
-  @FXML private void removeRequirementButtonPressed()
-  {
-    errorLabel.setText("");
-    try
-    {
-      RequirementViewModel selectedItem = requirementListTable.getSelectionModel().getSelectedItem();
-      boolean remove = confirmation();
-      if (remove)
-      {
-        Requirement requirement = model.getRequirementList(model.getProjectList().getProjectByID(state.getSelectedProject()))
-            .getRequirementById(selectedItem.getIdProperty().getValue());
-        model.removeRequirement(requirement.getRelatedProject(), requirement);
-        viewModel.remove(requirement);
-        requirementListTable.getSelectionModel().clearSelection();
-      }
-    }
-    catch (Exception e)
-    {
-      errorLabel.setText("Select a requirement");
-    }
-  }
-
-  /**
    * The method will go back to the project's details
    */
   @FXML private void backButtonPressed()
@@ -235,18 +209,4 @@ public class RequirementListController
     viewHandler.openView("projectList");
   }
 
-  private boolean confirmation()
-  {
-    int index = requirementListTable.getSelectionModel().getSelectedIndex();
-    RequirementViewModel selectedItem = requirementListTable.getItems().get(index);
-    if (index >= requirementListTable.getItems().size())
-    {
-      return false;
-    }
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("Confirmation");
-    alert.setHeaderText("Removing requirement - id: " + selectedItem.getIdProperty().get());
-    Optional<ButtonType> result = alert.showAndWait();
-    return (result.isPresent()) && (result.get() == ButtonType.OK);
-  }
 }
