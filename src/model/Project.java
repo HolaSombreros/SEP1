@@ -270,6 +270,11 @@ public class Project
     {
         this.projectRequirementList.add(requirement);
     }
+    
+    /**
+     * removes a requirement
+     * @param requirement the requirement
+     */
     public void removeRequirement(Requirement requirement)
     {
         this.projectRequirementList.remove(requirement);

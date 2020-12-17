@@ -34,6 +34,7 @@ public class Requirement
     this.taskList = new TaskList();
     this.teamMemberList = new TeamMemberList();
     this.responsibleTeamMember = null;
+    System.out.println("Added requirement through constructor");
   }
 
   //    SETTERS

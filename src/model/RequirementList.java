@@ -70,7 +70,6 @@ public class RequirementList
 
   /**
    * The system checks the index before searching in the array
-   *
    * @param index the index of the requirement
    * @return the requirement in the selected position
    */

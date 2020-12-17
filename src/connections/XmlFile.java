@@ -57,8 +57,6 @@ public class XmlFile implements IFileConnection {
         RequirementStatus requirementStatus = null;
         Type type = null;
         Priority priority = null;
-        String firstName;
-        String lastName;
         int id;
         TeamMember teamMember;
         Project project = null;
@@ -125,18 +123,12 @@ public class XmlFile implements IFileConnection {
                 sc.nextLine(); // <scrummaster>
                 line = sc.nextLine(); // </scrummaster> OR <firstname>
                 if (line.contains("<firstname>")) {
-                    line = line.replace("<firstname>", "");
-                    line = line.replace("</firstname>", "");
-                    firstName = line.trim();
-                    line = sc.nextLine();
-                    line = line.replace("<lastname>", "");
-                    line = line.replace("</lastname>", "");
-                    lastName = line.trim();
+                    sc.nextLine();
                     line = sc.nextLine();
                     line = line.replace("<id>", "");
                     line = line.replace("</id>", "");
                     id = Integer.parseInt(line.trim());
-                    teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                    teamMember = teamMemberList.getByID(id);
                     project.assignScrumMaster(teamMember);
     
                     sc.nextLine();
@@ -150,18 +142,12 @@ public class XmlFile implements IFileConnection {
                 sc.nextLine(); // <productowner>
                 line = sc.nextLine(); // </productowner> OR <firstname>
                 if (line.contains("<firstname>")) {
-                    line = line.replace("<firstname>", "");
-                    line = line.replace("</firstname>", "");
-                    firstName = line.trim();
-                    line = sc.nextLine();
-                    line = line.replace("<lastname>", "");
-                    line = line.replace("</lastname>", "");
-                    lastName = line.trim();
+                    sc.nextLine();
                     line = sc.nextLine();
                     line = line.replace("<id>", "");
                     line = line.replace("</id>", "");
                     id = Integer.parseInt(line.trim());
-                    teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                    teamMember = teamMemberList.getByID(id);
                     project.assignProductOwner(teamMember);
     
                     sc.nextLine();
@@ -176,19 +162,13 @@ public class XmlFile implements IFileConnection {
                 while (sc.hasNext()) {
                     line = sc.nextLine(); // <teammember> OR </teammemberlist>
                     if (line.contains("<teammember>")) {
-                        line = sc.nextLine();
-                        line = line.replace("<firstname>", "");
-                        line = line.replace("</firstname>", "");
-                        firstName = line.trim();
-                        line = sc.nextLine();
-                        line = line.replace("<lastname>", "");
-                        line = line.replace("</lastname>", "");
-                        lastName = line.trim();
+                        sc.nextLine();
+                        sc.nextLine();
                         line = sc.nextLine();
                         line = line.replace("<id>", "");
                         line = line.replace("</id>", "");
                         id = Integer.parseInt(line.trim());
-                        teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                        teamMember = teamMemberList.getByID(id);
                         project.assignTeamMember(teamMember);
             
                         sc.nextLine();
@@ -224,11 +204,6 @@ public class XmlFile implements IFileConnection {
                         estimatedTime = Double.parseDouble(line.trim());
     
                         sc.nextLine();
-//                        line = sc.nextLine();
-//                        line = line.replace("<hoursworked>", "");
-//                        line = line.replace("</hoursworked>", "");
-//                        hoursWorked = Double.parseDouble(line.trim());
-    
                         line = sc.nextLine();
                         line = line.replace("<startingdate>", "");
                         line = line.replace("</startingdate>", "");
@@ -301,18 +276,12 @@ public class XmlFile implements IFileConnection {
                         sc.nextLine(); // <responsibleteammember>
                         line = sc.nextLine(); // </responsibleteammember> OR <firstname>
                         if (line.contains("<firstname>")) {
-                            line = line.replace("<firstname>", "");
-                            line = line.replace("</firstname>", "");
-                            firstName = line.trim();
-                            line = sc.nextLine();
-                            line = line.replace("<lastname>", "");
-                            line = line.replace("</lastname>", "");
-                            lastName = line.trim();
+                            sc.nextLine();
                             line = sc.nextLine();
                             line = line.replace("<id>", "");
                             line = line.replace("</id>", "");
                             id = Integer.parseInt(line.trim());
-                            teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                            teamMember = teamMemberList.getByID(id);
                             requirement.assignResponsibleTeamMember(teamMember);
     
                             sc.nextLine();
@@ -328,21 +297,14 @@ public class XmlFile implements IFileConnection {
                         while (sc.hasNext()) {
                             line = sc.nextLine(); // <teammember> OR </teammemberlist>
                             if (line.contains("<teammember>")) {
-                                line = sc.nextLine();
-                                line = line.replace("<firstname>", "");
-                                line = line.replace("</firstname>", "");
-                                firstName = line.trim();
-                                line = sc.nextLine();
-                                line = line.replace("<lastname>", "");
-                                line = line.replace("</lastname>", "");
-                                lastName = line.trim();
+                                sc.nextLine();
+                                sc.nextLine();
                                 line = sc.nextLine();
                                 line = line.replace("<id>", "");
                                 line = line.replace("</id>", "");
                                 id = Integer.parseInt(line.trim());
-                                teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                                teamMember = teamMemberList.getByID(id);
                                 requirement.assignTeamMember(teamMember);
-
                                 sc.nextLine();
                                 line = sc.nextLine();
                                 line = line.replace("<hoursworked>", "");
@@ -419,18 +381,12 @@ public class XmlFile implements IFileConnection {
                                 sc.nextLine(); // <responsibleteammember>
                                 line = sc.nextLine(); // </responsibleteammember> OR <firstname>
                                 if (line.contains("<firstname>")) {
-                                    line = line.replace("<firstname>", "");
-                                    line = line.replace("</firstname>", "");
-                                    firstName = line.trim();
-                                    line = sc.nextLine();
-                                    line = line.replace("<lastname>", "");
-                                    line = line.replace("</lastname>", "");
-                                    lastName = line.trim();
+                                    sc.nextLine();
                                     line = sc.nextLine();
                                     line = line.replace("<id>", "");
                                     line = line.replace("</id>", "");
                                     id = Integer.parseInt(line.trim());
-                                    teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                                    teamMember = teamMemberList.getByID(id);
                                     task.assignResponsibleTeamMember(teamMember);
         
                                     sc.nextLine();
@@ -448,18 +404,12 @@ public class XmlFile implements IFileConnection {
                                     if (line.contains("<teammember>")) {
                                         line = sc.nextLine();
                                         if (line.contains("<firstname>")) {
-                                            line = line.replace("<firstname>", "");
-                                            line = line.replace("</firstname>", "");
-                                            firstName = line.trim();
-                                            line = sc.nextLine();
-                                            line = line.replace("<lastname>", "");
-                                            line = line.replace("</lastname>", "");
-                                            lastName = line.trim();
+                                            sc.nextLine();
                                             line = sc.nextLine();
                                             line = line.replace("<id>", "");
                                             line = line.replace("</id>", "");
                                             id = Integer.parseInt(line.trim());
-                                            teamMember = teamMemberList.getByID(id);// new TeamMember(firstName, lastName, id);
+                                            teamMember = teamMemberList.getByID(id);
                                             task.assignTeamMember(teamMember);
                                             sc.nextLine();
                                             line = sc.nextLine();
