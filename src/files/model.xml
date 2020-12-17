@@ -8,6 +8,12 @@
       <startingdate>24/12/2020</startingdate>
       <deadline>26/12/2020</deadline>
       <scrummaster>
+         <firstname>Adriana</firstname>
+         <lastname>Grecea</lastname>
+         <id>1</id>
+         <timeregistration>
+            <hoursworked>0.0</hoursworked>
+         </timeregistration>
       </scrummaster>
       <productowner>
       </productowner>

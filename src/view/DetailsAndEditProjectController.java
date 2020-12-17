@@ -227,7 +227,7 @@ public class DetailsAndEditProjectController
         Optional<ButtonType> result = alert.showAndWait();
         return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
-    @FXML private void viewRelatedReqButtonPressed()
+    /*@FXML private void viewRelatedReqButtonPressed()
     {
         viewHandler.openView("requirementList");
     }

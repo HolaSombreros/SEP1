@@ -122,11 +122,6 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="viewRelatedRequirements" mnemonicParsing="false" onAction="#viewRelatedReqButtonPressed" text="View Requirements">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="removeProjectButton" mnemonicParsing="false" onAction="#removeProjectButtonPressed" text="Remove Project">
                      <font>
                         <Font size="15.0" />
