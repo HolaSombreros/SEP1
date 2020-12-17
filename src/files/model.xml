@@ -3,10 +3,10 @@
    <project>
       <id>54534656</id>
       <title>gsrfgs</title>
-      <status>Not Started</status>
+      <status>Started</status>
       <methodology>Scrum</methodology>
       <startingdate>24/12/2020</startingdate>
-      <deadline>24/12/2020</deadline>
+      <deadline>26/12/2020</deadline>
       <scrummaster>
       </scrummaster>
       <productowner>
@@ -14,6 +14,40 @@
       <teammemberlist>
       </teammemberlist>
       <requirementlist>
+         <requirement>
+            <id>1</id>
+            <userstory>hgfhfghg</userstory>
+            <estimatedtime>78.0</estimatedtime>
+            <hoursworked>0.0</hoursworked>
+            <startingdate>24/12/2020</startingdate>
+            <deadline>26/12/2020</deadline>
+            <status>Not Started</status>
+            <type>Functional</type>
+            <priority>Critical</priority>
+            <relatedproject>54534656</relatedproject>
+            <responsibleteammember>
+            </responsibleteammember>
+            <teammemberlist>
+            </teammemberlist>
+            <tasklist>
+               <task>
+                  <id>1</id>
+                  <title>fbghfdgdfg</title>
+                  <estimatedtime>78.0</estimatedtime>
+                  <startingdate>24/12/2020</startingdate>
+                  <deadline>26/12/2020</deadline>
+                  <status>Not Started</status>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+                  <relatedrequirement>1</relatedrequirement>
+                  <responsibleteammember>
+                  </responsibleteammember>
+                  <teammemberlist>
+                  </teammemberlist>
+               </task>
+            </tasklist>
+         </requirement>
       </requirementlist>
    </project>
    <project>
