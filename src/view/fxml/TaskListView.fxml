@@ -73,15 +73,13 @@
                 <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
             </padding>
         </Button>
-        <Button mnemonicParsing="false" onAction="#removeTask" style="-fx-font-weight: bold;" text="Remove Task">
-            <padding>
-                <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
-            </padding>
-        </Button>
         <Button mnemonicParsing="false" onAction="#goBack" style="-fx-font-weight: bold;" text="Back">
             <padding>
                 <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
             </padding>
+         <HBox.margin>
+            <Insets right="50.0" />
+         </HBox.margin>
         </Button>
     </HBox>
 </VBox>

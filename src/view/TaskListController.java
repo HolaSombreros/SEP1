@@ -103,40 +103,10 @@ public class TaskListController {
             errorLabel.setText("Task not found: " + e.getMessage());
         }
     }
-    
-    @FXML private void removeTask() {
-        errorLabel.setText("");
-        TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
-        if (selectedItem == null) {
-            errorLabel.setText("Please select a task first");
-        }
-        else {
-            if (confirmation()) {
-                Project project = model.getProjectList().getProjectByID(viewState.getSelectedProject());
-                Requirement requirement = model.getRequirementList(project).getRequirementById(viewState.getSelectedRequirement());
-                Task task = model.getTaskList(project, requirement).getTaskById(selectedItem.getIdProperty().get());
-                model.removeTask(requirement, task);
-                viewModel.remove(task);
-                taskTable.getSelectionModel().clearSelection();
-            }
-        }
-    }
 
     @FXML private void goBack() {
         viewState.setSelectedRequirement(-1);
         viewHandler.openView("requirementList");
     }
-    
-    private boolean confirmation() {
-        int index = taskTable.getSelectionModel().getSelectedIndex();
-        TaskViewModel selectedItem = taskTable.getItems().get(index);
-        if (index < 0 || index > taskTable.getItems().size()) {
-            return false;
-        }
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm removing task");
-        alert.setHeaderText("Removing task #" + selectedItem.getIdProperty().get() + ": " + selectedItem.getTitleProperty().get());
-        Optional<ButtonType> result = alert.showAndWait();
-        return (result.isPresent()) && (result.get() == ButtonType.OK);
-    }
+
 }

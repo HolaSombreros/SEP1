@@ -126,7 +126,7 @@
          <Insets bottom="8.0" />
       </VBox.margin>
    </Label>
-   <HBox alignment="TOP_CENTER" maxWidth="460.0" spacing="20.0">
+   <HBox alignment="TOP_CENTER" maxWidth="623.0" prefHeight="27.0" prefWidth="623.0" spacing="20.0">
       <Button mnemonicParsing="false" onAction="#editDetails" style="-fx-font-weight: bold;" text="Edit Details">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
@@ -138,6 +138,11 @@
          </padding>
       </Button>
       <Button mnemonicParsing="false" onAction="#registerTime" style="-fx-font-weight: bold;" text="Register Time">
+         <padding>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+         </padding>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#remove" style="-fx-font-weight: bold;" text="Remove Task">
          <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </padding>
