@@ -6,6 +6,7 @@ import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -431,20 +432,28 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     else
       return 0;
   }
-
+  
   /**
    * reads a series of names from the given file and adds each teamMember to the system
    * creates and id that is incremented with each teamMember
    * creates a TeamMember object every time a full name is read
    * doesn't assign to projects
-   * returns a TeamMemberList object containing all the TeamMembers that are now in the system
+   * @return a TeamMemberList object containing all the TeamMembers that are now in the system
+   * @throws FileNotFoundException - the fill will be made if it exists
    */
   @Override public TeamMemberList addTeamMembersToTheSystem() throws FileNotFoundException
   {
     TeamMemberList team = new TeamMemberList();
     File file = new File("src/files/teamMembers.txt");
+    if (!file.exists()) {
+      try {
+        file.createNewFile();
+      }
+      catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
     Scanner input = new Scanner(file);
-
     while (input.hasNext())
     {
       String line = input.nextLine();

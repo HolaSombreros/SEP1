@@ -56,9 +56,9 @@
                   <Insets left="30.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#viewButtonPressed" text="View ">
+            <Button mnemonicParsing="false" onAction="#viewButtonPressed" text="View Details">
                <HBox.margin>
-                  <Insets left="30.0" right="50.0" />
+                  <Insets left="30.0" right="75.0" />
                </HBox.margin>
                <font>
                   <Font size="14.0" />
