@@ -89,7 +89,7 @@ public class RequirementSelectController {
                 //}
             }
         } catch (Exception e) {
-            errorLabel.setText(e.getMessage());
+            errorLabel.setText("Select a requirement first!");
         }
     }
 
