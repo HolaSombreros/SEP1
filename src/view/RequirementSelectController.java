@@ -74,22 +74,33 @@ public class RequirementSelectController {
     public void unassignButtonPressed() {
         errorLabel.setText("");
         try {
-            RequirementViewModel selectedItem = requirementTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedRequirement(selectedItem.getIdProperty().getValue());
+            try {
+                RequirementViewModel selectedItem = requirementTable.getSelectionModel().getSelectedItem();
+                viewState.setSelectedRequirement(selectedItem.getIdProperty().getValue());
+            }
+            catch (Exception e){
+                throw new IllegalArgumentException("Select a requirement first!");
+            }
             boolean remove = confirmation();
             if(remove) {
-               // try {
-                    model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
-                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
-                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
-                    errorLabel.setText("Team Member successfully unassigned!");
-              //  }
-               // catch (IllegalArgumentException e){
+                try {
+                    if(!model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTeamMemberList().contains(model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember())))
+                        errorLabel.setText("There is no team member in the related list");
+                    else {
+                        model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+                                model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+                                model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+                        errorLabel.setText("Team Member successfully unassigned!");
+                    }
+                }
+                catch (IllegalArgumentException e){
                 //    errorLabel.setText("You cannot unnasign the responsible team member!");
-                //}
+                    //errorLabel.setText(e.getMessage());
+                    e.printStackTrace();
+                }
             }
         } catch (Exception e) {
-            errorLabel.setText("Select a requirement first!");
+            errorLabel.setText(e.getMessage());
         }
     }
 

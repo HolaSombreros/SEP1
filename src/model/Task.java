@@ -147,9 +147,6 @@ public class Task {
         if (teamMember.equals(getResponsibleTeamMember())) {
             throw new IllegalArgumentException("You cannot unassign a responsible team member from a task");
         }
-        if(!teamMemberList.contains(teamMember)){
-            throw new IllegalArgumentException("Team Member Not found!");
-        }
         teamMemberList.remove(teamMember);
     }
 

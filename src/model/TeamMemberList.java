@@ -125,8 +125,6 @@ public class TeamMemberList {
      * if not, then it proceeds to remove him, if yes throws an exception
      * */
     public void remove(TeamMember teamMember){
-        if(!contains(teamMember))
-           throw new IllegalArgumentException("Team Member not found in the related list!");
         team.remove(teamMember);
     }
     

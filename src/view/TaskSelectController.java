@@ -103,11 +103,18 @@ public class TaskSelectController {
             boolean remove = confirmation();
             if(remove){
                 try {
-                    model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
-                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
-                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
-                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
-                    errorLabel.setText("Team Member successfully unassigned!");
+                    if(!model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).
+                            getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().contains(model.getProjectList().getProjectByID(viewState.getSelectedProject()).
+                            getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().
+                            getByID(viewState.getSelectedTeamMember())))
+                        errorLabel.setText("There is no team member in the related list");
+                    else{
+                        model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
+                                model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
+                                model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
+                                model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+                        errorLabel.setText("Team Member successfully unassigned!");
+                    }
                 }
                 catch (IllegalArgumentException e){
                     throw new IllegalArgumentException("Team member already unassigned!");

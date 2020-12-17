@@ -56,24 +56,32 @@ public class ProjectSelectController {
     public void unassignButtonPressed() {
         errorLabel.setText("");
         try{
+            try {
             ProjectViewModel selectedItem = projectTable.getSelectionModel().getSelectedItem();
             state.setSelectedProject(selectedItem.getIDProperty().getValue());
+            }
+            catch (Exception e){
+                throw new IllegalArgumentException("Select a Project First!");
+            }
             boolean remove = confirmation();
             if(remove){
                try {
-                    model.removeTeamMember(model.getProjectList().getProjectByID(state.getSelectedProject()),
-                            model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().getByID(state.getSelectedTeamMember()));
-                    errorLabel.setText("Team Member successfully unassigned!");
+                   if(!(model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().contains(model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().getByID(state.getSelectedTeamMember()))))
+                       errorLabel.setText("There is no team member in the related list");
+
+                   else {
+                       model.removeTeamMember(model.getProjectList().getProjectByID(state.getSelectedProject()),
+                               model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().getByID(state.getSelectedTeamMember()));
+                       errorLabel.setText("Team Member successfully unassigned!");
+                   }
                }
                catch (IllegalArgumentException e){
-                      // errorLabel.setText("You cannot unassign a team member with a special role!");
                        errorLabel.setText(e.getMessage());
                }
             }
         }
         catch (Exception e){
-            errorLabel.setText("Select a Project First!");
-           // e.printStackTrace();
+            errorLabel.setText(e.getMessage());
         }
 
     }
