@@ -233,7 +233,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel
         break;
       }
     if (unassign)
-      project.unassignTeamMember(teamMember);
+      removeTeamMember(project,teamMember);
     saveModel();
   }
 
