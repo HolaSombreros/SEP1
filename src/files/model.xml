@@ -12,6 +12,14 @@
       <productowner>
       </productowner>
       <teammemberlist>
+         <teammember>
+            <firstname>Adriana</firstname>
+            <lastname>Grecea</lastname>
+            <id>1</id>
+            <timeregistration>
+               <hoursworked>0.0</hoursworked>
+            </timeregistration>
+         </teammember>
       </teammemberlist>
       <requirementlist>
          <requirement>
@@ -28,6 +36,14 @@
             <responsibleteammember>
             </responsibleteammember>
             <teammemberlist>
+               <teammember>
+                  <firstname>Adriana</firstname>
+                  <lastname>Grecea</lastname>
+                  <id>1</id>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+               </teammember>
             </teammemberlist>
             <tasklist>
                <task>

@@ -100,14 +100,4 @@ public class TeamMembersViewController {
 
     }
 
-    public void assignButtonPressed(){
-        try{
-            TeamViewModel selectedItem = teamMemberTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedTeamMember(selectedItem.getIdProperty().getValue());
-            viewHandler.openView("projectSelect");
-        }
-        catch (Exception e){
-            errorLabel.setText("Select a Team Member first!");
-        }
-    }
 }

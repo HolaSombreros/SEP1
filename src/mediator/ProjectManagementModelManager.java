@@ -227,7 +227,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     requirement.unassignTeamMember(teamMember);
     boolean unassign = true;
     for (Requirement requirement1 : requirement.getRelatedProject().getProjectRequirementList().getRequirements())
-      if (requirement1.getTeamMemberList().contains(teamMember))
+      if (!requirement1.getTeamMemberList().contains(teamMember))
       {
         unassign = false;
         break;
@@ -242,7 +242,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     task.unassignTeamMember(teamMember);
     boolean unassign = true;
     for (Task task1 : task.getRelatedRequirement().getTaskList().getTasks())
-      if (task1.getTeamMemberList().contains(teamMember))
+      if (!task1.getTeamMemberList().contains(teamMember))
       {
         unassign = false;
         break;

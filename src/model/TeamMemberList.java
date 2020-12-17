@@ -72,7 +72,7 @@ public class TeamMemberList {
      * @param teamMember the team member
      * */
     public void add(TeamMember teamMember) {
-        if(!contains(teamMember))
+        if(!team.contains(teamMember))
             team.add(teamMember);
         else
             throw new IllegalArgumentException("The team member is already in the list!");
@@ -84,8 +84,9 @@ public class TeamMemberList {
      * @return if yes, returns true, else returns false
      * */
     public boolean contains(TeamMember teamMember){
-        for(TeamMember teamMember1 : team)
-            if(teamMember.equals(teamMember1))
+       // for(TeamMember teamMember1 : team)
+        //    if(teamMember.equals(teamMember1))
+        if(team.contains(teamMember))
                 return true;
         return false;
 
@@ -125,9 +126,8 @@ public class TeamMemberList {
      * */
     public void remove(TeamMember teamMember){
         if(!contains(teamMember))
-            throw new IllegalArgumentException("Team Member not found");
-        else
-            team.remove(teamMember);
+           throw new IllegalArgumentException("Team Member not found in the related list!");
+        team.remove(teamMember);
     }
     
     /**

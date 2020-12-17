@@ -66,19 +66,22 @@ public class TaskSelectController {
 
 
         try {
-            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
+            try {
+                TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+                viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
+            }
+            catch (Exception e){
+                throw new IllegalArgumentException("Task has to be selected first!");
+            }
+
             model.addTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                     model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
                     model.getTeam().getByID(viewState.getSelectedTeamMember()));
-            if (viewState.getSelectedTask() == -1)
-                errorLabel.setText("Task has to be selected first!");
-            else
-                errorLabel.setText("TeamMember successfully assigned!");
-        }
-        catch(IllegalArgumentException e){
-            errorLabel.setText("TeamMember already assigned!");
+            errorLabel.setText("TeamMember successfully assigned!");
+            }
+       catch(Exception e){
+                errorLabel.setText(e.getMessage());
         }
 
     }
@@ -90,23 +93,28 @@ public class TaskSelectController {
     public void unassignButtonPressed() {
         errorLabel.setText("");
         try {
-            TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
+            try {
+                TaskViewModel selectedItem = taskTable.getSelectionModel().getSelectedItem();
+                viewState.setSelectedTask(selectedItem.getIdProperty().getValue());
+            }
+            catch (Exception e){
+                throw new IllegalArgumentException("Select a task first!");
+            }
             boolean remove = confirmation();
             if(remove){
                 try {
                     model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                             model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
                             model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()),
-                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
+                            model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().getByID(viewState.getSelectedTeamMember()));
                     errorLabel.setText("Team Member successfully unassigned!");
                 }
                 catch (IllegalArgumentException e){
-                    errorLabel.setText(e.getMessage());
+                    throw new IllegalArgumentException("Team member already unassigned!");
                 }
             }
         } catch (Exception e) {
-            errorLabel.setText("Select a task first!");
+            errorLabel.setText(e.getMessage());
 
         }
     }
