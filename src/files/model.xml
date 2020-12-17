@@ -122,8 +122,7 @@
       <requirementlist>
          <requirement>
             <id>1</id>
-            <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start.
-</userstory>
+            <userstory>As a Project Creator, I want to add a new project with a name, id, deadline, starting date and methodology, so that work on that project can start.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -157,8 +156,7 @@
          </requirement>
          <requirement>
             <id>2</id>
-            <userstory>As a Product Owner, I want to add a new requirement with id, a user story, an estimated time, a deadline, a priority and the type of requirement (functional, non-functional or project related requirement), so that the project development can begin.
-</userstory>
+            <userstory>As a Product Owner, I want to add a new requirement with id, a user story, an estimated time, a deadline, a priority and the type of requirement (functional, non-functional or project related requirement), so that the project development can begin.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -192,8 +190,7 @@
          </requirement>
          <requirement>
             <id>3</id>
-            <userstory>As a Scrum Master, I want to add a new task with an id, title, an estimated time and a deadline, so that the team members can start working.
-</userstory>
+            <userstory>As a Scrum Master, I want to add a new task with an id, title, an estimated time and a deadline, so that the team members can start working.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -227,8 +224,7 @@
          </requirement>
          <requirement>
             <id>4</id>
-            <userstory>As a Project Creator, I want to edit a project’s details, so that I get a better overview of which projects are finished and which are not.
-</userstory>
+            <userstory>As a Project Creator, I want to edit a project’s details, so that I get a better overview of which projects are finished and which are not.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -262,8 +258,7 @@
          </requirement>
          <requirement>
             <id>5</id>
-            <userstory>As a Product Owner, I want to edit a requirement’s details including its status, so that the progress of the requirement is up to date.
-</userstory>
+            <userstory>As a Product Owner, I want to edit a requirement’s details including its status, so that the progress of the requirement is up to date.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -297,8 +292,7 @@
          </requirement>
          <requirement>
             <id>6</id>
-            <userstory>As a Scrum Master, I want to edit a task’s details including status, total hours worked on the task and which team members worked on the task, so that I keep the task updated.
-</userstory>
+            <userstory>As a Scrum Master, I want to edit a task’s details including status, total hours worked on the task and which team members worked on the task, so that I keep the task updated.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -332,8 +326,7 @@
          </requirement>
          <requirement>
             <id>7</id>
-            <userstory>As a Project Creator, I want to assign and unassign team members with or without a special role from a project, so that the team members know which project they are currently working on.
-</userstory>
+            <userstory>As a Project Creator, I want to assign and unassign team members with or without a special role from a project, so that the team members know which project they are currently working on.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -367,8 +360,7 @@
          </requirement>
          <requirement>
             <id>8</id>
-            <userstory>As a Project Creator, I want to assign team members with a certain role and edit their roles: the Scrum Master, the Product Owner and the responsible team members for requirements/tasks, so that there is good coordination and cooperation within the project.
-</userstory>
+            <userstory>As a Project Creator, I want to assign team members with a certain role and edit their roles: the Scrum Master, the Product Owner and the responsible team members for requirements/tasks, so that there is good coordination and cooperation within the project.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -402,8 +394,7 @@
          </requirement>
          <requirement>
             <id>9</id>
-            <userstory>As a responsible team member for a specific task, I want to report when the task has ended, so that the Scrum Master is up to date with the implementation process.
-</userstory>
+            <userstory>As a responsible team member for a specific task, I want to report when the task has ended, so that the Scrum Master is up to date with the implementation process.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -437,8 +428,7 @@
          </requirement>
          <requirement>
             <id>10</id>
-            <userstory>As a Customer, I want to view the details of the company, the project team, the status of my own project, a table displaying all the requirements for the project including the type, the deadline and the status of the specific requirement so that I can see the progress of a project and get a better overview of the company.
-</userstory>
+            <userstory>As a Customer, I want to view the details of the company, the project team, the status of my own project, a table displaying all the requirements for the project including the type, the deadline and the status of the specific requirement so that I can see the progress of a project and get a better overview of the company.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -472,8 +462,7 @@
          </requirement>
          <requirement>
             <id>33</id>
-            <userstory>The GUI is implemented in JavaFX.
-</userstory>
+            <userstory>The GUI is implemented in JavaFX.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -491,8 +480,7 @@
          </requirement>
          <requirement>
             <id>34</id>
-            <userstory>The website should work on the most common web browsers - Internet Explorer (v11), Microsoft Edge (v84), Mozilla Firefox (v81), Google Chrome (v86).
-</userstory>
+            <userstory>The website should work on the most common web browsers - Internet Explorer (v11), Microsoft Edge (v84), Mozilla Firefox (v81), Google Chrome (v86).</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -510,8 +498,7 @@
          </requirement>
          <requirement>
             <id>35</id>
-            <userstory>Available on Windows 10.
-</userstory>
+            <userstory>Available on Windows 10.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -529,8 +516,7 @@
          </requirement>
          <requirement>
             <id>11</id>
-            <userstory>As a Developer, I want to view the projects sorted by methodology or status, so that I have a better view of the projects.
-</userstory>
+            <userstory>As a Developer, I want to view the projects sorted by methodology or status, so that I have a better view of the projects.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -564,8 +550,7 @@
          </requirement>
          <requirement>
             <id>12</id>
-            <userstory>As a Developer, I want to view the requirements sorted by status and priority, so that I have a better view of the requirements.
-</userstory>
+            <userstory>As a Developer, I want to view the requirements sorted by status and priority, so that I have a better view of the requirements.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -599,8 +584,7 @@
          </requirement>
          <requirement>
             <id>13</id>
-            <userstory>As a Developer, I want to view the tasks sorted by status, so that I have a better view of the tasks.
-</userstory>
+            <userstory>As a Developer, I want to view the tasks sorted by status, so that I have a better view of the tasks.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -634,8 +618,7 @@
          </requirement>
          <requirement>
             <id>14</id>
-            <userstory>As a Developer, I want a project’s status to automatically be marked as “Ended” when all its requirements have been completed and approved, so that the list of projects is much more organised.
-</userstory>
+            <userstory>As a Developer, I want a project’s status to automatically be marked as “Ended” when all its requirements have been completed and approved, so that the list of projects is much more organised.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -669,8 +652,7 @@
          </requirement>
          <requirement>
             <id>15</id>
-            <userstory>As a Developer, I want a requirement’s status to automatically turn to the ‘Ended’ state when all its tasks have been completed, so that the list of requirements can be prioritised.
-</userstory>
+            <userstory>As a Developer, I want a requirement’s status to automatically turn to the ‘Ended’ state when all its tasks have been completed, so that the list of requirements can be prioritised.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -704,8 +686,7 @@
          </requirement>
          <requirement>
             <id>16</id>
-            <userstory>As a Developer, I want to search for a particular project, so that I can easily find and view that specific project’s details.
-</userstory>
+            <userstory>As a Developer, I want to search for a particular project, so that I can easily find and view that specific project’s details.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -739,8 +720,7 @@
          </requirement>
          <requirement>
             <id>17</id>
-            <userstory>As a Developer, I want to view the team members working on a project, sorted by name, productivity or how many tasks they are working on, so that I can see which team members are working on that specific project/requirement/task.
-</userstory>
+            <userstory>As a Developer, I want to view the team members working on a project, sorted by name, productivity or how many tasks they are working on, so that I can see which team members are working on that specific project/requirement/task.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -774,8 +754,7 @@
          </requirement>
          <requirement>
             <id>18</id>
-            <userstory>As a Developer, I want to report the amount of hours worked on a specific task, so that the total daily hours spent on each task can be easily calculated.
-</userstory>
+            <userstory>As a Developer, I want to report the amount of hours worked on a specific task, so that the total daily hours spent on each task can be easily calculated.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -809,8 +788,7 @@
          </requirement>
          <requirement>
             <id>19</id>
-            <userstory>As a Product Owner, I want to prioritize a requirement, so that the Scrum Master is aware of the importance of the requirement.
-</userstory>
+            <userstory>As a Product Owner, I want to prioritize a requirement, so that the Scrum Master is aware of the importance of the requirement.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -844,8 +822,7 @@
          </requirement>
          <requirement>
             <id>20</id>
-            <userstory>As a Developer, I want the amount of hours worked to update automatically to the total hours worked, so that I know how much time was spent on each requirement/task.
-</userstory>
+            <userstory>As a Developer, I want the amount of hours worked to update automatically to the total hours worked, so that I know how much time was spent on each requirement/task.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -879,8 +856,7 @@
          </requirement>
          <requirement>
             <id>21</id>
-            <userstory>As a Developer, I want the display of my productivity to update automatically in the team members’ profile, so that I don’t have to spend time updating it manually.
-</userstory>
+            <userstory>As a Developer, I want the display of my productivity to update automatically in the team members’ profile, so that I don’t have to spend time updating it manually.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -914,8 +890,7 @@
          </requirement>
          <requirement>
             <id>22</id>
-            <userstory>As a Customer, I want to search for a particular project, so that I can easily find a project and view all available details within that specific project.
-</userstory>
+            <userstory>As a Customer, I want to search for a particular project, so that I can easily find a project and view all available details within that specific project.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -949,8 +924,7 @@
          </requirement>
          <requirement>
             <id>23</id>
-            <userstory>As a Developer, I want to search for a particular requirement, so that I can easily find and view that specific requirement’s details.
-</userstory>
+            <userstory>As a Developer, I want to search for a particular requirement, so that I can easily find and view that specific requirement’s details.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -984,8 +958,7 @@
          </requirement>
          <requirement>
             <id>24</id>
-            <userstory>As a Developer, I want to search for a particular task, so that I can easily find and view that specific task’s details.
-</userstory>
+            <userstory>As a Developer, I want to search for a particular task, so that I can easily find and view that specific task’s details.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -1019,8 +992,7 @@
          </requirement>
          <requirement>
             <id>25</id>
-            <userstory>As a Developer, I want to search for a particular team member by name or Id, so that I can view their related projects, see productivity, and with whom they worked the most.
-</userstory>
+            <userstory>As a Developer, I want to search for a particular team member by name or Id, so that I can view their related projects, see productivity, and with whom they worked the most.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -1054,8 +1026,7 @@
          </requirement>
          <requirement>
             <id>26</id>
-            <userstory>As a Project Creator, I want to sort all team members by activity, so that I know which team members have the biggest productivity.
-</userstory>
+            <userstory>As a Project Creator, I want to sort all team members by activity, so that I know which team members have the biggest productivity.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -1089,8 +1060,7 @@
          </requirement>
          <requirement>
             <id>27</id>
-            <userstory>As a Project Creator, I want to delete a project, so that the list of projects will be updated.
-</userstory>
+            <userstory>As a Project Creator, I want to delete a project, so that the list of projects will be updated.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -1124,8 +1094,7 @@
          </requirement>
          <requirement>
             <id>28</id>
-            <userstory>As a Product Owner, I want to delete a requirement, so that the requirements of the project are up to date with what I want.
-</userstory>
+            <userstory>As a Product Owner, I want to delete a requirement, so that the requirements of the project are up to date with what I want.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -1193,8 +1162,7 @@
          </requirement>
          <requirement>
             <id>30</id>
-            <userstory>As a Developer, I want the entire information of a single project to be stored in a single file, so that it can be accessed when searching for historical data.
-</userstory>
+            <userstory>As a Developer, I want the entire information of a single project to be stored in a single file, so that it can be accessed when searching for historical data.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
@@ -1228,8 +1196,7 @@
          </requirement>
          <requirement>
             <id>32</id>
-            <userstory>As a Product Owner, I want to edit the project’s randomly generated ID, so that I can change it into something I can more easily remember.
-</userstory>
+            <userstory>As a Product Owner, I want to edit the project’s randomly generated ID, so that I can change it into something I can more easily remember.</userstory>
             <estimatedtime>1.0</estimatedtime>
             <hoursworked>0.0</hoursworked>
             <startingdate>18/12/2020</startingdate>
