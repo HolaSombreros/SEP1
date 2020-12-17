@@ -26,7 +26,9 @@ public class Requirement
     setDeadline(deadline);
     setUserStory(userStory);
     setEstimatedTime(estimatedTime);
-    setPriority(priority);
+    if (priority == null)
+      throw new IllegalArgumentException("Priority cannot be null");
+    this.priority = priority;
     setType(type);
     this.id = 0;
     this.hoursWorked = 0;
@@ -105,8 +107,6 @@ public class Requirement
    */
   public void setPriority(Priority priority)
   {
-    if (priority == null)
-      throw new IllegalArgumentException("Priority cannot be null");
     if (this.priority != priority)
     {
       this.priority = priority;

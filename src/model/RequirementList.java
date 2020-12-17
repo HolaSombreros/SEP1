@@ -53,6 +53,7 @@ public class RequirementList
       high = critical;
     if (high > low)
       low = high;
+    
     if (low == 0)
       requirements.add(requirement);
     else if (requirement.getPriority() == Priority.CRITICAL)
