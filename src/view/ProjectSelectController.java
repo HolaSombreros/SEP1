@@ -72,8 +72,7 @@ public class ProjectSelectController {
             }
         }
         catch (Exception e){
-            errorLabel.setText(e.getMessage());
-            //errorLabel.setText("Select a Project First!");
+            errorLabel.setText("Select a Project First!");
            // e.printStackTrace();
         }
 
