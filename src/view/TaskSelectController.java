@@ -111,7 +111,7 @@ public class TaskSelectController {
     }
 
     public void homeButtonPressed(){
-        viewHandler.openView("projectList");
+        viewHandler.openView("teamMembers");
     }
 
 
