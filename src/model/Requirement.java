@@ -26,7 +26,9 @@ public class Requirement
     setDeadline(deadline);
     setUserStory(userStory);
     setEstimatedTime(estimatedTime);
-    setPriority(priority);
+    if (priority == null)
+      throw new IllegalArgumentException("Priority cannot be null");
+    this.priority = priority;
     setType(type);
     this.id = 0;
     this.hoursWorked = 0;
@@ -34,7 +36,6 @@ public class Requirement
     this.taskList = new TaskList();
     this.teamMemberList = new TeamMemberList();
     this.responsibleTeamMember = null;
-    System.out.println("Added requirement through constructor");
   }
 
   //    SETTERS

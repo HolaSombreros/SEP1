@@ -28,6 +28,9 @@ class RequirementTest {
     @Test void setId() {
         requirement.setId(1);
         assertEquals(1, requirement.getId());
+    
+        requirement.setId(45);
+        assertEquals(45, requirement.getId());
     }
     
     @Test void setIdZero() {
@@ -38,7 +41,11 @@ class RequirementTest {
     
     @Test void setIdNegative() {
         assertThrows(java.lang.IllegalArgumentException.class, () -> {
-            requirement.setId(-1);
+            requirement.setId(-44);
+        });
+        
+        assertThrows(java.lang.IllegalArgumentException.class, () -> {
+            requirement.setId(-2);
         });
     }
     
@@ -46,6 +53,9 @@ class RequirementTest {
     @Test void setUserStory() {
         requirement.setUserStory("Some value");
         assertEquals("Some value", requirement.getUserStory());
+    
+        requirement.setUserStory("some other Value");
+        assertEquals("some other Value", requirement.getUserStory());
     }
     
     @Test void setUserStoryEmpty() {
@@ -63,6 +73,10 @@ class RequirementTest {
     // Starting date:
     @Test void setStartingDate() {
         Date date = new Date(1, 1, 2021);
+        requirement.setStartingDate(date);
+        assertEquals(date.toString(), requirement.getStartingDate().toString());
+        
+        date.set(3, 4, 2021);
         requirement.setStartingDate(date);
         assertEquals(date.toString(), requirement.getStartingDate().toString());
     }
@@ -110,7 +124,10 @@ class RequirementTest {
     // Estimated time:
     @Test void setEstimatedTime() {
         requirement.setEstimatedTime(1);
-        assertEquals(task.getEstimatedTime(), requirement.getEstimatedTime());
+        assertEquals(99, requirement.getEstimatedTime());
+        
+        requirement.setEstimatedTime(125);
+        assertEquals(125, requirement.getEstimatedTime());
     }
     
     @Test void setEstimatedTimeZero() {
@@ -123,12 +140,19 @@ class RequirementTest {
         assertThrows(java.lang.IllegalArgumentException.class, () -> {
             requirement.setEstimatedTime(-1);
         });
+        
+        assertThrows(java.lang.IllegalArgumentException.class, () -> {
+            requirement.setEstimatedTime(-55);
+        });
     }
     
     // Priority:
     @Test void setPriority() {
         requirement.setPriority(Priority.LOW);
         assertEquals(Priority.LOW, requirement.getPriority());
+    
+        requirement.setPriority(Priority.CRITICAL);
+        assertEquals(Priority.CRITICAL, requirement.getPriority());
     }
     
     @Test void setPriorityNull() {
@@ -141,6 +165,9 @@ class RequirementTest {
     @Test void setType() {
         requirement.setType(Type.PROJECT_RELATED);
         assertEquals(Type.PROJECT_RELATED, requirement.getType());
+        
+        requirement.setType(Type.NON_FUNCTIONAL);
+        assertEquals(Type.NON_FUNCTIONAL, requirement.getType());
     }
     
     @Test void setTypeNull() {
@@ -150,7 +177,7 @@ class RequirementTest {
     }
     
     // Status:
-    @Test void setStatus() {
+    @Test void setStatusEnded() {
         task.setStatus(Status.ENDED);
         requirement.setStatus(RequirementStatus.ENDED);
         assertEquals(RequirementStatus.ENDED, requirement.getStatus());
