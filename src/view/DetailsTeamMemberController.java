@@ -48,7 +48,7 @@ public class DetailsTeamMemberController {
        try {
            productivityLabel.setText("Productivity: " + model.getProductivity(model.getTeam().getByID(viewState.getSelectedTeamMember())));
            if(model.getMostFrequentTeamMember(model.getTeam().getByID(viewState.getSelectedTeamMember()))==null)
-               frequentTeamMemberLabel.setText("Does not have a frequent team member!");
+               frequentTeamMemberLabel.setText("None");
            else
                frequentTeamMemberLabel.setText("" + model.getMostFrequentTeamMember(model.getTeam().getByID(viewState.getSelectedTeamMember())));
            nameLabel.setText("#" + model.getTeam().getByID(viewState.getSelectedTeamMember()).getId() + " " + model.getTeam().getByID(viewState.getSelectedTeamMember()).getFullName());
@@ -87,16 +87,7 @@ public class DetailsTeamMemberController {
 
 
 
-    public void viewButtonPressed(){
-        try{
-            ProjectViewModel selectedItem = teamMemberViewTable.getSelectionModel().getSelectedItem();
-            viewState.setSelectedProject(selectedItem.getIDProperty().getValue());
-            viewHandler.openView("detailsAndEditProject");
-        }
-        catch (Exception e){
-            errorLabel.setText("Select a project first!");
-        }
-    }
+
 
 }
 
