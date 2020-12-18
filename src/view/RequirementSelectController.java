@@ -94,9 +94,7 @@ public class RequirementSelectController {
                     }
                 }
                 catch (IllegalArgumentException e){
-                //    errorLabel.setText("You cannot unnasign the responsible team member!");
-                    //errorLabel.setText(e.getMessage());
-                    e.printStackTrace();
+                    errorLabel.setText(e.getMessage());
                 }
             }
         } catch (Exception e) {

@@ -26,6 +26,14 @@
                <hoursworked>0.0</hoursworked>
             </timeregistration>
          </teammember>
+         <teammember>
+            <firstname>Vlad</firstname>
+            <lastname>Dirlea</lastname>
+            <id>2</id>
+            <timeregistration>
+               <hoursworked>0.0</hoursworked>
+            </timeregistration>
+         </teammember>
       </teammemberlist>
       <requirementlist>
          <requirement>
@@ -40,8 +48,22 @@
             <priority>Critical</priority>
             <relatedproject>54534656</relatedproject>
             <responsibleteammember>
+               <firstname>Vlad</firstname>
+               <lastname>Dirlea</lastname>
+               <id>2</id>
+               <timeregistration>
+                  <hoursworked>0.0</hoursworked>
+               </timeregistration>
             </responsibleteammember>
             <teammemberlist>
+               <teammember>
+                  <firstname>Vlad</firstname>
+                  <lastname>Dirlea</lastname>
+                  <id>2</id>
+                  <timeregistration>
+                     <hoursworked>0.0</hoursworked>
+                  </timeregistration>
+               </teammember>
             </teammemberlist>
             <tasklist>
                <task>
@@ -58,6 +80,14 @@
                   <responsibleteammember>
                   </responsibleteammember>
                   <teammemberlist>
+                     <teammember>
+                        <firstname>Vlad</firstname>
+                        <lastname>Dirlea</lastname>
+                        <id>2</id>
+                        <timeregistration>
+                           <hoursworked>0.0</hoursworked>
+                        </timeregistration>
+                     </teammember>
                   </teammemberlist>
                </task>
             </tasklist>
