@@ -107,7 +107,7 @@ public class TaskSelectController {
                             getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().contains(model.getProjectList().getProjectByID(viewState.getSelectedProject()).
                             getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTaskList().getTaskById(viewState.getSelectedTask()).getTeamMemberList().
                             getByID(viewState.getSelectedTeamMember())))
-                        errorLabel.setText("There is no team member in the related list");
+                        throw  new IllegalArgumentException("There is no team member in the related list");
                     else{
                         model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                                 model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),
@@ -117,7 +117,7 @@ public class TaskSelectController {
                     }
                 }
                 catch (IllegalArgumentException e){
-                    throw new IllegalArgumentException("Team member already unassigned!");
+                    errorLabel.setText(e.getMessage());
                 }
             }
         } catch (Exception e) {

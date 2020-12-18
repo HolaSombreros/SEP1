@@ -66,8 +66,9 @@ public class ProjectSelectController {
             boolean remove = confirmation();
             if(remove){
                try {
-                   if(!(model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().contains(model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().getByID(state.getSelectedTeamMember()))))
-                       errorLabel.setText("There is no team member in the related list");
+                   if(!(model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().
+                           contains(model.getProjectList().getProjectByID(state.getSelectedProject()).getTeamMemberList().getByID(state.getSelectedTeamMember()))))
+                       throw  new IllegalArgumentException("There is no team member in the related list");
 
                    else {
                        model.removeTeamMember(model.getProjectList().getProjectByID(state.getSelectedProject()),

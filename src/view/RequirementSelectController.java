@@ -84,8 +84,10 @@ public class RequirementSelectController {
             boolean remove = confirmation();
             if(remove) {
                 try {
-                    if(!model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).getTeamMemberList().contains(model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().getByID(viewState.getSelectedTeamMember())))
-                        errorLabel.setText("There is no team member in the related list");
+                    if(!model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()).
+                            getTeamMemberList().contains(model.getProjectList().getProjectByID(viewState.getSelectedProject()).getTeamMemberList().
+                            getByID(viewState.getSelectedTeamMember())))
+                        throw  new IllegalArgumentException("There is no team member in the related list");
                     else {
                         model.removeTeamMember(model.getProjectList().getProjectByID(viewState.getSelectedProject()),
                                 model.getProjectList().getProjectByID(viewState.getSelectedProject()).getProjectRequirementList().getRequirementById(viewState.getSelectedRequirement()),

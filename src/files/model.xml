@@ -78,6 +78,12 @@
                   </timeregistration>
                   <relatedrequirement>1</relatedrequirement>
                   <responsibleteammember>
+                     <firstname>Vlad</firstname>
+                     <lastname>Dirlea</lastname>
+                     <id>2</id>
+                     <timeregistration>
+                        <hoursworked>0.0</hoursworked>
+                     </timeregistration>
                   </responsibleteammember>
                   <teammemberlist>
                      <teammember>
