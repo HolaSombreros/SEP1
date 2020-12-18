@@ -121,6 +121,7 @@ public class ProjectManagementModelManager implements IProjectManagementModel
     project.assignTeamMember(teamMember);
     requirement.assignTeamMember(teamMember);
     task.assignTeamMember(teamMember);
+    saveModel();
   }
 
   @Override public void editProject(Project project)
